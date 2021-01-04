@@ -2,47 +2,49 @@
   <div class="container">
     <Navbar type="2" />
     <div class="select">
-      <p>Choisis ton année</p>
-      <router-link class="router" :to="{ name: 'year1', params: { year: 1 } }"
-        ><div class="year">
-          <div class="content one">
-            <p class="Ynumber">1ère année</p>
-            <div class="barbox">
-              <div class="bar oneb"></div>
-              <div class="barFill " id="onef"></div>
+      <div class="contentBox">
+        <p>Choisis ton année</p>
+        <router-link class="router" :to="{ name: 'year1', params: { year: 1 } }"
+          ><div class="year">
+            <div class="content one">
+              <p class="Ynumber">1ère année</p>
+              <div class="barbox">
+                <div class="bar oneb"></div>
+                <div class="barFill " id="onef"></div>
+              </div>
+              <p class="number">{{ progression[0] }} %</p>
             </div>
-            <p class="number">{{ progression[0] }} %</p>
-          </div>
-        </div></router-link
-      >
-      <router-link
-        class="router"
-        :to="{ name: 'yearundefined', params: { year: 2 } }"
-        ><div class="year">
-          <div class="content two">
-            <p class="Ynumber">2ème année</p>
-            <div class="barbox">
-              <div class="bar twob"></div>
-              <div class="barFill " id="twof"></div>
+          </div></router-link
+        >
+        <router-link
+          class="router"
+          :to="{ name: 'yearundefined', params: { year: 2 } }"
+          ><div class="year">
+            <div class="content two">
+              <p class="Ynumber">2ème année</p>
+              <div class="barbox">
+                <div class="bar twob"></div>
+                <div class="barFill " id="twof"></div>
+              </div>
+              <p class="number">{{ progression[1] }} %</p>
             </div>
-            <p class="number">{{ progression[1] }} %</p>
-          </div>
-        </div></router-link
-      >
-      <router-link
-        class="router"
-        :to="{ name: 'yearundefined', params: { year: 3 } }"
-        ><div class="year">
-          <div class="content three">
-            <p class="Ynumber">3ème année</p>
-            <div class="barbox">
-              <div class="bar threeb"></div>
-              <div class="barFill " id="threef"></div>
+          </div></router-link
+        >
+        <router-link
+          class="router"
+          :to="{ name: 'yearundefined', params: { year: 3 } }"
+          ><div class="year">
+            <div class="content three">
+              <p class="Ynumber">3ème année</p>
+              <div class="barbox">
+                <div class="bar threeb"></div>
+                <div class="barFill " id="threef"></div>
+              </div>
+              <p class="number">{{ progression[2] }} %</p>
             </div>
-            <p class="number">{{ progression[2] }} %</p>
-          </div>
-        </div></router-link
-      >
+          </div></router-link
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -56,26 +58,71 @@ export default {
   data() {
     return {
       bar: ["onef", "twof", "threef"],
-      progression: [100, 97, 5],
+      progression: [100, 50, 20],
     };
   },
   mounted: function() {
     for (let i = 0; i < this.bar.length; i++) {
-      document.getElementById(this.bar[i]).style.width =
-        this.progression[i] + "%";
+      let item = document.getElementById(this.bar[i]);
+      item.style.width = this.progression[i] + "%";
     }
   },
 };
 </script>
 
 <style scoped>
-.select {
-  margin-top: 120px;
+@media all and (max-height: 995px) {
+  .contentBox {
+    height: 100% !important;
+  }
+}
+@media all and (max-width: 1024px) {
+  .year {
+    width: 78% !important;
+  }
+  .barbox {
+    width: 40% !important;
+  }
+  .bar {
+    width: 100% !important;
+  }
+  .Ynumber {
+    font-size: 40px !important;
+  }
+}
+@media all and (max-width: 618px) {
+  .content {
+    flex-direction: column !important;
+  }
+  .barbox {
+    width: 80% !important;
+  }
+}
+.container {
+  position: absolute;
   display: flex;
   flex-direction: column;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.select {
+  width: 100%;
+
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.contentBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 80%;
 }
 .content {
   display: flex;
@@ -91,8 +138,8 @@ export default {
 .year {
   display: flex;
   align-items: center;
+  margin: auto;
   width: 800px;
-  margin: 20px;
   height: 100px;
   border: 3px solid var(--main);
   box-shadow: 6px 7px 5px rgba(6, 68, 107, 0.42);
@@ -105,26 +152,29 @@ export default {
 .router {
   color: var(--main);
   text-decoration: none;
+  width: 100%;
+  display: flex;
 }
 .router:hover {
   text-decoration: none;
 }
-.bar {
+.barbox {
   width: 350px;
   height: 10px;
-  border: 2px solid black;
-  z-index: 2;
   margin-top: 10px;
   border-radius: 20px;
-}
-.barFill {
-  z-index: 1;
   position: relative;
-  bottom: 12px;
-  height: 10px;
-  border-radius: 20px;
-  background: red;
 }
+.bar,
+.barFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+}
+
 .one p {
   color: var(--purple);
 }
@@ -154,14 +204,17 @@ export default {
 }
 #onef {
   background: var(--purple);
+  border: 2px solid var(--purple);
   transition: all ease 200ms;
 }
 #twof {
   background: var(--orange);
+  border: 2px solid var(--orange);
   transition: all ease 200ms;
 }
 #threef {
   background: var(--blue);
+  border: 2px solid var(--blue);
   transition: all ease 200ms;
 }
 </style>

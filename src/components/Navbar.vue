@@ -5,13 +5,15 @@
       <h1>Inspiring Music Theory</h1>
     </div>
     <div class="navbar2" v-show="type == 2">
-      <router-link :to="{ name: 'yearselect' }"
-        ><img class="logo_navbar2" src="../assets/logo.png" alt="logo"
-      /></router-link>
-      <h1 class="h1_navbar2">Inspiring Music Theory</h1>
-      <router-link :to="{ name: 'travaux' }"
-        ><button>Mon profil</button></router-link
-      >
+      <div class="navBox">
+        <router-link :to="{ name: 'yearselect' }"
+          ><img class="logo_navbar2" src="../assets/logo.png" alt="logo"
+        /></router-link>
+        <h1>Inspiring Music Theory</h1>
+        <router-link :to="{ name: 'travaux' }"
+          ><button>Mon profil</button></router-link
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -25,29 +27,53 @@ export default {
 </script>
 
 <style scoped>
+@media all and (max-width: 1985px) {
+  .navbar2 h1 {
+    font-size: 30px !important;
+  }
+  .navBox {
+    width: 100% !important;
+  }
+}
 @media all and (max-width: 1801px) {
   .navbar1 h1 {
     font-size: 40px !important;
   }
 }
 @media all and (max-width: 1024px) {
-  .navbar h1 {
+  .navbar1 h1 {
     font-size: 30px !important;
   }
   .navbar1 img {
     width: 150px !important;
   }
 }
+@media all and (max-width: 856px) {
+  .logo_navbar2 {
+    width: 200px !important;
+  }
+}
+@media all and (max-width: 592px) {
+  .navbar2 h1 {
+    display: none;
+  }
+}
 .navbar2 {
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+.navBox {
+  width: 50%;
+  display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 .logo_navbar2 {
   width: 250px;
 }
-.h1_navbar2 {
-  font-size: 5em;
+.navbar2 h1 {
+  font-size: 50px;
 }
 button {
   height: 50px;
