@@ -1,12 +1,8 @@
 <template>
   <div class="navbar">
     <div class="navbar1" v-show="type == 1">
-      <img
-        class="logo_navbar1"
-        src="../assets/logo.png"
-        alt="Logo Inspiring Music Theory"
-      />
-      <h1 class="h1_navbar1">Inspiring Music Theory</h1>
+      <img src="../assets/logo.png" alt="Logo Inspiring Music Theory" />
+      <h1>Inspiring Music Theory</h1>
     </div>
     <div class="navbar2" v-show="type == 2">
       <router-link :to="{ name: 'yearselect' }"
@@ -29,6 +25,19 @@ export default {
 </script>
 
 <style scoped>
+@media all and (max-width: 1801px) {
+  .navbar1 h1 {
+    font-size: 40px !important;
+  }
+}
+@media all and (max-width: 1024px) {
+  .navbar h1 {
+    font-size: 30px !important;
+  }
+  .navbar1 img {
+    width: 150px !important;
+  }
+}
 .navbar2 {
   display: flex;
   align-items: center;
@@ -65,7 +74,7 @@ button:hover {
   justify-content: flex-start;
   align-items: center;
 }
-.logo_navbar1 {
+.navbar1 img {
   width: 200px;
 }
 h1 {
@@ -73,7 +82,7 @@ h1 {
   letter-spacing: 5px;
   margin-bottom: 40px;
 }
-.h1_navbar1 {
-  font-size: 4em;
+.navbar1 h1 {
+  font-size: 60px;
 }
 </style>

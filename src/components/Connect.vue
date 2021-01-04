@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="left">
-      <Navbar type="1" />
+      <Navbar type="1" class="navbar" />
       <div class="formBox">
         <div class="form">
           <p class="title">Se connecter</p>
@@ -69,6 +69,54 @@ export default {
 </script>
 
 <style scoped>
+@media all and (max-width: 1098px) {
+  .right {
+    display: none;
+  }
+  .left {
+    width: 100% !important;
+  }
+  .form {
+    margin: 0 !important;
+  }
+  .formBox {
+    justify-content: flex-start !important;
+  }
+}
+@media all and (max-width: 595px) {
+  .title {
+    font-size: 50px !important;
+  }
+  .form {
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: space-around !important;
+  }
+  .formEmail,
+  .formMdp {
+    font-size: 15px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  .formEmail input,
+  .formMdp input {
+    width: 80% !important;
+  }
+  button {
+    width: 80% !important;
+  }
+  .form .title,
+  .formEmail,
+  .formMdp,
+  .formConnect {
+    margin: 0 !important;
+  }
+}
 .error {
   margin-top: 10px;
   color: red;
@@ -130,7 +178,6 @@ export default {
   margin: 50px 0;
 }
 .form {
-  margin-left: 150px;
   margin-bottom: 80px;
 }
 .formConnect {
@@ -144,6 +191,7 @@ export default {
 .formMdp input {
   display: block;
   margin-left: 20px;
+  padding-left: 10px;
   border-radius: 13px;
   border: 1px solid var(--main);
   height: 40px;
@@ -172,7 +220,8 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  width: 100%;
   flex: 1;
 }
 .form .title {
@@ -181,13 +230,16 @@ export default {
 }
 .container {
   display: flex;
-  height: 100vh;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 .right {
   height: 100%;
   width: 45%;
-  background-image: url("../assets/masquotte.jpg");
-  background-position: -550px -150px;
+  background: url("../assets/masquotte.jpg") center/200% no-repeat;
 }
 .left {
   height: 100%;
