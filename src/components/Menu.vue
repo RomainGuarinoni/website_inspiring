@@ -2,7 +2,7 @@
   <div class="container">
     <Navbar class="navbar" type="3" :year="year" />
     <div class="content">
-      <div class="item">
+      <div class="item" @click="pushTo('Note')">
         <div class="left">
           <img :src="img[0]" alt="" />
         </div>
@@ -26,7 +26,7 @@
           <img :src="img[1]" alt="" />
         </div>
         <div class="right">
-          <p>Apprends à lire les notes</p>
+          <p>Améliore ton rythme</p>
           <div class="bottom">
             <div class="bar">
               <div class="contour orange"></div>
@@ -45,7 +45,7 @@
           <img :src="img[2]" alt="" />
         </div>
         <div class="right">
-          <p>Apprends à lire les notes</p>
+          <p>Lire une partition</p>
           <div class="bottom">
             <div class="bar">
               <div class="contour blue"></div>
@@ -64,7 +64,7 @@
           <img :src="img[3]" alt="" />
         </div>
         <div class="right">
-          <p>Apprends à lire les notes</p>
+          <p>Ecoute les instruments</p>
           <div class="bottom">
             <div class="bar">
               <div class="contour red"></div>
@@ -112,8 +112,10 @@ export default {
         this.progression[indexYear].chapter.partition,
         this.progression[indexYear].chapter.instrument,
       ];
-      console.log(result);
       return result[index];
+    },
+    pushTo(node) {
+      this.$router.push({ name: node });
     },
   },
 };

@@ -13,19 +13,28 @@
         <router-link :to="{ name: 'travaux' }"
           ><button>Mon profil</button></router-link
         >
+        <font-awesome-icon
+          @click="pushTo('travaux')"
+          class="user"
+          :icon="['fas', 'user']"
+        />
       </div>
     </div>
     <div class="navbar3" v-if="type == 3">
       <div class="espace">
-        <div class="title">
+        <div class="title" @click="pushTo('yearselect')">
           <img class="logo3" src="../assets/logo.png" alt="logo" />
           <h1>Inspiring music Theory</h1>
         </div>
-        <button>Mon profil</button>
-        <font-awesome-icon class="user" :icon="['fas', 'user']" />
+        <button @click="pushTo('travaux')">Mon profil</button>
+        <font-awesome-icon
+          @click="pushTo('travaux')"
+          class="user"
+          :icon="['fas', 'user']"
+        />
       </div>
 
-      <div class="centre">
+      <div class="centre" @click="pushTo('yearselect')">
         <div class="annee">
           <div class="top">
             <div class="topBox">
@@ -62,6 +71,11 @@ export default {
       let bar = this.progression[index].year;
       let result = bar + "%";
       return result;
+    },
+  },
+  methods: {
+    pushTo(node) {
+      this.$router.push({ name: node, params: { year: this.year } });
     },
   },
 };

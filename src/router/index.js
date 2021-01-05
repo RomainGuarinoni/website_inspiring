@@ -4,6 +4,7 @@ import Connect from "../components/Connect";
 import yearselect from "../components/YearSelect";
 import travaux from "../components/Travaux";
 import menu from "../components/Menu";
+import Note from "../components/Note";
 Vue.use(VueRouter);
 
 const routes = [
@@ -18,9 +19,15 @@ const routes = [
     component: yearselect,
   },
   {
-    path: "/menu/:year",
+    path: "/menu/annee_:year",
     name: "year",
     component: menu,
+    props: true,
+  },
+  {
+    path: "/annee_:year/note",
+    component: Note,
+    name: "Note",
     props: true,
   },
   {

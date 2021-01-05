@@ -17,13 +17,13 @@ export default {
 
 <style scoped>
 p {
-  font-size: 4em;
+  font-size: 50px;
   margin: 0;
 }
 .container {
   text-align: center;
 }
 img {
-  width: 1000px;
+  width: 50%;
 }
 </style>
