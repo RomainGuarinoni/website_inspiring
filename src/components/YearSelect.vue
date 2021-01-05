@@ -12,7 +12,7 @@
                 <div class="bar oneb"></div>
                 <div class="barFill " id="onef"></div>
               </div>
-              <p class="number">{{ progression[0] }} %</p>
+              <p class="number">{{ progression[0].year }} %</p>
             </div>
           </div></router-link
         >
@@ -26,7 +26,7 @@
                 <div class="bar twob"></div>
                 <div class="barFill " id="twof"></div>
               </div>
-              <p class="number">{{ progression[1] }} %</p>
+              <p class="number">{{ progression[1].year }} %</p>
             </div>
           </div></router-link
         >
@@ -40,7 +40,7 @@
                 <div class="bar threeb"></div>
                 <div class="barFill " id="threef"></div>
               </div>
-              <p class="number">{{ progression[2] }} %</p>
+              <p class="number">{{ progression[2].year }} %</p>
             </div>
           </div></router-link
         >
@@ -68,7 +68,7 @@ export default {
   mounted: function() {
     for (let i = 0; i < this.bar.length; i++) {
       let item = document.getElementById(this.bar[i]);
-      item.style.width = this.progression[i] + "%";
+      item.style.width = this.progression[i].year + "%";
     }
   },
 };

@@ -38,7 +38,7 @@
               <div class="around"></div>
               <div class="fill" id="fill"></div>
             </div>
-            <p>{{ progression[year - 1] }} %</p>
+            <p>{{ progression[year - 1].year }} %</p>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@ export default {
   },
   mounted: function() {
     let item = document.getElementById("fill");
-    item.style.width = this.progression[this.year - 1] + "%";
+    item.style.width = this.progression[this.year - 1].year + "%";
   },
 };
 </script>
