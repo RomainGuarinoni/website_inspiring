@@ -1,10 +1,10 @@
 <template>
   <div class="navbar">
-    <div class="navbar1" v-show="type == 1">
+    <div class="navbar1" v-if="type == 1">
       <img src="../assets/logo.png" alt="Logo Inspiring Music Theory" />
       <h1>Inspiring Music Theory</h1>
     </div>
-    <div class="navbar2" v-show="type == 2">
+    <div class="navbar2" v-if="type == 2">
       <div class="navBox">
         <router-link :to="{ name: 'yearselect' }"
           ><img class="logo_navbar2" src="../assets/logo.png" alt="logo"
@@ -15,7 +15,7 @@
         >
       </div>
     </div>
-    <div class="navbar3" v-show="type == 3">
+    <div class="navbar3" v-if="type == 3">
       <div class="espace">
         <div class="title">
           <img class="logo3" src="../assets/logo.png" alt="logo" />
@@ -36,9 +36,9 @@
           <div class="bottom">
             <div class="barBox">
               <div class="around"></div>
-              <div class="fill" id="fill"></div>
+              <div class="fill" id="fillnav" :style="{ width: fill }"></div>
             </div>
-            <p>{{ progression[year - 1].year }} %</p>
+            <p>{{ progress }} %</p>
           </div>
         </div>
       </div>
@@ -52,10 +52,17 @@ export default {
   props: ["type", "year"],
   computed: {
     ...mapState(["progression"]),
-  },
-  mounted: function() {
-    let item = document.getElementById("fill");
-    item.style.width = this.progression[this.year - 1].year + "%";
+    progress() {
+      let index = this.year - 1;
+      let result = this.progression[index].year;
+      return result;
+    },
+    fill() {
+      let index = this.year - 1;
+      let bar = this.progression[index].year;
+      let result = bar + "%";
+      return result;
+    },
   },
 };
 </script>
@@ -175,6 +182,7 @@ export default {
   background: var(--main);
   border: 2px solid var(--main);
   height: 100%;
+
   border-radius: 20px;
   left: 0;
 }
