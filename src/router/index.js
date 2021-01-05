@@ -19,7 +19,7 @@ const routes = [
   },
   {
     path: "/menu/:year",
-    name: "year1",
+    name: "year",
     component: menu,
     props: true,
   },

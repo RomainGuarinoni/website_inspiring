@@ -4,7 +4,7 @@
     <div class="select">
       <div class="contentBox">
         <p>Choisis ton année</p>
-        <router-link class="router" :to="{ name: 'year1', params: { year: 1 } }"
+        <router-link class="router" :to="{ name: 'year', params: { year: 1 } }"
           ><div class="year">
             <div class="content one">
               <p class="Ynumber">1ère année</p>
@@ -51,6 +51,7 @@
 
 <script>
 import Navbar from "./Navbar";
+import { mapState } from "vuex";
 export default {
   components: {
     Navbar,
@@ -58,9 +59,12 @@ export default {
   data() {
     return {
       bar: ["onef", "twof", "threef"],
-      progression: [100, 50, 20],
     };
   },
+  computed: {
+    ...mapState(["progression"]),
+  },
+
   mounted: function() {
     for (let i = 0; i < this.bar.length; i++) {
       let item = document.getElementById(this.bar[i]);

@@ -1,9 +1,17 @@
 <template>
-  <div class="container"><p>coucou</p></div>
+  <div class="container">
+    <Navbar type="3" :year="year" />
+  </div>
 </template>
 
 <script>
-export default {};
+import Navbar from "./Navbar";
+export default {
+  props: ["year"],
+  components: {
+    Navbar,
+  },
+};
 </script>
 
 <style></style>

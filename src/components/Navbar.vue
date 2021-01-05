@@ -15,18 +15,169 @@
         >
       </div>
     </div>
+    <div class="navbar3" v-show="type == 3">
+      <div class="espace">
+        <div class="title">
+          <img class="logo3" src="../assets/logo.png" alt="logo" />
+          <h1>Inspiring music Theory</h1>
+        </div>
+        <button>Mon profil</button>
+        <font-awesome-icon class="user" :icon="['fas', 'user']" />
+      </div>
+
+      <div class="centre">
+        <div class="annee">
+          <div class="top">
+            <div class="topBox">
+              <p>Année {{ year }}</p>
+              <font-awesome-icon :icon="['fas', 'arrow-down']" />
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="barBox">
+              <div class="around"></div>
+              <div class="fill" id="fill"></div>
+            </div>
+            <p>{{ progression[year - 1] }} %</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
-  props: {
-    type: String,
+  props: ["type", "year"],
+  computed: {
+    ...mapState(["progression"]),
+  },
+  mounted: function() {
+    let item = document.getElementById("fill");
+    item.style.width = this.progression[this.year - 1] + "%";
   },
 };
 </script>
 
 <style scoped>
+@media all and (max-width: 1312px) {
+  .navbar3 .title h1 {
+    display: none;
+  }
+}
+@media all and (max-width: 647px) {
+  .logo3 {
+    display: none;
+  }
+  button {
+    display: none;
+  }
+  .user {
+    display: block !important;
+    border: 2px solid var(--main);
+    color: var(--main);
+    padding: 15px;
+    position: absolute;
+    top: 10px;
+    cursor: pointer;
+    right: 5px;
+    border-radius: 100%;
+  }
+  .centre {
+    position: static !important;
+    z-index: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .navbar3 {
+    display: block !important;
+    position: static !important;
+  }
+}
+.user {
+  display: none;
+}
+.navbar3 {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.espace {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.centre {
+  position: absolute;
+  z-index: 2;
+}
+.navbar3 .title {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+}
+.navbar3 .title img {
+  width: 150px;
+}
+.navbar3 button {
+  margin-right: 5%;
+}
+.navbar3 .annee {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+}
+.annee .top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: var(--main);
+  font-size: 30px;
+}
+.topBox {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: space-between;
+}
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.barBox {
+  position: relative;
+  width: 80%;
+  height: 5px;
+}
+.around {
+  position: absolute;
+  border: 2px solid var(--main);
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  left: 0;
+}
+.fill {
+  position: absolute;
+  background: var(--main);
+  border: 2px solid var(--main);
+  height: 100%;
+  border-radius: 20px;
+  left: 0;
+}
 @media all and (max-width: 1985px) {
   .navbar2 h1 {
     font-size: 30px !important;
