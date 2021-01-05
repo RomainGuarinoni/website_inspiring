@@ -2,78 +2,44 @@
   <div class="container">
     <Navbar class="navbar" type="3" :year="year" />
     <div class="content">
-      <div class="item" @click="pushTo('Note')">
+      <div
+        class="item"
+        v-for="(item, index) in card"
+        :key="index"
+        @click="pushTo(item.node)"
+      >
         <div class="left">
-          <img :src="img[0]" alt="" />
+          <img :src="item.img" alt="" />
         </div>
         <div class="right">
-          <p>Apprends à lire les notes</p>
+          <p>{{ item.title }}</p>
           <div class="bottom">
             <div class="bar">
-              <div class="contour purple"></div>
               <div
-                class="fill purple fillPurple"
-                :style="{ width: getProgress(0) + '%' }"
+                class="contour"
+                :class="{
+                  purple: item.color == 'purple',
+                  orange: item.color == 'orange',
+                  blue: item.color == 'blue',
+                  red: item.color == 'red',
+                }"
+              ></div>
+              <div
+                class="fill"
+                :class="{
+                  purple: item.color == 'purple',
+                  orange: item.color == 'orange',
+                  blue: item.color == 'blue',
+                  red: item.color == 'red',
+                  fillPurple: item.color == 'purple',
+                  fillOrange: item.color == 'orange',
+                  fillBlue: item.color == 'blue',
+                  fillRed: item.color == 'red',
+                }"
+                :style="{ width: getProgress(index) + '%' }"
               ></div>
             </div>
-            <p>{{ getProgress(0) }} %</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="item">
-        <div class="left">
-          <img :src="img[1]" alt="" />
-        </div>
-        <div class="right">
-          <p>Améliore ton rythme</p>
-          <div class="bottom">
-            <div class="bar">
-              <div class="contour orange"></div>
-              <div
-                class="fill orange fillOrange"
-                :style="{ width: getProgress(1) + '%' }"
-              ></div>
-            </div>
-            <p>{{ getProgress(1) }} %</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="item">
-        <div class="left">
-          <img :src="img[2]" alt="" />
-        </div>
-        <div class="right">
-          <p>Lire une partition</p>
-          <div class="bottom">
-            <div class="bar">
-              <div class="contour blue"></div>
-              <div
-                class="fill blue fillBlue"
-                :style="{ width: getProgress(2) + '%' }"
-              ></div>
-            </div>
-            <p>{{ getProgress(2) }} %</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="item">
-        <div class="left">
-          <img :src="img[3]" alt="" />
-        </div>
-        <div class="right">
-          <p>Ecoute les instruments</p>
-          <div class="bottom">
-            <div class="bar">
-              <div class="contour red"></div>
-              <div
-                class="fill red fillRed"
-                :style="{ width: getProgress(3) + '%' }"
-              ></div>
-            </div>
-            <p>{{ getProgress(3) }} %</p>
+            <p>{{ getProgress(index) }} %</p>
           </div>
         </div>
       </div>
@@ -91,11 +57,31 @@ export default {
   },
   data() {
     return {
-      img: [
-        require("@/assets/sol.png"),
-        require("@/assets/croche.png"),
-        require("@/assets/partition.png"),
-        require("@/assets/violon.png"),
+      card: [
+        {
+          title: "Apprends à lire les notes",
+          img: require("@/assets/sol.png"),
+          color: "purple",
+          node: "",
+        },
+        {
+          title: "Améliore ton rythme",
+          img: require("@/assets/croche.png"),
+          color: "orange",
+          node: "",
+        },
+        {
+          title: "Lire une partition",
+          img: require("@/assets/partition.png"),
+          color: "blue",
+          node: "Note",
+        },
+        {
+          title: "Ecoute les instruments",
+          img: require("@/assets/violon.png"),
+          color: "red",
+          node: "",
+        },
       ],
     };
   },
@@ -152,11 +138,11 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border: 2px solid var(--main);
+  border: 3px solid var(--main);
   width: 500px;
   height: 200px;
   border-radius: 30px;
-  transition: all ease 200ms;
+  transition: all ease 100ms;
   cursor: pointer;
 }
 .item:hover {

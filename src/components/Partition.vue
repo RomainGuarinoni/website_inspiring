@@ -14,28 +14,6 @@
           <p>Quizz</p>
         </div>
       </div>
-      <div class="item">
-        <div class="header">
-          <p>Structure d'une portée</p>
-          <font-awesome-icon :icon="['fas', 'plus-circle']" />
-        </div>
-        <div class="chapter">
-          <p>Cours</p>
-          <p>Entrainement</p>
-          <p>Quizz</p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="header">
-          <p>Quizz final</p>
-          <font-awesome-icon :icon="['fas', 'plus-circle']" />
-        </div>
-        <div class="chapter">
-          <p>Cours</p>
-          <p>Entrainement</p>
-          <p>Quizz</p>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -47,6 +25,13 @@ export default {
     Navbar,
   },
   props: ["year"],
+  data() {
+    return {
+      chapter: {
+        title: ["Les nuances", "Structure D'une portée"],
+      },
+    };
+  },
   mounted: () => {
     console.log(document.getElementsByClassName("item"));
     document.getElementsByClassName("item").forEach((element) => {
