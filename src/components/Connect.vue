@@ -219,7 +219,7 @@ export default {
 .formBox {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: baseline;
   align-items: center;
   width: 100%;
   flex: 1;
@@ -240,6 +240,7 @@ export default {
   height: 100%;
   width: 45%;
   background: url("../assets/masquotte.jpg") center/200% no-repeat;
+  background-size: cover;
 }
 .left {
   height: 100%;
