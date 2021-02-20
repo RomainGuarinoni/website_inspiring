@@ -5,6 +5,7 @@ import yearselect from "../components/YearSelect";
 import travaux from "../components/Travaux";
 import menu from "../components/Menu";
 import Partition from "../components/Partition";
+import Note from "../components/Note";
 Vue.use(VueRouter);
 
 const routes = [
@@ -27,7 +28,13 @@ const routes = [
   {
     path: "/annee-:year/lire-une-partition",
     component: Partition,
-    name: "Note",
+    name: "partition",
+    props: true,
+  },
+  {
+    path: "/annee-:year/lire-les-notes",
+    component: Note,
+    name: "note",
     props: true,
   },
   {

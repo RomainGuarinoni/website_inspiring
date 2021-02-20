@@ -2,14 +2,14 @@
   <div class="navbar">
     <div class="navbar1" v-if="type == 1">
       <img src="../assets/logo.png" alt="Logo Inspiring Music Theory" />
-      <h1>Inspiring Music Theory</h1>
+      <h1 class="font">Inspiring Music Theory</h1>
     </div>
     <div class="navbar2" v-if="type == 2">
       <div class="navBox">
         <router-link :to="{ name: 'yearselect' }"
           ><img class="logo_navbar2" src="../assets/logo.png" alt="logo"
         /></router-link>
-        <h1>Inspiring Music Theory</h1>
+        <h1 class="font">Inspiring Music Theory</h1>
         <router-link :to="{ name: 'travaux' }"
           ><button>Mon profil</button></router-link
         >
@@ -24,7 +24,7 @@
       <div class="espace">
         <div class="title" @click="pushTo('yearselect')">
           <img class="logo3" src="../assets/logo.png" alt="logo" />
-          <h1>Inspiring music Theory</h1>
+          <h1 class="font">Inspiring music Theory</h1>
         </div>
         <button @click="pushTo('travaux')">Mon profil</button>
         <font-awesome-icon
@@ -75,7 +75,7 @@ export default {
   },
   methods: {
     pushTo(node) {
-      this.$router.push({ name: node, params: { year: this.year } });
+      this.$router.push({ name: node });
     },
   },
 };
@@ -168,7 +168,7 @@ export default {
 }
 .topBox {
   display: flex;
-  width: 50%;
+  width: 55%;
   align-items: center;
   justify-content: space-between;
 }
@@ -283,5 +283,8 @@ h1 {
 }
 .navbar1 h1 {
   font-size: 60px;
+}
+.font {
+  font-family: "Redressed", cursive;
 }
 </style>

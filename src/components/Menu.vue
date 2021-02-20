@@ -62,7 +62,7 @@ export default {
           title: "Apprends à lire les notes",
           img: require("@/assets/sol.png"),
           color: "purple",
-          node: "",
+          node: "note",
         },
         {
           title: "Améliore ton rythme",
@@ -74,7 +74,7 @@ export default {
           title: "Lire une partition",
           img: require("@/assets/partition.png"),
           color: "blue",
-          node: "Note",
+          node: "partition",
         },
         {
           title: "Ecoute les instruments",

@@ -7,9 +7,9 @@ export default new Vuex.Store({
   state: {
     progression: [
       {
-        year: 90,
+        year: 20,
         chapter: {
-          note: 75,
+          note: 100,
           rythme: 25,
           partition: 55,
           instrument: 100,

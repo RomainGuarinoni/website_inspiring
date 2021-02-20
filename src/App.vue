@@ -17,9 +17,24 @@ export default {};
   --orange: #fbae1b;
   --blue: #05ace9;
 }
+.blue {
+  color: var(--blue);
+}
+.orange {
+  color: var(--orange);
+}
+.purple {
+  color: var(--purple);
+}
+.red {
+  color: var(--red);
+}
+.main {
+  color: var(--main);
+}
 
 * {
-  font-family: "Redressed", cursive;
+  font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
 }
