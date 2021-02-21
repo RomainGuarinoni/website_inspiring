@@ -6,6 +6,7 @@ import travaux from "../components/Travaux";
 import menu from "../components/Menu";
 import Partition from "../components/Partition";
 import Note from "../components/Note";
+import Rythme from "../components/Rythme";
 Vue.use(VueRouter);
 
 const routes = [
@@ -35,6 +36,12 @@ const routes = [
     path: "/annee-:year/lire-les-notes",
     component: Note,
     name: "note",
+    props: true,
+  },
+  {
+    path: "/anne-:year/ameliore-ton-rythme",
+    component: Rythme,
+    name: "rythme",
     props: true,
   },
   {

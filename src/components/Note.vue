@@ -129,6 +129,7 @@ export default {
       element.style = "color : var(--" + color[index] + ");";
       index++;
     }
+    console.log(this.year);
   },
 };
 </script>

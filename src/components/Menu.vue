@@ -68,7 +68,7 @@ export default {
           title: "Améliore ton rythme",
           img: require("@/assets/croche.png"),
           color: "orange",
-          node: "",
+          node: "rythme",
         },
         {
           title: "Lire une partition",

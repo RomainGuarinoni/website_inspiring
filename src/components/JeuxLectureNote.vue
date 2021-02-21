@@ -1,6 +1,6 @@
 <template>
   <div class="all">
-    <div class="testBox" :class="{ hidden: finish }">
+    <div class="testBox" v-show="!finish">
       <div class="retour" @click="retour()">
         <font-awesome-icon id="chevron" :icon="['fas', 'chevron-left']" />
         <p>Retour au choix du niveau</p>
@@ -29,8 +29,8 @@
         />
       </div>
     </div>
-    <div class="resultBox" :class="{ hidden: !finish }">
-      <h1>bravo, tu as finis l'exercice</h1>
+    <div class="resultBox" v-show="finish">
+      <h1>bravo, tu as fini l'exercice</h1>
       <h2>Voici tes résultats :</h2>
       <div class="result">
         <p>Score : {{ score }} / 8</p>
@@ -42,7 +42,10 @@
       <p class="comment" v-else style="color:red;">
         Tu dois encore t'entrainer...
       </p>
-      <button @click="again">Recommencer</button>
+      <div class="bouton">
+        <div class="boutonBox"><p @click="again">Recommencer ce niveau</p></div>
+        <div class="boutonBox"><p @click="retour">Retour au menu</p></div>
+      </div>
     </div>
   </div>
 </template>
@@ -254,21 +257,28 @@ export default {
   margin-top: 50px;
   text-align: center;
 }
-button {
-  width: 150px;
-  height: 30px;
-  border-radius: 20px;
-  border: none;
-  background: rgba(27, 27, 27, 0.726);
-  color: white;
+.boutonBox {
+  width: auto;
+  height: 20px;
+  padding: 10px;
+  display: flex;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   transition: all ease 200ms;
   outline: none;
 }
-button:hover {
-  transform: scale(1.2);
-  font-weight: bold;
-  border: 2px solid black;
+.boutonBox:nth-child(1) {
+  background: var(--red);
+  color: white;
+}
+.boutonBox:nth-child(2) {
+  background: var(--blue);
+  color: white;
+}
+.boutonBox:hover {
+  transform: translate(0px, -5px);
 }
 .comment {
   font-size: 1.5em;
@@ -277,16 +287,15 @@ button:hover {
 .resultBox {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
+  height: 60%;
 }
 .result {
   display: flex;
   font-size: 1.2em;
   justify-content: space-between;
   width: 300px;
-}
-.hidden {
-  display: none;
 }
 h1 {
   text-align: center;
@@ -341,5 +350,13 @@ h1 {
 }
 .retour:hover {
   box-shadow: 2px 2px 10px #06446b5e;
+}
+#chevron {
+  margin: 5px;
+}
+.bouton {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 </style>

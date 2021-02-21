@@ -51,6 +51,9 @@ export default {
       this.$router.push({ name: "year", params: { annee: this.year } });
     },
   },
+  mounted: function() {
+    console.log(this.year);
+  },
 };
 </script>
 
