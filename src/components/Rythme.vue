@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="boxAll" v-else>
-      <JeuxRythme :level="prop" @RETOUR="menu = true" />
+      <JeuxRythme :level="prop" @RETOUR="menu = true" @AGAIN="again()" />
     </div>
   </div>
 </template>
@@ -158,6 +158,7 @@ export default {
         ],
         [],
       ],
+      level: Number,
     };
   },
   methods: {
@@ -168,7 +169,11 @@ export default {
       let random = Math.floor(Math.random() * this.diff[level].length);
       this.prop = { level: this.diff[level][random], index: level };
       this.menu = false;
+      this.level = level;
       console.log(level);
+    },
+    again() {
+      this.menu = true;
     },
   },
 };
@@ -180,6 +185,7 @@ export default {
   flex-direction: column;
   height: 100vh;
 }
+
 .menu {
   display: flex;
   position: relative;

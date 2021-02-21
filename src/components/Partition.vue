@@ -13,7 +13,7 @@
             <p class="purple">Les nuances</p>
           </div>
           <div class="chapter ">
-            <p class="orange">Cours</p>
+            <p class="orange" @click="cours()">Cours</p>
             <p class="orange">Entraînement</p>
             <p class="orange">Quizz</p>
           </div>
@@ -49,6 +49,9 @@ export default {
   methods: {
     retour() {
       this.$router.push({ name: "year", params: { annee: this.year } });
+    },
+    cours() {
+      this.$router.push({ name: "Nuance1" });
     },
   },
   mounted: function() {
@@ -140,7 +143,7 @@ h1 {
   flex-wrap: wrap;
 }
 .chapter p {
-  border: 2px solid var(--main);
+  border: 3px solid var(--main);
   padding: 10px;
   font-size: 25px;
   padding: 10px 20px;

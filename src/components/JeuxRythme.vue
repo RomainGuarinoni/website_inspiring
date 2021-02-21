@@ -1,78 +1,93 @@
 <template>
   <div>
     <div id="gameBox" v-show="show">
-      <h1>Niveau {{ level.index + 1 }}</h1>
-      <div class="retour" @click="retour()">
-        <font-awesome-icon id="chevron" :icon="['fas', 'chevron-left']" />
-        <p>Retour au choix du niveau</p>
-      </div>
-      <div class="son">
-        <div class="bouton" @click="playAudio()">
-          <font-awesome-icon v-if="play" :icon="['fas', 'play']" />
-          <div v-else class="lds-dual-ring"></div>
+      <div class="grey">
+        <h1>Niveau {{ level.index + 1 }}</h1>
+        <div class="retour" @click="retour()">
+          <font-awesome-icon id="chevron" :icon="['fas', 'chevron-left']" />
+          <p>Retour au choix du niveau</p>
         </div>
-        <div class="nbEcoute">
-          <p>
-            Nombre d'écoutes restantes :
-            <span
-              :class="{
-                green: nbEcoute == 3,
-                orange: nbEcoute == 2,
-                red: nbEcoute <= 1,
-              }"
-              >{{ nbEcoute }}</span
-            >
-          </p>
+        <div class="son">
+          <div class="bouton" @click="playAudio()">
+            <font-awesome-icon v-if="play" :icon="['fas', 'play']" />
+            <div v-else class="lds-dual-ring"></div>
+          </div>
+          <div class="nbEcoute">
+            <p>
+              Nombre d'écoutes restantes :
+              <span
+                :class="{
+                  green: nbEcoute == 3,
+                  orange: nbEcoute == 2,
+                  red: nbEcoute <= 1,
+                }"
+                >{{ nbEcoute }}</span
+              >
+            </p>
+          </div>
         </div>
-      </div>
-      <div id="staveBox">
-        <div id="stave"></div>
-      </div>
-      <div class="action">
-        <div class="effacer" @click="deleteNote()">
-          <font-awesome-icon :icon="['fas', 'trash']" />
-          <p>effacer</p>
+        <div id="staveBox">
+          <div id="stave"></div>
         </div>
-        <div class="valider" @click="finish()">
-          <font-awesome-icon :icon="['fas', 'check']" />
-          <p>valider</p>
+        <div class="action">
+          <div class="effacer" @click="deleteNote()">
+            <font-awesome-icon :icon="['fas', 'trash']" />
+            <p>effacer</p>
+          </div>
+          <div class="valider" @click="finish()">
+            <font-awesome-icon :icon="['fas', 'check']" />
+            <p>valider</p>
+          </div>
         </div>
-      </div>
-      <div class="notes">
-        <div
-          class="note"
-          v-for="(note, index) in level.level.note"
-          :key="index"
-          @click="addNote(index)"
-        >
-          <img :src="img[index]" alt="note de musique" width="50" height="50" />
+        <div class="notes">
+          <div
+            class="note"
+            v-for="(note, index) in level.level.note"
+            :key="index"
+            @click="addNote(index)"
+          >
+            <img
+              :src="img[index]"
+              alt="note de musique"
+              width="50"
+              height="50"
+            />
+          </div>
         </div>
       </div>
     </div>
     <div class="result" v-show="!show">
-      <h1>Niveau {{ level.index + 1 }}</h1>
-      <h2 v-if="result" class="green">Bravo !!</h2>
-      <h2 v-else class="orange">Dommage ...</h2>
-      <div class="goodAnswer">
-        <p>
-          <span v-if="result">Ta</span><span v-else>La bonne</span> réponse :
-        </p>
-        <div id="goodStave"></div>
-      </div>
-      <div class="badAnswer" v-show="!result">
-        <p>Ta réponse :</p>
-        <div id="badStave"></div>
-      </div>
-      <div class="audio">
-        <p>Réécouter l'audio :</p>
-        <div class="bouton" @click="playAudio()">
-          <font-awesome-icon v-if="play" :icon="['fas', 'play']" />
-          <div v-else class="lds-dual-ring"></div>
+      <div class="grey end">
+        <h1>Niveau {{ level.index + 1 }}</h1>
+        <h2 v-if="result" class="green">Bravo !!</h2>
+        <h2 v-else class="orange">Dommage ...</h2>
+        <div class="goodAnswer">
+          <p>
+            <span v-if="result">Ta</span><span v-else>La bonne</span> réponse :
+          </p>
+          <div id="goodStave"></div>
         </div>
-      </div>
-      <div class="recommencer" @click="again()">
-        <font-awesome-icon :icon="['fas', 'undo-alt']" />
-        <p>Recommencer</p>
+        <div class="badAnswer" v-show="!result">
+          <p>Ta réponse :</p>
+          <div id="badStave"></div>
+        </div>
+        <div class="audio">
+          <p>Réécouter l'audio :</p>
+          <div class="bouton" @click="playAudio()">
+            <font-awesome-icon v-if="play" :icon="['fas', 'play']" />
+            <div v-else class="lds-dual-ring"></div>
+          </div>
+        </div>
+        <div class="boutonsEndGame">
+          <div class="recommencer" @click="again()">
+            <font-awesome-icon :icon="['fas', 'undo-alt']" />
+            <p>Recommencer</p>
+          </div>
+          <div class="recommencer" @click="retour()">
+            <font-awesome-icon :icon="['fas', 'undo-alt']" />
+            <p>Retour au menu</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -441,8 +456,23 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.grey {
+  background: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-around;
   font-size: 20px;
+  border: none;
+  border-radius: 25px;
+  width: 60%;
+  height: 80%;
+}
+.end {
+  height: 100% !important;
 }
 .result {
   position: relative;
@@ -483,7 +513,7 @@ h1 {
 }
 .action {
   display: flex;
-  width: 20%;
+  width: 35%;
   justify-content: space-between;
 }
 .effacer,
@@ -520,6 +550,9 @@ h1 {
   width: 80px;
   height: 80px;
   cursor: pointer;
+  border: 2px solid black;
+  padding: 0 10px;
+  border-radius: 20px;
   transition: all ease 200ms;
 }
 .note:hover {
@@ -591,13 +624,18 @@ h1 {
   padding: 15px 20px;
   color: white;
   font-weight: bold;
-  background-color: #43a048cb;
   border-radius: 20px;
   cursor: pointer;
   transition: all ease 200ms;
 }
+.recommencer:nth-child(1) {
+  background: var(--blue);
+}
+.recommencer:nth-child(2) {
+  background: var(--orange);
+}
 .recommencer:hover {
-  background-color: #43a048f5;
+  transform: translate(0, -5px);
 }
 .recommencer p {
   margin-left: 20px;
@@ -620,5 +658,11 @@ h1 {
 }
 #chevron {
   margin: 5px;
+}
+.boutonsEndGame {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>
