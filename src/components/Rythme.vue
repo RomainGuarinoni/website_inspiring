@@ -14,7 +14,7 @@
         <p class="purple">S'entrainer</p>
         <div
           class="level"
-          v-for="(item, index) in diff"
+          v-for="(item, index) in 3"
           :key="index"
           @click="playGame(index)"
         >
@@ -31,7 +31,11 @@
       </div>
     </div>
     <div class="boxAll" v-else>
-      <JeuxRythme :level="prop" @RETOUR="menu = true" @AGAIN="again()" />
+      <JeuxRythme
+        :levelIndex="levelIndex"
+        @RETOUR="menu = true"
+        @AGAIN="again()"
+      />
     </div>
   </div>
 </template>
@@ -46,119 +50,10 @@ export default {
   },
   props: ["year"],
   data() {
-    let noteGlobal = [
-      {
-        name: "ronde.svg",
-        value: 1,
-        duration: 4,
-      },
-      {
-        name: "blanche.svg",
-        value: 2,
-        duration: 2,
-      },
-      {
-        name: "noir.svg",
-        value: 3,
-        duration: 1,
-      },
-      {
-        name: "blanchepoint.svg",
-        value: 4,
-        duration: 3,
-      },
-      {
-        name: "croche.svg",
-        value: 5,
-        duration: 0.5,
-      },
-      {
-        name: "pause.svg",
-        value: 6,
-        duration: 1,
-      },
-      {
-        name: "demiPause.svg",
-        value: 7,
-        duration: 0.5,
-      },
-      {
-        name: "soupir.svg",
-        value: 8,
-        duration: 1,
-      },
-      {
-        name: "demiSoupirPoint.svg",
-        value: 9,
-        duration: 1.5,
-      },
-      {
-        name: "demiSoupir.svg",
-        value: 10,
-        duration: 0.5,
-      },
-    ];
     return {
       menu: true,
       prop: Object, // le prop qui sera donnée au jeux => audio + notes + réponse
-      diff: [
-        [
-          {
-            mp3: require("@/assets/level1_1.mp3"),
-            result: [2, 2],
-            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
-          },
-          {
-            mp3: require("@/assets/level1_2.mp3"),
-            result: [3, 3, 2],
-            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
-          },
-          {
-            mp3: require("@/assets/level1_3.mp3"),
-            result: [3, 3, 3, 3],
-            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
-          },
-          {
-            mp3: require("@/assets/level1_4.mp3"),
-            result: [2, 3, 3],
-            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
-          },
-          {
-            mp3: require("@/assets/level1_5.mp3"),
-            result: [3, 2, 3],
-            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
-          },
-          {
-            mp3: require("@/assets/level1_6.mp3"),
-            result: [3, 3, 2],
-            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
-          },
-        ],
-        [
-          {
-            mp3: require("@/assets/level2_1.mp3"),
-            result: [3, 8, 3, 3],
-            note: [noteGlobal[2], noteGlobal[1], noteGlobal[7], noteGlobal[4]],
-          },
-          {
-            mp3: require("@/assets/level2_2.mp3"),
-            result: [2, 3, 8],
-            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
-          },
-          {
-            mp3: require("@/assets/level2_3.mp3"),
-            result: [8, 3, 2],
-            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
-          },
-          {
-            mp3: require("@/assets/level2_4.mp3"),
-            result: [3, 8, 3, 8],
-            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
-          },
-        ],
-        [],
-      ],
-      level: Number,
+      levelIndex: Number,
     };
   },
   methods: {
@@ -166,11 +61,9 @@ export default {
       this.$router.push({ name: "year", params: { annee: this.year } });
     },
     playGame(level) {
-      let random = Math.floor(Math.random() * this.diff[level].length);
-      this.prop = { level: this.diff[level][random], index: level };
+      this.levelIndex = level;
+
       this.menu = false;
-      this.level = level;
-      console.log(level);
     },
     again() {
       this.menu = true;

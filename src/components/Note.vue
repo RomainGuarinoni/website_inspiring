@@ -18,7 +18,17 @@
           :key="index"
           @click="playGame(index)"
         >
-          <p class="levelP">Niveau {{ index + 1 }}</p>
+          <p
+            class="levelP"
+            :class="{
+              blue: index == 0 || index == 5,
+              orange: index == 1,
+              purple: index == 2 || index == 4,
+              red: index == 3,
+            }"
+          >
+            Niveau {{ index + 1 }}
+          </p>
         </div>
       </div>
       <div class="item solo">
@@ -43,10 +53,6 @@ export default {
   data() {
     return {
       menu: true,
-      key: {
-        name: "Clef de Sol",
-        value: "treble",
-      },
       level: [
         {
           diff: "Niveau 1",
@@ -117,19 +123,6 @@ export default {
       this.currentLevel = this.level[index];
       this.menu = false;
     },
-  },
-  mounted: function() {
-    let level = document.getElementsByClassName("levelP");
-    let color = ["blue", "orange", "purple", "red"];
-    let index = 0;
-    for (let element of level) {
-      if (index / 4 == 1) {
-        index = 0;
-      }
-      element.style = "color : var(--" + color[index] + ");";
-      index++;
-    }
-    console.log(this.year);
   },
 };
 </script>

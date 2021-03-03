@@ -61,13 +61,13 @@
         <h1>Niveau {{ level.index + 1 }}</h1>
         <h2 v-if="result" class="green">Bravo !!</h2>
         <h2 v-else class="orange">Dommage ...</h2>
-        <div class="goodAnswer">
+        <div class="goodAnswer" id="goodAnswer">
           <p>
             <span v-if="result">Ta</span><span v-else>La bonne</span> réponse :
           </p>
           <div id="goodStave"></div>
         </div>
-        <div class="badAnswer" v-show="!result">
+        <div class="badAnswer" id="badAnswer" v-show="!result">
           <p>Ta réponse :</p>
           <div id="badStave"></div>
         </div>
@@ -97,11 +97,65 @@ import Vex from "vexflow";
 export default {
   name: "App",
   props: {
-    level: Object,
+    levelIndex: {
+      type: Number,
+    },
   },
-
   data() {
+    let noteGlobal = [
+      {
+        name: "ronde.svg",
+        value: 1,
+        duration: 4,
+      },
+      {
+        name: "blanche.svg",
+        value: 2,
+        duration: 2,
+      },
+      {
+        name: "noir.svg",
+        value: 3,
+        duration: 1,
+      },
+      {
+        name: "blanchepoint.svg",
+        value: 4,
+        duration: 3,
+      },
+      {
+        name: "croche.svg",
+        value: 5,
+        duration: 0.5,
+      },
+      {
+        name: "pause.svg",
+        value: 6,
+        duration: 1,
+      },
+      {
+        name: "demiPause.svg",
+        value: 7,
+        duration: 0.5,
+      },
+      {
+        name: "soupir.svg",
+        value: 8,
+        duration: 1,
+      },
+      {
+        name: "demiSoupirPoint.svg",
+        value: 9,
+        duration: 1.5,
+      },
+      {
+        name: "demiSoupir.svg",
+        value: 10,
+        duration: 0.5,
+      },
+    ];
     return {
+      level: Object,
       show: true,
       nbEcoute: 3,
       play: true,
@@ -113,9 +167,75 @@ export default {
       img: [],
       indexEnCours: 0,
       result: true,
+      diff: [
+        [
+          {
+            mp3: require("@/assets/level1_1.mp3"),
+            result: [2, 2],
+            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+          },
+          {
+            mp3: require("@/assets/level1_2.mp3"),
+            result: [3, 3, 2],
+            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+          },
+          {
+            mp3: require("@/assets/level1_3.mp3"),
+            result: [3, 3, 3, 3],
+            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+          },
+          {
+            mp3: require("@/assets/level1_4.mp3"),
+            result: [2, 3, 3],
+            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+          },
+          {
+            mp3: require("@/assets/level1_5.mp3"),
+            result: [3, 2, 3],
+            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+          },
+          {
+            mp3: require("@/assets/level1_6.mp3"),
+            result: [3, 3, 2],
+            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+          },
+        ],
+        [
+          {
+            mp3: require("@/assets/level2_1.mp3"),
+            result: [3, 8, 3, 3],
+            note: [noteGlobal[2], noteGlobal[1], noteGlobal[7], noteGlobal[4]],
+          },
+          {
+            mp3: require("@/assets/level2_2.mp3"),
+            result: [2, 3, 8],
+            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+          },
+          {
+            mp3: require("@/assets/level2_3.mp3"),
+            result: [8, 3, 2],
+            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+          },
+          {
+            mp3: require("@/assets/level2_4.mp3"),
+            result: [3, 8, 3, 8],
+            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+          },
+        ],
+        [],
+      ],
     };
   },
   methods: {
+    createLevel() {
+      let random = Math.floor(
+        Math.random() * this.diff[this.levelIndex].length
+      );
+      this.level = {
+        level: this.diff[this.levelIndex][random],
+        index: this.levelIndex,
+      };
+    },
     playAudio() {
       if (this.show) {
         if (this.nbEcoute > 0 && this.play == true) {
@@ -432,7 +552,29 @@ export default {
       });
     },
     again() {
-      this.$emit("AGAIN");
+      this.nbEcoute = 3;
+      this.note = [];
+      this.noteStave = [];
+      this.resultStave = []; // la portée des resultatss
+      this.beams = [];
+      this.indexEnCours = 0;
+      this.result = true;
+      var node = document.getElementById("stave");
+      node.remove();
+      var newNode = document.getElementById("staveBox");
+      newNode.innerHTML = '<div id="stave"></div>';
+      var node2 = document.getElementById("goodStave");
+      node2.remove();
+      var newNode2 = document.getElementById("goodAnswer");
+      newNode2.innerHTML =
+        '<span v-if="result">Ta</span><span v-else>La bonne</span> réponse :<div id="goodStave"></div>';
+      var node3 = document.getElementById("badStave");
+      node3.remove();
+      var newNode3 = document.getElementById("badAnswer");
+      newNode3.innerHTML = '<p>Ta réponse :</p><div id="badStave"></div>';
+      this.createLevel();
+      this.show = true;
+      this.display();
     },
     retour() {
       this.$emit("RETOUR");
@@ -444,6 +586,9 @@ export default {
       this.img.push(imgAux);
     }
     this.display();
+  },
+  created: function() {
+    this.createLevel();
   },
 };
 </script>

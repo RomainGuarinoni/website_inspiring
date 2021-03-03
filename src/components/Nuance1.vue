@@ -66,7 +66,7 @@ export default {
     //Création de 2 voix de 4 temps
 
     var maVoix1 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
-    var maVoix2 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
+    //var maVoix2 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
 
     //On ajoute des nuances
     var crescendo = new Vex.Flow.StaveHairpin(
@@ -77,13 +77,14 @@ export default {
     // On ajoute les notes et les nuances aux voix.
 
     maVoix1.addTickables(notesMesure_1);
-    maVoix2.addTickables(notesMesure_1); //bien ajouter aux deux voix s'il n'y a pas de nuances "text"
+    //maVoix2.addTickables(notesMesure_1); //bien ajouter aux deux voix s'il n'y a pas de nuances "text"
 
     //On formatte et on joint les deux voix
     // eslint-disable-next-line no-unused-vars
-    var monFormatter = new Vex.Flow.Formatter()
+    /*var monFormatter = new Vex.Flow.Formatter()
       .joinVoices([maVoix1, maVoix2])
-      .format([maVoix1, maVoix2], 250);
+      .format([maVoix1, maVoix2], 250);*/
+    Vex.Flow.Formatter.FormatAndDraw(monContexte, Mesure_1, notesMesure_1);
 
     // on dessine la voix avec les notes sur la mesure 1 et on dessine le texte des nuances
 

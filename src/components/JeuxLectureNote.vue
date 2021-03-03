@@ -77,19 +77,19 @@ export default {
     };
   },
   created: function() {
-    let note = this.noteBase;
-    for (let i = 0; i < 8; i++) {
-      let number = Math.floor(Math.random() * this.noteBase.length);
-      this.notes[i] = note[number];
-    }
-    console.log(this.notes);
+    this.mixLevelNotes(this.noteBase);
   },
   mounted: function() {
-    console.log("begin");
     this.chrono();
     this.display();
   },
   methods: {
+    mixLevelNotes(notes) {
+      for (let i = 0; i < 8; i++) {
+        let number = Math.floor(Math.random() * notes.length);
+        this.notes[i] = notes[number];
+      }
+    },
     chrono() {
       setInterval(() => {
         if (this.sec == 59) {
@@ -112,14 +112,12 @@ export default {
     display() {
       var part1 = Vex.Flow;
       var div = document.getElementById("gameBox");
-
       var renderer = new part1.Renderer(div, part1.Renderer.Backends.SVG);
       renderer.resize(1000, 500); // Size the SVG
       var context = renderer.getContext();
       // on ajoute un context au renderer
       var stave = new part1.Stave(60, 40, 400); //on dessinne la partition au position 10,40 avec une largeur de 400
       stave.addClef("treble").addTimeSignature("4/4"); //on, ajoute l'armure treble : clef de sol || bass : clef de fa
-      console.log("pass");
       stave.setContext(context).draw();
       var notes = [
         //ajouter des notes
@@ -237,6 +235,7 @@ export default {
       this.removeNode();
     },
     again() {
+      this.mixLevelNotes(this.noteBase);
       this.finish = false;
       this.score = 0;
       this.index = 0;
@@ -290,6 +289,7 @@ export default {
   justify-content: space-around;
   align-items: center;
   height: 60%;
+  width: 30%;
 }
 .result {
   display: flex;
