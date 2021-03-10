@@ -33,6 +33,7 @@ export default {
       monDiv,
       Vex.Flow.Renderer.Backends.SVG
     );
+    //a l'aide
 
     // Modification de paramètres
     monRenderer.resize(1110, 200); //attention de ne pas mettre trop fin
