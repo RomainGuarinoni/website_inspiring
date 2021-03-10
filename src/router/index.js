@@ -8,6 +8,7 @@ import Partition from "../components/Partition";
 import Note from "../components/Note";
 import Rythme from "../components/Rythme";
 import CoursPartitionNuance from "../components/CoursPartitionNuance";
+import CoursPartitionNote from "../components/CoursPartitionNote";
 import Nuance1 from "../components/Nuance1";
 import Nuance2 from "../components/Nuance2";
 import Nuance3 from "../components/Nuance3";
@@ -15,6 +16,10 @@ import Nuance4 from "../components/Nuance4";
 import Nuance5 from "../components/Nuance5";
 import Nuance6 from "../components/Nuance6";
 import Nuance7 from "../components/Nuance7";
+import Note1 from "../components/Note1";
+import Note2 from "../components/Note2";
+import Instruments from "../components/Instruments";
+import ItemInstruments from "../components/ItemInstruments";
 Vue.use(VueRouter);
 
 const routes = [
@@ -50,6 +55,18 @@ const routes = [
     path: "/anne-:year/ameliore-ton-rythme",
     component: Rythme,
     name: "rythme",
+    props: true,
+  },
+  {
+    path: "/anne-:year/ecoute-les-instruments",
+    component: Instruments,
+    name: "instruments",
+    props: true,
+  },
+  {
+    path: "/anne-:year/ecoute-les-instruments/description",
+    component: ItemInstruments,
+    name: "ItemInstruments",
     props: true,
   },
   {
@@ -102,6 +119,24 @@ const routes = [
         path: "page-7",
         name: "Nuance7",
         component: Nuance7,
+      },
+    ],
+  },
+  {
+    path: "/anne-:year/cours-les-notes",
+    name: "CoursPartitionNote",
+    component: CoursPartitionNote,
+    props: true,
+    children: [
+      {
+        path: "",
+        name: "Note1",
+        component: Note1,
+      },
+      {
+        path: "page-2",
+        name: "Note2",
+        component: Note2,
       },
     ],
   },

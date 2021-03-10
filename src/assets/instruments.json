@@ -1,0 +1,116 @@
+{
+    "instruments":[
+        {
+            "thumb":"",
+            "nom":"Le saxophone alto",
+            "famille":"Instrument à vent, famille des bois",
+            "Invention":"Adolphe Sax, en 1846",
+            "cle":"Clef de sol",
+            "musicien":["Baptise Herbin", "Sophie Alour","Gerald Albright","Leo P"],
+            "img":["saxophone1","saxophone2","saxophone3"],
+            "fonctionnement":[
+                "Grâce à la vibration de l’anche lorsque l’on souffle dans le bec :",
+                "On humidifie l’anche avant de jouer et on l’attache contre le bec avec la ligature. On attache le saxophone au harnais. On pose ses dents supérieurs sur le haut du bec, puis on ramène ses lèvres:On le nettoie après chaque utilisation avec un chiffon."
+            ],
+            "gamme":""
+        },
+        {
+            "thumb":"",
+            "nom":"La trompette",
+            "famille":"Intruments à vent, cuivres",
+            "Invention":"La trompette est un des premiers instruments à exister, Bluehmel conçoit la trompette moderne en 1813",
+            "cle":"Clef de sol",
+            "musicien":["Maurice André (XXe)","Louis Armstrong (XXe)","Roy Hargove (XXIe)","Ibrahim Maalouf (XXIe)"],
+            "img":["trompette1","trompette2","trompette3"],
+            "fonctionnement":[
+                "Le son part d’une vibration des lèvres du musicien, pour l’obtenir il faut souffler tout en “pinçant” les lèvres.",
+                "La trompette transforme ensuite cette vibration en un son mélodieux." 
+            ],
+            "gamme":""
+        },
+        {
+            "thumb":"",
+            "nom":"Les xylophones",
+            "famille":"Percussions",
+            "Invention":"",
+            "cle":"Clef de sol (et clef de fa pour Marimba)",
+            "musicien":["Emmanuel Séjourné","Gary Burton","Lionel Hampton"],
+            "img":["xylo1","xylo2","xylo3"],
+            "fonctionnement":[
+                "Le vibraphone a des lames en métal qui résonnent grâce aux tuyaux situés sous les lames. Le vibraphone permet aussi un vibrato grâce à des clapets qui s’ouvrent et qui se ferment au-dessus des tuyaux",
+                "Le vibraphone possède aussi une pédale de résonnance, comme un piano."
+            ],
+            "gamme":""
+        },
+        {
+            "thumb":"",
+            "nom":"La clarinette ",
+            "famille":"Instrument à vent,famille des bois",
+            "Invention":"Johann Christophe Denner en 1690",
+            "cle":"Clef de sol",
+            "musicien":["Sabine Meyer","Sharon Kam","Nicolas Baldeyrou "],
+            "img":["clarinette1","clarinette2","clarinette3"],
+            "fonctionnement":[
+                "La clarinette a besoin d’une hanche en roseau sur son bec pour produire un son. En effet, la hanche va vibrer grâce au souffle du clarinettiste et va produire un son.",
+                "En fonction des clefs utilisées, l’air du clarinettiste va sortir de la clarinette par des endroits différents. C’est comme ça que différents sons peuvent être produits."
+            ],
+            "gamme":""
+        },
+        {
+            "thumb":"",
+            "nom":"Le piano",
+            "famille":"Instrument à corde",
+            "Invention":"Bartolomeo Cristofori en 1720",
+            "cle":"Clef de sol et clef de fa",
+            "musicien":["Frédéric Chopin","Ludwig van Beethoven","Joe Hisaishi","Ludovico Einaudi"],
+            "img":["piano1","piano2","piano3"],
+            "fonctionnement":[
+                "Un piano est composé d’une caisse contenant un ensemble de cordes tendues. Chaque corde produit un son différent lorsqu’on la frappe en fonction de sa taille, de son poids et de sa tension.",
+                "Le son est produit quand les marteaux frappent les cordes lorsque le pianiste appuie sur les touches. Le marteau frappe les cordes et les fait vibrer,  la fréquence de vibration va entraîner des sons différents et donc créer les notes."
+            ],
+            "gamme":""
+        },
+        {
+            "thumb":"",
+            "nom":"Le violon",
+            "famille":"Instrument à cordes frottées",
+            "Invention":" Dans les années 1520 en Italie",
+            "cle":"Clef de sol",
+            "musicien":["Antonio Vivaldi","Wolfgang Amadeus Mozart","Niccolò Paganini"],
+            "img":["violon1","violon2","violon3"],
+            "fonctionnement":[
+                "Le son du violon provient d’une vibration causée par le frottement entre l’archet et les cordes du violon.",
+                "Mais en plus du frottement, il faut que l’archet soit enduit d’une résine végétale appelée colophane. Cela le rend rugueux et permet de frotter les cordes et de produire le son."
+            ],
+            "gamme":""
+        },
+        {
+            "thumb":"",
+            "nom":"La flûte traversière",
+            "famille":"Instrument à vent, famille des bois",
+            "Invention":"Adolphe Sax, en 1846",
+            "cle":"Clef de sol",
+            "musicien":["Jean-Pierre Rampal","Emmanuel Pahud","Roger Bourdin","James Galway"],
+            "img":["flute1","flute2","flute3"],
+            "fonctionnement":[
+                " Le musicien émet un filet d'air qu'il dirige sur le biseau du trou de l'embouchure. ",
+                "Cela provoque une vibration de la colonne d'air contenue dans le tuyau de la flûte et permet de produire le son"
+            ],
+            "gamme":""
+        },
+        {
+            "thumb":"",
+            "nom":"L’euphonium",
+            "famille":"instrument à vent, famille des bois",
+            "Invention":"Chine, vers 900 av. J.-C",
+            "cle":"Clef de fa",
+            "musicien":["Steven Mead","Brian Bowman","Ivan Milhiet"],
+            "img":["saxophone1","saxophone2","saxophone3"],
+            "fonctionnement":[
+                "Grâce à la vibration de l’anche lorsque l’on souffle dans le bec :",
+                "On humidifie l’anche avant de jouer et on l’attache contre le bec avec la ligature. On attache le saxophone au harnais. On pose ses dents supérieurs sur le haut du bec, puis on ramène ses lèvres:On le nettoie après chaque utilisation avec un chiffon."
+            ],
+            "gamme":""
+        }
+    ]
+}

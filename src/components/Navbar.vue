@@ -168,10 +168,15 @@ export default {
 }
 .topBox {
   display: flex;
+  font-weight: 500;
   width: 55%;
   align-items: center;
   justify-content: space-between;
 }
+.topBox p {
+  font-size: 25px;
+}
+
 .bottom {
   display: flex;
   justify-content: space-between;

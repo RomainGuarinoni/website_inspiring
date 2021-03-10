@@ -80,7 +80,7 @@ export default {
           title: "Ecoute les instruments",
           img: require("@/assets/violon.png"),
           color: "red",
-          node: "",
+          node: "instruments",
         },
       ],
     };

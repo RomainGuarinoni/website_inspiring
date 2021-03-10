@@ -7,7 +7,7 @@
         <font-awesome-icon id="chevron" :icon="['fas', 'chevron-left']" />
         <p>Retour</p>
       </div>
-      <div class="item solo">
+      <div class="item solo" @click="goTo('CoursPartitionNote')">
         <p class="orange">Cours</p>
       </div>
       <div class="item chap">
@@ -122,6 +122,9 @@ export default {
     playGame(index) {
       this.currentLevel = this.level[index];
       this.menu = false;
+    },
+    goTo(node) {
+      this.$router.push({ name: node });
     },
   },
 };
