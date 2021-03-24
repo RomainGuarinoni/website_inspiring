@@ -3,9 +3,6 @@
     <h1>Apprends à lire les notes</h1>
     <p>Nous allons maintenant apprendre à lire les notes sur une portée.</p>
     <div id="note_portee"></div>
-    <div class="wrapper">
-      <a href="note1.html" class="button">Suivant</a>
-    </div>
     <div class="boutons">
       <div class="left">
         <p class="link" @click="nav('note')">Retour au menu</p>
@@ -33,7 +30,6 @@ export default {
       monDiv,
       Vex.Flow.Renderer.Backends.SVG
     );
-    //a l'aide
 
     // Modification de paramètres
     monRenderer.resize(1110, 200); //attention de ne pas mettre trop fin
@@ -73,7 +69,7 @@ export default {
     // eslint-disable-next-line no-unused-vars
     var monFormatter = new Vex.Flow.Formatter()
       .joinVoices([maVoix1, maVoix2])
-      .format([maVoix1, maVoix2], 250);
+      .format([maVoix1, maVoix2], 220);
 
     // on dessine la voix avec les notes sur la mesure 1
 

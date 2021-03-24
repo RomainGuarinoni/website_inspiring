@@ -1,51 +1,38 @@
 <template>
-  <div class="boxAll">
+  <div class="box">
     <Navbar class="navbar" type="3" :year="year" />
     <div class="menu">
       <div class="retour" @click="retour()">
         <font-awesome-icon id="chevron" :icon="['fas', 'chevron-left']" />
         <p>Retour</p>
       </div>
-      <div class="item cours" @click="goTo('cours-instruments-home')">
-        Cours instruments
-      </div>
-      <div
-        class="item"
-        v-for="(item, index) in list"
-        :key="index"
-        @click="pushTo(index)"
-      >
-        <img src="@/assets/saxoThumb.jpeg" alt="img d'instruments" />
-        <p>{{ item.nom }}</p>
+      <h1 class="red">Les Familles d'instruments</h1>
+      <div class="center">
+        <h2>Il existe 3 grandes familles d'instruments :</h2>
+        <div class="item purple" @click="goTo('cours-instruments-corde')">
+          <p>Les instruments à cordes</p>
+        </div>
+        <div class="item blue" @click="goTo('cours-instruments-vent')">
+          <p>les instruments à vent</p>
+        </div>
+        <div class="item orange" @click="goTo('cours-instruments-percussion')">
+          <p>Les percussions</p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import instruments from "../assets/instruments.json";
 import Navbar from "./Navbar";
 export default {
   components: {
     Navbar,
   },
   props: ["year"],
-  data() {
-    return {
-      list: instruments.instruments,
-    };
-  },
   methods: {
     retour() {
-      this.$router.push({ name: "year", params: { annee: this.year } });
-    },
-    pushTo(index) {
-      this.$router.push({
-        name: "ItemInstruments",
-        params: {
-          info: this.list[index],
-        },
-      });
+      this.$router.push({ name: "instruments" });
     },
     goTo(node) {
       this.$router.push({ name: node });
@@ -55,9 +42,6 @@ export default {
 </script>
 
 <style scoped>
-.cours {
-  font-size: 25px;
-}
 .menu {
   padding-top: 40px;
   position: relative;
@@ -66,25 +50,36 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 100px 0;
+}
+.box {
+  height: 100vh;
+  text-align: center;
+}
+h1 {
+  font-size: 30px;
+}
+h2 {
+  font-weight: 100;
+}
+.center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .item {
-  width: 80%;
-  border: 3px solid var(--main);
+  border: 2px solid;
+  margin: 20px;
+  padding: 20px;
   border-radius: 20px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 20px 0;
-  min-height: 140px;
+  max-width: 400px;
+  width: 100%;
   cursor: pointer;
-  transition: all ease 200ms;
 }
 .item:hover {
-  box-shadow: 2px 2px 10px var(--placeholder);
-}
-.item p {
-  font-weight: 500;
-  font-size: 25px;
+  box-shadow: 2px 2px 10px;
 }
 .retour {
   display: flex;

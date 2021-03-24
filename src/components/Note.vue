@@ -31,7 +31,7 @@
           </p>
         </div>
       </div>
-      <div class="item solo">
+      <div class="item solo" @click="goTo('Note-revision')">
         <p class="red">Fiche de révisions</p>
       </div>
     </div>

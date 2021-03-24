@@ -25,8 +25,13 @@ import Note6 from "../components/Note6";
 import Note7 from "../components/Note7";
 import Note8 from "../components/Note8";
 import Note9 from "../components/Note9";
+import NoteRevision from "../components/Note-revision";
 import Instruments from "../components/Instruments";
 import ItemInstruments from "../components/ItemInstruments";
+import CoursInstrumentsHome from "../components/Cours-instrument-home";
+import CoursInstrumentsCorde from "../components/Cours-instruments-cordes";
+import coursInstrumentsVent from "../components/cours-instruments-vent";
+import coursInstrumentsPercussion from "../components/Cours-instruments-percussion";
 Vue.use(VueRouter);
 
 const routes = [
@@ -181,6 +186,36 @@ const routes = [
         component: Note9,
       },
     ],
+  },
+  {
+    path: "/annee-:year/lire-les-notes/fiche-de-revision",
+    name: "Note-revision",
+    component: NoteRevision,
+    props: true,
+  },
+  {
+    path: "/annee-:year/cours-instruments-home",
+    name: "cours-instruments-home",
+    component: CoursInstrumentsHome,
+    props: true,
+  },
+  {
+    path: "/annee-:year/cours-instruments-corde",
+    name: "cours-instruments-corde",
+    component: CoursInstrumentsCorde,
+    props: true,
+  },
+  {
+    path: "/annee-:year/cours-instruments-vent",
+    name: "cours-instruments-vent",
+    component: coursInstrumentsVent,
+    props: true,
+  },
+  {
+    path: "/annee-:year/cours-instruments-percussion",
+    name: "cours-instruments-percussion",
+    component: coursInstrumentsPercussion,
+    props: true,
   },
 ];
 
