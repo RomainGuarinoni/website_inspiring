@@ -293,6 +293,7 @@ export default {
   align-items: center;
   height: 60%;
   width: 30%;
+  padding: 30px 200px;
 }
 .result {
   display: flex;
@@ -337,6 +338,13 @@ h1 {
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 100px;
+  padding: 30px;
+}
+.resultBox,
+.testBox {
+  border: none;
+  background: #dbdbdbb6;
+  border-radius: 20px;
 }
 .retour {
   display: flex;

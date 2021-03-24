@@ -60,17 +60,17 @@
       <div class="grey end">
         <h1 class="darkPurple">Niveau {{ level.index + 1 }}</h1>
         <h2 v-if="result" class="green">Bravo !!</h2>
-        <h2 v-else class="red">Dommage ...</h2>
+        <h2 v-else class="red">Dommage, tu peux faire mieux !</h2>
         <div class="goodAnswer" id="goodAnswer">
           <p>
-            <span v-if="result" class="green">Ta</span
-            ><span class="green" v-else>La bonne</span>
+            <span v-if="result" class="green">Ta</span>
+            <span class="green" v-if="!result">La bonne</span>
             <span class="green"> réponse :</span>
           </p>
           <div id="goodStave"></div>
         </div>
         <div class="badAnswer" id="badAnswer" v-show="!result">
-          <p class="darkPurple">Ta réponse :</p>
+          <p class="red">Ta réponse :</p>
           <div id="badStave"></div>
         </div>
         <div class="audio">
@@ -169,6 +169,7 @@ export default {
       img: [],
       indexEnCours: 0,
       result: true,
+      audio: undefined,
       diff: [
         [
           {
@@ -242,19 +243,19 @@ export default {
       if (this.show) {
         if (this.nbEcoute > 0 && this.play == true) {
           this.play = false;
-          let audio = new Audio(this.level.level.mp3);
-          audio.play();
+          this.audio = new Audio(this.level.level.mp3);
+          this.audio.play();
           this.nbEcoute--;
-          audio.addEventListener("ended", () => {
+          this.audio.addEventListener("ended", () => {
             this.play = true;
           });
         }
       } else {
         this.play = false;
-        let audio = new Audio(this.level.level.mp3);
-        audio.play();
+        this.audio = new Audio(this.level.level.mp3);
+        this.audio.play();
         this.nbEcoute--;
-        audio.addEventListener("ended", () => {
+        this.audio.addEventListener("ended", () => {
           this.play = true;
         });
       }
@@ -591,6 +592,9 @@ export default {
   },
   created: function() {
     this.createLevel();
+  },
+  destroyed: function() {
+    this.audio.pause();
   },
 };
 </script>
