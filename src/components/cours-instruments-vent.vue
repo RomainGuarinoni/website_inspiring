@@ -19,20 +19,20 @@
       </p>
       <p>
         C’est le cas du saxophone, de la clarinette, du haut-bois et du basson
-        dont le son est créée grâce à la vibration d’une anche. La flûte
+        dont le son est créé grâce à la vibration d’une anche. La flûte
         traversière et la flûte à bec font aussi partie des bois, mais leur son
         est créé par la vibration de l’air lorsqu’il se projette sur leurs
         parois.
       </p>
       <div class="itemBox">
         <div class="item" @click="pushTo()">
-          <p>Fiche instrument: la clarinette</p>
+          <p>Fiche instrument : la clarinette</p>
         </div>
         <div class="item" @click="pushTo()">
-          <p>Fiche instrument: le saxophone</p>
+          <p>Fiche instrument : le saxophone</p>
         </div>
         <div class="item" @click="pushTo()">
-          <p>Fiche instrument: la flûte traversière</p>
+          <p>Fiche instrument : la flûte traversière</p>
         </div>
       </div>
       <h3>3) Les cuivres</h3>
@@ -45,16 +45,16 @@
       </p>
       <div class="itemBox">
         <div class="item" @click="pushTo(4)">
-          <p>Fiche instrument: la trompette, le bugle, le cornet</p>
+          <p>Fiche instrument : la trompette, le bugle, le cornet</p>
         </div>
         <div class="item" @click="pushTo(4)">
-          <p>Fiche instrument: l’euphonium</p>
+          <p>Fiche instrument : l’euphonium</p>
         </div>
         <div class="item" @click="pushTo(4)">
-          <p>Fiche instrument: le cor</p>
+          <p>Fiche instrument : le cor</p>
         </div>
         <div class="item" @click="pushTo(4)">
-          <p>Fiche instrument: le trombone</p>
+          <p>Fiche instrument : le trombone</p>
         </div>
       </div>
       <div class="nav">
@@ -117,7 +117,7 @@ h2 {
 }
 h3 {
   text-decoration: underline;
-  margin-bottom: 30px;
+  margin: 30px;
 }
 .itemBox {
   width: 100%;
@@ -138,8 +138,8 @@ h3 {
   transition: all ease 200ms;
 }
 .last {
-  color: var(--red) !important;
-  border: 2px solid var(--red);
+  color: var(--main) !important;
+  border: 2px solid var(--main);
   max-width: 200px;
 }
 .nav {

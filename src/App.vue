@@ -16,6 +16,11 @@ export default {};
   --purple: #bb1a8b;
   --orange: #fbae1b;
   --blue: #05ace9;
+  --green: #1abb77;
+  --darkPurple: #35175a;
+}
+.darkPurple {
+  color: var(--darkPurple);
 }
 .blue {
   color: var(--blue);
@@ -32,9 +37,12 @@ export default {};
 .main {
   color: var(--main);
 }
+.green {
+  color: var(--green);
+}
 
 * {
-  font-family: "Roboto", sans-serif;
+  font-family: "Crete Round", serif;
   margin: 0;
   padding: 0;
 }

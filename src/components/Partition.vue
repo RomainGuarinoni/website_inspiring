@@ -15,7 +15,7 @@
           <div class="chapter ">
             <p class="orange" @click="cours()">Cours</p>
             <p class="orange">Entraînement</p>
-            <p class="orange">Quizz</p>
+            <p class="orange">Quiz</p>
           </div>
         </div>
         <div class="item second">
@@ -25,7 +25,7 @@
           <div class="chapter ">
             <p class="orange">Cours</p>
             <p class="orange">Entraînement</p>
-            <p class="orange">Quizz</p>
+            <p class="orange">Quiz</p>
           </div>
         </div>
         <div class="item third">

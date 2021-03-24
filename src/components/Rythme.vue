@@ -11,7 +11,7 @@
         <p class="blue">Cours</p>
       </div>
       <div class="item chap">
-        <p class="purple">S'entrainer</p>
+        <p class="purple">S'entraîner</p>
         <div
           class="level"
           v-for="(item, index) in 3"

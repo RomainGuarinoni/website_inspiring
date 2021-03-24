@@ -23,14 +23,14 @@
         </div>
       </div>
       <h3>2) Les instruments à cordes pincées</h3>
-      <p>D’autres instruments cordes sont joués en pinçant leurs cordes.</p>
+      <p>D’autres instruments à cordes sont joués en pinçant leurs cordes.</p>
       <p>
         C’est le cas de la guitare classique, de la mandoline ou encore de la
         harpe.
       </p>
       <div class="itemBox">
         <div class="item" @click="pushTo()">
-          <p>Fiche instrument: la guitare</p>
+          <p>Fiche instrument : la guitare</p>
         </div>
       </div>
       <h3>3) Les instruments à cordes frappées</h3>
@@ -44,7 +44,7 @@
       </p>
       <div class="itemBox">
         <div class="item" @click="pushTo(4)">
-          <p>Fiche instrument: le piano</p>
+          <p>Fiche instrument : le piano</p>
         </div>
       </div>
       <div class="nav">
@@ -107,7 +107,7 @@ h2 {
 }
 h3 {
   text-decoration: underline;
-  margin-bottom: 30px;
+  margin: 30px;
 }
 .itemBox {
   width: 100%;
@@ -128,8 +128,8 @@ h3 {
   transition: all ease 200ms;
 }
 .last {
-  color: var(--red) !important;
-  border: 2px solid var(--red);
+  color: var(--main) !important;
+  border: 2px solid var(--main);
   max-width: 200px;
 }
 .nav {

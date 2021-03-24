@@ -9,7 +9,7 @@
         <router-link :to="{ name: 'yearselect' }"
           ><img class="logo_navbar2" src="../assets/logo.png" alt="logo"
         /></router-link>
-        <h1 class="font">Inspiring Music Theory</h1>
+        <h1 class="font gros">Inspiring Music Theory</h1>
         <router-link :to="{ name: 'travaux' }"
           ><button>Mon profil</button></router-link
         >
@@ -247,6 +247,7 @@ export default {
   justify-content: space-around;
   align-items: center;
 }
+
 .logo_navbar2 {
   width: 250px;
 }

@@ -2,7 +2,7 @@
   <div>
     <div id="gameBox" v-show="show">
       <div class="grey">
-        <h1>Niveau {{ level.index + 1 }}</h1>
+        <h1 class="darkPurple">Niveau {{ level.index + 1 }}</h1>
         <div class="retour" @click="retour()">
           <font-awesome-icon id="chevron" :icon="['fas', 'chevron-left']" />
           <p>Retour au choix du niveau</p>
@@ -32,11 +32,11 @@
         <div class="action">
           <div class="effacer" @click="deleteNote()">
             <font-awesome-icon :icon="['fas', 'trash']" />
-            <p>effacer</p>
+            <p>Effacer</p>
           </div>
           <div class="valider" @click="finish()">
             <font-awesome-icon :icon="['fas', 'check']" />
-            <p>valider</p>
+            <p>Valider</p>
           </div>
         </div>
         <div class="notes">
@@ -58,17 +58,19 @@
     </div>
     <div class="result" v-show="!show">
       <div class="grey end">
-        <h1>Niveau {{ level.index + 1 }}</h1>
+        <h1 class="darkPurple">Niveau {{ level.index + 1 }}</h1>
         <h2 v-if="result" class="green">Bravo !!</h2>
-        <h2 v-else class="orange">Dommage ...</h2>
+        <h2 v-else class="red">Dommage ...</h2>
         <div class="goodAnswer" id="goodAnswer">
           <p>
-            <span v-if="result">Ta</span><span v-else>La bonne</span> réponse :
+            <span v-if="result" class="green">Ta</span
+            ><span class="green" v-else>La bonne</span>
+            <span class="green"> réponse :</span>
           </p>
           <div id="goodStave"></div>
         </div>
         <div class="badAnswer" id="badAnswer" v-show="!result">
-          <p>Ta réponse :</p>
+          <p class="darkPurple">Ta réponse :</p>
           <div id="badStave"></div>
         </div>
         <div class="audio">
@@ -777,7 +779,7 @@ h1 {
   background: var(--blue);
 }
 .recommencer:nth-child(2) {
-  background: var(--orange);
+  background: var(--main);
 }
 .recommencer:hover {
   transform: translate(0, -5px);

@@ -26,10 +26,10 @@
       </ul>
       <div class="itemBox">
         <div class="item" @click="pushTo()">
-          <p>Fiche instrument: la batterie</p>
+          <p>Fiche instrument : la batterie</p>
         </div>
         <div class="item" @click="pushTo()">
-          <p>Fiche instrument: le carillon</p>
+          <p>Fiche instrument : le carillon</p>
         </div>
       </div>
       <div class="nav">
@@ -92,7 +92,7 @@ h2 {
 }
 h3 {
   text-decoration: underline;
-  margin-bottom: 30px;
+  margin: 30px;
 }
 .itemBox {
   width: 100%;
@@ -113,8 +113,8 @@ h3 {
   transition: all ease 200ms;
 }
 .last {
-  color: var(--red) !important;
-  border: 2px solid var(--red);
+  color: var(--main) !important;
+  border: 2px solid var(--main);
   max-width: 200px;
 }
 ul {

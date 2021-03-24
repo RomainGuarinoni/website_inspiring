@@ -30,17 +30,20 @@
       </div>
     </div>
     <div class="resultBox" v-show="finish">
-      <h1>bravo, tu as fini l'exercice</h1>
-      <h2>Voici tes résultats :</h2>
+      <h1>Félicitations, tu as fini l’exercice.</h1>
+      <h2>Tes résultats sont :</h2>
       <div class="result">
         <p>Score : {{ score }} / 8</p>
-        <p>temps : {{ min_finish }} min {{ sec_finish }} sec</p>
+        <p>Temps : {{ min_finish }} min {{ sec_finish }} sec</p>
       </div>
-      <p class="comment" v-if="score > 5" style="color:green;">
-        Bravo, c'est un bon score
+      <p class="comment red" v-if="score < 5">
+        Tu peux faire bien mieux. Réessaie !
       </p>
-      <p class="comment" v-else style="color:red;">
-        Tu dois encore t'entrainer...
+      <p class="comment orange" v-else-if="score > 5 && score < 8">
+        Bravo ! Tu es sur la bonne voie.
+      </p>
+      <p class="comment green" v-else>
+        Excellent !
       </p>
       <div class="bouton">
         <div class="boutonBox"><p @click="again">Recommencer ce niveau</p></div>
@@ -269,11 +272,11 @@ export default {
   outline: none;
 }
 .boutonBox:nth-child(1) {
-  background: var(--red);
+  background: var(--blue);
   color: white;
 }
 .boutonBox:nth-child(2) {
-  background: var(--blue);
+  background: var(--main);
   color: white;
 }
 .boutonBox:hover {
