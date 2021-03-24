@@ -18,6 +18,13 @@ import Nuance6 from "../components/Nuance6";
 import Nuance7 from "../components/Nuance7";
 import Note1 from "../components/Note1";
 import Note2 from "../components/Note2";
+import Note3 from "../components/Note3";
+import Note4 from "../components/Note4";
+import Note5 from "../components/Note5";
+import Note6 from "../components/Note6";
+import Note7 from "../components/Note7";
+import Note8 from "../components/Note8";
+import Note9 from "../components/Note9";
 import Instruments from "../components/Instruments";
 import ItemInstruments from "../components/ItemInstruments";
 Vue.use(VueRouter);
@@ -137,6 +144,41 @@ const routes = [
         path: "page-2",
         name: "Note2",
         component: Note2,
+      },
+      {
+        path: "page-3",
+        name: "Note3",
+        component: Note3,
+      },
+      {
+        path: "page-4",
+        name: "Note4",
+        component: Note4,
+      },
+      {
+        path: "page-5",
+        name: "Note5",
+        component: Note5,
+      },
+      {
+        path: "page-6",
+        name: "Note6",
+        component: Note6,
+      },
+      {
+        path: "page-7",
+        name: "Note7",
+        component: Note7,
+      },
+      {
+        path: "page-8",
+        name: "Note8",
+        component: Note8,
+      },
+      {
+        path: "page-9",
+        name: "Note9",
+        component: Note9,
       },
     ],
   },

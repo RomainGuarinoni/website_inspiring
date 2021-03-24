@@ -31,7 +31,7 @@
       </div>
       <div class="right">
         <p class="link" @click="nav('Nuance6')">Page précédente</p>
-        <p class="link" @click="nav('partition')">Terminé</p>
+        <p class="link" @click="nav('partition')">Finir le cours</p>
       </div>
     </div>
   </div>

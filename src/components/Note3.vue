@@ -1,20 +1,17 @@
 <template>
   <div class="box">
     <h1>Lecture des notes</h1>
-    <h2>Le Do</h2>
-    <audio src="@/assets/Note/Do_grave.mp3" controls></audio>
-    <div id="note_portee_do"></div>
-    <p>
-      Il n'est pas situé sur l'une des 5 lignes de la portée, le trait qui le
-      traverse représente une ligne additionnelle de la portée.
-    </p>
+    <h2>Le Ré</h2>
+    <audio src="@/assets/Note/Re.mp3" controls></audio>
+    <div id="note_portee_re"></div>
+    <p>Il est situé plus haut que le Do, il est donc plus aigu.</p>
     <div class="boutons">
       <div class="left">
         <p class="link" @click="nav('note')">Retour au menu</p>
       </div>
       <div class="right">
-        <p class="link" @click="nav('Note1')">Page précédente</p>
-        <p class="link" @click="nav('Note3')">Page suivante</p>
+        <p class="link" @click="nav('Note2')">Page précédente</p>
+        <p class="link" @click="nav('Note4')">Page suivante</p>
       </div>
     </div>
   </div>
@@ -30,7 +27,7 @@ export default {
   },
   mounted: function() {
     // on place la portée
-    const monDiv = document.getElementById("note_portee_do");
+    const monDiv = document.getElementById("note_portee_re");
     const monRenderer = new Vex.Flow.Renderer(
       monDiv,
       Vex.Flow.Renderer.Backends.SVG
@@ -59,19 +56,41 @@ export default {
       new Vex.Flow.StaveNote({ keys: ["e/4"], duration: "4" }),
       new Vex.Flow.StaveNote({ keys: ["f/4"], duration: "4" }),
     ];
-    notesMesure_1[0].setStyle({ fillStyle: "red", strokeStyle: "red" });
-    notesMesure_1[0].setLedgerLineStyle({
-      fillstyle: "black",
-      strokeStyle: "black",
-    });
+    notesMesure_1[1].setStyle({ fillStyle: "red", strokeStyle: "red" });
     var textDo = new Vex.Flow.TextNote({
-      text: "Ceci est un Do",
+      text: "Do",
       font: {
         family: "Arial",
         size: 14,
         weight: "",
       },
-      duration: "w",
+      duration: "q",
+    })
+      .setLine(11)
+      .setStave(Mesure_1)
+      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
+
+    var textRe = new Vex.Flow.TextNote({
+      text: "Ceci est un Ré",
+      font: {
+        family: "Arial",
+        size: 14,
+        weight: "",
+      },
+      duration: "q",
+    })
+      .setLine(11)
+      .setStave(Mesure_1)
+      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
+
+    var textVide = new Vex.Flow.TextNote({
+      text: " ",
+      font: {
+        family: "Arial",
+        size: 14,
+        weight: "",
+      },
+      duration: "h",
     })
       .setLine(11)
       .setStave(Mesure_1)
@@ -93,7 +112,8 @@ export default {
 
     maVoix1.addTickables(notesMesure_1);
     maVoix2.addTickables([textDo]); //bien ajouter aux deux voix s'il n'y a pas de nuances "text"
-
+    maVoix2.addTickables([textRe]);
+    maVoix2.addTickables([textVide]);
     //On formatte et on joint les deux voix
     // eslint-disable-next-line no-unused-vars
     var monFormatter = new Vex.Flow.Formatter()
@@ -104,6 +124,8 @@ export default {
 
     maVoix1.draw(monContexte, Mesure_1);
     textDo.setContext(monContexte).draw();
+    textRe.setContext(monContexte).draw();
+    textVide.setContext(monContexte).draw();
   },
 };
 </script>
