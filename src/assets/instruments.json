@@ -24,7 +24,7 @@
             "img":["trompette1","trompette2","trompette3"],
             "fonctionnement":[
                 "Le son part d’une vibration des lèvres du musicien, pour l’obtenir il faut souffler tout en “pinçant” les lèvres.",
-                "La trompette transforme ensuite cette vibration en un son mélodieux." 
+                "La trompette transforme ensuite cette vibration en un son mélodieux. La trompette transforme ensuite cette vibration en un son mélodieux. Il est possible de changer de note en appuyant sur les pistons."
             ],
             "gamme":""
         },
@@ -109,6 +109,90 @@
             "fonctionnement":[
                 "Grâce à la vibration de l’anche lorsque l’on souffle dans le bec :",
                 "On humidifie l’anche avant de jouer et on l’attache contre le bec avec la ligature. On attache le saxophone au harnais. On pose ses dents supérieurs sur le haut du bec, puis on ramène ses lèvres:On le nettoie après chaque utilisation avec un chiffon."
+            ],
+            "gamme":""
+        },
+        {
+            "thumb":"",
+            "nom":"Le trombone",
+            "famille":"instrument des cuivres",
+            "Invention":"L'époque romaine",
+            "cle":"Cle d’ut 3",
+            "musicien":["Vinko Globokar"," Gilles Millière","Glenn Miller","Michel Becquet "],
+            "img":["saxophone1","saxophone2","saxophone3"],
+            "fonctionnement":[
+                " Les lèvres mettent en vibration l’air dans la trompette. En changeant la position des lèvres, cela va produire un son différent. ",
+                "En actionnant les pistons et la coulisse, cela change la longueur de la trompette et donc le son."
+            ],
+            "gamme":""
+        },
+        {
+            "thumb":"",
+            "nom":"La guitare classique",
+            "famille":"instruments à corde pincées",
+            "Invention":" Au Xème siècle par les Maures",
+            "cle":"sol, ou bien des tablatures qui sont une écriture propre à la guitare",
+            "musicien":["Bob Dilan","Rodrigo y Gabriela","Cat Stevens"],
+            "img":["saxophone1","saxophone2","saxophone3"],
+            "fonctionnement":[
+                "Le musicien fait vibrer les cordes avec ses doigts ou avec un médiator. La vibration est amplifiée par la caisse de résonance",
+                "Pour changer de note, on pince une corde sur une frette avec la main gauche."
+            ],
+            "gamme":""
+        },
+        {
+            "thumb":"",
+            "nom":"Le cor d’harmonie",
+            "famille":"Cuivres",
+            "Invention":"Le cor d'harmonie est une évolution du cor de chasse auquel on a rajouté des cors de rechange au 18ème siècle et des pistons au 19ème siècle.",
+            "cle":"Clef de sol",
+            "musicien":[],
+            "img":["saxophone1","saxophone2","saxophone3"],
+            "fonctionnement":[
+                " Le son part d’une vibration des lèvres du musicien, pour l’obtenir il faut souffler tout en “pinçant” les lèvres.",
+                "Le cor transforme ensuite cette vibration en un son. Il est possible de changer de note en appuyant sur les palettes ( qui sont l’équivalent des pistons pour une trompette )."
+            ],
+            "gamme":""
+        },
+        {
+            "thumb":"",
+            "nom":"la batterie",
+            "famille":"Percussions",
+            "Invention":"début XXème, avec le jazz",
+            "cle":"clé spécifique à la batterie, où chaque composant est associé à une ligne",
+            "musicien":["Joey Joerdison","Phil Collins ","Budy Rich"],
+            "img":["saxophone1","saxophone2","saxophone3"],
+            "fonctionnement":[
+                "Le son est généralement produit en tapant, avec des diverses baguettes selon le résultat voulu",
+                "La composition d’une batterie peut beaucoup varier selon les musiciens et les styles de musique."
+            ],
+            "gamme":""
+        },
+        {
+            "thumb":"",
+            "nom":"Le carillon",
+            "famille":"Percussions",
+            "Invention":"Les carillons sont probablement originaires de Chine, il y a de nombreux siècles, mais ils sont maintenant des instruments de musique populaires au Japon.",
+            "cle":"Clé spécifique aux percussions",
+            "musicien":[],
+            "img":["saxophone1","saxophone2","saxophone3"],
+            "fonctionnement":[
+                "Le son résulte du tintement des cloches/tubes. Il dépend du matériau utilisé pour leur fabrication. ",
+                "On trouve plus couramment des carillons constitués d’un ensemble de tubes "
+            ],
+            "gamme":""
+        },
+        {
+            "thumb":"",
+            "nom":"Les timbales",
+            "famille":"Percussions",
+            "Invention":"Les timbales existent depuis l’antiquité",
+            "cle":"Clef de fa",
+            "musicien":["Steven Mead","Brian Bowman","Ivan Milhiet"],
+            "img":[],
+            "fonctionnement":[
+                "Le son s’obtient en tapant sur l’instrument à l’aide d’une mailloche.",
+                "Il dépend notamment de la tension de la membrane, laquelle est ajustable grâce à la pédales."
             ],
             "gamme":""
         }
