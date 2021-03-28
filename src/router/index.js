@@ -25,6 +25,15 @@ import Note6 from "../components/Note6";
 import Note7 from "../components/Note7";
 import Note8 from "../components/Note8";
 import Note9 from "../components/Note9";
+import Rythme1 from "../components/Rythme1";
+import Rythme2 from "../components/Rythme2";
+import Rythme3 from "../components/Rythme3";
+import Rythme4 from "../components/Rythme4";
+import Rythme5 from "../components/Rythme5";
+import Rythme6 from "../components/Rythme6";
+import Rythme7 from "../components/Rythme7";
+import Rythme8 from "../components/Rythme8";
+import Rythme9 from "../components/Rythme9";
 import NoteRevision from "../components/Note-revision";
 import Instruments from "../components/Instruments";
 import ItemInstruments from "../components/ItemInstruments";
@@ -32,6 +41,7 @@ import CoursInstrumentsHome from "../components/Cours-instrument-home";
 import CoursInstrumentsCorde from "../components/Cours-instruments-cordes";
 import coursInstrumentsVent from "../components/cours-instruments-vent";
 import coursInstrumentsPercussion from "../components/Cours-instruments-percussion";
+import coursPartitionRythme from "../components/coursPartitionRythme";
 Vue.use(VueRouter);
 
 const routes = [
@@ -184,6 +194,59 @@ const routes = [
         path: "page-9",
         name: "Note9",
         component: Note9,
+      },
+    ],
+  },
+  {
+    path: "/anne-:year/cours-le-rythme",
+    name: "CoursPartitionRythme",
+    component: coursPartitionRythme,
+    props: true,
+    children: [
+      {
+        path: "/",
+        name: "Rythme1",
+        component: Rythme1,
+      },
+      {
+        path: "page-2",
+        name: "rythme2",
+        component: Rythme2,
+      },
+      {
+        path: "page-3",
+        name: "rythme3",
+        component: Rythme3,
+      },
+      {
+        path: "page-4",
+        name: "rythme4",
+        component: Rythme4,
+      },
+      {
+        path: "page-5",
+        name: "rythme5",
+        component: Rythme5,
+      },
+      {
+        path: "page-6",
+        name: "rythme6",
+        component: Rythme6,
+      },
+      {
+        path: "page-7",
+        name: "rythme7",
+        component: Rythme7,
+      },
+      {
+        path: "page-8",
+        name: "rythme8",
+        component: Rythme8,
+      },
+      {
+        path: "page-9",
+        name: "rythme9",
+        component: Rythme9,
       },
     ],
   },

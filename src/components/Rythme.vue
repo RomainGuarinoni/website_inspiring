@@ -7,7 +7,7 @@
         <font-awesome-icon id="chevron" :icon="['fas', 'chevron-left']" />
         <p>Retour</p>
       </div>
-      <div class="item solo">
+      <div class="item solo" @click="goToCours()">
         <p class="blue">Cours</p>
       </div>
       <div class="item chap">
@@ -67,6 +67,9 @@ export default {
     },
     again() {
       this.menu = true;
+    },
+    goToCours() {
+      this.$router.push({ name: "Rythme1" });
     },
   },
 };
