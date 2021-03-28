@@ -229,6 +229,17 @@ export default {
       ],
     };
   },
+  watch: {
+    show: function() {
+      console.log(
+        "test terminé | test réussi ? :" +
+          this.result +
+          " | level : " +
+          (this.levelIndex + 1)
+      );
+      //envoyer a la base de donnée le socre + le niveau ici
+    },
+  },
   methods: {
     createLevel() {
       let random = Math.floor(

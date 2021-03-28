@@ -86,6 +86,15 @@ export default {
     this.chrono();
     this.display();
   },
+  watch: {
+    finish: function() {
+      let score = (this.score * 100) / 8; // score en pourcentage
+      let level = this.level;
+      console.log("score : " + score + "% | level : " + level.diff);
+
+      // il faut envoyer ici à la base de donnée le score ainsi que le niveau de la partie
+    },
+  },
   methods: {
     mixLevelNotes(notes) {
       for (let i = 0; i < 8; i++) {
@@ -208,7 +217,6 @@ export default {
         });
       }
       if (this.noteResult.length >= 5 && this.index < 8) {
-        console.log("pass");
         // changement couleur notes precedentes deuxieme partie de la partition
         for (let i = 4; i < this.noteResult.length; i++) {
           notes2[i - 4].setStyle({
