@@ -93,10 +93,10 @@ export default {
     getProgress(index) {
       let indexYear = this.year - 1;
       let result = [
-        this.progression[indexYear].chapter.note,
-        this.progression[indexYear].chapter.rythme,
-        this.progression[indexYear].chapter.partition,
-        this.progression[indexYear].chapter.instrument,
+        this.progression[indexYear].chapter.note.progression,
+        this.progression[indexYear].chapter.rythme.progression,
+        this.progression[indexYear].chapter.partition.progression,
+        this.progression[indexYear].chapter.instrument.progression,
       ];
       return result[index];
     },

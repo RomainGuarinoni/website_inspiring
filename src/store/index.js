@@ -9,10 +9,23 @@ export default new Vuex.Store({
       {
         year: 20,
         chapter: {
-          note: 100,
-          rythme: 25,
-          partition: 55,
-          instrument: 100,
+          note: {
+            progression: 100,
+            entrainement: [true, true, true, true, true, false],
+            quiz: false,
+          },
+          rythme: {
+            progression: 25,
+            quiz: false,
+          },
+          partition: {
+            progression: 55,
+            quiz: false,
+          },
+          instrument: {
+            progression: 100,
+            quiz: true,
+          },
         },
       },
       {

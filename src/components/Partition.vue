@@ -102,10 +102,14 @@ h1 {
   position: relative;
   margin: 10px 0;
   display: flex;
+  font-weight: bold;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   transition: all ease 200ms;
+}
+.item p {
+  font-size: 30px;
 }
 @media all and (max-width: 767px) {
   .header {

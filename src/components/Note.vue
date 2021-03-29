@@ -18,6 +18,9 @@
           :key="index"
           @click="playGame(index)"
         >
+          <div class="checkStatus green" v-if="checkLevel(index)">
+            <font-awesome-icon :icon="['fas', 'check-circle']" />
+          </div>
           <p
             class="levelP"
             :class="{
@@ -33,6 +36,16 @@
       </div>
       <div class="item solo" @click="goTo('Note-revision')">
         <p class="red">Fiche de révisions</p>
+      </div>
+      <div class="item solo" @click="goTo('Note-revision')">
+        <p class="blue">Quiz final</p>
+        <p v-if="quizState" class="green infoquiz">
+          Le quiz à été validé. Bravo !
+        </p>
+        <p v-else class="orange infoquiz">Le quiz n'a pas encore été validé</p>
+        <p v-if="quizAvailable()" class="red infoquiz">
+          Validez tous les entraînements pour pouvoir passer le quizz
+        </p>
       </div>
     </div>
     <div class="gameBox" v-else>
@@ -115,6 +128,11 @@ export default {
       currentLevel: Object,
     };
   },
+  computed: {
+    quizState() {
+      return this.$store.state.progression[this.year - 1].chapter.note.quiz;
+    },
+  },
   methods: {
     retour() {
       this.$router.push({ name: "year", params: { annee: this.year } });
@@ -125,6 +143,21 @@ export default {
     },
     goTo(node) {
       this.$router.push({ name: node });
+    },
+    checkLevel(index) {
+      return this.$store.state.progression[this.year - 1].chapter.note
+        .entrainement[index];
+    },
+    quizAvailable() {
+      let res = false;
+      this.$store.state.progression[
+        this.year - 1
+      ].chapter.note.entrainement.forEach((element) => {
+        if (!element) {
+          res = true;
+        }
+      });
+      return res;
     },
   },
 };
@@ -197,6 +230,12 @@ export default {
   margin: 20px 40px;
   cursor: pointer;
   transition: all ease 200ms;
+  position: relative;
+}
+.checkStatus {
+  position: absolute;
+  top: 2px;
+  right: 5px;
 }
 .level:hover {
   transform: scale(1.05);
@@ -239,5 +278,9 @@ export default {
 .gameBox {
   width: 100%;
   height: 100%;
+}
+.infoquiz {
+  font-size: 15px !important;
+  margin-top: 10px;
 }
 </style>
