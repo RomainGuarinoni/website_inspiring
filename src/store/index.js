@@ -11,7 +11,7 @@ export default new Vuex.Store({
         chapter: {
           note: {
             progression: 100,
-            entrainement: [true, true, true, true, true, false],
+            entrainement: [true, true, true, true, true, true],
             quiz: false,
           },
           rythme: {
@@ -44,10 +44,18 @@ export default new Vuex.Store({
         payload.level
       ] = true;
     },
+    quizValide(state, payload) {
+      state.progression[payload.year - 1].chapter[payload.chapter].quiz = true;
+    },
   },
   actions: {
     ENTRAINEMENT_VALIDE(context, payload) {
       context.commit("entrainementValide", payload);
+      // envoyer a hugo les valeurs !!
+    },
+    QUIZ_VALIDE(context, payload) {
+      context.commit("quizValide", payload);
+      // envoyer a hugo les valeurs !!
     },
   },
   modules: {},

@@ -5,7 +5,8 @@
         <font-awesome-icon id="chevron" :icon="['fas', 'chevron-left']" />
         <p>Retour au choix du niveau</p>
       </div>
-      <h1>{{ level.diff }}</h1>
+      <h1 v-if="quiz">Quizz final</h1>
+      <h1 v-else>{{ level.diff }}</h1>
       <div class="info">
         <p>Votre score : {{ score }} /8</p>
         <p>Temps : {{ min }} min {{ sec }} sec</p>
@@ -29,7 +30,7 @@
         />
       </div>
     </div>
-    <div class="resultBox" v-show="finish">
+    <div class="resultBox" v-show="finish && !quiz">
       <h1>Félicitations, tu as fini l’exercice.</h1>
       <h2>Tes résultats sont :</h2>
       <div class="result">
@@ -50,6 +51,19 @@
         <div class="boutonBox"><p @click="retour">Retour au menu</p></div>
       </div>
     </div>
+    <div class="resultBox" v-show="finish && quiz">
+      <h1 v-if="score == 8" class="green">Bravo !! Tu as réussi le quiz !</h1>
+      <h2 v-if="score == 8">
+        Tu as terminé le chapitre sur la lecture de note
+      </h2>
+      <h1 v-else class="red">Tu n'as pas réussi le quiz</h1>
+      <h2 style="text-align:center">
+        N'hésite pas à recommencer autant de fois que tu le souhaite !
+      </h2>
+      <div class="boutonQuiz">
+        <div class="boutonBox"><p @click="retour">Retour au menu</p></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -63,6 +77,7 @@ export default {
   props: {
     level: Object,
     year: String,
+    quiz: Boolean,
   },
   data() {
     return {
@@ -94,14 +109,21 @@ export default {
       console.log("score : " + score);
       //j'upgrade en local la progression du joueur
       if (score == 100) {
-        this.$store.dispatch("ENTRAINEMENT_VALIDE", {
-          level: level.index,
-          year: this.year,
-          chapter: "note",
-        });
+        if (this.quiz) {
+          this.$store.dispatch("QUIZ_VALIDE", {
+            year: this.year,
+            chapter: "note",
+          });
+        } else {
+          this.$store.dispatch("ENTRAINEMENT_VALIDE", {
+            level: level.index,
+            year: this.year,
+            chapter: "note",
+          });
+        }
       }
 
-      // il faut envoyer ici à la base de donnée le score ainsi que le niveau de la partie
+      // CHECK VUEX FOR UPGRADE IN DATABASE
     },
   },
   methods: {
@@ -385,6 +407,11 @@ h1 {
 .bouton {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+}
+.boutonQuiz {
+  display: flex;
+  justify-content: center;
   width: 100%;
 }
 </style>

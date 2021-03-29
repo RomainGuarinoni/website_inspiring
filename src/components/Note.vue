@@ -52,6 +52,7 @@
       <JeuxLectureNote
         :level="currentLevel"
         :year="year"
+        :quiz="quiz"
         @RETOUR="menu = true"
       />
     </div>
@@ -136,6 +137,7 @@ export default {
         },
       ],
       currentLevel: Object,
+      quiz: false,
     };
   },
   computed: {
@@ -170,8 +172,13 @@ export default {
       return res;
     },
     quizRouter() {
-      if (!this.quizAvailable()) {
-        console.log("okl");
+      if (
+        !this.quizAvailable() &&
+        !this.$store.state.progression[this.year - 1].chapter.note.quiz
+      ) {
+        this.quiz = true;
+        this.currentLevel = this.level[5];
+        this.menu = false;
       }
     },
   },
