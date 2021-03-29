@@ -15,7 +15,7 @@
         :key="index"
         @click="pushTo(index)"
       >
-        <img src="@/assets/saxoThumb.jpeg" alt="img d'instruments" />
+        <img :src="img(index)" alt="img d'instruments" />
         <p>{{ item.nom }}</p>
       </div>
     </div>
@@ -50,6 +50,9 @@ export default {
     goTo(node) {
       this.$router.push({ name: node });
     },
+    img(index) {
+      return require(`@/assets/instruments/${this.list[index].img[2]}`);
+    },
   },
 };
 </script>
@@ -69,6 +72,7 @@ export default {
 }
 .item {
   width: 80%;
+  max-width: 1300px;
   border: 3px solid var(--main);
   border-radius: 20px;
   display: flex;
@@ -78,6 +82,9 @@ export default {
   min-height: 140px;
   cursor: pointer;
   transition: all ease 200ms;
+}
+.item img {
+  width: 150px;
 }
 .item:hover {
   box-shadow: 2px 2px 10px var(--placeholder);

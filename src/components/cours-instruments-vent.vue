@@ -25,13 +25,13 @@
         parois.
       </p>
       <div class="itemBox">
-        <div class="item" @click="pushTo()">
+        <div class="item" @click="pushTo(3)">
           <p>Fiche instrument : la clarinette</p>
         </div>
-        <div class="item" @click="pushTo()">
+        <div class="item" @click="pushTo(0)">
           <p>Fiche instrument : le saxophone</p>
         </div>
-        <div class="item" @click="pushTo()">
+        <div class="item" @click="pushTo(6)">
           <p>Fiche instrument : la flûte traversière</p>
         </div>
       </div>
@@ -44,16 +44,16 @@
         C’est le cas de la trompette, du trombone, du cor ou encore du tuba.
       </p>
       <div class="itemBox">
-        <div class="item" @click="pushTo(4)">
+        <div class="item" @click="pushTo(1)">
           <p>Fiche instrument : la trompette, le bugle, le cornet</p>
         </div>
-        <div class="item" @click="pushTo(4)">
+        <div class="item" @click="pushTo(7)">
           <p>Fiche instrument : l’euphonium</p>
         </div>
-        <div class="item" @click="pushTo(4)">
+        <div class="item" @click="pushTo(10)">
           <p>Fiche instrument : le cor</p>
         </div>
-        <div class="item" @click="pushTo(4)">
+        <div class="item" @click="pushTo(8)">
           <p>Fiche instrument : le trombone</p>
         </div>
       </div>

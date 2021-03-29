@@ -29,7 +29,7 @@
         harpe.
       </p>
       <div class="itemBox">
-        <div class="item" @click="pushTo()">
+        <div class="item" @click="pushTo(9)">
           <p>Fiche instrument : la guitare</p>
         </div>
       </div>

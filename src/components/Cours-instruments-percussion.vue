@@ -25,10 +25,10 @@
         </li>
       </ul>
       <div class="itemBox">
-        <div class="item" @click="pushTo()">
+        <div class="item" @click="pushTo(11)">
           <p>Fiche instrument : la batterie</p>
         </div>
-        <div class="item" @click="pushTo()">
+        <div class="item" @click="pushTo(12)">
           <p>Fiche instrument : le carillon</p>
         </div>
       </div>

@@ -23,6 +23,13 @@
               </span>
             </p>
             <p><span class="underline">Ses composants : </span></p>
+            <div class="centerImg">
+              <img
+                :src="img(0)"
+                class="img"
+                alt="img des composants de l'instruments"
+              />
+            </div>
           </div>
           <div class="son">
             <p><span class="underline">Gamme jouée : </span></p>
@@ -32,7 +39,17 @@
         <div class="right">
           <h2><span class="underline">Comment le son est produit?</span></h2>
           <p>{{ info.fonctionnement[0] }}</p>
+          <img
+            :src="img(1)"
+            class="img"
+            alt="img des composants de l'instruments"
+          />
           <p>{{ info.fonctionnement[1] }}</p>
+          <img
+            :src="img(2)"
+            class="img"
+            alt="img des composants de l'instruments"
+          />
         </div>
       </div>
     </div>
@@ -55,13 +72,22 @@ export default {
   },
   methods: {
     retour() {
-      this.$router.push({ name: "instruments", params: { annee: this.year } });
+      this.$router.go(-1);
+    },
+    img(index) {
+      return require(`@/assets/instruments/${this.info.img[index]}`);
     },
   },
 };
 </script>
 
 <style scoped>
+.centerImg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  text-align: center;
+}
 .boxAll {
   display: flex;
   flex-direction: column;
@@ -116,6 +142,8 @@ h1 {
   border-radius: 20px;
   padding: 20px;
   line-height: 35px;
+  display: flex;
+  flex-direction: column;
 }
 .son {
   display: flex;
@@ -146,5 +174,13 @@ h1 {
 .underline {
   text-decoration: underline;
   font-weight: bold;
+}
+.img {
+  width: 250px;
+  height: auto;
+  margin: auto;
+}
+.img:nth-child(1) {
+  width: 500px;
 }
 </style>
