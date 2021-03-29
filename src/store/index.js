@@ -16,6 +16,7 @@ export default new Vuex.Store({
           },
           rythme: {
             progression: 25,
+            entrainement: [true, true, true],
             quiz: false,
           },
           partition: {

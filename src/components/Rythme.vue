@@ -24,16 +24,34 @@
           >
             Niveau {{ index + 1 }}
           </p>
+          <div class="checkStatus green" v-if="checkLevel(index)">
+            <font-awesome-icon :icon="['fas', 'check-circle']" />
+          </div>
         </div>
       </div>
       <div class="item solo">
         <p class="red">Fiche de révision</p>
+      </div>
+      <div class="item solo" @click="quizRouter()">
+        <p class="blue">Quiz final</p>
+        <p v-if="quizState" class="green infoquiz">
+          Le quiz à été validé. Bravo !
+        </p>
+        <p v-else class="orange infoquiz">Le quiz n'a pas encore été validé</p>
+        <p v-if="quizAvailable()" class="red infoquiz">
+          Validez tous les entraînements pour pouvoir passer le quizz
+        </p>
+        <div class="checkStatus green" v-if="quizState">
+          <font-awesome-icon :icon="['fas', 'check-circle']" />
+        </div>
       </div>
     </div>
     <div class="boxAll" v-else>
       <JeuxRythme
         :levelIndex="levelIndex"
         @RETOUR="menu = true"
+        :year="year"
+        :quiz="quiz"
         @AGAIN="again()"
       />
     </div>
@@ -54,7 +72,13 @@ export default {
       menu: true,
       prop: Object, // le prop qui sera donnée au jeux => audio + notes + réponse
       levelIndex: Number,
+      quiz: false,
     };
+  },
+  computed: {
+    quizState() {
+      return this.$store.state.progression[this.year - 1].chapter.rythme.quiz;
+    },
   },
   methods: {
     retour() {
@@ -70,6 +94,32 @@ export default {
     },
     goToCours() {
       this.$router.push({ name: "Rythme1" });
+    },
+    quizAvailable() {
+      let res = false;
+      this.$store.state.progression[
+        this.year - 1
+      ].chapter.rythme.entrainement.forEach((element) => {
+        if (!element) {
+          res = true;
+        }
+      });
+      return res;
+    },
+    checkLevel(index) {
+      return this.$store.state.progression[this.year - 1].chapter.rythme
+        .entrainement[index];
+    },
+    quizRouter() {
+      if (
+        !this.quizAvailable() &&
+        !this.$store.state.progression[this.year - 1].chapter.rythme.quiz
+      ) {
+        this.quiz = true;
+        //change for 2
+        this.levelIndex = 1;
+        this.menu = false;
+      }
     },
   },
 };
@@ -142,6 +192,7 @@ export default {
   flex-direction: row !important;
   justify-content: space-around !important;
   align-items: center !important;
+  position: relative;
 }
 .chap p {
   width: 100%;
@@ -152,6 +203,7 @@ export default {
   border-radius: 10px;
   margin: 20px 40px;
   cursor: pointer;
+  position: relative;
   transition: all ease 200ms;
 }
 .level:hover {
@@ -159,5 +211,14 @@ export default {
 }
 .levelP {
   font-weight: 100 !important;
+}
+.infoquiz {
+  font-size: 15px !important;
+  margin-top: 10px;
+}
+.checkStatus {
+  position: absolute;
+  top: 2px;
+  right: 5px;
 }
 </style>

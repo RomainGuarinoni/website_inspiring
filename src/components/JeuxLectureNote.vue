@@ -106,7 +106,6 @@ export default {
     finish: function() {
       let score = (this.score * 100) / 8; // score en pourcentage
       let level = this.level;
-      console.log("score : " + score);
       //j'upgrade en local la progression du joueur
       if (score == 100) {
         if (this.quiz) {

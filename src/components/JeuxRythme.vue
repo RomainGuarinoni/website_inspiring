@@ -56,7 +56,7 @@
         </div>
       </div>
     </div>
-    <div class="result" v-show="!show">
+    <div class="result" v-show="!show && !quiz">
       <div class="grey end">
         <h1 class="darkPurple">Niveau {{ level.index + 1 }}</h1>
         <h2 v-if="result" class="green">Bravo !!</h2>
@@ -92,6 +92,22 @@
         </div>
       </div>
     </div>
+    <div class="result" v-show="quiz && !show">
+      <div class="grey end">
+        <h1 v-if="result" class="green">Bravo !! Tu as réussi le quiz !</h1>
+        <h2 v-if="result">
+          Tu as terminé le chapitre sur le rythme
+        </h2>
+        <h1 v-else class="red">Tu n'as pas réussi le quiz</h1>
+        <h2 style="text-align:center">
+          N'hésite pas à recommencer autant de fois que tu le souhaite !
+        </h2>
+        <div class="recommencer finish" @click="retour()">
+          <font-awesome-icon :icon="['fas', 'undo-alt']" />
+          <p>Retour au menu</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -101,6 +117,13 @@ export default {
   props: {
     levelIndex: {
       type: Number,
+    },
+    quiz: {
+      type: Boolean,
+      default: false,
+    },
+    year: {
+      type: undefined,
     },
   },
   data() {
@@ -231,13 +254,22 @@ export default {
   },
   watch: {
     show: function() {
-      console.log(
-        "test terminé | test réussi ? :" +
-          this.result +
-          " | level : " +
-          (this.levelIndex + 1)
-      );
-      //envoyer a la base de donnée le socre + le niveau ici
+      if (this.result) {
+        if (!this.quiz) {
+          this.$store.dispatch("ENTRAINEMENT_VALIDE", {
+            level: this.levelIndex,
+            year: this.year,
+            chapter: "rythme",
+          });
+        } else {
+          this.$store.dispatch("QUIZ_VALIDE", {
+            year: this.year,
+            chapter: "rythme",
+          });
+        }
+
+        // envoyer a hugo les data avec vuex actions
+      }
     },
   },
   methods: {
@@ -411,6 +443,7 @@ export default {
       });
     },
     finish() {
+      console.log("quizz :" + this.quiz);
       var part1 = Vex.Flow;
       this.show = false;
       if (
@@ -789,6 +822,9 @@ h1 {
   border-radius: 20px;
   cursor: pointer;
   transition: all ease 200ms;
+}
+.finish {
+  background: var(--main);
 }
 .recommencer:nth-child(1) {
   background: var(--blue);
