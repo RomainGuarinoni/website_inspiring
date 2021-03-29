@@ -37,7 +37,7 @@
       <div class="item solo" @click="goTo('Note-revision')">
         <p class="red">Fiche de révisions</p>
       </div>
-      <div class="item solo" @click="goTo('Note-revision')">
+      <div class="item solo" @click="quizRouter()">
         <p class="blue">Quiz final</p>
         <p v-if="quizState" class="green infoquiz">
           Le quiz à été validé. Bravo !
@@ -49,7 +49,11 @@
       </div>
     </div>
     <div class="gameBox" v-else>
-      <JeuxLectureNote :level="currentLevel" @RETOUR="menu = true" />
+      <JeuxLectureNote
+        :level="currentLevel"
+        :year="year"
+        @RETOUR="menu = true"
+      />
     </div>
   </div>
 </template>
@@ -69,6 +73,7 @@ export default {
       level: [
         {
           diff: "Niveau 1",
+          index: 0,
           note: [
             { note: "Do", value: "c/4" },
             { note: "Re", value: "d/4" },
@@ -76,6 +81,7 @@ export default {
         },
         {
           diff: "Niveau 2",
+          index: 1,
           note: [
             { note: "Do", value: "c/4" },
             { note: "Re", value: "d/4" },
@@ -84,6 +90,7 @@ export default {
         },
         {
           diff: "Niveau 3",
+          index: 2,
           note: [
             { note: "Do", value: "c/4" },
             { note: "Re", value: "d/4" },
@@ -93,6 +100,7 @@ export default {
         },
         {
           diff: "Niveau 4",
+          index: 3,
           note: [
             { note: "Do", value: "c/4" },
             { note: "Re", value: "d/4" },
@@ -103,6 +111,7 @@ export default {
         },
         {
           diff: "Niveau 5",
+          index: 4,
           note: [
             { note: "Do", value: "c/4" },
             { note: "Re", value: "d/4" },
@@ -114,6 +123,7 @@ export default {
         },
         {
           diff: "Niveau 6",
+          index: 5,
           note: [
             { note: "Do", value: "c/4" },
             { note: "Re", value: "d/4" },
@@ -158,6 +168,11 @@ export default {
         }
       });
       return res;
+    },
+    quizRouter() {
+      if (!this.quizAvailable()) {
+        console.log("okl");
+      }
     },
   },
 };

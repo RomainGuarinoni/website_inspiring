@@ -62,6 +62,7 @@ export default {
   },
   props: {
     level: Object,
+    year: String,
   },
   data() {
     return {
@@ -90,7 +91,15 @@ export default {
     finish: function() {
       let score = (this.score * 100) / 8; // score en pourcentage
       let level = this.level;
-      console.log("score : " + score + "% | level : " + level.diff);
+      console.log("score : " + score);
+      //j'upgrade en local la progression du joueur
+      if (score == 100) {
+        this.$store.dispatch("ENTRAINEMENT_VALIDE", {
+          level: level.index,
+          year: this.year,
+          chapter: "note",
+        });
+      }
 
       // il faut envoyer ici à la base de donnée le score ainsi que le niveau de la partie
     },

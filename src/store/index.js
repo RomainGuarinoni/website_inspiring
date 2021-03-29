@@ -38,7 +38,17 @@ export default new Vuex.Store({
       },
     ],
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    entrainementValide(state, payload) {
+      state.progression[payload.year - 1].chapter[payload.chapter].entrainement[
+        payload.level
+      ] = true;
+    },
+  },
+  actions: {
+    ENTRAINEMENT_VALIDE(context, payload) {
+      context.commit("entrainementValide", payload);
+    },
+  },
   modules: {},
 });
