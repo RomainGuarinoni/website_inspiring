@@ -58,7 +58,7 @@
     </div>
     <div class="result" v-show="!show && !quiz">
       <div class="grey end">
-        <h1 class="darkPurple">Niveau {{ level.index + 1 }}</h1>
+        <h1>Niveau {{ level.index + 1 }}</h1>
         <h2 v-if="result" class="green">Bravo !!</h2>
         <h2 v-else class="red">Dommage, tu peux faire mieux !</h2>
         <div class="goodAnswer" id="goodAnswer">
@@ -67,11 +67,15 @@
             <span class="green" v-if="!result">La bonne</span>
             <span class="green"> réponse :</span>
           </p>
-          <div id="goodStave"></div>
+          <div id="goodStaveBox">
+            <div id="goodStave"></div>
+          </div>
         </div>
         <div class="badAnswer" id="badAnswer" v-show="!result">
           <p class="red">Ta réponse :</p>
-          <div id="badStave"></div>
+          <div id="badStaveBox">
+            <div id="badStave"></div>
+          </div>
         </div>
         <div class="audio">
           <p>Réécouter l'audio :</p>
@@ -230,7 +234,7 @@ export default {
           {
             mp3: require("@/assets/level2_1.mp3"),
             result: [3, 8, 3, 3],
-            note: [noteGlobal[2], noteGlobal[1], noteGlobal[7], noteGlobal[4]],
+            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
           },
           {
             mp3: require("@/assets/level2_2.mp3"),
@@ -443,7 +447,6 @@ export default {
       });
     },
     finish() {
-      console.log("quizz :" + this.quiz);
       var part1 = Vex.Flow;
       this.show = false;
       if (
@@ -606,19 +609,19 @@ export default {
       this.beams = [];
       this.indexEnCours = 0;
       this.result = true;
+      this.play = true;
       var node = document.getElementById("stave");
       node.remove();
       var newNode = document.getElementById("staveBox");
       newNode.innerHTML = '<div id="stave"></div>';
       var node2 = document.getElementById("goodStave");
       node2.remove();
-      var newNode2 = document.getElementById("goodAnswer");
-      newNode2.innerHTML =
-        '<span v-if="result">Ta</span><span v-else>La bonne</span> réponse :<div id="goodStave"></div>';
+      var newNode2 = document.getElementById("goodStaveBox");
+      newNode2.innerHTML = "<div id='goodStave'></div>";
       var node3 = document.getElementById("badStave");
       node3.remove();
-      var newNode3 = document.getElementById("badAnswer");
-      newNode3.innerHTML = '<p>Ta réponse :</p><div id="badStave"></div>';
+      var newNode3 = document.getElementById("badStaveBox");
+      newNode3.innerHTML = '<div id="badStave"></div>';
       this.createLevel();
       this.show = true;
       this.display();

@@ -12,6 +12,7 @@
               id="email"
               name="email"
               placeholder="nom.prenom@gmail.com"
+              v-model="login"
             />
           </div>
           <div class="formMdp">
@@ -20,6 +21,7 @@
               type="password"
               id="mdp"
               name="mdp"
+              v-model="mdp"
               placeholder="au moins 8 caractères"
             />
           </div>
@@ -48,14 +50,14 @@ export default {
   data() {
     return {
       error: false,
+      login: "",
+      mdp: "",
     };
   },
   methods: {
     checkLogin() {
       /////////////////fonction a changer apres//////////
-      var login = document.getElementById("email").value;
-      var mdp = document.getElementById("mdp").value;
-      if (login != "admin" && mdp != "admin") {
+      if (this.login != "admin" || this.mdp != "admin") {
         this.error = true;
         console.log("bad log");
       } else {

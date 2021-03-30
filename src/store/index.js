@@ -11,7 +11,7 @@ export default new Vuex.Store({
         chapter: {
           note: {
             progression: 100,
-            entrainement: [true, true, true, true, true, true],
+            entrainement: [true, true, true, true, true, false],
             quiz: false,
           },
           rythme: {

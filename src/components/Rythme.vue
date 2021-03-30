@@ -84,9 +84,8 @@ export default {
     retour() {
       this.$router.push({ name: "year", params: { annee: this.year } });
     },
-    playGame(level) {
-      this.levelIndex = level;
-
+    playGame(index) {
+      this.levelIndex = index;
       this.menu = false;
     },
     again() {
