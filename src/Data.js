@@ -11,7 +11,7 @@ let eleve = {
           quiz: false,
         },
         rythme: {
-          entrainement: [true, true, true],
+          entrainement: [true, false, false],
           quiz: false,
         },
         partition: {

@@ -36,6 +36,9 @@ export default new Vuex.Store({
       state.chapterProgression[payload.year - 1][payload.chapter] =
         payload.progression;
     },
+    calculYearProgression(state, payload) {
+      state.yearProgression = payload;
+    },
   },
   actions: {
     ENTRAINEMENT_VALIDE(context, payload) {
@@ -64,6 +67,7 @@ export default new Vuex.Store({
         chapter: payload.chapter,
         progression: Math.round((nbTrue * 100) / total),
       });
+      context.dispatch("CALCUL_YEAR_PROGRESSION");
     },
     QUIZ_VALIDE(context, payload) {
       context.commit("quizValide", payload);
@@ -78,6 +82,23 @@ export default new Vuex.Store({
     },
     CREATE_YEAR_PROGRESSION(context, payload) {
       context.commit("createYearProgression", payload);
+    },
+    CALCUL_YEAR_PROGRESSION(context) {
+      let yearProgression = [];
+      context.state.chapterProgression.forEach((annee) => {
+        let total = 0;
+        let sum = 0;
+        if (Object.keys(annee).length > 0) {
+          for (const value in annee) {
+            total++;
+            sum += annee[value];
+          }
+          yearProgression.push(Math.round(sum / total));
+        } else {
+          yearProgression.push(0);
+        }
+      });
+      context.commit("calculYearProgression", yearProgression);
     },
 
     //fonction qui affiche dans la console toutes les valeurs du state ( pour debug)
