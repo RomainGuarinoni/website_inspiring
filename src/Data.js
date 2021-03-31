@@ -25,7 +25,7 @@ let eleve = {
           },
           quiz: false,
         },
-        instrument: {
+        instruments: {
           entrainement: [true, true, true, false, false, false],
         },
       },

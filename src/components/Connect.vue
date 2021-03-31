@@ -90,8 +90,8 @@ export default {
                       item.partition.structure.quiz
                     )) /
                   2,
-                instrument: this.calculProgressionChapter(
-                  item.instrument.entrainement,
+                instruments: this.calculProgressionChapter(
+                  item.instruments.entrainement,
                   false
                 ),
               };

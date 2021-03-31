@@ -4,7 +4,7 @@
     <div class="content">
       <div
         class="item"
-        v-for="(item, index) in card"
+        v-for="(item, index) in chapter"
         :key="index"
         @click="pushTo(item.node)"
       >
@@ -57,7 +57,7 @@ export default {
   },
   data() {
     return {
-      card: [
+      chapter: [
         {
           title: "Apprends à lire les notes",
           img: require("@/assets/sol.png"),
@@ -86,17 +86,16 @@ export default {
     };
   },
   computed: {
-    ...mapState(["progression"]),
+    ...mapState(["chapterProgression"]),
   },
   methods: {
-    // eslint-disable-next-line no-unused-vars
     getProgress(index) {
       let indexYear = this.year - 1;
       let result = [
-        this.progression[indexYear].chapter.note.progression,
-        this.progression[indexYear].chapter.rythme.progression,
-        this.progression[indexYear].chapter.partition.progression,
-        this.progression[indexYear].chapter.instrument.progression,
+        this.chapterProgression[indexYear].note,
+        this.chapterProgression[indexYear].rythme,
+        this.chapterProgression[indexYear].partition,
+        this.chapterProgression[indexYear].instruments,
       ];
       return result[index];
     },
