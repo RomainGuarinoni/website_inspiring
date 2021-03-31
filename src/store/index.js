@@ -32,11 +32,38 @@ export default new Vuex.Store({
     createYearProgression(state, payload) {
       state.yearProgression = payload;
     },
+    modifyChapterProgression(state, payload) {
+      state.chapterProgression[payload.year - 1][payload.chapter] =
+        payload.progression;
+    },
   },
   actions: {
     ENTRAINEMENT_VALIDE(context, payload) {
       context.commit("entrainementValide", payload);
       // envoyer a hugo les valeurs !!
+      let total = 0;
+      let nbTrue = 0;
+      context.state.progression[payload.year - 1].chapter[
+        payload.chapter
+      ].entrainement.forEach((element) => {
+        if (element) {
+          nbTrue++;
+        }
+        total++;
+      });
+
+      if (
+        context.state.progression[payload.year - 1].chapter[payload.chapter]
+          .quiz
+      ) {
+        nbTrue++;
+      }
+      total++;
+      context.commit("modifyChapterProgression", {
+        year: payload.year,
+        chapter: payload.chapter,
+        progression: Math.round((nbTrue * 100) / total),
+      });
     },
     QUIZ_VALIDE(context, payload) {
       context.commit("quizValide", payload);

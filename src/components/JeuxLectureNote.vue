@@ -70,6 +70,7 @@
 <script>
 import Vex from "vexflow";
 import Button from "./Button.vue";
+import { mapState } from "vuex";
 export default {
   components: {
     Button,
@@ -102,29 +103,43 @@ export default {
     this.chrono();
     this.display();
   },
+  computed: {
+    ...mapState(["progression"]),
+  },
   watch: {
     finish: function() {
       let score = (this.score * 100) / 8; // score en pourcentage
       let level = this.level;
       //j'upgrade en local la progression du joueur
       if (score == 100) {
-        if (this.quiz) {
+        if (this.quiz && !this.progression[this.year - 1].chapter.note.quiz) {
           this.$store.dispatch("QUIZ_VALIDE", {
             year: this.year,
             chapter: "note",
           });
         } else {
-          this.$store.dispatch("ENTRAINEMENT_VALIDE", {
-            level: level.index,
-            year: this.year,
-            chapter: "note",
-          });
+          if (
+            !this.progression[this.year - 1].chapter.note.entrainement[
+              level.index
+            ]
+          ) {
+            this.$store
+              .dispatch("ENTRAINEMENT_VALIDE", {
+                level: level.index,
+                year: this.year,
+                chapter: "note",
+              })
+              .then(() => {
+                console.log("ouii");
+              });
+          }
         }
       }
 
       // CHECK VUEX FOR UPGRADE IN DATABASE
     },
   },
+
   methods: {
     mixLevelNotes(notes) {
       for (let i = 0; i < 8; i++) {
