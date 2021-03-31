@@ -112,19 +112,19 @@ export default {
                 total++;
                 sum += annee[value];
               }
-              yearProgression.push(sum / total);
+              yearProgression.push(Math.round(sum / total));
             } else {
               yearProgression.push(0);
             }
           });
 
           // push toutes ces données dans VUEX
-          Promise.all(
-            [
-              this.$store.dispatch("CREATE_CHAPTER_PROGRESSION", avancement),
-              this.$store.dispatch("CREATE_YEAR_PROGRESSION", yearProgression),
-            ].then(this.$store.dispatch("toString"))
-          );
+          Promise.all([
+            this.$store.dispatch("CREATE_CHAPTER_PROGRESSION", avancement),
+            this.$store.dispatch("CREATE_YEAR_PROGRESSION", yearProgression),
+          ]).then(() => {
+            this.$router.push({ name: "yearselect" });
+          });
         });
       }
     },
@@ -142,7 +142,7 @@ export default {
         nbTrue++;
       }
       total++;
-      return (nbTrue * 100) / total;
+      return Math.round((nbTrue * 100) / total);
     },
   },
 };

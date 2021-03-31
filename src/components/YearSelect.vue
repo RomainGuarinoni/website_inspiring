@@ -12,7 +12,7 @@
                 <div class="bar oneb"></div>
                 <div class="barFill " id="onef"></div>
               </div>
-              <p class="number">{{ progression[0].year }} %</p>
+              <p class="number">{{ yearProgression[0] }} %</p>
             </div>
           </div></router-link
         >
@@ -26,7 +26,7 @@
                 <div class="bar twob"></div>
                 <div class="barFill " id="twof"></div>
               </div>
-              <p class="number">{{ progression[1].year }} %</p>
+              <p class="number">{{ yearProgression[1] }} %</p>
             </div>
           </div></router-link
         >
@@ -40,7 +40,7 @@
                 <div class="bar threeb"></div>
                 <div class="barFill " id="threef"></div>
               </div>
-              <p class="number">{{ progression[2].year }} %</p>
+              <p class="number">{{ yearProgression[2] }} %</p>
             </div>
           </div></router-link
         >
@@ -51,6 +51,7 @@
 
 <script>
 import Navbar from "./Navbar";
+import { mapState } from "vuex";
 export default {
   components: {
     Navbar,
@@ -61,15 +62,13 @@ export default {
     };
   },
   computed: {
-    /*yearProgression(index) {
-      return;
-    },*/
+    ...mapState(["yearProgression"]),
   },
 
   mounted: function() {
     for (let i = 0; i < this.bar.length; i++) {
       let item = document.getElementById(this.bar[i]);
-      item.style.width = this.progression[i].year + "%";
+      item.style.width = this.yearProgression[i] + "%";
     }
   },
 };

@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
-
+import createPersistedState from "vuex-persistedstate";
+import * as Cookies from "js-cookie";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -8,7 +9,7 @@ export default new Vuex.Store({
     user: new Object(),
     progression: new Array(),
     chapterProgression: new Array(),
-    yearprogression: new Array(),
+    yearProgression: new Array(),
   },
   mutations: {
     entrainementValide(state, payload) {
@@ -29,7 +30,7 @@ export default new Vuex.Store({
       state.chapterProgression = payload;
     },
     createYearProgression(state, payload) {
-      state.yearprogression = payload;
+      state.yearProgression = payload;
     },
   },
   actions: {
@@ -51,6 +52,8 @@ export default new Vuex.Store({
     CREATE_YEAR_PROGRESSION(context, payload) {
       context.commit("createYearProgression", payload);
     },
+
+    //fonction qui affiche dans la console toutes les valeurs du state ( pour debug)
     toString(context) {
       console.log(
         `user : ${JSON.stringify(
@@ -64,4 +67,11 @@ export default new Vuex.Store({
     },
   },
   modules: {},
+  plugins: [
+    createPersistedState({
+      getState: (key) => Cookies.getJSON(key),
+      setState: (key, state) =>
+        Cookies.set(key, state, { expires: 3, secure: true }),
+    }),
+  ],
 });

@@ -60,16 +60,14 @@ import { mapState } from "vuex";
 export default {
   props: ["type", "year"],
   computed: {
-    ...mapState(["progression"]),
+    ...mapState(["yearProgression"]),
     progress() {
       let index = this.year - 1;
-      let result = this.progression[index].year;
+      let result = this.yearProgression[index];
       return result;
     },
     fill() {
-      let index = this.year - 1;
-      let bar = this.progression[index].year;
-      let result = bar + "%";
+      let result = this.progress + "%";
       return result;
     },
   },
