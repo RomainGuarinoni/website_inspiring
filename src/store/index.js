@@ -5,39 +5,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    progression: [
-      {
-        year: 20,
-        chapter: {
-          note: {
-            progression: 100,
-            entrainement: [true, true, true, true, true, false],
-            quiz: false,
-          },
-          rythme: {
-            progression: 25,
-            entrainement: [true, true, true],
-            quiz: false,
-          },
-          partition: {
-            progression: 55,
-            quiz: false,
-          },
-          instrument: {
-            progression: 100,
-            quiz: true,
-          },
-        },
-      },
-      {
-        year: 50,
-        chapter: {},
-      },
-      {
-        year: 25,
-        chapter: {},
-      },
-    ],
+    user: new Object(),
+    progression: new Array(),
+    chapterProgression: new Array(),
+    yearprogression: new Array(),
   },
   mutations: {
     entrainementValide(state, payload) {
@@ -48,6 +19,18 @@ export default new Vuex.Store({
     quizValide(state, payload) {
       state.progression[payload.year - 1].chapter[payload.chapter].quiz = true;
     },
+    createUser(state, payload) {
+      state.user = payload;
+    },
+    create_progression(state) {
+      state.progression = state.user.progression;
+    },
+    createChapterProgression(state, payload) {
+      state.chapterProgression = payload;
+    },
+    createYearProgression(state, payload) {
+      state.yearprogression = payload;
+    },
   },
   actions: {
     ENTRAINEMENT_VALIDE(context, payload) {
@@ -57,6 +40,27 @@ export default new Vuex.Store({
     QUIZ_VALIDE(context, payload) {
       context.commit("quizValide", payload);
       // envoyer a hugo les valeurs !!
+    },
+    CREATE_USER(context, payload) {
+      context.commit("createUser", payload);
+      context.commit("create_progression");
+    },
+    CREATE_CHAPTER_PROGRESSION(context, payload) {
+      context.commit("createChapterProgression", payload);
+    },
+    CREATE_YEAR_PROGRESSION(context, payload) {
+      context.commit("createYearProgression", payload);
+    },
+    toString(context) {
+      console.log(
+        `user : ${JSON.stringify(
+          context.state.user
+        )}\n \nprogression : ${JSON.stringify(
+          context.state.progression
+        )}\n \nchapter progression : ${JSON.stringify(
+          context.state.chapterProgression
+        )}\n \nyear progression : ${context.state.yearprogression}`
+      );
     },
   },
   modules: {},

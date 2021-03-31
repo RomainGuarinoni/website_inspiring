@@ -51,7 +51,6 @@
 
 <script>
 import Navbar from "./Navbar";
-import { mapState } from "vuex";
 export default {
   components: {
     Navbar,
@@ -62,7 +61,9 @@ export default {
     };
   },
   computed: {
-    ...mapState(["progression"]),
+    /*yearProgression(index) {
+      return;
+    },*/
   },
 
   mounted: function() {

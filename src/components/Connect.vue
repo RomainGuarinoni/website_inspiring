@@ -43,6 +43,7 @@
 
 <script>
 import Navbar from "./Navbar";
+import Data from "../Data";
 export default {
   components: {
     Navbar,
@@ -59,12 +60,89 @@ export default {
       /////////////////fonction a changer apres//////////
       if (this.login != "admin" || this.mdp != "admin") {
         this.error = true;
-        console.log("bad log");
       } else {
-        console.log("good log");
         this.error = false;
-        this.$router.push({ name: "yearselect" });
+        //récupérer les data de la base de donnée
+        Data.then((res) => {
+          this.$store.dispatch("CREATE_USER", res);
+          let avancement = [];
+
+          //calcul des progressions des chapitres par année
+          res.progression.forEach((annee) => {
+            if (Object.keys(annee).length > 0) {
+              let item = annee.chapter;
+              let avancementItem = {
+                note: this.calculProgressionChapter(
+                  item.note.entrainement,
+                  item.note.quiz
+                ),
+                rythme: this.calculProgressionChapter(
+                  item.rythme.entrainement,
+                  item.rythme.quiz
+                ),
+                partition:
+                  (this.calculProgressionChapter(
+                    item.partition.nuance.entrainement,
+                    item.partition.nuance.quiz
+                  ) +
+                    this.calculProgressionChapter(
+                      item.partition.structure.entrainement,
+                      item.partition.structure.quiz
+                    )) /
+                  2,
+                instrument: this.calculProgressionChapter(
+                  item.instrument.entrainement,
+                  false
+                ),
+              };
+              avancement.push(avancementItem);
+            } else {
+              avancement.push({});
+            }
+          });
+
+          //calcul des progression des années
+
+          let yearProgression = [];
+          avancement.forEach((annee) => {
+            let total = 0;
+            let sum = 0;
+            if (Object.keys(annee).length > 0) {
+              for (const value in annee) {
+                total++;
+                sum += annee[value];
+              }
+              yearProgression.push(sum / total);
+            } else {
+              yearProgression.push(0);
+            }
+          });
+
+          // push toutes ces données dans VUEX
+          Promise.all(
+            [
+              this.$store.dispatch("CREATE_CHAPTER_PROGRESSION", avancement),
+              this.$store.dispatch("CREATE_YEAR_PROGRESSION", yearProgression),
+            ].then(this.$store.dispatch("toString"))
+          );
+        });
       }
+    },
+    calculProgressionChapter(entrainement, quiz) {
+      let total = 0;
+      let nbTrue = 0;
+      entrainement.forEach((item) => {
+        if (item) {
+          nbTrue++;
+        }
+        total++;
+      });
+
+      if (quiz) {
+        nbTrue++;
+      }
+      total++;
+      return (nbTrue * 100) / total;
     },
   },
 };
