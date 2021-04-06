@@ -43,6 +43,7 @@ import CoursInstrumentsCorde from "../components/Cours-instruments-cordes";
 import coursInstrumentsVent from "../components/cours-instruments-vent";
 import coursInstrumentsPercussion from "../components/Cours-instruments-percussion";
 import coursPartitionRythme from "../components/coursPartitionRythme";
+import PartitionQuiz from "../components/PartitionQuiz";
 
 Vue.use(VueRouter);
 
@@ -67,6 +68,12 @@ const routes = [
     path: "/annee-:year/lire-une-partition",
     component: Partition,
     name: "partition",
+    props: true,
+  },
+  {
+    path: "/annee-:year/lire-une-partition/quiz",
+    component: PartitionQuiz,
+    name: "partitionQuiz",
     props: true,
   },
   {

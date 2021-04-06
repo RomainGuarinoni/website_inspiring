@@ -14,7 +14,7 @@
           </div>
           <div class="chapter ">
             <p class="orange" @click="cours()">Cours</p>
-            <p class="orange">Entraînement</p>
+            <p class="orange" @click="play(0)">Entraînement</p>
             <p class="orange">Quiz</p>
           </div>
         </div>
@@ -24,7 +24,7 @@
           </div>
           <div class="chapter ">
             <p class="orange">Cours</p>
-            <p class="orange">Entraînement</p>
+            <p class="orange" @click="play(1)">Entraînement</p>
             <p class="orange">Quiz</p>
           </div>
         </div>
@@ -40,10 +40,16 @@
 </template>
 
 <script>
+import quizzPartition from "../assets/quizzPartition.json";
 import Navbar from "./Navbar";
 export default {
   components: {
     Navbar,
+  },
+  data() {
+    return {
+      question: quizzPartition.quiz,
+    };
   },
   props: ["year"],
   methods: {
@@ -53,9 +59,14 @@ export default {
     cours() {
       this.$router.push({ name: "Nuance1" });
     },
-  },
-  mounted: function() {
-    console.log(this.year);
+    play(index) {
+      this.$router.push({
+        name: "partitionQuiz",
+        params: {
+          question: this.question[index],
+        },
+      });
+    },
   },
 };
 </script>
