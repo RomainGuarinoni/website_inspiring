@@ -62,6 +62,7 @@ export default {
         this.error = true;
       } else {
         this.error = false;
+        this.$store.state.connect = true;
         //récupérer les data de la base de donnée
         Data.then((res) => {
           this.$store.dispatch("CREATE_USER", res);

@@ -1,4 +1,5 @@
 import Vue from "vue";
+import store from "../store/index";
 import VueRouter from "vue-router";
 import Connect from "../components/Connect";
 import yearselect from "../components/YearSelect";
@@ -42,6 +43,7 @@ import CoursInstrumentsCorde from "../components/Cours-instruments-cordes";
 import coursInstrumentsVent from "../components/cours-instruments-vent";
 import coursInstrumentsPercussion from "../components/Cours-instruments-percussion";
 import coursPartitionRythme from "../components/coursPartitionRythme";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -285,5 +287,16 @@ const routes = [
 const router = new VueRouter({
   routes,
 });
-
+router.beforeEach((to, from, next) => {
+  console.log(store.state.connect);
+  if (store.state.connect) {
+    next();
+  } else {
+    if (to.path !== "/") {
+      next({ name: "Connect" });
+    } else {
+      next();
+    }
+  }
+});
 export default router;

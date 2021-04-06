@@ -2,6 +2,7 @@ let eleve = {
   _id: 25124824,
   nom: "Guarinoni",
   prenom: "Romain",
+  admin: false,
   autre_info: "...",
   progression: [
     {

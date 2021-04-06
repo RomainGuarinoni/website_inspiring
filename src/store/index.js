@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import createPersistedState from "vuex-persistedstate";
-import * as Cookies from "js-cookie";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -10,6 +9,7 @@ export default new Vuex.Store({
     progression: new Array(),
     chapterProgression: new Array(),
     yearProgression: new Array(),
+    connect: false,
   },
   mutations: {
     entrainementValide(state, payload) {
@@ -72,6 +72,30 @@ export default new Vuex.Store({
     QUIZ_VALIDE(context, payload) {
       context.commit("quizValide", payload);
       // envoyer a hugo les valeurs !!
+      let total = 0;
+      let nbTrue = 0;
+      context.state.progression[payload.year - 1].chapter[
+        payload.chapter
+      ].entrainement.forEach((element) => {
+        if (element) {
+          nbTrue++;
+        }
+        total++;
+      });
+
+      if (
+        context.state.progression[payload.year - 1].chapter[payload.chapter]
+          .quiz
+      ) {
+        nbTrue++;
+      }
+      total++;
+      context.commit("modifyChapterProgression", {
+        year: payload.year,
+        chapter: payload.chapter,
+        progression: Math.round((nbTrue * 100) / total),
+      });
+      context.dispatch("CALCUL_YEAR_PROGRESSION");
     },
     CREATE_USER(context, payload) {
       context.commit("createUser", payload);
@@ -114,12 +138,4 @@ export default new Vuex.Store({
       );
     },
   },
-  modules: {},
-  plugins: [
-    createPersistedState({
-      getState: (key) => Cookies.getJSON(key),
-      setState: (key, state) =>
-        Cookies.set(key, state, { expires: 3, secure: true }),
-    }),
-  ],
 });
