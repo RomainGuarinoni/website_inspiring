@@ -46,6 +46,8 @@ export default new Vuex.Store({
       // envoyer a hugo les valeurs !!
       let total = 0;
       let nbTrue = 0;
+
+      //recompte le nombre d'entraienement et de quizz validé sur le nombre de total en tout
       context.state.progression[payload.year - 1].chapter[
         payload.chapter
       ].entrainement.forEach((element) => {
@@ -55,13 +57,21 @@ export default new Vuex.Store({
         total++;
       });
 
+      // si le chapitre contient un quizz, le compter en plus
       if (
+        "quiz" in
         context.state.progression[payload.year - 1].chapter[payload.chapter]
-          .quiz
       ) {
-        nbTrue++;
+        if (
+          context.state.progression[payload.year - 1].chapter[payload.chapter]
+            .quiz
+        ) {
+          nbTrue++;
+        }
+        total++;
       }
-      total++;
+
+      // changer les pourcentages chapitres et année
       context.commit("modifyChapterProgression", {
         year: payload.year,
         chapter: payload.chapter,

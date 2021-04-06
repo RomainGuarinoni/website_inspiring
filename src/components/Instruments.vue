@@ -17,6 +17,9 @@
       >
         <img :src="img(index)" alt="img d'instruments" />
         <p>{{ item.nom }}</p>
+        <div class="checkStatus green" v-if="checkLevel(index)">
+          <font-awesome-icon :icon="['fas', 'check-circle']" />
+        </div>
       </div>
     </div>
   </div>
@@ -44,6 +47,7 @@ export default {
         name: "ItemInstruments",
         params: {
           info: this.list[index],
+          index: index,
         },
       });
     },
@@ -51,7 +55,13 @@ export default {
       this.$router.push({ name: node });
     },
     img(index) {
-      return require(`@/assets/instruments/${this.list[index].img[2]}`);
+      //return require(`@/assets/instruments/${this.list[index].img[2]}`);
+      console.log(index);
+      return require(`@/assets/piano.png`);
+    },
+    checkLevel(index) {
+      return this.$store.state.progression[this.year - 1].chapter.instruments
+        .entrainement[index];
     },
   },
 };
@@ -76,6 +86,7 @@ export default {
   border: 3px solid var(--main);
   border-radius: 20px;
   display: flex;
+  position: relative;
   justify-content: space-around;
   align-items: center;
   margin: 20px 0;
@@ -111,5 +122,11 @@ export default {
 }
 #chevron {
   margin: 5px;
+}
+.checkStatus {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
 }
 </style>

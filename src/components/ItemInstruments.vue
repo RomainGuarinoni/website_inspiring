@@ -66,6 +66,9 @@ export default {
     year: {
       type: undefined,
     },
+    index: {
+      type: Number,
+    },
   },
   components: {
     Navbar,
@@ -75,8 +78,17 @@ export default {
       this.$router.go(-1);
     },
     img(index) {
-      return require(`@/assets/instruments/${this.info.img[index]}`);
+      console.log(index);
+      //return require(`@/assets/instruments/${this.info.img[index]}`);
+      return require("@/assets/piano.png");
     },
+  },
+  mounted: function() {
+    this.$store.dispatch("ENTRAINEMENT_VALIDE", {
+      level: this.index,
+      year: this.year,
+      chapter: "instruments",
+    });
   },
 };
 </script>

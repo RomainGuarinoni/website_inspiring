@@ -93,6 +93,7 @@ export default {
                   2,
                 instruments: this.calculProgressionChapter(
                   item.instruments.entrainement,
+                  false,
                   false
                 ),
               };
@@ -129,7 +130,7 @@ export default {
         });
       }
     },
-    calculProgressionChapter(entrainement, quiz) {
+    calculProgressionChapter(entrainement, quiz, isQuiz = true) {
       let total = 0;
       let nbTrue = 0;
       entrainement.forEach((item) => {
@@ -138,11 +139,13 @@ export default {
         }
         total++;
       });
-
-      if (quiz) {
-        nbTrue++;
+      if (isQuiz) {
+        if (quiz) {
+          nbTrue++;
+        }
+        total++;
       }
-      total++;
+
       return Math.round((nbTrue * 100) / total);
     },
   },
