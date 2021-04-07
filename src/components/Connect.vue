@@ -323,8 +323,9 @@ export default {
 .right {
   height: 100%;
   width: 45%;
-  background: url("../assets/masquotte.jpg") center/200% no-repeat;
-  background-size: cover;
+  background: url("../assets/Mascotte.svg") no-repeat;
+  background-position: center;
+  background-size: 100%;
 }
 .left {
   height: 100%;

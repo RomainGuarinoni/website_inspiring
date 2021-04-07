@@ -294,8 +294,9 @@ const routes = [
 const router = new VueRouter({
   routes,
 });
+
+//vérifier avant chaque rtouter si le user est connecté sinon on le redirect à la page connect
 router.beforeEach((to, from, next) => {
-  console.log(store.state.connect);
   if (store.state.connect) {
     next();
   } else {
