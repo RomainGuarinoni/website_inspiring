@@ -228,6 +228,10 @@ export default {
         this.conservatoire != ""
       ) {
         console.log("good");
+        //envoyer à hugo les data
+        // récuprer des données vide de l'utilisateurs
+        // faire des choses
+
         this.error = false;
       } else {
         this.error = true;

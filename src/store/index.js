@@ -39,6 +39,13 @@ export default new Vuex.Store({
     calculYearProgression(state, payload) {
       state.yearProgression = payload;
     },
+    disconnect(state) {
+      state.connect = false;
+      state.user = new Object();
+      state.progression = new Object();
+      state.yearProgression = new Object();
+      state.chapterProgression = new Object();
+    },
   },
   actions: {
     ENTRAINEMENT_VALIDE(context, payload) {
@@ -133,6 +140,9 @@ export default new Vuex.Store({
         }
       });
       context.commit("calculYearProgression", yearProgression);
+    },
+    DISCONNECT(context) {
+      context.commit("disconnect");
     },
 
     //fonction qui affiche dans la console toutes les valeurs du state ( pour debug)

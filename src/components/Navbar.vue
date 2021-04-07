@@ -10,9 +10,13 @@
           ><img class="logo_navbar2" src="../assets/logo.png" alt="logo"
         /></router-link>
         <h1 class="font gros">Inspiring Music Theory</h1>
-        <router-link :to="{ name: 'travaux' }"
-          ><button>Mon profil</button></router-link
-        >
+        <div class="boutons">
+          <button>Mon profil</button>
+          <button class="disconnect" @click="disconnect()">
+            Se déconnecter
+          </button>
+        </div>
+
         <font-awesome-icon
           @click="pushTo('travaux')"
           class="user"
@@ -26,7 +30,12 @@
           <img class="logo3" src="../assets/logo.png" alt="logo" />
           <h1 class="font">Inspiring music Theory</h1>
         </div>
-        <button @click="pushTo('travaux')">Mon profil</button>
+        <div class="boutons">
+          <button @click="pushTo('travaux')">Mon profil</button>
+          <button class="disconnect" @click="disconnect()">
+            Se déconnecter
+          </button>
+        </div>
         <font-awesome-icon
           @click="pushTo('travaux')"
           class="user"
@@ -74,6 +83,11 @@ export default {
   methods: {
     pushTo(node) {
       this.$router.push({ name: node });
+    },
+    disconnect() {
+      this.$store
+        .dispatch("DISCONNECT")
+        .then(this.$router.push({ name: "Connect" }));
     },
   },
 };
@@ -254,19 +268,20 @@ export default {
 }
 button {
   height: 50px;
-  width: 150px;
+  min-width: 150px;
   background: white;
   color: var(--main);
+  padding: 10px;
   font-family: roboto;
   border-radius: 30px;
   font-size: 1.5em;
-  border: 3px solid var(--main);
+  border: 3px solid var(--blue);
   cursor: pointer;
   transition: all ease 200ms;
   outline: none;
 }
 button:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 .navbar {
   width: 100%;
@@ -290,5 +305,12 @@ h1 {
 }
 .font {
   font-family: "Redressed", cursive;
+}
+.boutons {
+  display: flex;
+  width: 20%;
+}
+.disconnect {
+  border-color: var(--red);
 }
 </style>
