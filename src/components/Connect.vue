@@ -36,7 +36,13 @@
             </div>
             <p>
               Tu n'as pas encore des compte ? créez en toi un :
-              <button @click="createAccount = true" class="create">
+              <button
+                @click="
+                  createAccount = true;
+                  error = false;
+                "
+                class="create"
+              >
                 Créer un compte
               </button>
             </p>
@@ -103,9 +109,10 @@
               {{ element }}
             </option>
           </select>
+          <p v-if="error" class="error">Tous les champs ne sont pas valides</p>
           <div class="buttonsCreate">
             <button @click="retour()">Retour</button>
-            <button>Créer un compte</button>
+            <button @click="createNewAccount()">Créer un compte</button>
           </div>
         </div>
       </div>
@@ -211,6 +218,21 @@ export default {
         });
       }
     },
+    createNewAccount() {
+      if (
+        this.firstName != "" &&
+        this.lastName != "" &&
+        this.emailCreate != "" &&
+        this.mdpCreate != "" &&
+        this.mdpVerify == this.mdpCreate &&
+        this.conservatoire != ""
+      ) {
+        console.log("good");
+        this.error = false;
+      } else {
+        this.error = true;
+      }
+    },
     calculProgressionChapter(entrainement, quiz, isQuiz = true) {
       let total = 0;
       let nbTrue = 0;
@@ -230,13 +252,6 @@ export default {
       return Math.round((nbTrue * 100) / total);
     },
     retour() {
-      /*firstName: "",
-      lastName: "",
-      emailCreate: "",
-      mdpCreate: "",
-      mdpVerify: "",
-      conservatoire: "",*/
-
       this.firstName = "";
       this.lastName = "";
       this.emailCreate = "";
@@ -244,6 +259,7 @@ export default {
       this.mdpVerify = "";
       this.conservatoire = "";
       this.createAccount = false;
+      this.error = false;
     },
   },
 };

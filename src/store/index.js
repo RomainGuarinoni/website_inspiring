@@ -78,7 +78,6 @@ export default new Vuex.Store({
         progression: Math.round((nbTrue * 100) / total),
       });
       context.dispatch("CALCUL_YEAR_PROGRESSION");
-      console.log(context.dispatch("toString"));
     },
     QUIZ_VALIDE(context, payload) {
       context.commit("quizValide", payload);
