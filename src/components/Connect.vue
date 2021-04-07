@@ -3,7 +3,7 @@
     <div class="left">
       <Navbar type="1" class="navbar" />
       <div class="formBox">
-        <div class="form">
+        <div class="form" v-if="!createAccount">
           <p class="title">Se connecter</p>
           <div class="formEmail">
             <label for="email" class="emailLab">Email</label>
@@ -29,10 +29,83 @@
             <input type="checkbox" id="stayconnect" name="stayconnect" />
             <label for="stayconnect" class="connectLab">Rester connecté</label>
           </div>
-
-          <button @click="checkLogin">Se connecter</button>
-          <div v-show="error" class="error">
-            <p>identifiant ou mdp erroné</p>
+          <div class="buttons">
+            <button @click="checkLogin">Se connecter</button>
+            <div v-show="error" class="error">
+              <p>identifiant ou mdp erroné</p>
+            </div>
+            <p>
+              Tu n'as pas encore des compte ? créez en toi un :
+              <button @click="createAccount = true" class="create">
+                Créer un compte
+              </button>
+            </p>
+          </div>
+        </div>
+        <div class="create-account" v-else>
+          <p class="title">Créer un compte</p>
+          <label for="firstName" class="emailLab">Prénom</label>
+          <input
+            type="txt"
+            id="firstName"
+            name="firstName"
+            placeholder="Ton prénom"
+            v-model="firstName"
+          />
+          <label for="lastName" class="emailLab blue">Nom</label>
+          <input
+            type="txt"
+            id="lastName"
+            name="lastName"
+            placeholder="Ton Nom"
+            v-model="lastName"
+          />
+          <label for="emailCreate" class="emailLab orange">Email</label>
+          <input
+            type="email"
+            id="emailCreate"
+            name="emailCreate"
+            placeholder="Ton adresse email"
+            v-model="emailCreate"
+          />
+          <label for="mdpCreate" class="emailLab purple">Mot de passe</label>
+          <input
+            type="password"
+            id="mdpCreate"
+            name="mdpCreate"
+            placeholder="Ton mot de passe"
+            v-model="mdpCreate"
+          />
+          <label for="mdpVerify" class="emailLab red"
+            >Re écris ton mot de passe</label
+          >
+          <input
+            type="password"
+            id="mdpVerify"
+            name="mdpVerify"
+            placeholder="Re écris ton mot de passe"
+            v-model="mdpVerify"
+            :class="{
+              greenBackground: mdpCreate == mdpVerify && mdpVerify != '',
+              redBackground: mdpCreate != mdpVerify && mdpVerify != '',
+            }"
+          />
+          <label for="conservatoire" class="emailLab blue"
+            >Ton conservatoire</label
+          >
+          <select
+            id="conservatoire"
+            name="conservatoire"
+            v-model="conservatoire"
+          >
+            <option value="" selected disabled>--Choisis une école--</option>
+            <option v-for="element in school" :key="element" :value="element">
+              {{ element }}
+            </option>
+          </select>
+          <div class="buttonsCreate">
+            <button @click="retour()">Retour</button>
+            <button>Créer un compte</button>
           </div>
         </div>
       </div>
@@ -53,6 +126,14 @@ export default {
       error: false,
       login: "",
       mdp: "",
+      firstName: "",
+      lastName: "",
+      emailCreate: "",
+      mdpCreate: "",
+      mdpVerify: "",
+      conservatoire: "",
+      school: ["ecole A", "ecole B", "ecole C"],
+      createAccount: false,
     };
   },
   methods: {
@@ -148,6 +229,22 @@ export default {
 
       return Math.round((nbTrue * 100) / total);
     },
+    retour() {
+      /*firstName: "",
+      lastName: "",
+      emailCreate: "",
+      mdpCreate: "",
+      mdpVerify: "",
+      conservatoire: "",*/
+
+      this.firstName = "";
+      this.lastName = "";
+      this.emailCreate = "";
+      this.mdpCreate = "";
+      this.mdpVerify = "";
+      this.conservatoire = "";
+      this.createAccount = false;
+    },
   },
 };
 </script>
@@ -188,7 +285,8 @@ export default {
     width: 100% !important;
   }
   .formEmail input,
-  .formMdp input {
+  .formMdp input,
+  .create-account input {
     width: 80% !important;
   }
   button {
@@ -197,7 +295,8 @@ export default {
   .form .title,
   .formEmail,
   .formMdp,
-  .formConnect {
+  .formConnect,
+  select {
     margin: 0 !important;
   }
 }
@@ -272,7 +371,9 @@ export default {
   margin-left: 20px;
 }
 .formEmail input,
-.formMdp input {
+.formMdp input,
+.create-account input,
+select {
   display: block;
   margin-left: 20px;
   padding-left: 10px;
@@ -280,15 +381,11 @@ export default {
   border: 1px solid var(--main);
   height: 40px;
   width: 500px;
-  font-family: roboto;
   font-size: 1.4em;
   color: var(--main);
   outline: none;
 }
 
-.formEmail input {
-  font-family: Roboto;
-}
 .emailLab {
   color: var(--purple);
   font-size: 2.5em;
@@ -308,7 +405,8 @@ export default {
   width: 100%;
   flex: 1;
 }
-.form .title {
+.form .title,
+.create-account .title {
   color: var(--blue);
   font-size: 4.2em;
 }
@@ -333,12 +431,22 @@ export default {
   display: flex;
   flex-direction: column;
 }
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.buttonsCreate {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.buttonsCreate button {
+  width: 250px;
+  font-size: 20px;
+}
 button {
-  background: linear-gradient(
-    180deg,
-    #06446b 0%,
-    rgba(67, 101, 123, 0.69) 100%
-  );
+  background: linear-gradient(180deg, #06446b 0%, rgba(16, 61, 92, 0.69) 100%);
   width: 500px;
   height: 40px;
   border: none;
@@ -347,5 +455,19 @@ button {
   color: white;
   cursor: pointer;
   margin-top: 20px;
+  outline: none;
+}
+.create {
+  font-size: 15px;
+  width: auto;
+  padding: 0 20px;
+}
+.greenBackground {
+  border-color: var(--green) !important;
+  border-width: 3px !important;
+}
+.redBackground {
+  border-color: var(--red) !important;
+  border-width: 3px !important;
 }
 </style>
