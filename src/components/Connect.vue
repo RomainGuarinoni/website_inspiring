@@ -3,118 +3,128 @@
     <div class="left">
       <Navbar type="1" class="navbar" />
       <div class="formBox">
-        <div class="form" v-if="!createAccount">
-          <p class="title">Se connecter</p>
-          <div class="formEmail">
-            <label for="email" class="emailLab">Email</label>
+        <form v-on:submit.prevent="onSubmit" v-if="!createAccount">
+          <div class="form">
+            <p class="title">Se connecter</p>
+            <div class="formEmail">
+              <label for="email" class="emailLab">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="nom.prenom@gmail.com"
+                v-model="login"
+              />
+            </div>
+            <div class="formMdp">
+              <label for="mdp" class="mdpLab">Mot de passe</label>
+              <input
+                type="password"
+                id="mdp"
+                name="mdp"
+                v-model="mdp"
+                placeholder="au moins 8 caractères"
+              />
+            </div>
+            <div class="formConnect">
+              <input type="checkbox" id="stayconnect" name="stayconnect" />
+              <label for="stayconnect" class="connectLab"
+                >Rester connecté</label
+              >
+            </div>
+            <div class="buttons">
+              <button @click="checkLogin" type="submit">Se connecter</button>
+              <div v-show="error" class="error">
+                <p>identifiant ou mdp erroné</p>
+              </div>
+              <p>
+                Tu n'as pas encore de compte ?
+                <button
+                  @click="
+                    createAccount = true;
+                    error = false;
+                  "
+                  class="create"
+                >
+                  Créer un compte
+                </button>
+              </p>
+            </div>
+          </div>
+        </form>
+        <form v-on:submit.prevent="test" v-else>
+          <div class="create-account">
+            <p class="title">Créer un compte</p>
+            <label for="firstName" class="emailLab">Prénom</label>
+            <input
+              type="txt"
+              id="firstName"
+              name="firstName"
+              placeholder="Ton prénom"
+              v-model="firstName"
+            />
+            <label for="lastName" class="emailLab blue">Nom</label>
+            <input
+              type="txt"
+              id="lastName"
+              name="lastName"
+              placeholder="Ton Nom"
+              v-model="lastName"
+            />
+            <label for="emailCreate" class="emailLab orange">Email</label>
             <input
               type="email"
-              id="email"
-              name="email"
-              placeholder="nom.prenom@gmail.com"
-              v-model="login"
+              id="emailCreate"
+              name="emailCreate"
+              placeholder="Ton adresse email"
+              v-model="emailCreate"
             />
-          </div>
-          <div class="formMdp">
-            <label for="mdp" class="mdpLab">Mot de passe</label>
+            <label for="mdpCreate" class="emailLab purple">Mot de passe</label>
             <input
               type="password"
-              id="mdp"
-              name="mdp"
-              v-model="mdp"
-              placeholder="au moins 8 caractères"
+              id="mdpCreate"
+              name="mdpCreate"
+              placeholder="Ton mot de passe"
+              v-model="mdpCreate"
             />
-          </div>
-          <div class="formConnect">
-            <input type="checkbox" id="stayconnect" name="stayconnect" />
-            <label for="stayconnect" class="connectLab">Rester connecté</label>
-          </div>
-          <div class="buttons">
-            <button @click="checkLogin">Se connecter</button>
-            <div v-show="error" class="error">
-              <p>identifiant ou mdp erroné</p>
-            </div>
-            <p>
-              Tu n'as pas encore de compte ?
-              <button
-                @click="
-                  createAccount = true;
-                  error = false;
-                "
-                class="create"
-              >
+            <label for="mdpVerify" class="emailLab red"
+              >Re écris ton mot de passe</label
+            >
+            <input
+              type="password"
+              id="mdpVerify"
+              name="mdpVerify"
+              placeholder="Re écris ton mot de passe"
+              v-model="mdpVerify"
+              :class="{
+                greenBackground: mdpCreate == mdpVerify && mdpVerify != '',
+                redBackground: mdpCreate != mdpVerify && mdpVerify != '',
+              }"
+            />
+            <label for="conservatoire" class="emailLab blue"
+              >Ton conservatoire</label
+            >
+            <select
+              id="conservatoire"
+              name="conservatoire"
+              v-model="conservatoire"
+            >
+              <option value="" selected disabled>--Choisis une école--</option>
+              <option v-for="element in school" :key="element" :value="element">
+                {{ element }}
+              </option>
+            </select>
+            <p v-if="error" class="error">
+              Tous les champs ne sont pas valides
+            </p>
+            <div class="buttonsCreate">
+              <button @click="retour()">Retour</button>
+              <button type="submit" @click="createNewAccount()">
                 Créer un compte
               </button>
-            </p>
+            </div>
           </div>
-        </div>
-        <div class="create-account" v-else>
-          <p class="title">Créer un compte</p>
-          <label for="firstName" class="emailLab">Prénom</label>
-          <input
-            type="txt"
-            id="firstName"
-            name="firstName"
-            placeholder="Ton prénom"
-            v-model="firstName"
-          />
-          <label for="lastName" class="emailLab blue">Nom</label>
-          <input
-            type="txt"
-            id="lastName"
-            name="lastName"
-            placeholder="Ton Nom"
-            v-model="lastName"
-          />
-          <label for="emailCreate" class="emailLab orange">Email</label>
-          <input
-            type="email"
-            id="emailCreate"
-            name="emailCreate"
-            placeholder="Ton adresse email"
-            v-model="emailCreate"
-          />
-          <label for="mdpCreate" class="emailLab purple">Mot de passe</label>
-          <input
-            type="password"
-            id="mdpCreate"
-            name="mdpCreate"
-            placeholder="Ton mot de passe"
-            v-model="mdpCreate"
-          />
-          <label for="mdpVerify" class="emailLab red"
-            >Re écris ton mot de passe</label
-          >
-          <input
-            type="password"
-            id="mdpVerify"
-            name="mdpVerify"
-            placeholder="Re écris ton mot de passe"
-            v-model="mdpVerify"
-            :class="{
-              greenBackground: mdpCreate == mdpVerify && mdpVerify != '',
-              redBackground: mdpCreate != mdpVerify && mdpVerify != '',
-            }"
-          />
-          <label for="conservatoire" class="emailLab blue"
-            >Ton conservatoire</label
-          >
-          <select
-            id="conservatoire"
-            name="conservatoire"
-            v-model="conservatoire"
-          >
-            <option value="" selected disabled>--Choisis une école--</option>
-            <option v-for="element in school" :key="element" :value="element">
-              {{ element }}
-            </option>
-          </select>
-          <p v-if="error" class="error">Tous les champs ne sont pas valides</p>
-          <div class="buttonsCreate">
-            <button @click="retour()">Retour</button>
-            <button @click="createNewAccount()">Créer un compte</button>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
     <div class="right"></div>
@@ -144,6 +154,9 @@ export default {
     };
   },
   methods: {
+    test() {
+      console.log("test function");
+    },
     checkLogin() {
       /////////////////fonction a changer apres//////////
       if (this.login != "admin" || this.mdp != "admin") {

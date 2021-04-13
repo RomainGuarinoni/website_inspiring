@@ -115,8 +115,7 @@ export default {
         !this.$store.state.progression[this.year - 1].chapter.rythme.quiz
       ) {
         this.quiz = true;
-        //change for 2
-        this.levelIndex = 1;
+        this.levelIndex = 2;
         this.menu = false;
       }
     },
