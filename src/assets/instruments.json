@@ -1,13 +1,13 @@
 {
     "instruments":[
         {
-            "thumb":"",
+            "thumb":"saxo_thumbnail.png",
             "nom":"Le saxophone alto",
             "famille":"Instrument à vent, famille des bois",
             "Invention":"Adolphe Sax, en 1846",
             "cle":"Clef de sol",
             "musicien":["Baptise Herbin", "Sophie Alour","Gerald Albright","Leo P"],
-            "img":["saxo1.png.jpg","saxo2.png.jpg","saxo3.png.jpg"],
+            "img":["saxo1.png","saxo2.png","saxo3.png"],
             "fonctionnement":[
                 "Grâce à la vibration de l’anche lorsque l’on souffle dans le bec :",
                 "On humidifie l’anche avant de jouer et on l’attache contre le bec avec la ligature. On attache le saxophone au harnais. On pose ses dents supérieurs sur le haut du bec, puis on ramène ses lèvres:On le nettoie après chaque utilisation avec un chiffon."
@@ -15,13 +15,13 @@
             "gamme":""
         },
         {
-            "thumb":"",
+            "thumb":"trompettebuglecornet_thumbail.png",
             "nom":"La trompette",
             "famille":"Intruments à vent, cuivres",
             "Invention":"La trompette est un des premiers instruments à exister, Bluehmel conçoit la trompette moderne en 1813",
             "cle":"Clef de sol",
             "musicien":["Maurice André (XXe)","Louis Armstrong (XXe)","Roy Hargove (XXIe)","Ibrahim Maalouf (XXIe)"],
-            "img":["trompettebuglecornet1.png.jpg","trompettebuglecornet2.png.jpg","trompettebuglecornet3.png.jpg"],
+            "img":["trompettebuglecornet2.png","trompettebuglecornet2.png","trompettebuglecornet3.png"],
             "fonctionnement":[
                 "Le son part d’une vibration des lèvres du musicien, pour l’obtenir il faut souffler tout en “pinçant” les lèvres.",
                 "La trompette transforme ensuite cette vibration en un son mélodieux. La trompette transforme ensuite cette vibration en un son mélodieux. Il est possible de changer de note en appuyant sur les pistons."
@@ -29,13 +29,13 @@
             "gamme":""
         },
         {
-            "thumb":"",
+            "thumb":"xylo_thumbnail.png",
             "nom":"Les xylophones",
             "famille":"Percussions",
             "Invention":"",
             "cle":"Clef de sol (et clef de fa pour Marimba)",
             "musicien":["Emmanuel Séjourné","Gary Burton","Lionel Hampton"],
-            "img":["xylo1.png.jpg","xylo2.png.jpg","xylo3.png.jpg"],
+            "img":["xylo1.png","xylo2.png","xylo3.png"],
             "fonctionnement":[
                 "Le vibraphone a des lames en métal qui résonnent grâce aux tuyaux situés sous les lames. Le vibraphone permet aussi un vibrato grâce à des clapets qui s’ouvrent et qui se ferment au-dessus des tuyaux",
                 "Le vibraphone possède aussi une pédale de résonnance, comme un piano."
@@ -43,13 +43,13 @@
             "gamme":""
         },
         {
-            "thumb":"",
+            "thumb":"clarinette_thumbnail.png",
             "nom":"La clarinette ",
             "famille":"Instrument à vent,famille des bois",
             "Invention":"Johann Christophe Denner en 1690",
             "cle":"Clef de sol",
             "musicien":["Sabine Meyer","Sharon Kam","Nicolas Baldeyrou "],
-            "img":["clarinette1.png.jpg","clarinette2.png.jpg","clarinette3.png.jpg"],
+            "img":["clarinette1.png","clarinette2.png","clarinette3.png"],
             "fonctionnement":[
                 "La clarinette a besoin d’une hanche en roseau sur son bec pour produire un son. En effet, la hanche va vibrer grâce au souffle du clarinettiste et va produire un son.",
                 "En fonction des clefs utilisées, l’air du clarinettiste va sortir de la clarinette par des endroits différents. C’est comme ça que différents sons peuvent être produits."
@@ -57,13 +57,13 @@
             "gamme":""
         },
         {
-            "thumb":"",
+            "thumb":"piano-thumbnail.png",
             "nom":"Le piano",
             "famille":"Instrument à corde",
             "Invention":"Bartolomeo Cristofori en 1720",
             "cle":"Clef de sol et clef de fa",
             "musicien":["Frédéric Chopin","Ludwig van Beethoven","Joe Hisaishi","Ludovico Einaudi"],
-            "img":["piano1.png.jpg","piano2.png.jpg","piano3.png.jpg"],
+            "img":["piano1.png","piano2.png","piano3.png"],
             "fonctionnement":[
                 "Un piano est composé d’une caisse contenant un ensemble de cordes tendues. Chaque corde produit un son différent lorsqu’on la frappe en fonction de sa taille, de son poids et de sa tension.",
                 "Le son est produit quand les marteaux frappent les cordes lorsque le pianiste appuie sur les touches. Le marteau frappe les cordes et les fait vibrer,  la fréquence de vibration va entraîner des sons différents et donc créer les notes."
@@ -71,13 +71,13 @@
             "gamme":""
         },
         {
-            "thumb":"",
+            "thumb":"violon_thumbnail.png",
             "nom":"Le violon",
             "famille":"Instrument à cordes frottées",
             "Invention":" Dans les années 1520 en Italie",
             "cle":"Clef de sol",
             "musicien":["Antonio Vivaldi","Wolfgang Amadeus Mozart","Niccolò Paganini"],
-            "img":["violon1.png.jpg","violon2.png.jpg","violon3.png.jpg"],
+            "img":["violon1.png","violon2.png","violon3.png"],
             "fonctionnement":[
                 "Le son du violon provient d’une vibration causée par le frottement entre l’archet et les cordes du violon.",
                 "Mais en plus du frottement, il faut que l’archet soit enduit d’une résine végétale appelée colophane. Cela le rend rugueux et permet de frotter les cordes et de produire le son."
@@ -85,13 +85,13 @@
             "gamme":""
         },
         {
-            "thumb":"",
+            "thumb":"Flute_thumbnail.png",
             "nom":"La flûte traversière",
             "famille":"Instrument à vent, famille des bois",
             "Invention":"Adolphe Sax, en 1846",
             "cle":"Clef de sol",
             "musicien":["Jean-Pierre Rampal","Emmanuel Pahud","Roger Bourdin","James Galway"],
-            "img":["flute1.png.jpg","flute2.png.jpg","flute3.png.jpg"],
+            "img":["flute1.png","Flute2.png","flute3.png"],
             "fonctionnement":[
                 " Le musicien émet un filet d'air qu'il dirige sur le biseau du trou de l'embouchure. ",
                 "Cela provoque une vibration de la colonne d'air contenue dans le tuyau de la flûte et permet de produire le son"
@@ -99,13 +99,13 @@
             "gamme":""
         },
         {
-            "thumb":"",
+            "thumb":"euphonium_thumbnail.png",
             "nom":"L’euphonium",
             "famille":"instrument à vent, famille des bois",
             "Invention":"Chine, vers 900 av. J.-C",
             "cle":"Clef de fa",
             "musicien":["Steven Mead","Brian Bowman","Ivan Milhiet"],
-            "img":["euphonium1.png.jpg","euphonium2.png.jpg","euphonium3.png.jpg"],
+            "img":["euphonium1.png","euphonium2.png","euphonium3.png"],
             "fonctionnement":[
                 "Grâce à la vibration de l’anche lorsque l’on souffle dans le bec :",
                 "On humidifie l’anche avant de jouer et on l’attache contre le bec avec la ligature. On attache le saxophone au harnais. On pose ses dents supérieurs sur le haut du bec, puis on ramène ses lèvres:On le nettoie après chaque utilisation avec un chiffon."
@@ -113,13 +113,13 @@
             "gamme":""
         },
         {
-            "thumb":"",
+            "thumb":"trombonne_thumbnail.png",
             "nom":"Le trombone",
             "famille":"instrument des cuivres",
             "Invention":"L'époque romaine",
             "cle":"Cle d’ut 3",
             "musicien":["Vinko Globokar"," Gilles Millière","Glenn Miller","Michel Becquet "],
-            "img":["trombone1.png.jpg","trombone2.png.jpg","trombone3.png.jpg"],
+            "img":["trombone1.png","trombone2.png","trombonne3.png"],
             "fonctionnement":[
                 " Les lèvres mettent en vibration l’air dans la trompette. En changeant la position des lèvres, cela va produire un son différent. ",
                 "En actionnant les pistons et la coulisse, cela change la longueur de la trompette et donc le son."
@@ -127,13 +127,13 @@
             "gamme":""
         },
         {
-            "thumb":"",
+            "thumb":"guitar_thumbnail.png",
             "nom":"La guitare classique",
             "famille":"instruments à corde pincées",
             "Invention":" Au Xème siècle par les Maures",
             "cle":"sol, ou bien des tablatures qui sont une écriture propre à la guitare",
             "musicien":["Bob Dilan","Rodrigo y Gabriela","Cat Stevens"],
-            "img":["guitar1.png.jpg","guitar2.png.jpg","guitar3.png.jpg"],
+            "img":["guitar1.png","guitar2.png","guitar3.png"],
             "fonctionnement":[
                 "Le musicien fait vibrer les cordes avec ses doigts ou avec un médiator. La vibration est amplifiée par la caisse de résonance",
                 "Pour changer de note, on pince une corde sur une frette avec la main gauche."
@@ -141,13 +141,13 @@
             "gamme":""
         },
         {
-            "thumb":"",
+            "thumb":"cor_thumbnail.png",
             "nom":"Le cor d’harmonie",
             "famille":"Cuivres",
             "Invention":"Le cor d'harmonie est une évolution du cor de chasse auquel on a rajouté des cors de rechange au 18ème siècle et des pistons au 19ème siècle.",
             "cle":"Clef de sol",
             "musicien":[],
-            "img":["cor1.png.jpg","cor2.png.jpg","cor3.png.jpg"],
+            "img":["cor1.png","cor2.png","cor3.png"],
             "fonctionnement":[
                 " Le son part d’une vibration des lèvres du musicien, pour l’obtenir il faut souffler tout en “pinçant” les lèvres.",
                 "Le cor transforme ensuite cette vibration en un son. Il est possible de changer de note en appuyant sur les palettes ( qui sont l’équivalent des pistons pour une trompette )."
@@ -155,13 +155,13 @@
             "gamme":""
         },
         {
-            "thumb":"",
+            "thumb":"batterie_thumbnail.png",
             "nom":"la batterie",
             "famille":"Percussions",
             "Invention":"début XXème, avec le jazz",
             "cle":"clé spécifique à la batterie, où chaque composant est associé à une ligne",
             "musicien":["Joey Joerdison","Phil Collins ","Budy Rich"],
-            "img":["batterie1.png.jpg","batterie2.png.jpg","batterie3.png.jpg"],
+            "img":["batterie1.png","batterie2.png","batterie3.png"],
             "fonctionnement":[
                 "Le son est généralement produit en tapant, avec des diverses baguettes selon le résultat voulu",
                 "La composition d’une batterie peut beaucoup varier selon les musiciens et les styles de musique."
@@ -169,13 +169,13 @@
             "gamme":""
         },
         {
-            "thumb":"",
+            "thumb":"carillon_thumbnail.png",
             "nom":"Le carillon",
             "famille":"Percussions",
             "Invention":"Les carillons sont probablement originaires de Chine, il y a de nombreux siècles, mais ils sont maintenant des instruments de musique populaires au Japon.",
             "cle":"Clé spécifique aux percussions",
             "musicien":[],
-            "img":["carillon1.png.jpg","carillon2.png.jpg","carillon3.png.jpg"],
+            "img":["carillon1.png","carillon2.png","carillon3.png"],
             "fonctionnement":[
                 "Le son résulte du tintement des cloches/tubes. Il dépend du matériau utilisé pour leur fabrication. ",
                 "On trouve plus couramment des carillons constitués d’un ensemble de tubes "
@@ -183,13 +183,13 @@
             "gamme":""
         },
         {
-            "thumb":"",
+            "thumb":"timbale_thumbnail.png",
             "nom":"Les timbales",
             "famille":"Percussions",
             "Invention":"Les timbales existent depuis l’antiquité",
             "cle":"Clef de fa",
             "musicien":["Steven Mead","Brian Bowman","Ivan Milhiet"],
-            "img":["timbale1.png.jpg","timbale2.png.jpg","timbale3.png.jpg"],
+            "img":["timbale1.png","timbale2.png","timbale3.png"],
             "fonctionnement":[
                 "Le son s’obtient en tapant sur l’instrument à l’aide d’une mailloche.",
                 "Il dépend notamment de la tension de la membrane, laquelle est ajustable grâce à la pédales."

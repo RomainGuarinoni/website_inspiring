@@ -55,9 +55,7 @@ export default {
       this.$router.push({ name: node });
     },
     img(index) {
-      //return require(`@/assets/instruments/${this.list[index].img[2]}`);
-      console.log(index);
-      return require(`@/assets/piano.png`);
+      return require(`@/assets/instruments/${this.list[index].thumb}`);
     },
     checkLevel(index) {
       return this.$store.state.progression[this.year - 1].chapter.instruments

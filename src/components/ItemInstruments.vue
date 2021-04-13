@@ -78,9 +78,7 @@ export default {
       this.$router.go(-1);
     },
     img(index) {
-      console.log(index);
-      //return require(`@/assets/instruments/${this.info.img[index]}`);
-      return require("@/assets/piano.png");
+      return require(`@/assets/instruments/${this.info.img[index]}`);
     },
   },
   mounted: function() {
