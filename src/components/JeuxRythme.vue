@@ -160,12 +160,12 @@ export default {
       {
         name: "pause.svg",
         value: 6,
-        duration: 1,
+        duration: 4,
       },
       {
         name: "demiPause.svg",
         value: 7,
-        duration: 0.5,
+        duration: 2,
       },
       {
         name: "soupir.svg",
@@ -227,32 +227,113 @@ export default {
           {
             mp3: require("@/assets/level1_6.mp3"),
             result: [3, 3, 2],
-            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[6]],
           },
         ],
         [
           {
             mp3: require("@/assets/level2_1.mp3"),
             result: [3, 8, 3, 3],
-            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[6]],
           },
           {
             mp3: require("@/assets/level2_2.mp3"),
             result: [2, 3, 8],
-            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[6]],
           },
           {
             mp3: require("@/assets/level2_3.mp3"),
             result: [8, 3, 2],
-            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[6]],
           },
           {
             mp3: require("@/assets/level2_4.mp3"),
             result: [3, 8, 3, 8],
-            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[6]],
+          },
+          {
+            mp3: require("@/assets/level2_5.mp3"),
+            result: [7, 1],
+            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[6]],
+          },
+          {
+            mp3: require("@/assets/level2_6.mp3"),
+            result: [7, 3, 3],
+            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[6]],
+          },
+          {
+            mp3: require("@/assets/level2_7.mp3"),
+            result: [3, 7, 3],
+            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[6]],
+          },
+          {
+            mp3: require("@/assets/level2_8.mp3"),
+            result: [7, 2],
+            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[6]],
+          },
+          {
+            mp3: require("@/assets/level2_9.mp3"),
+            result: [3, 3, 3, 8],
+            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[6]],
+          },
+          {
+            mp3: require("@/assets/level2_10.mp3"),
+            result: [3, 3, 7],
+            note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[6]],
           },
         ],
-        [],
+        [
+          {
+            mp3: require("@/assets/level3_1.mp3"),
+            result: [5, 5, 5, 5, 3, 3],
+            note: [noteGlobal[4], noteGlobal[9], noteGlobal[2], noteGlobal[7]],
+          },
+          {
+            mp3: require("@/assets/level3_2.mp3"),
+            result: [5, 5, 8, 3, 3],
+            note: [noteGlobal[4], noteGlobal[9], noteGlobal[2], noteGlobal[7]],
+          },
+          {
+            mp3: require("@/assets/level3_3.mp3"),
+            result: [3, 3, 5, 5, 3],
+            note: [noteGlobal[4], noteGlobal[9], noteGlobal[2], noteGlobal[7]],
+          },
+          {
+            mp3: require("@/assets/level3_4.mp3"),
+            result: [10, 5, 3, 10, 5, 3],
+            note: [noteGlobal[4], noteGlobal[9], noteGlobal[2], noteGlobal[7]],
+          },
+          {
+            mp3: require("@/assets/level3_5.mp3"),
+            result: [8, 10, 5, 5, 5, 3],
+            note: [noteGlobal[4], noteGlobal[9], noteGlobal[2], noteGlobal[7]],
+          },
+          {
+            mp3: require("@/assets/level3_6.mp3"),
+            result: [8, 3, 8, 10, 5],
+            note: [noteGlobal[4], noteGlobal[9], noteGlobal[2], noteGlobal[7]],
+          },
+          {
+            mp3: require("@/assets/level3_7.mp3"),
+            result: [5, 5, 3, 3, 10, 5],
+            note: [noteGlobal[4], noteGlobal[9], noteGlobal[2], noteGlobal[7]],
+          },
+          {
+            mp3: require("@/assets/level3_8.mp3"),
+            result: [5, 5, 5, 5, 5, 5, 5, 5],
+            note: [noteGlobal[4], noteGlobal[9], noteGlobal[2], noteGlobal[7]],
+          },
+          {
+            mp3: require("@/assets/level3_9.mp3"),
+            result: [10, 5, 10, 5, 10, 5, 10, 5],
+            note: [noteGlobal[4], noteGlobal[9], noteGlobal[2], noteGlobal[7]],
+          },
+          {
+            mp3: require("@/assets/level3_10.mp3"),
+            result: [10, 5, 10, 5, 10, 5, 3],
+            note: [noteGlobal[4], noteGlobal[9], noteGlobal[2], noteGlobal[7]],
+          },
+        ],
       ],
     };
   },
@@ -285,6 +366,7 @@ export default {
         level: this.diff[this.levelIndex][random],
         index: this.levelIndex,
       };
+      console.log(random + 1);
     },
     playAudio() {
       if (this.show) {
@@ -561,7 +643,7 @@ export default {
               new part1.StaveNote({
                 clef: "treble",
                 keys: ["a/4"],
-                duration: "8dr",
+                duration: "8r",
               })
             );
             break;
