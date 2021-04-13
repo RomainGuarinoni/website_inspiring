@@ -7,7 +7,7 @@
         <font-awesome-icon id="chevron" :icon="['fas', 'chevron-left']" />
         <p>Retour</p>
       </div>
-      <div class="item solo" @click="goTo('CoursPartitionNote')">
+      <div class="item solo" @click="goTo('Note1')">
         <p class="orange">Cours</p>
       </div>
       <div class="item chap">

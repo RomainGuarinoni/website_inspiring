@@ -478,7 +478,7 @@ button {
   outline: none;
 }
 .create {
-  font-size: 15px;
+  font-size: 17px;
   width: auto;
   padding: 0 20px;
 }

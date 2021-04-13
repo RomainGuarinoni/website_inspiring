@@ -13,7 +13,7 @@
             <p class="purple">Les nuances</p>
           </div>
           <div class="chapter ">
-            <p class="orange" @click="cours()">Cours</p>
+            <p class="orange" @click="cours('Nuance1')">Cours</p>
             <p class="orange" @click="play(0)">Entraînement</p>
             <p class="orange">Quiz</p>
           </div>
@@ -23,7 +23,7 @@
             <p class="purple">Structure d'une portée</p>
           </div>
           <div class="chapter ">
-            <p class="orange">Cours</p>
+            <p class="orange" @click="cours('structure1')">Cours</p>
             <p class="orange" @click="play(1)">Entraînement</p>
             <p class="orange">Quiz</p>
           </div>
@@ -56,8 +56,8 @@ export default {
     retour() {
       this.$router.push({ name: "year", params: { annee: this.year } });
     },
-    cours() {
-      this.$router.push({ name: "Nuance1" });
+    cours(cours) {
+      this.$router.push({ name: cours });
     },
     play(index) {
       this.$router.push({

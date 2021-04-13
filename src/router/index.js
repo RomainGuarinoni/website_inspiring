@@ -44,7 +44,26 @@ import coursInstrumentsVent from "../components/cours-instruments-vent";
 import coursInstrumentsPercussion from "../components/Cours-instruments-percussion";
 import coursPartitionRythme from "../components/coursPartitionRythme";
 import PartitionQuiz from "../components/PartitionQuiz";
-
+import CoursStructure from "../components/CoursStructure";
+import Structure1 from "../components/Structure1";
+import Structure2 from "../components/Structure2";
+import Structure3 from "../components/Structure3";
+import Structure4 from "../components/Structure4";
+import Structure5 from "../components/Structure5";
+import Structure7 from "../components/Structure7";
+import Structure8 from "../components/Structure8";
+import Structure9 from "../components/Structure9";
+import Structure10 from "../components/Structure10";
+import Structure11 from "../components/Structure11";
+import Structure12 from "../components/Structure12";
+import Structure13 from "../components/Structure13";
+import Structure14 from "../components/Structure14";
+import Structure15 from "../components/Structure15";
+import Structure16 from "../components/Structure16";
+import Structure17 from "../components/Structure17";
+import Structure18 from "../components/Structure18";
+import Structure19 from "../components/Structure19";
+import Structure6 from "../components/Structure6";
 Vue.use(VueRouter);
 
 const routes = [
@@ -112,12 +131,11 @@ const routes = [
   },
   {
     path: "/annee-:year/cours-les-nuances",
-    name: "CoursPartitionNuance",
     component: CoursPartitionNuance,
     props: true,
     children: [
       {
-        path: "",
+        path: "page-1",
         name: "Nuance1",
         component: Nuance1,
       },
@@ -155,12 +173,11 @@ const routes = [
   },
   {
     path: "/annee-:year/cours-les-notes",
-    name: "CoursPartitionNote",
     component: CoursPartitionNote,
     props: true,
     children: [
       {
-        path: "",
+        path: "page-1",
         name: "Note1",
         component: Note1,
       },
@@ -213,7 +230,7 @@ const routes = [
     props: true,
     children: [
       {
-        path: "/",
+        path: "page-2",
         name: "Rythme1",
         component: Rythme1,
       },
@@ -256,6 +273,108 @@ const routes = [
         path: "page-9",
         name: "rythme9",
         component: Rythme9,
+      },
+    ],
+  },
+  {
+    path: "/annee-:year/structure-d-une-partition",
+    component: CoursStructure,
+    props: true,
+    children: [
+      {
+        path: "page-1",
+        component: Structure1,
+        name: "structure1",
+      },
+      {
+        path: "page-2",
+        component: Structure2,
+        name: "structure2",
+      },
+      {
+        path: "page-3",
+        component: Structure3,
+        name: "structure3",
+      },
+      {
+        path: "page-4",
+        component: Structure4,
+        name: "structure4",
+      },
+      {
+        path: "page-5",
+        component: Structure5,
+        name: "structure5",
+      },
+      {
+        path: "page-6",
+        component: Structure6,
+        name: "structure6",
+      },
+      {
+        path: "page-7",
+        component: Structure7,
+        name: "structure7",
+      },
+      {
+        path: "page-8",
+        component: Structure8,
+        name: "structure8",
+      },
+      {
+        path: "page-9",
+        component: Structure9,
+        name: "structure9",
+      },
+      {
+        path: "page-10",
+        component: Structure10,
+        name: "structure10",
+      },
+      {
+        path: "page-11",
+        component: Structure11,
+        name: "structure11",
+      },
+      {
+        path: "page-12",
+        component: Structure12,
+        name: "structure12",
+      },
+      {
+        path: "page-13",
+        component: Structure13,
+        name: "structure13",
+      },
+      {
+        path: "page-14",
+        component: Structure14,
+        name: "structure14",
+      },
+      {
+        path: "page-15",
+        component: Structure15,
+        name: "structure15",
+      },
+      {
+        path: "page-16",
+        component: Structure16,
+        name: "structure16",
+      },
+      {
+        path: "page-17",
+        component: Structure17,
+        name: "structure17",
+      },
+      {
+        path: "page-18",
+        component: Structure18,
+        name: "structure18",
+      },
+      {
+        path: "page-19",
+        component: Structure19,
+        name: "structure19",
       },
     ],
   },
