@@ -83,19 +83,19 @@ const routes = [
     props: true,
   },
   {
-    path: "/anne-:year/ameliore-ton-rythme",
+    path: "/annee-:year/ameliore-ton-rythme",
     component: Rythme,
     name: "rythme",
     props: true,
   },
   {
-    path: "/anne-:year/ecoute-les-instruments",
+    path: "/annee-:year/ecoute-les-instruments",
     component: Instruments,
     name: "instruments",
     props: true,
   },
   {
-    path: "/anne-:year/ecoute-les-instruments/description",
+    path: "/annee-:year/ecoute-les-instruments/description",
     component: ItemInstruments,
     name: "ItemInstruments",
     props: true,
@@ -111,7 +111,7 @@ const routes = [
     component: travaux,
   },
   {
-    path: "/anne-:year/cours-les-nuances",
+    path: "/annee-:year/cours-les-nuances",
     name: "CoursPartitionNuance",
     component: CoursPartitionNuance,
     props: true,
@@ -154,7 +154,7 @@ const routes = [
     ],
   },
   {
-    path: "/anne-:year/cours-les-notes",
+    path: "/annee-:year/cours-les-notes",
     name: "CoursPartitionNote",
     component: CoursPartitionNote,
     props: true,
@@ -207,7 +207,7 @@ const routes = [
     ],
   },
   {
-    path: "/anne-:year/cours-le-rythme",
+    path: "/annee-:year/cours-le-rythme",
     name: "CoursPartitionRythme",
     component: coursPartitionRythme,
     props: true,

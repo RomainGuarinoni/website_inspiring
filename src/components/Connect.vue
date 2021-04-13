@@ -35,7 +35,7 @@
               <p>identifiant ou mdp erroné</p>
             </div>
             <p>
-              Tu n'as pas encore des compte ? créez en toi un :
+              Tu n'as pas encore de compte ?
               <button
                 @click="
                   createAccount = true;
