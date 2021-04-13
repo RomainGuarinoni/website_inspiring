@@ -11,7 +11,7 @@
         /></router-link>
         <h1 class="font gros">Inspiring Music Theory</h1>
         <div class="boutons">
-          <button>Mon profil</button>
+          <button @click="pushTo('travaux')">Mon profil</button>
           <button class="disconnect" @click="disconnect()">
             Se déconnecter
           </button>
