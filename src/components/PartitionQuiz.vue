@@ -88,6 +88,14 @@ export default {
     year: {
       type: undefined,
     },
+    quiz: {
+      type: Boolean,
+      default: false,
+    },
+    lengthQuiz: {
+      type: Number,
+      default: 10,
+    },
   },
   components: {
     Navbar,
@@ -96,7 +104,7 @@ export default {
     return {
       indexEnCours: 0,
       score: 0,
-      length: 10, // le nombre de questions pour le quizz, peut être changer
+      length: this.lengthQuiz, // le nombre de questions pour le quizz, peut être changer
       questionSorted: Array,
       reponse: true,
     };
@@ -128,7 +136,11 @@ export default {
         this.score++;
         this.indexEnCours++;
       } else {
-        this.reponse = false;
+        if (this.quiz) {
+          this.indexEnCours++;
+        } else {
+          this.reponse = false;
+        }
       }
     },
     questionSuivante() {

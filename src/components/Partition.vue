@@ -28,7 +28,7 @@
             <p class="orange">Quiz</p>
           </div>
         </div>
-        <div class="item third">
+        <div class="item third" @click="playQuiz()">
           <p class="red">Quiz final</p>
         </div>
         <div class="item fourth">
@@ -64,6 +64,18 @@ export default {
         name: "partitionQuiz",
         params: {
           question: this.question[index],
+        },
+      });
+    },
+    playQuiz() {
+      let question = this.question[0].concat(this.question[1]);
+      console.log(question);
+      this.$router.push({
+        name: "partitionQuiz",
+        params: {
+          question: question,
+          quiz: true,
+          lengthQuiz: 20,
         },
       });
     },
