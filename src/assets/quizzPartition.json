@@ -3,6 +3,160 @@
     "quiz":[
         [
             {
+                "question":"Les nuances traduisent :",
+                "image_question":null,
+                "son_question":null,
+                "reponse":["l’intensité de la musique (si elle est plus ou moins forte)","la hauteur des notes (si elles sont plus ou moins aiguës)","le tempo du morceau (si il est plus ou moins rapide)"],
+                "image_reponse":["","",""],
+                "index":0
+            },
+            {
+                "question":"Parmi les propositions suivantes, laquelle correspond à des nuances ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["sol","piano","44"],
+                "index":1
+            },
+            {
+                "question":"Parmi les propositions suivantes, laquelle correspond à des nuances ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["crescendo","24","fa"],
+                "index":0
+            },
+            {
+                "question":"Parmi les propositions suivantes, laquelle correspond à des nuances ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["sol","44","decrescendo"],
+                "index":2
+            },
+            {
+                "question":"Parmi les propositions suivantes, laquelle correspond à des nuances ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["mf","fa","34"],
+                "index":0
+            },
+            {
+                "question":"Parmi les propositions suivantes, laquelle correspond à des nuances ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["sol","C","forte"],
+                "index":2
+            },
+            {
+                "question":"Que signifie la nuance  \"piano\" : p ?",
+                "image_question":"piano",
+                "son_question":null,
+                "reponse":["doux","très doux","moyennement fort"],
+                "image_reponse":["","",""],
+                "index":0
+            },
+            {
+                "question":"Que signifie la nuance “mezzo forte” : mf ?",
+                "image_question":"mf",
+                "son_question":null,
+                "reponse":["de plus en plus fort","moyennement fort","moyennement faible"],
+                "image_reponse":["","",""],
+                "index":1
+            },
+            {
+                "question":"Que signifie la nuance “forte” : f ?",
+                "image_question":"forte",
+                "son_question":null,
+                "reponse":["faible","très fort","fort"],
+                "image_reponse":["","",""],
+                "index":2
+            },
+            {
+                "question":"Que signifie la nuance “crescendo” : < ?",
+                "image_question":"crescendo",
+                "son_question":null,
+                "reponse":["null"],
+                "image_reponse":["","",""],
+                "index":1
+            },
+            {
+                "question":"Que signifie la nuance \"decrescendo\" : > ?",
+                "image_question":"decrescendo",
+                "son_question":null,
+                "reponse":["de plus en plus fort","soudainement doux","de moins en moins fort"],
+                "image_reponse":["","",""],
+                "index":2
+            },
+            {
+                "question":" A quelle catégorie appartient la nuance “piano” : p ?",
+                "image_question":"piano",
+                "son_question":null,
+                "reponse":["aux nuances de forte intensité","aux nuances de moyenne intensité","aux nuances de faible intensité"],
+                "image_reponse":["","",""],
+                "index":2
+            },
+            {
+                "question":"A quelle catégorie appartient la nuance “mezzo forte” : mf ?",
+                "image_question":"mf",
+                "son_question":null,
+                "reponse":["aux nuances de forte intensité","aux nuances de faible intensité","aux nuances de moyenne intensité"],
+                "image_reponse":["","",""],
+                "index":2
+            },
+            {
+                "question":"A quelle catégorie appartient la nuance “forte” : f ?",
+                "image_question":"forte",
+                "son_question":null,
+                "reponse":["aux nuances de faible intensité","aux nuances de forte intensité","aux nuances de moyenne intensité"],
+                "image_reponse":["","",""],
+                "index":1
+            },
+            {
+                "question":"Comment s’écrit la nuance \"piano\" (doux) ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["piano","forte","mf"],
+                "index":0
+            },
+            {
+                "question":"Comment s’écrit la nuance “mezzo forte”  (moyennement fort) ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["decrescendo","forte","mf"],
+                "index":2
+            },
+            {
+                "question":"Comment s’écrit la nuance “forte” (fort) ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["mf","forte","crescendo"],
+                "index":1
+            },
+            {
+                "question":"Comment s’écrit la nuance “crescendo” ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["crescendo","mf","decrescendo"],
+                "index":0
+            },
+            {
+                "question":"Comment s’écrit la nuance \"decrescendo\"  ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["crescendo","mf","decrescendo"],
+                "index":2
+            }
+        ],
+        [
+            {
                 "question":"Combien de lignes possèdent une portée ?",
                 "image_question":null,
                 "son_question":null,
@@ -254,9 +408,7 @@
 
         
             
-        ],
-        [
-
         ]
+        
     ]
 }

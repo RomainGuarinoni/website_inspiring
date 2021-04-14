@@ -62,7 +62,7 @@
         </div>
       </div>
       <div class="result" v-else>
-        <h2 v-if="score > length - 1" class="green">
+        <h2 v-if="score >= length - 3" class="green">
           Bravo, tu as bien réussi !
         </h2>
         <h2 class="orange" v-else>Dommage, tu peux faire mieux !!</h2>
@@ -123,13 +123,11 @@ export default {
       console.log(this.question);
     },
     checkAnswer(index) {
-      console.log("oui");
       if (this.question[this.indexEnCours].index == index) {
         this.reponse = true;
         this.score++;
         this.indexEnCours++;
       } else {
-        console.log("mauvaise réponse");
         this.reponse = false;
       }
     },
@@ -143,7 +141,6 @@ export default {
       this.indexEnCours = 0;
     },
     src(index) {
-      console.log("wtf");
       return require(`@/assets/quizPartition/${
         this.question[this.indexEnCours].image_reponse[index]
       }.png`);
