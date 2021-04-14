@@ -51,7 +51,7 @@ export default {
     );
 
     // Modification de paramètres
-    monRenderer.resize(1110, 200); //attention de ne pas mettre trop fin
+    monRenderer.resize(1210, 210); //attention de ne pas mettre trop fin
     const monContexte = monRenderer.getContext();
     monContexte.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
@@ -59,7 +59,7 @@ export default {
     /////Mesure n°1////
     //////////////////
 
-    var Mesure_1 = new Vex.Flow.Stave(10, 0, 310);
+    var Mesure_1 = new Vex.Flow.Stave(10, 0, 330);
     Mesure_1.addClef("treble")
       .addTimeSignature("4/4")
       .setContext(monContexte)
@@ -109,7 +109,7 @@ export default {
     /////Mesure n°2////
     ///////////////////
 
-    var Mesure_2 = new Vex.Flow.Stave(320, 0, 220); //attention à bien modifier la première valeur
+    var Mesure_2 = new Vex.Flow.Stave(340, 0, 220); //attention à bien modifier la première valeur
 
     //On l'ajoute au contexte et on la dessine
 
@@ -161,7 +161,7 @@ export default {
     /////Mesure n°3////
     //////////////////
 
-    var Mesure_3 = new Vex.Flow.Stave(540, 0, 270); //attention à bien modifier la première valeur
+    var Mesure_3 = new Vex.Flow.Stave(560, 0, 270); //attention à bien modifier la première valeur
 
     //On l'ajoute au contexte et on la dessine
 
@@ -215,7 +215,7 @@ export default {
     /////Mesure n°4////
     //////////////////
 
-    var Mesure_4 = new Vex.Flow.Stave(810, 0, 180); //attention à bien modifier la première valeur
+    var Mesure_4 = new Vex.Flow.Stave(830, 0, 180); //attention à bien modifier la première valeur
 
     //On l'ajoute au contexte et on la dessine
 
@@ -260,7 +260,7 @@ export default {
     /////Mesure n°5////
     //////////////////
 
-    var Mesure_5 = new Vex.Flow.Stave(990, 0, 120); //attention à bien modifier la première valeur
+    var Mesure_5 = new Vex.Flow.Stave(1010, 0, 120); //attention à bien modifier la première valeur
 
     //Barre de fin
     Mesure_5.mode = Vex.Flow.Voice.Mode.FULL;

@@ -6,12 +6,18 @@
         <font-awesome-icon id="chevron" :icon="['fas', 'chevron-left']" />
         <p>Retour</p>
       </div>
-      <div class="quizBox" v-if="indexEnCours < length">
+      <div class="quizBox" v-if="indexEnCours < length && reponse">
         <div class="avancement">
           <p>Q : {{ indexEnCours + 1 }} / {{ length }}</p>
         </div>
         <h2 class="red">Question : {{ question[indexEnCours].question }}</h2>
-        <div class="reponses" v-if="text(indexEnCours)">
+        <p v-if="question[indexEnCours].image_question != null">
+          <img :src="srcQuestion()" alt="" />
+        </p>
+        <p v-if="question[indexEnCours].audio_question != null">
+          <audio :src="audioQuestion()"></audio>
+        </p>
+        <div class="reponses" v-if="question[indexEnCours].reponse != null">
           <div
             class="main reponseItem"
             v-for="(item, index) in question[indexEnCours].reponse"
@@ -30,6 +36,25 @@
           >
             <img :src="src(index)" alt="img" />
           </div>
+        </div>
+      </div>
+      <div v-else-if="!reponse" class="quizBox falseAnswer">
+        <h1 class="red">Dommage, tu as répondu la mauvaise réponse</h1>
+        <div class="reponseBox">
+          <p class="falseReponseP">Voici la bonne réponse :</p>
+          <div class="reponse">
+            <p>{{ question[indexEnCours].question }}</p>
+            <p v-if="question[indexEnCours].reponse != null">
+              {{ question[indexEnCours].reponse[question[indexEnCours].index] }}
+            </p>
+            <p v-else>
+              <img :src="src(question[indexEnCours].index)" alt="" />
+            </p>
+          </div>
+        </div>
+        <div class="buttonNext" @click="questionSuivante()">
+          <p v-if="indexEnCours < length - 1">Question suivante</p>
+          <p v-else>finir le test</p>
         </div>
       </div>
       <div class="result" v-else>
@@ -67,8 +92,9 @@ export default {
     return {
       indexEnCours: 0,
       score: 0,
-      length: 5, // le nombre de questions pour le quizz, peut être changer
+      length: 2, // le nombre de questions pour le quizz, peut être changer
       questionSorted: Array,
+      reponse: true,
     };
   },
   watch: {
@@ -93,19 +119,17 @@ export default {
     },
     checkAnswer(index) {
       if (this.question[this.indexEnCours].index == index) {
-        this.indexEnCours++;
+        this.reponse = true;
         this.score++;
-        console.log("good");
-      } else {
         this.indexEnCours++;
+      } else {
+        console.log("mauvaise réponse");
+        this.reponse = false;
       }
     },
-    text(index) {
-      if ("reponse" in this.question[index]) {
-        return true;
-      } else {
-        return false;
-      }
+    questionSuivante() {
+      this.indexEnCours++;
+      this.reponse = true;
     },
     again() {
       this.shuffleQuestion;
@@ -113,7 +137,20 @@ export default {
       this.indexEnCours = 0;
     },
     src(index) {
-      return require(`@/assets/${this.question[this.indexEnCours].img[index]}`);
+      console.log("wtf");
+      return require(`@/assets/quizPartition/${
+        this.question[this.indexEnCours].img[index]
+      }`);
+    },
+    srcQuestion() {
+      return require(`@/assets/quizPartition/${
+        this.question[this.indexEnCours].image_question
+      }`);
+    },
+    audioQuestion() {
+      return require(`@/assets/quizPartition/${
+        this.question[this.indexEnCours].son_question
+      }`);
     },
   },
   mounted: function() {
@@ -156,7 +193,7 @@ export default {
 .result {
   margin: auto;
   width: 70%;
-  height: 75%;
+  height: 80%;
   background: rgba(219, 218, 218, 0.644);
   border: none;
   border-radius: 20px;
@@ -180,7 +217,8 @@ export default {
   justify-content: space-around;
   align-items: center;
 }
-.button {
+.button,
+.buttonNext {
   min-width: 180px;
   color: white;
   height: 50px;
@@ -192,7 +230,11 @@ export default {
   transition: all ease 200ms;
   cursor: pointer;
 }
-.button:hover {
+.buttonNext {
+  background: var(--blue);
+}
+.button:hover,
+.buttonNext:hover {
   transform: translateY(-5px);
 }
 .button:nth-child(1) {
@@ -268,5 +310,25 @@ h2 {
 }
 .retour:hover {
   box-shadow: 2px 2px 10px #06446b5e;
+}
+.falseAnswer {
+  justify-content: center;
+}
+.reponseBox {
+  margin: 150px 0;
+}
+.falseReponseP {
+  font-size: 30px;
+  color: var(--green);
+  margin-bottom: 30px;
+}
+.reponse {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.reponse p {
+  margin: 0 10px;
 }
 </style>
