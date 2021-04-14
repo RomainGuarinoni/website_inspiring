@@ -12,7 +12,7 @@
         </div>
         <h2 class="red">Question : {{ question[indexEnCours].question }}</h2>
         <p v-if="question[indexEnCours].image_question != null">
-          <img :src="srcQuestion()" alt="" />
+          <img class="imageQuestion" :src="srcQuestion()" alt="" />
         </p>
         <p v-if="question[indexEnCours].audio_question != null">
           <audio :src="audioQuestion()"></audio>
@@ -30,7 +30,7 @@
         <div class="reponsesImg" v-else>
           <div
             class=" img"
-            v-for="(item, index) in question[indexEnCours].img"
+            v-for="(item, index) in question[indexEnCours].image_reponse"
             :key="index"
             @click="checkAnswer(index)"
           >
@@ -48,7 +48,11 @@
               {{ question[indexEnCours].reponse[question[indexEnCours].index] }}
             </p>
             <p v-else>
-              <img :src="src(question[indexEnCours].index)" alt="" />
+              <img
+                class="solutionImg"
+                :src="src(question[indexEnCours].index)"
+                alt=""
+              />
             </p>
           </div>
         </div>
@@ -92,7 +96,7 @@ export default {
     return {
       indexEnCours: 0,
       score: 0,
-      length: 2, // le nombre de questions pour le quizz, peut être changer
+      length: 10, // le nombre de questions pour le quizz, peut être changer
       questionSorted: Array,
       reponse: true,
     };
@@ -116,8 +120,10 @@ export default {
         question[random] = value;
         question[i] = temp;
       }
+      console.log(this.question);
     },
     checkAnswer(index) {
+      console.log("oui");
       if (this.question[this.indexEnCours].index == index) {
         this.reponse = true;
         this.score++;
@@ -139,13 +145,13 @@ export default {
     src(index) {
       console.log("wtf");
       return require(`@/assets/quizPartition/${
-        this.question[this.indexEnCours].img[index]
-      }`);
+        this.question[this.indexEnCours].image_reponse[index]
+      }.png`);
     },
     srcQuestion() {
       return require(`@/assets/quizPartition/${
         this.question[this.indexEnCours].image_question
-      }`);
+      }.png`);
     },
     audioQuestion() {
       return require(`@/assets/quizPartition/${
@@ -153,7 +159,7 @@ export default {
       }`);
     },
   },
-  mounted: function() {
+  created: function() {
     this.shuffleQuestion(this.question);
   },
 };
@@ -181,8 +187,10 @@ export default {
   justify-content: space-around;
   align-items: center;
 }
-.img img {
-  width: 100px;
+.img img,
+.solutionImg {
+  min-height: 120px;
+  max-width: 300px;
   transition: all ease 200ms;
   cursor: pointer;
 }
@@ -330,5 +338,8 @@ h2 {
 }
 .reponse p {
   margin: 0 10px;
+}
+.imageQuestion {
+  max-height: 200px;
 }
 </style>

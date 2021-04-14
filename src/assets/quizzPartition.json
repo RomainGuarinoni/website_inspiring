@@ -3,21 +3,257 @@
     "quiz":[
         [
             {
-                "question":"bonjour thomas ?",
-                "image_question":"chiffrage/Q1/44.png",
+                "question":"Combien de lignes possèdent une portée ?",
+                "image_question":null,
                 "son_question":null,
-                "reponse":["oui","non","oui"],
+                "reponse":null,
+                "image_reponse":["portee/Q1/Q1R1","portee/Q1/Q1R2","portee/Q1/Q1R3"],
+                "index":1
+            },
+            {
+                "question":"Combien d’interlignes possèdent une portée ?",
+                "image_question":"portee/Q1/Q1R2",
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["portee/Q2/Q2R1","portee/Q2/Q2R2","portee/Q2/Q2R3"],
+                "index":2
+            },
+            {
+                "question":"Quelle est la bonne numérotation des lignes d’une portée ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["portee/Q3/Q3R1","portee/Q3/Q3R2","portee/Q3/Q3R3"],
+                "index":0
+            },
+            {
+                "question":"Quelle est la bonne numérotation des interlignes suivantes ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["portee/Q4/Q4R1","portee/Q4/Q4R2","portee/Q4/Q4R3"],
+                "index":2
+            },
+            {
+                "question":"Quelle est la bonne représentation d’un système ? ",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["systeme/Q1/Q1R1","systeme/Q1/Q1R2","systeme/Q1/Q1R3"],
+                "index":1
+            },
+            {
+                "question":"Quel est le nom de cette clé ?",
+                "image_question":"cle/Q1/Q1R1",
+                "son_question":null,
+                "reponse":["la clé de fa","la clé de sol","la clé d’ut"],
+                "image_reponse":[],
+                "index":0
+            },
+            {
+                "question":"Quel est le nom de cette clé ?",
+                "image_question":"cle/Q2/Q2R1",
+                "son_question":null,
+                "reponse":["la clé de fa","la clé de sol","la clé d’ut"],
                 "image_reponse":[],
                 "index":1
             },
             {
-                "question":"bonjour thomas ?",
-                "image_question":"chiffrage/Q1/44.png",
+                "question":"A quel dessin correspond la clé de fa ?",
+                "image_question":null,
                 "son_question":null,
-                "reponse":["oui","non","oui"],
-                "image_reponse":[],
+                "reponse":null,
+                "image_reponse":["cle/Q3/Q3R1","cle/Q3/Q3R2","cle/Q3/Q3R3"],
+                "index":0
+            },
+            {
+                "question":"A quel dessin correspond la clé de sol ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["cle/Q3/Q3R1","cle/Q3/Q3R2","cle/Q3/Q3R3"],
                 "index":1
+            },
+            {
+                "question":"Sur une portée,  l’espace entre deux barres de mesure s’appelle :",
+                "image_question":"mesure/Q1/Q1",
+                "son_question":null,
+                "reponse":["une interligne","une mesure","un vide "],
+                "image_reponse":null,
+                "index":1
+            },
+            {
+                "question":"De combien de mesures est constituée la portée ci-contre ?",
+                "image_question":"mesure/Q2/Q2",
+                "son_question":null,
+                "reponse":["1","2","3"],
+                "image_reponse":null,
+                "index":0
+            },
+            {
+                "question":"De combien de mesures est constituée la portée ci-contre ?",
+                "image_question":"mesure/Q3/Q3",
+                "son_question":null,
+                "reponse":["1","2","3"],
+                "image_reponse":null,
+                "index":2
+            },
+            {
+                "question":"De combien de mesures est constituée la portée ci-contre ?",
+                "image_question":"mesure/Q4/Q4",
+                "son_question":null,
+                "reponse":["1","2","3"],
+                "image_reponse":null,
+                "index":1
+            },
+            {
+                "question":"Comment s’appellent les barres qui séparent deux mesures ?",
+                "image_question":"mesure/Q5/Q5",
+                "son_question":null,
+                "reponse":["des barres de mesures","des barres de fin","des doubles barres"],
+                "image_reponse":null,
+                "index":0
+            },
+            {
+                "question":"Parmi les propositions, laquelle est une barre de mesure ?",
+                "image_question":"mesure/Q6/Q6",
+                "son_question":null,
+                "reponse":["deux bâtons noirs : un fin et un épais, qui marquent la fin d’un morceau","un baton noir, fin, qui séparent deux mesures","une ligne noire horizontale d’une portée"],
+                "image_reponse":null,
+                "index":1
+            },
+            {
+                "question":" Parmi les propositions, laquelle est une barre de fin ?",
+                "image_question":"mesure/Q6/Q6",
+                "son_question":null,
+                "reponse":["deux bâtons noirs : un fin et un épais, qui marquent la fin d’un morceau","un baton noir, fin, qui séparent deux mesures","une ligne noire horizontale d’une portée"],
+                "image_reponse":null,
+                "index":0
+            },
+            {
+                "question":"Parmi les propositions suivantes, laquelle représente un chiffrage de mesure ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["chiffrage/Q1/44","chiffrage/Q1/piano","chiffrage/Q1/sol"],
+                "index":0
+            },
+            {
+                "question":"Parmi les propositions suivantes, laquelle est un chiffrage de mesure ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["chiffrage/Q2/34","chiffrage/Q2/crescendo","chiffrage/Q2/fa"],
+                "index":0
+            },
+            {
+                "question":"Parmi les propositions suivantes, laquelle est un chiffrage de mesure ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["chiffrage/Q3/sol","chiffrage/Q3/piano","chiffrage/Q3/24"],
+                "index":2
+            },
+            {
+                "question":" Parmi les propositions suivantes, laquelle est un chiffrage de mesure ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["chiffrage/Q4/C","chiffrage/Q4/mf","chiffrage/Q4/sol"],
+                "index":0
+            },
+            {
+                "question":" Sur ce chiffrage de mesure , le chiffre du haut est 2. Cela veut dire que : ",
+                "image_question":"chiffrage/Q5/24.png",
+                "son_question":null,
+                "reponse":["Il va y avoir l'équivalent de  3 noires par mesure","Il va y avoir l'équivalent de  2 noires par mesure","Il va y avoir l'équivalent de  4 noires par mesure"],
+                "image_reponse":null,
+                "index":1
+            },
+            {
+                "question":"Sur ce chiffrage de mesure,  le chiffre du haut est 3. Cela veut dire que : ",
+                "image_question":"chiffrage/Q6/34",
+                "son_question":null,
+                "reponse":["Il va y avoir l'équivalent de  4 noires par mesure","Il va y avoir l'équivalent de  2 noires par mesure","Il va y avoir l'équivalent de  3 noires par mesure"],
+                "image_reponse":null,
+                "index":2
+            },
+            {
+                "question":"Sur ce chiffrage de mesure, le chiffre du haut est 4. Cela veut dire que : ",
+                "image_question":"chiffrage/Q7/44",
+                "son_question":null,
+                "reponse":["Il va y avoir l'équivalent de  4 noires par mesure","Il va y avoir l'équivalent de  2 noires par mesure","Il va y avoir l'équivalent de  3 noires par mesure"],
+                "image_reponse":null,
+                "index":0
+            },
+            {
+                "question":"Sur ce chiffrage de mesure, le chiffre du haut est 2. Cela veut dire que :",
+                "image_question":"chiffrage/Q8/24",
+                "son_question":null,
+                "reponse":["chaque mesure est constituée de 3 temps","chaque mesure est constituée de 2 temps","chaque mesure est constituée de 4 temps"],
+                "image_reponse":null,
+                "index":1
+            },
+            {
+                "question":"Sur ce chiffrage de mesure, le chiffre du haut est 3. Cela veut dire que : ",
+                "image_question":"chiffrage/Q9/34",
+                "son_question":null,
+                "reponse":["chaque mesure est constituée de 2 temps","chaque mesure est constituée de 4 temps","chaque mesure est constituée de 3 temps"],
+                "image_reponse":null,
+                "index":2
+            },
+            {
+                "question":"Sur ce chiffrage de mesure , le chiffre du haut est 4. Cela veut dire que :",
+                "image_question":"chiffrage/Q10/44",
+                "son_question":null,
+                "reponse":["chaque mesure est constituée de 2 temps","chaque mesure est constituée de 4 temps","chaque mesure est constituée de 3 temps"],
+                "image_reponse":null,
+                "index":1
+            },
+            {
+                "question":"Sur ce chiffrage de mesure, le chiffre du haut est 2. Cela veut dire que :",
+                "image_question":"chiffrage/Q11/24",
+                "son_question":null,
+                "reponse":["chaque mesure est constituée de 2 pulsations","chaque mesure est constituée de 3 pulsations","chaque mesure est constituée de 4 pulsations"],
+                "image_reponse":null,
+                "index":0
+            },
+            {
+                "question":"Sur ce chiffrage de mesure, le chiffre du haut est 3. Cela veut dire que :",
+                "image_question":"chiffrage/Q12/34",
+                "son_question":null,
+                "reponse":["chaque mesure est constituée de 4 pulsations","chaque mesure est constituée de 2 pulsations","chaque mesure est constituée de 3 pulsations"],
+                "image_reponse":null,
+                "index":2
+            },
+            {
+                "question":"La notation ‘C’ veut dire la même chose que :",
+                "image_question":"chiffrage/Q14/C",
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["chiffrage/Q14/24","chiffrage/Q14/34","chiffrage/Q14/44"],
+                "index":2
+            },
+            {
+                "question":"Sur ce chiffrage de mesure, ‘C’  veut dire que : ",
+                "image_question":"chiffrage/Q15/C",
+                "son_question":null,
+                "reponse":["Il va y avoir l'équivalent de  4 noires par mesure","Il va y avoir l'équivalent de  2 noires par mesure","Il va y avoir l'équivalent de  3 noires par mesure"],
+                "image_reponse":null,
+                "index":0
+            },
+            {
+                "question":"Où s’écrivent les nuances ?",
+                "image_question":null,
+                "son_question":null,
+                "reponse":null,
+                "image_reponse":["nuance/porteebonne","nuance/porteemauvaise","porteemauvaise2.png"],
+                "index":0
             }
+
+
+        
+            
         ],
         [
 
