@@ -55,6 +55,10 @@
             </div>
           </div>
         </div>
+        <div class="item fourth">
+          <p class="blue">Fiche de révisions</p>
+          <!--@click="ficheDeRevision()"-->
+        </div>
         <div class="item third" @click="playQuizFinal()">
           <div class="checkStatus green" v-if="quizFinal">
             <font-awesome-icon :icon="['fas', 'check-circle']" />
@@ -69,9 +73,6 @@
           <p v-if="!quizAvailable()" class="red infoquiz">
             Validez tous les entraînements pour pouvoir passer le quizz
           </p>
-        </div>
-        <div class="item fourth">
-          <p class="blue">Fiche de révisions</p>
         </div>
       </div>
     </div>
@@ -100,6 +101,9 @@ export default {
   methods: {
     retour() {
       this.$router.push({ name: "year", params: { annee: this.year } });
+    },
+    ficheDeRevision() {
+      this.router.push({ name: "Partition-revision" });
     },
     quizAvailable() {
       return (

@@ -64,6 +64,7 @@ import Structure17 from "../components/Structure17";
 import Structure18 from "../components/Structure18";
 import Structure19 from "../components/Structure19";
 import Structure6 from "../components/Structure6";
+import PartitionRevision from "../components/PartitionRevision";
 Vue.use(VueRouter);
 
 const routes = [
@@ -93,6 +94,12 @@ const routes = [
     path: "/annee-:year/lire-une-partition/quiz",
     component: PartitionQuiz,
     name: "partitionQuiz",
+    props: true,
+  },
+  {
+    path: "/yolo",
+    component: PartitionRevision,
+    name: "Partition-revision",
     props: true,
   },
   {
