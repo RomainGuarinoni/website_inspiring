@@ -13,9 +13,21 @@
             <p class="purple">Les nuances</p>
           </div>
           <div class="chapter ">
-            <p class="orange" @click="cours('Nuance1')">Cours</p>
-            <p class="orange" @click="play(0)">Entraînement</p>
-            <p class="orange" @click="playQuiz(0)">Quiz</p>
+            <div class="chapterItem">
+              <p class="orange" @click="cours('Nuance1')">Cours</p>
+            </div>
+            <div class="chapterItem">
+              <div class="checkStatusSpec green" v-if="entrainement('nuance')">
+                <font-awesome-icon :icon="['fas', 'check-circle']" />
+              </div>
+              <p class="orange" @click="play(0)">Entraînement</p>
+            </div>
+            <div class="chapterItem">
+              <div class="checkStatusSpec green" v-if="quiz('nuance')">
+                <font-awesome-icon :icon="['fas', 'check-circle']" />
+              </div>
+              <p class="orange" @click="playQuiz(0)">Quiz</p>
+            </div>
           </div>
         </div>
         <div class="item second">
@@ -23,13 +35,40 @@
             <p class="purple">Structure d'une portée</p>
           </div>
           <div class="chapter ">
-            <p class="orange" @click="cours('structure1')">Cours</p>
-            <p class="orange" @click="play(1)">Entraînement</p>
-            <p class="orange" @click="playQuiz(1)">Quiz</p>
+            <div class="chapterItem">
+              <p class="orange" @click="cours('structure1')">Cours</p>
+            </div>
+            <div class="chapterItem">
+              <div
+                class="checkStatusSpec green"
+                v-if="entrainement('structure')"
+              >
+                <font-awesome-icon :icon="['fas', 'check-circle']" />
+              </div>
+              <p class="orange" @click="play(1)">Entraînement</p>
+            </div>
+            <div class="chapterItem">
+              <div class="checkStatusSpec green" v-if="quiz('structure')">
+                <font-awesome-icon :icon="['fas', 'check-circle']" />
+              </div>
+              <p class="orange" @click="playQuiz(1)">Quiz</p>
+            </div>
           </div>
         </div>
         <div class="item third" @click="playQuizFinal()">
+          <div class="checkStatus green" v-if="quizFinal">
+            <font-awesome-icon :icon="['fas', 'check-circle']" />
+          </div>
           <p class="red">Quiz final</p>
+          <p v-if="quizFinal" class="green infoquiz">
+            Le quiz à été validé. Bravo !
+          </p>
+          <p v-else class="orange infoquiz">
+            Le quiz n'a pas encore été validé
+          </p>
+          <p v-if="!quizAvailable()" class="red infoquiz">
+            Validez tous les entraînements pour pouvoir passer le quizz
+          </p>
         </div>
         <div class="item fourth">
           <p class="blue">Fiche de révisions</p>
@@ -52,9 +91,33 @@ export default {
     };
   },
   props: ["year"],
+  computed: {
+    quizFinal() {
+      return this.$store.state.progression[this.year - 1].chapter.partition
+        .quiz;
+    },
+  },
   methods: {
     retour() {
       this.$router.push({ name: "year", params: { annee: this.year } });
+    },
+    quizAvailable() {
+      return (
+        this.$store.state.progression[this.year - 1].chapter.partition.nuance
+          .quiz &&
+        this.$store.state.progression[this.year - 1].chapter.partition.structure
+          .quiz
+      );
+    },
+    quiz(chapter) {
+      return this.$store.state.progression[this.year - 1].chapter.partition[
+        chapter
+      ].quiz;
+    },
+    entrainement(chapter) {
+      return this.$store.state.progression[this.year - 1].chapter.partition[
+        chapter
+      ].entrainement[0];
     },
     cours(cours) {
       this.$router.push({ name: cours });
@@ -89,15 +152,16 @@ export default {
     },
     playQuizFinal() {
       let question = this.question[0].concat(this.question[1]);
-      console.log(question);
-      this.$router.push({
-        name: "partitionQuiz",
-        params: {
-          question: question,
-          quizFinal: true,
-          lengthQuiz: 20,
-        },
-      });
+      if (this.quizAvailable()) {
+        this.$router.push({
+          name: "partitionQuiz",
+          params: {
+            question: question,
+            quizFinal: true,
+            lengthQuiz: 20,
+          },
+        });
+      }
     },
   },
 };
@@ -189,22 +253,26 @@ h1 {
   align-items: center;
   flex-wrap: wrap;
 }
-.chapter p {
+.chapterItem {
   border: 3px solid var(--main);
   padding: 10px;
-  font-size: 25px;
+
   padding: 10px 20px;
-  max-width: 120px;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  position: relative;
   cursor: pointer;
   margin: 10px 0;
   transition: all ease 200ms;
 }
-.chapter p:hover {
+.chapterItem p {
+  font-size: 25px !important;
+}
+
+.chapterItem:hover {
   transform: scale(1.05);
 }
 .retour {
@@ -263,5 +331,21 @@ h1 {
     font-size: 28px;
     margin-top: 10px;
   }
+}
+.checkStatus {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 25px;
+}
+.checkStatusSpec {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  font-size: 15px;
+}
+.infoquiz {
+  font-size: 15px !important;
+  margin-top: 10px;
 }
 </style>
