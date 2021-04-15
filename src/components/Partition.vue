@@ -15,7 +15,7 @@
           <div class="chapter ">
             <p class="orange" @click="cours('Nuance1')">Cours</p>
             <p class="orange" @click="play(0)">Entraînement</p>
-            <p class="orange">Quiz</p>
+            <p class="orange" @click="playQuiz(0)">Quiz</p>
           </div>
         </div>
         <div class="item second">
@@ -25,10 +25,10 @@
           <div class="chapter ">
             <p class="orange" @click="cours('structure1')">Cours</p>
             <p class="orange" @click="play(1)">Entraînement</p>
-            <p class="orange">Quiz</p>
+            <p class="orange" @click="playQuiz(1)">Quiz</p>
           </div>
         </div>
-        <div class="item third" @click="playQuiz()">
+        <div class="item third" @click="playQuizFinal()">
           <p class="red">Quiz final</p>
         </div>
         <div class="item fourth">
@@ -59,22 +59,42 @@ export default {
     cours(cours) {
       this.$router.push({ name: cours });
     },
+    getChapter(index) {
+      if (index == 0) {
+        return "nuance";
+      } else {
+        return "structure";
+      }
+    },
     play(index) {
       this.$router.push({
         name: "partitionQuiz",
         params: {
           question: this.question[index],
+          chapter: this.getChapter(index),
         },
       });
     },
-    playQuiz() {
+    playQuiz(index) {
+      this.$router.push({
+        name: "partitionQuiz",
+        params: {
+          question: this.question[index],
+          quiz: true,
+          chapter: this.getChapter(index),
+          //a modifier a 20
+          lengthQuiz: 20,
+        },
+      });
+    },
+    playQuizFinal() {
       let question = this.question[0].concat(this.question[1]);
       console.log(question);
       this.$router.push({
         name: "partitionQuiz",
         params: {
           question: question,
-          quiz: true,
+          quizFinal: true,
           lengthQuiz: 20,
         },
       });

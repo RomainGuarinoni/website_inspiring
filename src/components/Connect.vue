@@ -182,16 +182,7 @@ export default {
                   item.rythme.entrainement,
                   item.rythme.quiz
                 ),
-                partition:
-                  (this.calculProgressionChapter(
-                    item.partition.nuance.entrainement,
-                    item.partition.nuance.quiz
-                  ) +
-                    this.calculProgressionChapter(
-                      item.partition.structure.entrainement,
-                      item.partition.structure.quiz
-                    )) /
-                  2,
+                partition: this.calculProgressionChapterPartition(item),
                 instruments: this.calculProgressionChapter(
                   item.instruments.entrainement,
                   false,
@@ -220,7 +211,7 @@ export default {
               yearProgression.push(0);
             }
           });
-
+          console.log(avancement);
           // push toutes ces données dans VUEX
           Promise.all([
             this.$store.dispatch("CREATE_CHAPTER_PROGRESSION", avancement),
@@ -266,6 +257,26 @@ export default {
         total++;
       }
 
+      return Math.round((nbTrue * 100) / total);
+    },
+    calculProgressionChapterPartition(item) {
+      let total = 5;
+      let nbTrue = 0;
+      if (item.partition.nuance.entrainement[0]) {
+        nbTrue++;
+      }
+      if (item.partition.nuance.quiz) {
+        nbTrue++;
+      }
+      if (item.partition.structure.entrainement[0]) {
+        nbTrue++;
+      }
+      if (item.partition.structure.quiz) {
+        nbTrue++;
+      }
+      if (item.partition.quiz) {
+        nbTrue++;
+      }
       return Math.round((nbTrue * 100) / total);
     },
     retour() {

@@ -11,6 +11,14 @@
                 "index":0
             },
             {
+                "question":"Les nuances traduisent :",
+                "image_question":null,
+                "son_question":null,
+                "reponse":["l’intensité de la musique (si elle est plus ou moins forte)","la hauteur des notes (si elles sont plus ou moins aiguës)","le tempo du morceau (si il est plus ou moins rapide)"],
+                "image_reponse":["","",""],
+                "index":0
+            },
+            {
                 "question":"Parmi les propositions suivantes, laquelle correspond à des nuances ?",
                 "image_question":null,
                 "son_question":null,
@@ -78,7 +86,7 @@
                 "question":"Que signifie la nuance “crescendo” : < ?",
                 "image_question":"crescendo",
                 "son_question":null,
-                "reponse":["null"],
+                "reponse":["de moins en moins fort","de plus en plus fort","soudainement très fort"],
                 "image_reponse":["","",""],
                 "index":1
             },
@@ -318,7 +326,7 @@
             },
             {
                 "question":" Sur ce chiffrage de mesure , le chiffre du haut est 2. Cela veut dire que : ",
-                "image_question":"chiffrage/Q5/24.png",
+                "image_question":"chiffrage/Q5/24",
                 "son_question":null,
                 "reponse":["Il va y avoir l'équivalent de  3 noires par mesure","Il va y avoir l'équivalent de  2 noires par mesure","Il va y avoir l'équivalent de  4 noires par mesure"],
                 "image_reponse":null,
@@ -401,7 +409,7 @@
                 "image_question":null,
                 "son_question":null,
                 "reponse":null,
-                "image_reponse":["nuance/porteebonne","nuance/porteemauvaise","porteemauvaise2.png"],
+                "image_reponse":["nuance/porteebonne","nuance/porteemauvaise","porteemauvaise2"],
                 "index":0
             }
 

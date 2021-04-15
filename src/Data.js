@@ -17,7 +17,7 @@ let eleve = {
         },
         partition: {
           nuance: {
-            entrainement: [true],
+            entrainement: [false],
             quiz: false,
           },
           structure: {

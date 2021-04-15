@@ -88,6 +88,10 @@ export default {
     year: {
       type: undefined,
     },
+    quizFinal: {
+      type: Boolean,
+      default: false,
+    },
     quiz: {
       type: Boolean,
       default: false,
@@ -95,6 +99,10 @@ export default {
     lengthQuiz: {
       type: Number,
       default: 10,
+    },
+    chapter: {
+      type: String,
+      default: null,
     },
   },
   components: {
@@ -111,8 +119,24 @@ export default {
   },
   watch: {
     indexEnCours: function() {
-      if (this.indexEnCours == this.length && this.score == this.length - 1) {
+      if (this.indexEnCours == this.length && this.score >= this.length - 3) {
+        console.log(
+          `entrainement finis | score : ${this.score} | min : ${this.length -
+            3}`
+        );
         //envoyer a la base de donnée les resultats
+        if (this.quiz || this.quizFinal) {
+          this.$store.dispatch("QUIZ_VALIDE_PARTITION", {
+            quizFinal: this.quizFinal,
+            year: this.year,
+            chapter: this.chapter,
+          });
+        } else {
+          this.$store.dispatch("ENTRAINEMENT_VALIDE_PARTITION", {
+            year: this.year,
+            chapter: this.chapter,
+          });
+        }
       }
     },
   },
@@ -136,7 +160,7 @@ export default {
         this.score++;
         this.indexEnCours++;
       } else {
-        if (this.quiz) {
+        if (this.quiz || this.quizFinal) {
           this.indexEnCours++;
         } else {
           this.reponse = false;

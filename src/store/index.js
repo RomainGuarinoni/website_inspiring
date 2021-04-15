@@ -17,6 +17,11 @@ export default new Vuex.Store({
         payload.level
       ] = true;
     },
+    entrainementValidePartition(state, payload) {
+      state.progression[payload.year - 1].chapter.partition[
+        payload.chapter
+      ].entrainement[0] = true;
+    },
     quizValide(state, payload) {
       state.progression[payload.year - 1].chapter[payload.chapter].quiz = true;
     },
@@ -36,6 +41,14 @@ export default new Vuex.Store({
       state.chapterProgression[payload.year - 1][payload.chapter] =
         payload.progression;
     },
+    modifyQuizFinalPartition(state, payload) {
+      state.progression[payload.year - 1].chapter.partition.quiz = true;
+    },
+    modifyQuizPartition(state, payload) {
+      state.progression[payload.year - 1].chapter.partition[
+        payload.chapter
+      ].quiz = true;
+    },
     calculYearProgression(state, payload) {
       state.yearProgression = payload;
     },
@@ -48,6 +61,7 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    //payload : year , chapter, level
     ENTRAINEMENT_VALIDE(context, payload) {
       context.commit("entrainementValide", payload);
       // envoyer a hugo les valeurs !!
@@ -82,6 +96,90 @@ export default new Vuex.Store({
       context.commit("modifyChapterProgression", {
         year: payload.year,
         chapter: payload.chapter,
+        progression: Math.round((nbTrue * 100) / total),
+      });
+      context.dispatch("CALCUL_YEAR_PROGRESSION");
+      context.dispatch("toString");
+    },
+    //payload : year,chapter
+    ENTRAINEMENT_VALIDE_PARTITION(context, payload) {
+      context.commit("entrainementValidePartition", payload);
+      let total = 5;
+      let nbTrue = 0;
+      if (
+        context.state.progression[payload.year - 1].chapter.partition.nuance
+          .entrainement[0]
+      ) {
+        nbTrue++;
+      }
+      if (
+        context.state.progression[payload.year - 1].chapter.partition.nuance
+          .quiz
+      ) {
+        nbTrue++;
+      }
+      if (
+        context.state.progression[payload.year - 1].chapter.partition.structure
+          .entrainement[0]
+      ) {
+        nbTrue++;
+      }
+      if (
+        context.state.progression[payload.year - 1].chapter.partition.structure
+          .quiz
+      ) {
+        nbTrue++;
+      }
+      if (context.state.progression[payload.year - 1].chapter.partition.quiz) {
+        nbTrue++;
+      }
+      context.commit("modifyChapterProgression", {
+        year: payload.year,
+        chapter: "partition",
+        progression: Math.round((nbTrue * 100) / total),
+      });
+      context.dispatch("CALCUL_YEAR_PROGRESSION");
+    },
+
+    //payload : quizFinal, year, chapter
+    QUIZ_VALIDE_PARTITION(context, payload) {
+      if (payload.quizFinal) {
+        context.commit("modifyQuizFinalPartition", payload);
+      } else {
+        context.commit("modifyQuizPartition", payload);
+      }
+      let total = 5;
+      let nbTrue = 0;
+      if (
+        context.state.progression[payload.year - 1].chapter.partition.nuance
+          .entrainement[0]
+      ) {
+        nbTrue++;
+      }
+      if (
+        context.state.progression[payload.year - 1].chapter.partition.nuance
+          .quiz
+      ) {
+        nbTrue++;
+      }
+      if (
+        context.state.progression[payload.year - 1].chapter.partition.structure
+          .entrainement[0]
+      ) {
+        nbTrue++;
+      }
+      if (
+        context.state.progression[payload.year - 1].chapter.partition.structure
+          .quiz
+      ) {
+        nbTrue++;
+      }
+      if (context.state.progression[payload.year - 1].chapter.partition.quiz) {
+        nbTrue++;
+      }
+      context.commit("modifyChapterProgression", {
+        year: payload.year,
+        chapter: "partition",
         progression: Math.round((nbTrue * 100) / total),
       });
       context.dispatch("CALCUL_YEAR_PROGRESSION");
