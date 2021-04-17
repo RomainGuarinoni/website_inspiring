@@ -5,11 +5,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    user: new Object(),
-    progression: new Array(),
-    chapterProgression: new Array(),
-    yearProgression: new Array(),
-    connect: false,
+    user: new Object(), // information globale sur le user
+    progression: new Array(), // progression générale
+    chapterProgression: new Array(), // progression chapitre en % pour chaque année
+    yearProgression: new Array(), // progression année en %
+    connect: false, // état de la connection du user
   },
   mutations: {
     entrainementValide(state, payload) {
@@ -64,7 +64,6 @@ export default new Vuex.Store({
     //payload : year , chapter, level
     ENTRAINEMENT_VALIDE(context, payload) {
       context.commit("entrainementValide", payload);
-      // envoyer a hugo les valeurs !!
       let total = 0;
       let nbTrue = 0;
 
@@ -99,7 +98,6 @@ export default new Vuex.Store({
         progression: Math.round((nbTrue * 100) / total),
       });
       context.dispatch("CALCUL_YEAR_PROGRESSION");
-      context.dispatch("toString");
     },
     //payload : year,chapter
     ENTRAINEMENT_VALIDE_PARTITION(context, payload) {
