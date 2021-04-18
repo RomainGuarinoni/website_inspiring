@@ -44,7 +44,7 @@
         </p>
         <p v-else class="orange infoquiz">Le quiz n'a pas encore été validé</p>
         <p v-if="quizAvailable()" class="red infoquiz">
-          Validez tous les entraînements pour pouvoir passer le quizz
+          Validez tous les entraînements pour pouvoir passer le quiz
         </p>
         <div class="checkStatus green" v-if="quizState">
           <font-awesome-icon :icon="['fas', 'check-circle']" />

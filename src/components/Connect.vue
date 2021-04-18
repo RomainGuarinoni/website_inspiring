@@ -27,7 +27,13 @@
               />
             </div>
             <div class="formConnect">
-              <input type="checkbox" id="stayconnect" name="stayconnect" />
+              <input
+                type="checkbox"
+                id="stayconnect"
+                name="stayconnect"
+                value="true"
+                v-model="stayconnect"
+              />
               <label for="stayconnect" class="connectLab"
                 >Rester connecté</label
               >
@@ -143,6 +149,7 @@ export default {
       error: false,
       login: "",
       mdp: "",
+      stayconnect: "",
       firstName: "",
       lastName: "",
       emailCreate: "",
@@ -163,6 +170,19 @@ export default {
         this.error = true;
       } else {
         this.error = false;
+        if (this.stayconnect) {
+          localStorage.setItem("login", this.login);
+          localStorage.setItem("mdp", this.mdp);
+          console.log(localStorage.getItem("mdp"));
+        } else {
+          if (
+            localStorage.getItem("login") != null &&
+            localStorage.getItem("mdp") != null
+          ) {
+            localStorage.removeItem("login");
+            localStorage.removeItem("mdp");
+          }
+        }
         this.$store.state.connect = true;
         //récupérer les data de la base de donnée
         Data.then((res) => {
@@ -289,6 +309,17 @@ export default {
       this.createAccount = false;
       this.error = false;
     },
+  },
+  mounted: function() {
+    console.log(localStorage.getItem("mdp"));
+    if (
+      localStorage.getItem("login") != null &&
+      localStorage.getItem("mdp") != null
+    ) {
+      console.log("yyeah");
+      this.mdp = localStorage.getItem("mdp");
+      this.login = localStorage.getItem("login");
+    }
   },
 };
 </script>

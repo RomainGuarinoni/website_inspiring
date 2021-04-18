@@ -144,7 +144,7 @@ export default {
     ///////////////////
 
     var Mesure_2 = new Vex.Flow.Stave(560, 0, 310); //attention à bien modifier la première valeur
-
+    Mesure_2.setEndBarType(Vex.Flow.Barline.type.END);
     //On l'ajoute au contexte et on la dessine
 
     Mesure_2.setContext(monContexte).draw();

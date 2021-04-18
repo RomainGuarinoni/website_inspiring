@@ -71,7 +71,7 @@
             Le quiz n'a pas encore été validé
           </p>
           <p v-if="!quizAvailable()" class="red infoquiz">
-            Validez tous les entraînements pour pouvoir passer le quizz
+            Validez tous les entraînements pour pouvoir passer le quiz
           </p>
         </div>
       </div>

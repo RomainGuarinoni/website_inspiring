@@ -117,22 +117,23 @@ export default {
             year: this.year,
             chapter: "note",
           });
-        } else {
-          if (
-            !this.progression[this.year - 1].chapter.note.entrainement[
-              level.index
-            ]
-          ) {
-            this.$store
-              .dispatch("ENTRAINEMENT_VALIDE", {
-                level: level.index,
-                year: this.year,
-                chapter: "note",
-              })
-              .then(() => {
-                console.log("ouii");
-              });
-          }
+        }
+      } else {
+        if (
+          !this.progression[this.year - 1].chapter.note.entrainement[
+            level.index
+          ] &&
+          score >= 80
+        ) {
+          this.$store
+            .dispatch("ENTRAINEMENT_VALIDE", {
+              level: level.index,
+              year: this.year,
+              chapter: "note",
+            })
+            .then(() => {
+              console.log("ouii");
+            });
         }
       }
 
@@ -228,9 +229,10 @@ export default {
       voice.addTickables(notes);
       part1.Formatter.FormatAndDraw(context, stave, notes); //formater les notes pour qu'elle soient a la bonne place et tiout surt la part
       var part2 = Vex.Flow;
-      var stave2 = new part2.Stave(460, 40, 400);
-      stave2.mode = part2.Voice.Mode.FULL;
-      stave2.setEndBarType(part2.Barline.type.End);
+      var stave2 = new part2.Stave(460, 40, 380);
+      stave2.setEndBarType(part2.Barline.type.END);
+      //stave2.mode = part2.Voice.Mode.FULL;
+
       stave2.setContext(context).draw();
       var notes2 = [
         new part2.StaveNote({

@@ -46,6 +46,7 @@ export default {
     //////////////////
 
     var Mesure_1 = new Vex.Flow.Stave(355, 0, 410);
+    Mesure_1.setEndBarType(Vex.Flow.Barline.type.END);
     Mesure_1.addClef("treble")
       .addTimeSignature("4/4")
       .setContext(monContexte)
