@@ -189,7 +189,7 @@ export default {
     audioQuestion() {
       return require(`@/assets/quizPartition/${
         this.question[this.indexEnCours].son_question
-      }`);
+      }.mp3`);
     },
   },
   created: function() {
