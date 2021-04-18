@@ -9,17 +9,8 @@
       Elle est aussi composée de 4 interlignes, elles aussi numérotées du bas
       vers le haut.
     </p>
-    <p>
-      <em
-        ><mark
-          >(Il faut numéroter les interlignes du bas vers le haut :
-          1,2,3,4)</mark
-        ></em
-      >
-    </p>
-
     <!-- portée vierge avec numéros des interlignes à ajouter-->
-    <div id="porteeVierge"></div>
+    <div><img src="@/assets/quizPartition/portee/Q2/Q2R3.png" alt="" /></div>
 
     <p>Une interligne correspond à l’espace entre deux lignes.</p>
 

@@ -2,18 +2,27 @@
   <div class="box">
     <h1>Tutoriel : comment dessiner la clé de sol et la clé de fa ?</h1>
 
-    <p>
-      <em
-        ><mark
-          >(Il faut ajouter une image de la mascotte avec une bulle disant :
-          "Regarde attentivement ce petit tutoriel, il va t’apprendre comment
-          bien dessiner une clé de Fa et une clé de Sol !")</mark
-        ></em
-      >
-    </p>
     <!-- vidéo à insérer-->
-    <video src="" controls></video>
-
+    <div class="videos">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/C2ugvKxG3gY"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/KGjW3-f6Cds"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
     <div class="boutons">
       <div class="left">
         <p class="link" @click="nav('partition')">Retour au menu</p>
@@ -86,5 +95,11 @@ p {
 }
 .link:hover {
   transform: translate(0, -5px);
+}
+.videos {
+  display: flex;
+  width: 90%;
+  justify-content: space-around;
+  align-items: center;
 }
 </style>

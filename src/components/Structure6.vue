@@ -7,14 +7,6 @@
 
     <p>La portée ci-dessous comporte 3 mesures.</p>
     <p>Une mesure est l’espace situé entre deux barres noires.</p>
-    <p>
-      <em
-        ><mark
-          >(Il faut ajouter des accolades au dessus de chaque mesure et du texte
-          "1ère mesure", "2e mesure", "3e mesure")</mark
-        ></em
-      >
-    </p>
 
     <!-- Portée avec mesures vides-->
     <div id="porteeMesuresVides"></div>
@@ -48,7 +40,7 @@ export default {
     );
 
     // Configure the rendering context.
-    renderer2.resize(1300, 200); //attention de ne pas mettre trop fin
+    renderer2.resize(650, 200); //attention de ne pas mettre trop fin
     const context2 = renderer2.getContext();
     context2.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
