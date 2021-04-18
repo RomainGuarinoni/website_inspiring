@@ -7,13 +7,6 @@
       La portée est constituée de 5 lignes. On les numérote du bas vers le haut
       :
     </p>
-    <p>
-      <em
-        ><mark
-          >(Il faut numéroter les lignes du bas vers le haut : 1,2,3,4,5)</mark
-        ></em
-      >
-    </p>
 
     <!-- portée vierge avec numéros des lignes à ajouter-->
     <div id="porteestructure1"></div>
@@ -47,7 +40,7 @@ export default {
     );
 
     // Modification de paramètres
-    monRenderer.resize(600, 120); //attention de ne pas mettre trop fin
+    monRenderer.resize(350, 120); //attention de ne pas mettre trop fin
     const monContexte = monRenderer.getContext();
     monContexte.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
@@ -57,6 +50,34 @@ export default {
 
     var Mesure_1 = new Vex.Flow.Stave(10, 0, 310);
     Mesure_1.setContext(monContexte).draw(); // dessin
+    var notes = [
+      new Vex.Flow.TabNote({
+        positions: [
+          {
+            str: 1,
+            fret: 5,
+          },
+          {
+            str: 2,
+            fret: 4,
+          },
+          {
+            str: 3,
+            fret: 3,
+          },
+          {
+            str: 4,
+            fret: 2,
+          },
+          {
+            str: 5,
+            fret: 1,
+          },
+        ],
+        duration: "q",
+      }),
+    ];
+    Vex.Flow.Formatter.FormatAndDraw(monContexte, Mesure_1, notes);
   },
 };
 </script>

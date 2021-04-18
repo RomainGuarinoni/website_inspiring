@@ -5,7 +5,7 @@
       <h2>La pulsation</h2>
       <p>
         Dans une partition, on remarque que la musique est divisée en mesures,
-        et ces mesures sont divisées en temps régulier. On peut donc battre une
+        et ces mesures sont divisées en temps réguliers. On peut donc battre une
         pulsation pour indiquer ces temps. Durant tout ce cours, nous allons
         utiliser une mesure à quatre temps.<br />Ainsi, dans cette mesure, il y
         a 4 pulsations : <br />
