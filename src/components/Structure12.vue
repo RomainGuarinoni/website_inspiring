@@ -7,11 +7,6 @@
 
     <p>Chaque mesure est donc constituée de <strong> 4 pulsations</strong> !</p>
 
-    <p>
-      <em
-        ><mark>(Il faut si possible mettre en couleur les pulsations)</mark></em
-      >
-    </p>
     <!-- Portées-->
     <div id="porteeChiffrage44Pulsations"></div>
     <div id="porteeChiffrageCpulsations"></div>
@@ -42,9 +37,9 @@ export default {
     const renderer = new Vex.Flow.Renderer(div, Vex.Flow.Renderer.Backends.SVG);
 
     // Configure the rendering context.
-    renderer.resize(1300, 200); //attention de ne pas mettre trop fin
+    renderer.resize(1000, 200); //attention de ne pas mettre trop fin
     const context = renderer.getContext();
-    context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
+    context.setFont("Arial", 80, "bold").setBackgroundFillStyle("#eed");
 
     ///////////////////////////////////////////////////
     /////////////Mesure 1/////////////////////////////
@@ -76,7 +71,11 @@ export default {
     var text1 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
-    })
+    });
+    text1
+      .setStyle({
+        fillStyle: "red",
+      })
       .setLine(12)
       .setStave(staveMeasure1)
       .setJustification(Vex.Flow.TextNote.Justification.LEFT);
@@ -84,7 +83,11 @@ export default {
     var text11 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
-    })
+    });
+    text11
+      .setStyle({
+        fillStyle: "red",
+      })
       .setLine(12)
       .setStave(staveMeasure1)
       .setJustification(Vex.Flow.TextNote.Justification.LEFT);
@@ -92,7 +95,11 @@ export default {
     var text12 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
-    })
+    });
+    text12
+      .setStyle({
+        fillStyle: "red",
+      })
       .setLine(12)
       .setStave(staveMeasure1)
       .setJustification(Vex.Flow.TextNote.Justification.LEFT);
@@ -100,7 +107,11 @@ export default {
     var text13 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
-    })
+    });
+    text13
+      .setStyle({
+        fillStyle: "red",
+      })
       .setLine(12)
       .setStave(staveMeasure1)
       .setJustification(Vex.Flow.TextNote.Justification.CENTER);
@@ -143,7 +154,11 @@ export default {
     var text3 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
-    })
+    });
+    text3
+      .setStyle({
+        fillStyle: "red",
+      })
       .setLine(12)
       .setStave(staveMeasure3)
       .setJustification(Vex.Flow.TextNote.Justification.LEFT);
@@ -151,7 +166,11 @@ export default {
     var text31 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
-    })
+    });
+    text31
+      .setStyle({
+        fillStyle: "red",
+      })
       .setLine(12)
       .setStave(staveMeasure3)
       .setJustification(Vex.Flow.TextNote.Justification.LEFT);
@@ -159,7 +178,11 @@ export default {
     var text32 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
-    })
+    });
+    text32
+      .setStyle({
+        fillStyle: "red",
+      })
       .setLine(12)
       .setStave(staveMeasure3)
       .setJustification(Vex.Flow.TextNote.Justification.LEFT);
@@ -167,7 +190,11 @@ export default {
     var text33 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
-    })
+    });
+    text33
+      .setStyle({
+        fillStyle: "red",
+      })
       .setLine(12)
       .setStave(staveMeasure3)
       .setJustification(Vex.Flow.TextNote.Justification.CENTER);
@@ -235,7 +262,11 @@ export default {
     var text2 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
-    })
+    });
+    text2
+      .setStyle({
+        fillStyle: "red",
+      })
       .setLine(12)
       .setStave(staveMeasure3)
       .setJustification(Vex.Flow.TextNote.Justification.LEFT);
@@ -247,7 +278,9 @@ export default {
       .setLine(12)
       .setStave(staveMeasure3)
       .setJustification(Vex.Flow.TextNote.Justification.LEFT);
-
+    text21.setStyle({
+      fillStyle: "red",
+    });
     var text22 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
@@ -255,11 +288,17 @@ export default {
       .setLine(12)
       .setStave(staveMeasure3)
       .setJustification(Vex.Flow.TextNote.Justification.LEFT);
-
+    text22.setStyle({
+      fillStyle: "red",
+    });
     var text23 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
-    })
+    });
+    text23
+      .setStyle({
+        fillStyle: "red",
+      })
       .setLine(12)
       .setStave(staveMeasure3)
       .setJustification(Vex.Flow.TextNote.Justification.LEFT);

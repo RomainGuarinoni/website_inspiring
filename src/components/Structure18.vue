@@ -4,9 +4,7 @@
     <!-- Audio à insérer-->
     <audio src="../assets/audio_structure/20201212220110.mp3" controls></audio>
     <p>Elles s'écrivent en dessous de la portée :</p>
-    <p>
-      <em><mark>(Il faudrait entourer les nuances)</mark></em>
-    </p>
+
     <!-- Portées-->
     <div id="porteeNuances"></div>
     <div class="boutons">

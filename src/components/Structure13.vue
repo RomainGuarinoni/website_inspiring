@@ -9,9 +9,6 @@
       <strong> mesures à 3 temps.</strong>
     </p>
 
-    <p>
-      <em><mark>(Il faut entourer le chiffrage)</mark></em>
-    </p>
     <!-- Portées-->
     <div id="porteeChiffrage34"></div>
 
@@ -44,7 +41,7 @@ export default {
     );
 
     // Configure the rendering context.
-    renderer2.resize(1300, 200); //attention de ne pas mettre trop fin
+    renderer2.resize(1100, 200); //attention de ne pas mettre trop fin
     const context2 = renderer2.getContext();
     context2.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 

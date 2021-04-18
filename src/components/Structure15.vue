@@ -10,9 +10,6 @@
     <p>
       Cette portée est donc constituée de <strong>mesures à 2 temps. </strong>
     </p>
-    <p>
-      <em><mark>(Il faudrait entourer le chiffrage si possible)</mark></em>
-    </p>
     <!-- Portées-->
     <div id="porteeChiffrage24"></div>
     <div class="boutons">
@@ -44,7 +41,7 @@ export default {
     );
 
     // Configure the rendering context.
-    renderer2.resize(1300, 200); //attention de ne pas mettre trop fin
+    renderer2.resize(900, 200); //attention de ne pas mettre trop fin
     const context2 = renderer2.getContext();
     context2.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 

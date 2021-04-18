@@ -6,17 +6,16 @@
 
     <div id="page11">
       <p>Ces deux notations veulent dire la même chose :</p>
-      <div id="4/4"></div>
-      <div id="C"></div>
     </div>
-
+    <div id="notation">
+      <img src="@/assets/quizPartition/C.png" alt="" />
+      <p>veut dire la même chose que</p>
+      <img src="@/assets/quizPartition/44.png" alt="" />
+    </div>
     <p>
       Cette portée est donc constituée de <strong> mesures à 4 temps.</strong>
     </p>
 
-    <p>
-      <em><mark>(Il faut entourer le chiffrage)</mark></em>
-    </p>
     <!-- Portées-->
     <div id="porteeChiffrageC"></div>
 
@@ -49,7 +48,7 @@ export default {
     );
 
     // Configure the rendering context.
-    renderer2.resize(1300, 200); //attention de ne pas mettre trop fin
+    renderer2.resize(900, 200); //attention de ne pas mettre trop fin
     const context2 = renderer2.getContext();
     context2.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
@@ -347,5 +346,11 @@ p {
 }
 .link:hover {
   transform: translate(0, -5px);
+}
+#notation {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 </style>

@@ -4,9 +4,6 @@
     <!-- Audio à insérer-->
     <audio src="../assets/audio_structure/20201212220040.mp3" controls></audio>
     <p>Les nuances correspondent à différents niveaux d’intensité du son :</p>
-    <p>
-      <em><mark>(Il faudrait entourer les nuances)</mark></em>
-    </p>
     <!-- Portées-->
     <div id="porteeNuances"></div>
     <div class="boutons">

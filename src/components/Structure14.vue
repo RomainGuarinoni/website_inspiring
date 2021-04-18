@@ -4,14 +4,6 @@
     <!-- Audio à insérer-->
     <audio src="../assets/audio_structure/20201212215807.mp3" controls></audio>
     <p>Il y a donc <strong> 3 pulsations </strong> par mesure</p>
-
-    <p>
-      <em
-        ><mark
-          >(Il faudrait mettre les pulsations en couleur si possible)</mark
-        ></em
-      >
-    </p>
     <!-- Portées-->
     <div id="porteeChiffrage34Pulsations"></div>
 
@@ -44,7 +36,7 @@ export default {
     );
 
     // Configure the rendering context.
-    renderer2.resize(1300, 200); //attention de ne pas mettre trop fin
+    renderer2.resize(1100, 200); //attention de ne pas mettre trop fin
     const context2 = renderer2.getContext();
     context2.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
@@ -83,7 +75,9 @@ export default {
       .setLine(12)
       .setStave(staveMeasure1)
       .setJustification(Vex.Flow.TextNote.Justification.RIGHT);
-
+    text1.setStyle({
+      fillStyle: "red",
+    });
     var text11 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
@@ -91,7 +85,9 @@ export default {
       .setLine(12)
       .setStave(staveMeasure1)
       .setJustification(Vex.Flow.TextNote.Justification.RIGHT);
-
+    text11.setStyle({
+      fillStyle: "red",
+    });
     var text12 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
@@ -99,7 +95,9 @@ export default {
       .setLine(12)
       .setStave(staveMeasure1)
       .setJustification(Vex.Flow.TextNote.Justification.RIGHT);
-
+    text12.setStyle({
+      fillStyle: "red",
+    });
     // On ajoute les notes et le texte aux voix. Helper function to justify and draw a 4/4 voice
     voice4.addTickables(notesMeasure1);
     voice5.addTickables([text1]);
@@ -146,7 +144,9 @@ export default {
       .setLine(12)
       .setStave(staveMeasure3)
       .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
+    text3.setStyle({
+      fillStyle: "red",
+    });
     var text31 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
@@ -154,7 +154,9 @@ export default {
       .setLine(12)
       .setStave(staveMeasure3)
       .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
+    text31.setStyle({
+      fillStyle: "red",
+    });
     var text32 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
@@ -162,7 +164,9 @@ export default {
       .setLine(12)
       .setStave(staveMeasure3)
       .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
+    text32.setStyle({
+      fillStyle: "red",
+    });
     // On ajoute les notes et le texte a des voix. Helper function to justify and draw a 4/4 voice
     voice6.addTickables(notesMeasure3);
 
@@ -209,7 +213,9 @@ export default {
       .setLine(12)
       .setStave(staveMeasure4)
       .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
+    text4.setStyle({
+      fillStyle: "red",
+    });
     var text41 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
@@ -217,7 +223,9 @@ export default {
       .setLine(12)
       .setStave(staveMeasure4)
       .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
+    text41.setStyle({
+      fillStyle: "red",
+    });
     var text42 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
@@ -225,7 +233,9 @@ export default {
       .setLine(12)
       .setStave(staveMeasure4)
       .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
+    text42.setStyle({
+      fillStyle: "red",
+    });
     // On ajoute les notes et le texte a des voix. Helper function to justify and draw a 4/4 voice
     voice8.addTickables(notesMeasure4);
     voice9.addTickables([text4]);
@@ -276,7 +286,9 @@ export default {
       .setLine(12)
       .setStave(staveMeasure3)
       .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
+    text2.setStyle({
+      fillStyle: "red",
+    });
     var text21 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
@@ -284,7 +296,9 @@ export default {
       .setLine(12)
       .setStave(staveMeasure3)
       .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
+    text21.setStyle({
+      fillStyle: "red",
+    });
     var text22 = new Vex.Flow.TextNote({
       text: "|",
       duration: "q",
@@ -292,7 +306,9 @@ export default {
       .setLine(12)
       .setStave(staveMeasure3)
       .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
+    text22.setStyle({
+      fillStyle: "red",
+    });
     // On ajoute les notes et le texte a des voix. Helper function to justify and draw a 4/4 voice
     voice2.addTickables(notesMeasure2);
     voice3.addTickables([text2]);

@@ -10,15 +10,6 @@
       nuances: *audio*
     </p>
 
-    <p>
-      <em
-        ><mark
-          >(Il faudrait mettre une image de la mascotte et écire sa réplique
-          dans une bulle + l'audio de la partition)</mark
-        ></em
-      >
-    </p>
-
     <!-- Portées-->
     <div id="porteeNuances"></div>
 
