@@ -71,7 +71,7 @@ export default {
           node: "rythme",
         },
         {
-          title: "Lire une partition",
+          title: "Lis une partition",
           img: require("@/assets/partition.png"),
           color: "blue",
           node: "partition",

@@ -7,7 +7,7 @@
         <p>Retour</p>
       </div>
       <div class="box">
-        <h1>Lire une partition</h1>
+        <h1>Lis une partition</h1>
         <div class="item first">
           <div class="header">
             <p class="purple">Les nuances</p>
