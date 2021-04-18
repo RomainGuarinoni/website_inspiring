@@ -56,7 +56,7 @@
           </div>
         </div>
         <div class="item fourth">
-          <p class="blue">Fiche de révisions</p>
+          <p class="blue">Fiche de révision</p>
           <!--@click="ficheDeRevision()"-->
         </div>
         <div class="item third" @click="playQuizFinal()">

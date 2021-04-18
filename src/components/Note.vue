@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="item solo" @click="goTo('Note-revision')">
-        <p class="red">Fiche de révisions</p>
+        <p class="red">Fiche de révision</p>
       </div>
       <div class="item solo" @click="quizRouter()">
         <p class="blue">Quiz final</p>
@@ -244,6 +244,7 @@ export default {
   flex-direction: row !important;
   justify-content: space-around !important;
   align-items: center !important;
+  min-height: 220px !important;
 }
 .chap p {
   width: 100%;
