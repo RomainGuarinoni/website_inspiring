@@ -54,11 +54,11 @@
     <div class="resultBox" v-show="finish && quiz">
       <h1 v-if="score == 8" class="green">Bravo !! Tu as réussi le quiz !</h1>
       <h2 v-if="score == 8">
-        Tu as terminé le chapitre sur la lecture de note
+        Tu as terminé le chapitre sur la lecture de notes
       </h2>
       <h1 v-else class="red">Tu n'as pas réussi le quiz</h1>
       <h2 style="text-align:center">
-        N'hésite pas à recommencer autant de fois que tu le souhaite !
+        N'hésite pas à recommencer autant de fois que tu le souhaites !
       </h2>
       <div class="boutonQuiz">
         <div class="boutonBox"><p @click="retour">Retour au menu</p></div>

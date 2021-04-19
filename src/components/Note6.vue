@@ -5,7 +5,7 @@
     <audio src="@/assets/Note/Sol.mp3" controls></audio>
     <div id="note_portee_sol"></div>
     <p>
-      Vous devez avoir compris, en clé de Sol, plus une note est haute sur la
+      Tu dois l’avoir compris, en clé de Sol, plus une note est haute sur la
       portée, plus elle est aigu.
     </p>
     <div class="boutons">

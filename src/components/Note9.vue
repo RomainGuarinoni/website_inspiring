@@ -213,7 +213,7 @@ export default {
       },
       duration: "q",
     })
-      .setLine(11)
+      .setLine(9)
       .setStave(Mesure_2)
       .setJustification(Vex.Flow.TextNote.Justification.CENTER);
 

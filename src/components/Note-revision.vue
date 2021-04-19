@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <Navbar class="navbar" type="3" :year="year" />
-    <h1>Apprendre à lire les notes</h1>
+    <h1>Apprends à lire les notes</h1>
     <div class="contour">
       <h2>Fiche de révision</h2>
       <div id="note_portee_fin"></div>
