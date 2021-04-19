@@ -83,17 +83,8 @@ export default new Vuex.Store({
         url: "http://api.engineeringhpb.fr/api/mgq",
         headers: { Authorization: `Bearer ${context.state.token}` },
         data: bodyFormData,
-      })
-        .then(() => {
-          console.log("update entrainement reussi");
-          return axios({
-            method: "post",
-            url: "http://api.engineeringhpb.fr/api/getFullUserProfile",
-            headers: { Authorization: `Bearer ${context.state.token}` },
-          });
-        })
-        .catch((e) => console.log("error update : " + e))
-        .then((res) => console.log(res.data));
+      }).catch((e) => console.log("error update : " + e));
+
       //recompte le nombre d'entraienement et de quizz validé sur le nombre de total en tout
       context.state.progression[payload.year - 1].chapter[
         payload.chapter
@@ -131,6 +122,7 @@ export default new Vuex.Store({
       context.commit("entrainementValidePartition", payload);
       let total = 5;
       let nbTrue = 0;
+
       if (
         context.state.progression[payload.year - 1].chapter.partition.nuance
           .entrainement[0]
@@ -210,6 +202,18 @@ export default new Vuex.Store({
       context.dispatch("CALCUL_YEAR_PROGRESSION");
     },
     QUIZ_VALIDE(context, payload) {
+      var bodyFormData = new FormData();
+      bodyFormData.append("mgq_id", payload.id);
+      bodyFormData.append("score", payload.score);
+      bodyFormData.append("evaluated", 1);
+      axios({
+        method: "post",
+        url: "http://api.engineeringhpb.fr/api/mgq",
+        headers: { Authorization: `Bearer ${context.state.token}` },
+        data: bodyFormData,
+      })
+        .then(() => console.log("quiz enregistré"))
+        .catch((e) => console.log("error update : " + e));
       context.commit("quizValide", payload);
       // envoyer a hugo les valeurs !!
       let total = 0;

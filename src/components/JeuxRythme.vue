@@ -345,11 +345,15 @@ export default {
             level: this.levelIndex,
             year: this.year,
             chapter: "rythme",
+            id: 8,
+            score: 1,
           });
         } else {
           this.$store.dispatch("QUIZ_VALIDE", {
             year: this.year,
             chapter: "rythme",
+            id: 9,
+            score: 1,
           });
         }
 
