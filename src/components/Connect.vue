@@ -1,6 +1,10 @@
 <template>
   <div class="container">
-    <div class="left">
+    <div class="loading-logo" v-if="loading">
+      <img src="@/assets/Mascotte.svg" alt="mascotte" />
+      <p>Chargement ...</p>
+    </div>
+    <div class="left" :class="{ loading: loading }">
       <Navbar type="1" class="navbar" />
       <div class="formBox">
         <form v-on:submit.prevent="onSubmit" v-if="!createAccount">
@@ -39,7 +43,7 @@
               >
             </div>
             <div class="buttons">
-              <button @click="checkLogin" type="submit">Se connecter</button>
+              <button type="submit">Se connecter</button>
               <div v-show="error" class="error">
                 <p>identifiant ou mdp erroné</p>
               </div>
@@ -133,13 +137,13 @@
         </form>
       </div>
     </div>
-    <div class="right"></div>
+    <div class="right" :class="{ loading: loading }"></div>
   </div>
 </template>
 
 <script>
 import Navbar from "./Navbar";
-import Data from "../Data";
+import axios from "axios";
 export default {
   components: {
     Navbar,
@@ -158,15 +162,63 @@ export default {
       conservatoire: "",
       school: ["ecole A", "ecole B", "ecole C"],
       createAccount: false,
+      loading: false,
     };
   },
   methods: {
-    test() {
-      console.log("test function");
-    },
-    checkLogin() {
-      /////////////////fonction a changer apres//////////
-      if (this.login != "admin" || this.mdp != "admin") {
+    onSubmit() {
+      this.loading = true;
+      var bodyFormData = new FormData();
+      bodyFormData.append("email", this.login);
+      bodyFormData.append("password", this.mdp);
+      console.log(bodyFormData);
+      axios({
+        method: "post",
+        url: "http://api.engineeringhpb.fr/api/login",
+        data: bodyFormData,
+        //headers: { "Content-Type": "multipart/form-data" },
+      })
+        .then((data) => {
+          this.error = false;
+          if (this.stayconnect) {
+            localStorage.setItem("login", this.login);
+            localStorage.setItem("mdp", this.mdp);
+            console.log(localStorage.getItem("mdp"));
+          } else {
+            if (
+              localStorage.getItem("login") != null &&
+              localStorage.getItem("mdp") != null
+            ) {
+              localStorage.removeItem("login");
+              localStorage.removeItem("mdp");
+            }
+          }
+          this.$store.state.connect = true;
+          this.$store.dispatch("SET_TOKEN", data.data.token);
+          console.log("yes");
+          return axios({
+            method: "post",
+            url: "http://api.engineeringhpb.fr/api/getFullUserProfile",
+            headers: { Authorization: `Bearer ${this.$store.state.token}` },
+          });
+        })
+        .catch((e) => {
+          console.log(`error login ${e}`);
+          this.error = true;
+          this.loading = false;
+        })
+        .then((data) => {
+          console.log(data.data);
+        })
+        .catch((e) => {
+          console.log(`error receinving progression ${e}`);
+          this.loading = false;
+        })
+        .finally(() => {
+          this.loading = false;
+        });
+
+      /*if (this.login != "admin" || this.mdp != "admin") {
         this.error = true;
       } else {
         this.error = false;
@@ -183,9 +235,9 @@ export default {
             localStorage.removeItem("mdp");
           }
         }
-        this.$store.state.connect = true;
-        //récupérer les data de la base de donnée
-        Data.then((res) => {
+        this.$store.state.connect = true;*/
+      //récupérer les data de la base de donnée
+      /*Data.then((res) => {
           this.$store.dispatch("CREATE_USER", res);
           let avancement = [];
 
@@ -240,7 +292,7 @@ export default {
             this.$router.push({ name: "yearselect" });
           });
         });
-      }
+      }*/
     },
     createNewAccount() {
       if (
@@ -495,12 +547,16 @@ select {
 }
 .right {
   height: 100%;
+  position: relative;
+  z-index: 1;
   width: 45%;
   background: url("../assets/Mascotte.svg") no-repeat;
   background-position: center;
   background-size: 100%;
 }
 .left {
+  position: relative;
+  z-index: 1;
   height: 100%;
   width: 55%;
   display: flex;
@@ -544,5 +600,33 @@ button {
 .redBackground {
   border-color: var(--red) !important;
   border-width: 3px !important;
+}
+.loading {
+  pointer-events: none;
+  filter: grayscale(90%) blur(4px);
+}
+.loading-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  margin-left: -100px;
+  margin-top: -100px;
+}
+.loading-logo img {
+  width: 200px;
+  height: auto;
+  animation: jump ease-in-out 500ms infinite;
+}
+@keyframes jump {
+  0% {
+    transform: translateY(-0px);
+  }
+  50% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(-0px);
+  }
 }
 </style>

@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="item solo">
-        <p class="red">Fiche de révision</p>
+        <p class="red" @click="fiche()">Fiche de révision</p>
       </div>
       <div class="item solo" @click="quizRouter()">
         <p class="blue">Quiz final</p>

@@ -97,7 +97,7 @@ const routes = [
     props: true,
   },
   {
-    path: "/yolo",
+    path: "/fiche-revision-rythme",
     component: PartitionRevision,
     name: "Partition-revision",
     props: true,

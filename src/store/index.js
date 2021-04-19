@@ -10,6 +10,7 @@ export default new Vuex.Store({
     chapterProgression: new Array(), // progression chapitre en % pour chaque année
     yearProgression: new Array(), // progression année en %
     connect: false, // état de la connection du user
+    token: "", //token de l'utilsateur
   },
   mutations: {
     entrainementValide(state, payload) {
@@ -59,8 +60,14 @@ export default new Vuex.Store({
       state.yearProgression = new Object();
       state.chapterProgression = new Object();
     },
+    setToken(state, token) {
+      state.token = token;
+    },
   },
   actions: {
+    SET_TOKEN(context, token) {
+      context.commit("setToken", token);
+    },
     //payload : year , chapter, level
     ENTRAINEMENT_VALIDE(context, payload) {
       context.commit("entrainementValide", payload);
