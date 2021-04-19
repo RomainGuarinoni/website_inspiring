@@ -233,12 +233,13 @@ export default {
 .quizBox,
 .result {
   margin: auto;
-  width: 70%;
+  width: 90%;
   height: 80%;
   background: rgba(219, 218, 218, 0.644);
   border: none;
   border-radius: 20px;
   position: relative;
+  max-width: 1500px;
   padding: 30px;
   display: flex;
   flex-direction: column;
@@ -290,6 +291,12 @@ export default {
   right: 50px;
   color: var(--green);
 }
+@media all and (max-width: 1252px) {
+  .avancement {
+    top: 5px !important;
+    right: 50% !important;
+  }
+}
 .reponses {
   flex: 1;
   display: flex;
@@ -297,11 +304,13 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 .reponseItem {
   border: 2px solid var(--main);
   margin: 30px 0;
-  min-width: 800px;
+  max-width: 800px;
+  width: 80%;
   text-align: center;
   padding: 20px 0;
   border-radius: 10px;

@@ -17,7 +17,7 @@
         <p class="link" @click="nav('rythme')">Retour au menu</p>
       </div>
       <div class="right">
-        <p class="link" @click="nav('Rythme')">Page précédente</p>
+        <p class="link" @click="nav('rythme')">Page précédente</p>
         <p class="link" @click="nav('rythme2')">Page suivante</p>
       </div>
     </div>

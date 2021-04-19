@@ -58,4 +58,10 @@ export default {};
   right: 0;
   bottom: 0;
 }
+button,
+.button,
+.buttons,
+.link {
+  user-select: none;
+}
 </style>
