@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-
+import axios from "axios";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -29,8 +29,8 @@ export default new Vuex.Store({
     createUser(state, payload) {
       state.user = payload;
     },
-    create_progression(state) {
-      state.progression = state.user.progression;
+    create_progression(state, payload) {
+      state.progression = payload;
     },
     createChapterProgression(state, payload) {
       state.chapterProgression = payload;
@@ -73,7 +73,27 @@ export default new Vuex.Store({
       context.commit("entrainementValide", payload);
       let total = 0;
       let nbTrue = 0;
-
+      var bodyFormData = new FormData();
+      bodyFormData.append("mgq_id", payload.id);
+      bodyFormData.append("level", payload.level + 1);
+      bodyFormData.append("score", payload.score);
+      bodyFormData.append("evaluated", 0);
+      axios({
+        method: "post",
+        url: "http://api.engineeringhpb.fr/api/mgq",
+        headers: { Authorization: `Bearer ${context.state.token}` },
+        data: bodyFormData,
+      })
+        .then(() => {
+          console.log("update entrainement reussi");
+          return axios({
+            method: "post",
+            url: "http://api.engineeringhpb.fr/api/getFullUserProfile",
+            headers: { Authorization: `Bearer ${context.state.token}` },
+          });
+        })
+        .catch((e) => console.log("error update : " + e))
+        .then((res) => console.log(res.data));
       //recompte le nombre d'entraienement et de quizz validé sur le nombre de total en tout
       context.state.progression[payload.year - 1].chapter[
         payload.chapter
@@ -219,7 +239,8 @@ export default new Vuex.Store({
     },
     CREATE_USER(context, payload) {
       context.commit("createUser", payload);
-      context.commit("create_progression");
+      let progression = [context.state.user.progression, {}, {}];
+      context.commit("create_progression", progression);
     },
     CREATE_CHAPTER_PROGRESSION(context, payload) {
       context.commit("createChapterProgression", payload);
@@ -245,6 +266,13 @@ export default new Vuex.Store({
       context.commit("calculYearProgression", yearProgression);
     },
     DISCONNECT(context) {
+      axios({
+        method: "post",
+        url: "http://api.engineeringhpb.fr/api/logout",
+        headers: { Authorization: `Bearer ${context.state.token}` },
+      })
+        .then(() => console.log("disconnect"))
+        .catch((e) => console.log("error on disonnect : " + e));
       context.commit("disconnect");
     },
 

@@ -209,63 +209,32 @@ export default {
         })
         .then((data) => {
           console.log(data.data);
-        })
-        .catch((e) => {
-          console.log(`error receinving progression ${e}`);
-          this.loading = false;
-        })
-        .finally(() => {
-          this.loading = false;
-        });
-
-      /*if (this.login != "admin" || this.mdp != "admin") {
-        this.error = true;
-      } else {
-        this.error = false;
-        if (this.stayconnect) {
-          localStorage.setItem("login", this.login);
-          localStorage.setItem("mdp", this.mdp);
-          console.log(localStorage.getItem("mdp"));
-        } else {
-          if (
-            localStorage.getItem("login") != null &&
-            localStorage.getItem("mdp") != null
-          ) {
-            localStorage.removeItem("login");
-            localStorage.removeItem("mdp");
-          }
-        }
-        this.$store.state.connect = true;*/
-      //récupérer les data de la base de donnée
-      /*Data.then((res) => {
-          this.$store.dispatch("CREATE_USER", res);
+          this.$store.dispatch("CREATE_USER", data.data);
           let avancement = [];
-
           //calcul des progressions des chapitres par année
-          res.progression.forEach((annee) => {
-            if (Object.keys(annee).length > 0) {
-              let item = annee.chapter;
-              let avancementItem = {
-                note: this.calculProgressionChapter(
-                  item.note.entrainement,
-                  item.note.quiz
-                ),
-                rythme: this.calculProgressionChapter(
-                  item.rythme.entrainement,
-                  item.rythme.quiz
-                ),
-                partition: this.calculProgressionChapterPartition(item),
-                instruments: this.calculProgressionChapter(
-                  item.instruments.entrainement,
-                  false,
-                  false
-                ),
-              };
-              avancement.push(avancementItem);
-            } else {
-              avancement.push({});
-            }
-          });
+          let item = data.data.progression.chapter;
+          let avancementItem = {
+            note: this.calculProgressionChapter(
+              item.note.entrainement,
+              item.note.quiz
+            ),
+            rythme: this.calculProgressionChapter(
+              item.rythme.entrainement,
+              item.rythme.quiz
+            ),
+            partition: this.calculProgressionChapterPartition(item),
+            instrument: this.calculProgressionChapter(
+              item.instrument.entrainement,
+              false,
+              false
+            ),
+          };
+          avancement.push(avancementItem);
+
+          //push rien pour les deux années suivantes
+          for (let i = 0; i < 2; i++) {
+            avancement.push({});
+          }
 
           //calcul des progression des années
 
@@ -283,16 +252,21 @@ export default {
               yearProgression.push(0);
             }
           });
-          console.log(avancement);
-          // push toutes ces données dans VUEX
           Promise.all([
             this.$store.dispatch("CREATE_CHAPTER_PROGRESSION", avancement),
             this.$store.dispatch("CREATE_YEAR_PROGRESSION", yearProgression),
           ]).then(() => {
             this.$router.push({ name: "yearselect" });
           });
+        })
+        .catch((e) => {
+          console.log(`error receinving progression ${e}`);
+          this.loading = false;
+        })
+        .finally(() => {
+          this.$store.dispatch("toString");
+          this.loading = false;
         });
-      }*/
     },
     createNewAccount() {
       if (

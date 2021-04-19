@@ -58,7 +58,7 @@ export default {
       return require(`@/assets/instruments/${this.list[index].thumb}`);
     },
     checkLevel(index) {
-      return this.$store.state.progression[this.year - 1].chapter.instruments
+      return this.$store.state.progression[this.year - 1].chapter.instrument
         .entrainement[index];
     },
   },

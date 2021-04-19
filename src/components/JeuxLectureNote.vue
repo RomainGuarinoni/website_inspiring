@@ -77,7 +77,7 @@ export default {
   },
   props: {
     level: Object,
-    year: String,
+    year: Number,
     quiz: Boolean,
   },
   data() {
@@ -108,14 +108,17 @@ export default {
   },
   watch: {
     finish: function() {
-      let score = (this.score * 100) / 8; // score en pourcentage
+      console.log(`level : ${this.level.index}`);
+      let score = this.score / 8; // score en pourcentage
       let level = this.level;
+
       //j'upgrade en local la progression du joueur
-      if (score == 100) {
-        if (this.quiz && !this.progression[this.year - 1].chapter.note.quiz) {
+      if (this.quiz) {
+        if (score == 1 && !this.progression[this.year - 1].chapter.note.quiz) {
           this.$store.dispatch("QUIZ_VALIDE", {
             year: this.year,
             chapter: "note",
+            id: 7,
           });
         }
       } else {
@@ -123,13 +126,15 @@ export default {
           !this.progression[this.year - 1].chapter.note.entrainement[
             level.index
           ] &&
-          score >= 80
+          score >= 0.75
         ) {
           this.$store
             .dispatch("ENTRAINEMENT_VALIDE", {
               level: level.index,
               year: this.year,
               chapter: "note",
+              id: 6,
+              score: score,
             })
             .then(() => {
               console.log("ouii");
