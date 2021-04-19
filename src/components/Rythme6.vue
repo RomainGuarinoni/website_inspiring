@@ -4,8 +4,8 @@
     <h2>Les Silences</h2>
     <h3>Le soupir</h3>
     <p>
-      Afin de remplir notre mesure sans jouer de note, on peut uitliser le
-      soupir : il représente un silence de 1 temps. C'est donc comme une noir
+      Afin de remplir notre mesure sans jouer de note, on peut utiliser le
+      soupir : il représente un silence de 1 temps. C'est donc comme une noire
       mais de silence. Voici à quoi il ressemble :<br />
     </p>
     <div id="rythme_portee5"></div>

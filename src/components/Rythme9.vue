@@ -5,7 +5,8 @@
     <h3>La demi-pause pointée</h3>
     <p>
       Pour un silence de 3 pulsations, on utilise une demi-pause (2 pulsations)
-      auquel on ajoute un point. Ce silence s'appelle la demi-pause pointée.<br />
+      à laquelle on ajoute un point. Ce silence s'appelle la demi-pause
+      pointée.<br />
     </p>
     <div id="rythme_portee8"></div>
     <div class="boutons">

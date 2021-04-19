@@ -5,7 +5,7 @@
                 "question":"Les nuances traduisent :",
                 "image_question":null,
                 "son_question":null,
-                "reponse":["l’intensité de la musique (si elle est plus ou moins forte)","la hauteur des notes (si elles sont plus ou moins aiguës)","le tempo du morceau (si il est plus ou moins rapide)"],
+                "reponse":["l’intensité de la musique (si elle est plus ou moins forte)","la hauteur des notes (si elles sont plus ou moins aiguës)","le tempo du morceau (s'il est plus ou moins rapide)"],
                 "image_reponse":["","",""],
                 "index":0
             },
@@ -13,12 +13,12 @@
                 "question":"Les nuances traduisent :",
                 "image_question":null,
                 "son_question":null,
-                "reponse":["l’intensité de la musique (si elle est plus ou moins forte)","la hauteur des notes (si elles sont plus ou moins aiguës)","le tempo du morceau (si il est plus ou moins rapide)"],
+                "reponse":["l’intensité de la musique (si elle est plus ou moins forte)","la hauteur des notes (si elles sont plus ou moins aiguës)","le tempo du morceau (s'il est plus ou moins rapide)"],
                 "image_reponse":["","",""],
                 "index":0
             },
             {
-                "question":"Parmi les propositions suivantes, laquelle correspond à des nuances ?",
+                "question":"Parmi les propositions suivantes, laquelle correspond à une nuance ?",
                 "image_question":null,
                 "son_question":null,
                 "reponse":null,
@@ -26,7 +26,7 @@
                 "index":1
             },
             {
-                "question":"Parmi les propositions suivantes, laquelle correspond à des nuances ?",
+                "question":"Parmi les propositions suivantes, laquelle correspond à une nuance ?",
                 "image_question":null,
                 "son_question":null,
                 "reponse":null,
@@ -34,7 +34,7 @@
                 "index":0
             },
             {
-                "question":"Parmi les propositions suivantes, laquelle correspond à des nuances ?",
+                "question":"Parmi les propositions suivantes, laquelle correspond à une nuance ?",
                 "image_question":null,
                 "son_question":null,
                 "reponse":null,
@@ -42,7 +42,7 @@
                 "index":2
             },
             {
-                "question":"Parmi les propositions suivantes, laquelle correspond à des nuances ?",
+                "question":"Parmi les propositions suivantes, laquelle correspond à une nuance ?",
                 "image_question":null,
                 "son_question":null,
                 "reponse":null,
@@ -50,7 +50,7 @@
                 "index":0
             },
             {
-                "question":"Parmi les propositions suivantes, laquelle correspond à des nuances ?",
+                "question":"Parmi les propositions suivantes, laquelle correspond à une nuance  ?",
                 "image_question":null,
                 "son_question":null,
                 "reponse":null,

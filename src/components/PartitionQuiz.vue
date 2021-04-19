@@ -39,7 +39,7 @@
         </div>
       </div>
       <div v-else-if="!reponse" class="quizBox falseAnswer">
-        <h1 class="red">Dommage, tu as répondu la mauvaise réponse</h1>
+        <h1 class="red">Dommage, tu as donné la mauvaise réponse</h1>
         <div class="reponseBox">
           <p class="falseReponseP">Voici la bonne réponse :</p>
           <div class="reponse">

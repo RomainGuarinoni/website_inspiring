@@ -169,6 +169,7 @@ audio {
 }
 p {
   font-size: 20px;
+  text-align: center;
 }
 .boutons {
   width: 80%;

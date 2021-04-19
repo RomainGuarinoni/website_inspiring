@@ -6,7 +6,7 @@
     <p>
       Nous avons vu la demi-pause qui vaut 2 pulsations, on peut donc deviner
       que la pause vaut 4 pulsations soit notre mesure entière.<br />Ces 2
-      rythmes peuvent être un peu difficile à distinguer donc voici un petit
+      rythmes peuvent être un peu difficiles à distinguer donc voici un petit
       moyen de s'en souvenir.<br />"La pause n'est pas posée" (sous entendu
       posée sur la ligne").
     </p>

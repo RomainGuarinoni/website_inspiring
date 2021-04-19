@@ -49,7 +49,7 @@ export default {
     /////Mesure n°1////
     //////////////////
 
-    var Mesure_1 = new Vex.Flow.Stave(355, 0, 410);
+    var Mesure_1 = new Vex.Flow.Stave(335, 0, 410);
     Mesure_1.addClef("treble")
       .addTimeSignature("4/4")
       .setContext(monContexte)
@@ -173,6 +173,7 @@ audio {
 }
 p {
   font-size: 20px;
+  text-align: center;
 }
 .boutons {
   width: 80%;
