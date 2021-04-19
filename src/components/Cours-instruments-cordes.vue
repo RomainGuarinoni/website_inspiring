@@ -18,7 +18,7 @@
         <div class="item" @click="pushTo(5)">
           <p>Fiche instrument : le violon</p>
         </div>
-        <div class="item" @click="pushTo()">
+        <div class="item" @click="pushTo(14)">
           <p>Fiche instrument : la contrebasse</p>
         </div>
       </div>

@@ -101,7 +101,7 @@
         {
             "thumb":"euphonium_thumbnail.png",
             "nom":"L’euphonium",
-            "famille":"instrument à vent, famille des bois",
+            "famille":"instrument à vent, famille des cuivre",
             "Invention":"Chine, vers 900 av. J.-C",
             "cle":"Clef de fa",
             "musicien":["Steven Mead","Brian Bowman","Ivan Milhiet"],
@@ -193,6 +193,20 @@
             "fonctionnement":[
                 "Le son s’obtient en tapant sur l’instrument à l’aide d’une mailloche.",
                 "Il dépend notamment de la tension de la membrane, laquelle est ajustable grâce à la pédales."
+            ],
+            "gamme":""
+        },
+        {
+            "thumb":"contrebasse_thumbnail.png",
+            "nom":"La contrebasse",
+            "famille":"Instruments à corde",
+            "Invention":"Apparu en 1620, introduite en orchestre milieu du XVII siècle",
+            "cle":"Clef de fa",
+            "musicien":["Charles Mingus","Ron Carter","Paul Chambers"],
+            "img":["contrebasse1.png","violon2.png","contrebasse3.png"],
+            "fonctionnement":[
+                "Le son de la contrebasse provient d’une vibration causée par le frottement entre l’archet et les cordes de la contrebasse. On peut aussi en joué en pincant les cordes avec ses doigts, surtout en Jazz",
+                "Mais en plus du frottement, il faut que l’archet soit enduit d’une résine végétale appelée colophane. Cela le rend rugueux et permet de frotter les cordes et de produire le son."
             ],
             "gamme":""
         }
