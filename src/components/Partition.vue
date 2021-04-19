@@ -13,20 +13,20 @@
             <p class="purple">Les nuances</p>
           </div>
           <div class="chapter ">
-            <div class="chapterItem">
-              <p class="orange" @click="cours('Nuance1')">Cours</p>
+            <div class="chapterItem" @click="cours('Nuance1')">
+              <p class="orange">Cours</p>
             </div>
-            <div class="chapterItem">
+            <div class="chapterItem" @click="play(0)">
               <div class="checkStatusSpec green" v-if="entrainement('nuance')">
                 <font-awesome-icon :icon="['fas', 'check-circle']" />
               </div>
-              <p class="orange" @click="play(0)">Entraînement</p>
+              <p class="orange">Entraînement</p>
             </div>
-            <div class="chapterItem">
+            <div class="chapterItem" @click="playQuiz(0)">
               <div class="checkStatusSpec green" v-if="quiz('nuance')">
                 <font-awesome-icon :icon="['fas', 'check-circle']" />
               </div>
-              <p class="orange" @click="playQuiz(0)">Quiz</p>
+              <p class="orange">Quiz</p>
             </div>
           </div>
         </div>
@@ -34,24 +34,24 @@
           <div class="header">
             <p class="purple">Structure d'une portée</p>
           </div>
-          <div class="chapter ">
+          <div class="chapter " @click="cours('structure1')">
             <div class="chapterItem">
-              <p class="orange" @click="cours('structure1')">Cours</p>
+              <p class="orange">Cours</p>
             </div>
-            <div class="chapterItem">
+            <div class="chapterItem" @click="play(1)">
               <div
                 class="checkStatusSpec green"
                 v-if="entrainement('structure')"
               >
                 <font-awesome-icon :icon="['fas', 'check-circle']" />
               </div>
-              <p class="orange" @click="play(1)">Entraînement</p>
+              <p class="orange">Entraînement</p>
             </div>
-            <div class="chapterItem">
+            <div class="chapterItem" @click="playQuiz(1)">
               <div class="checkStatusSpec green" v-if="quiz('structure')">
                 <font-awesome-icon :icon="['fas', 'check-circle']" />
               </div>
-              <p class="orange" @click="playQuiz(1)">Quiz</p>
+              <p class="orange">Quiz</p>
             </div>
           </div>
         </div>
