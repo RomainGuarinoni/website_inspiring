@@ -12,7 +12,7 @@
                 "Grâce à la vibration de l’anche lorsque l’on souffle dans le bec :",
                 "On humidifie l’anche avant de jouer et on l’attache contre le bec avec la ligature. On attache le saxophone au harnais. On pose ses dents supérieurs sur le haut du bec, puis on ramène ses lèvres:On le nettoie après chaque utilisation avec un chiffon."
             ],
-            "gamme":""
+            "gamme":"GammesSaxophone"
         },
         {
             "thumb":"trompettebuglecornet_thumbail.png",
@@ -26,7 +26,7 @@
                 "Le son part d’une vibration des lèvres du musicien, pour l’obtenir il faut souffler tout en “pinçant” les lèvres.",
                 "La trompette transforme ensuite cette vibration en un son mélodieux. La trompette transforme ensuite cette vibration en un son mélodieux. Il est possible de changer de note en appuyant sur les pistons."
             ],
-            "gamme":""
+            "gamme":"GammesTrompette"
         },
         {
             "thumb":"xylo_thumbnail.png",
@@ -40,7 +40,7 @@
                 "Le vibraphone a des lames en métal qui résonnent grâce aux tuyaux situés sous les lames. Le vibraphone permet aussi un vibrato grâce à des clapets qui s’ouvrent et qui se ferment au-dessus des tuyaux",
                 "Le vibraphone possède aussi une pédale de résonnance, comme un piano."
             ],
-            "gamme":""
+            "gamme":"GammesXylo"
         },
         {
             "thumb":"clarinette_thumbnail.png",
@@ -54,7 +54,7 @@
                 "La clarinette a besoin d’une hanche en roseau sur son bec pour produire un son. En effet, la hanche va vibrer grâce au souffle du clarinettiste et va produire un son.",
                 "En fonction des clefs utilisées, l’air du clarinettiste va sortir de la clarinette par des endroits différents. C’est comme ça que différents sons peuvent être produits."
             ],
-            "gamme":""
+            "gamme":"GammesClarinette"
         },
         {
             "thumb":"piano-thumbnail.png",
@@ -68,7 +68,7 @@
                 "Un piano est composé d’une caisse contenant un ensemble de cordes tendues. Chaque corde produit un son différent lorsqu’on la frappe en fonction de sa taille, de son poids et de sa tension.",
                 "Le son est produit quand les marteaux frappent les cordes lorsque le pianiste appuie sur les touches. Le marteau frappe les cordes et les fait vibrer,  la fréquence de vibration va entraîner des sons différents et donc créer les notes."
             ],
-            "gamme":""
+            "gamme":"GammesPiano"
         },
         {
             "thumb":"violon_thumbnail.png",
@@ -82,7 +82,7 @@
                 "Le son du violon provient d’une vibration causée par le frottement entre l’archet et les cordes du violon.",
                 "Mais en plus du frottement, il faut que l’archet soit enduit d’une résine végétale appelée colophane. Cela le rend rugueux et permet de frotter les cordes et de produire le son."
             ],
-            "gamme":""
+            "gamme":"GammesViolon"
         },
         {
             "thumb":"Flute_thumbnail.png",
@@ -110,7 +110,7 @@
                 "Grâce à la vibration de l’anche lorsque l’on souffle dans le bec :",
                 "On humidifie l’anche avant de jouer et on l’attache contre le bec avec la ligature. On attache le saxophone au harnais. On pose ses dents supérieurs sur le haut du bec, puis on ramène ses lèvres:On le nettoie après chaque utilisation avec un chiffon."
             ],
-            "gamme":""
+            "gamme":"GammesEuphonium"
         },
         {
             "thumb":"trombonne_thumbnail.png",
@@ -138,7 +138,7 @@
                 "Le musicien fait vibrer les cordes avec ses doigts ou avec un médiator. La vibration est amplifiée par la caisse de résonance",
                 "Pour changer de note, on pince une corde sur une frette avec la main gauche."
             ],
-            "gamme":""
+            "gamme":"GammesGuitare"
         },
         {
             "thumb":"cor_thumbnail.png",

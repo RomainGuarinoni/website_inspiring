@@ -33,7 +33,7 @@
           </div>
           <div class="son">
             <p><span class="underline">Gamme jouée : </span></p>
-            <audio src="" controls></audio>
+            <audio :src="audio()" controls></audio>
           </div>
         </div>
         <div class="right">
@@ -79,6 +79,13 @@ export default {
     },
     img(index) {
       return require(`@/assets/instruments/${this.info.img[index]}`);
+    },
+    audio() {
+      if (this.info.gamme != "") {
+        return require(`@/assets/instruments/audio/${this.info.gamme}.mp3`);
+      } else {
+        return "";
+      }
     },
   },
   mounted: function() {

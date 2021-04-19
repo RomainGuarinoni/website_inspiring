@@ -94,6 +94,9 @@ export default {
     goToCours() {
       this.$router.push({ name: "Rythme1" });
     },
+    fiche() {
+      this.$router.push({ name: "Partition-revision" });
+    },
     quizAvailable() {
       let res = false;
       this.$store.state.progression[

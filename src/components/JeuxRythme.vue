@@ -253,7 +253,7 @@ export default {
           },
           {
             mp3: require("@/assets/level2_5.mp3"),
-            result: [7, 1],
+            result: [7, 2],
             note: [noteGlobal[7], noteGlobal[1], noteGlobal[2], noteGlobal[6]],
           },
           {
@@ -366,7 +366,6 @@ export default {
         level: this.diff[this.levelIndex][random],
         index: this.levelIndex,
       };
-      console.log(random + 1);
     },
     playAudio() {
       if (this.show) {

@@ -1,6 +1,5 @@
- <!--<template>
+<template>
   <div class="box">
-   //body sans boutons
     <h1>Fiche de révision : Améliore ton rythme</h1>
     <div id="rythmes">
       <h2>Les notes</h2>
@@ -85,7 +84,7 @@ export default {
     var voice5 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
 
     //On ajoute des pulsations
-    var text11 = new Vex.Flow.TextNote({
+    var text1 = new Vex.Flow.TextNote({
       text: "1",
       duration: "q",
     })
@@ -93,7 +92,7 @@ export default {
       .setStave(staveMeasure1)
       .setJustification(Vex.Flow.TextNote.Justification.LEFT);
 
-    var text12 = new Vex.Flow.TextNote({
+    var text2 = new Vex.Flow.TextNote({
       text: "2",
       duration: "q",
     })
@@ -101,7 +100,7 @@ export default {
       .setStave(staveMeasure1)
       .setJustification(Vex.Flow.TextNote.Justification.LEFT);
 
-    var text13 = new Vex.Flow.TextNote({
+    var text3 = new Vex.Flow.TextNote({
       text: "3",
       duration: "q",
     })
@@ -109,7 +108,7 @@ export default {
       .setStave(staveMeasure1)
       .setJustification(Vex.Flow.TextNote.Justification.LEFT);
 
-    var text14 = new Vex.Flow.TextNote({
+    var text4 = new Vex.Flow.TextNote({
       text: "4",
       duration: "q",
     })
@@ -119,22 +118,23 @@ export default {
 
     // On ajoute les notes et le texte aux voix. Helper function to justify and draw a 4/4 voice
     voice4.addTickables(notesMeasure1);
-    voice5.addTickables([text11]);
-    voice5.addTickables([text12]);
-    voice5.addTickables([text13]);
-    voice5.addTickables([text14]);
+    voice5.addTickables([text1]);
+    voice5.addTickables([text2]);
+    voice5.addTickables([text3]);
+    voice5.addTickables([text4]);
 
     //On formatte et on joint les deux voix
+    // eslint-disable-next-line no-unused-vars
     var formatter = new Vex.Flow.Formatter()
       .joinVoices([voice4, voice5])
       .format([voice4, voice5], 325);
 
     // on dessine la voix avec les notes sur la mesure 1 et on dessine le texte des nuances
     voice4.draw(context1, staveMeasure1);
-    text11.setContext(context1).draw();
-    text12.setContext(context1).draw();
-    text13.setContext(context1).draw();
-    text14.setContext(context1).draw();
+    text1.setContext(context1).draw();
+    text2.setContext(context1).draw();
+    text3.setContext(context1).draw();
+    text4.setContext(context1).draw();
 
     ////////////////////
     ///////Blanche//////
@@ -157,10 +157,10 @@ export default {
     /////////////////////////////////////////////////
 
     // Création d'une mesure
-    var staveMeasure1 = new Vex.Flow.Stave(10, 0, 400);
+    var staveMeasure2 = new Vex.Flow.Stave(10, 0, 400);
 
     // on lui ajoute une clé (treble=clé de sol), on la connecte au context et on la dessine
-    staveMeasure1
+    staveMeasure2
       .addClef("treble")
       .addTimeSignature("C")
       .setContext(context2)
@@ -169,67 +169,35 @@ export default {
     //////////////////////////////////////////////////////////////////////////////////////
 
     //Création de Notes dans un tableau
-    var notesMeasure1 = [
+    var notesMeasure2 = [
       new Vex.Flow.StaveNote({ keys: ["a/4"], duration: "2" }),
       new Vex.Flow.StaveNote({ keys: ["a/4"], duration: "2" }),
     ];
 
     //Création de 2 voix de 4 temps
-    var voice4 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
-    var voice5 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
-
-    //On ajoute des pulsations
-    var text11 = new Vex.Flow.TextNote({
-      text: "1",
-      duration: "q",
-    })
-      .setLine(12)
-      .setStave(staveMeasure1)
-      .setJustification(Vex.Flow.TextNote.Justification.LEFT);
-
-    var text12 = new Vex.Flow.TextNote({
-      text: "2",
-      duration: "q",
-    })
-      .setLine(12)
-      .setStave(staveMeasure1)
-      .setJustification(Vex.Flow.TextNote.Justification.LEFT);
-
-    var text13 = new Vex.Flow.TextNote({
-      text: "3",
-      duration: "q",
-    })
-      .setLine(12)
-      .setStave(staveMeasure1)
-      .setJustification(Vex.Flow.TextNote.Justification.LEFT);
-
-    var text14 = new Vex.Flow.TextNote({
-      text: "4",
-      duration: "q",
-    })
-      .setLine(12)
-      .setStave(staveMeasure1)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
+    var voice = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
+    var voice2 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
 
     // On ajoute les notes et le texte aux voix. Helper function to justify and draw a 4/4 voice
-    voice4.addTickables(notesMeasure1);
+    voice.addTickables(notesMeasure2);
 
-    voice5.addTickables([text11]);
-    voice5.addTickables([text12]);
-    voice5.addTickables([text13]);
-    voice5.addTickables([text14]);
+    voice2.addTickables([text1]);
+    voice2.addTickables([text2]);
+    voice2.addTickables([text3]);
+    voice2.addTickables([text4]);
 
     //On formatte et on joint les deux voix
-    var formatter = new Vex.Flow.Formatter()
+    // eslint-disable-next-line no-unused-vars
+    var formatter2 = new Vex.Flow.Formatter()
       .joinVoices([voice4, voice5])
       .format([voice4, voice5], 325);
 
     // on dessine la voix avec les notes sur la mesure 1 et on dessine le texte des nuances
-    voice4.draw(context2, staveMeasure1);
-    text14.setContext(context2).draw();
-    text11.setContext(context2).draw();
-    text12.setContext(context2).draw();
-    text13.setContext(context2).draw();
+    voice.draw(context2, staveMeasure2);
+    text4.setContext(context2).draw();
+    text1.setContext(context2).draw();
+    text2.setContext(context2).draw();
+    text3.setContext(context2).draw();
 
     ////////////////////
     ///BLANCHE POINTEE//
@@ -264,58 +232,6 @@ export default {
       new Vex.Flow.StaveNote({ keys: ["a/4"], duration: "4r" }),
     ];
 
-    //Créations des batons
-    var text1 = new Vex.Flow.TextNote({
-      text: "1",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_1)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
-    var text2 = new Vex.Flow.TextNote({
-      text: "2",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_1)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
-    var text3 = new Vex.Flow.TextNote({
-      text: "3",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_1)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-    var text4 = new Vex.Flow.TextNote({
-      text: "4",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_1)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
     //Création de 2 voix de 4 temps
 
     var maVoix1 = new Vex.Flow.Voice({
@@ -337,8 +253,8 @@ export default {
     maVoix2.addTickables([text3]);
     maVoix2.addTickables([text4]);
     //On formatte et on joint les deux voix
-
-    var monFormatter = new Vex.Flow.Formatter()
+    // eslint-disable-next-line no-unused-vars
+    var monFormatter3 = new Vex.Flow.Formatter()
       .joinVoices([maVoix1, maVoix2])
       .format([maVoix1, maVoix2], 355);
 
@@ -370,78 +286,25 @@ export default {
     /////Mesure n°3////
     //////////////////
 
-    var Mesure_1 = new Vex.Flow.Stave(10, 0, 400);
-    Mesure_1.addClef("treble")
+    var Mesure_2 = new Vex.Flow.Stave(10, 0, 400);
+    Mesure_2.addClef("treble")
       .addTimeSignature("4/4")
       .setContext(context4)
       .draw(); // Ajout d'une clé, chiffrage et dessin
 
     //Créations de notes
-
-    var notesMesure_1 = [
+    var notesMesure_2 = [
       new Vex.Flow.StaveNote({ keys: ["a/4"], duration: "1" }),
     ];
 
-    //Créations des batons
-    var text1 = new Vex.Flow.TextNote({
-      text: "1",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_1)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
-    var text2 = new Vex.Flow.TextNote({
-      text: "2",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_1)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
-    var text3 = new Vex.Flow.TextNote({
-      text: "3",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_1)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-    var text4 = new Vex.Flow.TextNote({
-      text: "4",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_1)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
     //Création de 2 voix de 4 temps
 
-    var maVoix1 = new Vex.Flow.Voice({
+    var maVoix3 = new Vex.Flow.Voice({
       num_beats: 4,
       beat_value: 4,
       resolution: Vex.Flow.RESOLUTION,
     });
-    var maVoix2 = new Vex.Flow.Voice({
+    var maVoix7 = new Vex.Flow.Voice({
       num_beats: 4,
       beat_value: 4,
       resolution: Vex.Flow.RESOLUTION,
@@ -449,20 +312,20 @@ export default {
 
     // On ajoute les notes et les nuances aux voix.
 
-    maVoix1.addTickables(notesMesure_1);
-    maVoix2.addTickables([text1]); //bien ajouter aux deux voix s'il n'y a pas de nuances "text"
-    maVoix2.addTickables([text2]);
-    maVoix2.addTickables([text3]);
-    maVoix2.addTickables([text4]);
+    maVoix3.addTickables(notesMesure_2);
+    maVoix7.addTickables([text1]); //bien ajouter aux deux voix s'il n'y a pas de nuances "text"
+    maVoix7.addTickables([text2]);
+    maVoix7.addTickables([text3]);
+    maVoix7.addTickables([text4]);
     //On formatte et on joint les deux voix
-
-    var monFormatter = new Vex.Flow.Formatter()
-      .joinVoices([maVoix1, maVoix2])
-      .format([maVoix1, maVoix2], 355);
+    // eslint-disable-next-line no-unused-vars
+    var monFormatter4 = new Vex.Flow.Formatter()
+      .joinVoices([maVoix3, maVoix7])
+      .format([maVoix3, maVoix7], 355);
 
     // on dessine la voix avec les notes sur la mesure 1
 
-    maVoix1.draw(context4, Mesure_1);
+    maVoix3.draw(context4, Mesure_2);
     text1.setContext(context4).draw();
     text2.setContext(context4).draw();
     text3.setContext(context4).draw();
@@ -488,81 +351,29 @@ export default {
     /////Mesure n°5////
     //////////////////
 
-    var Mesure_1 = new Vex.Flow.Stave(10, 0, 400);
-    Mesure_1.addClef("treble")
+    var Mesure_3 = new Vex.Flow.Stave(10, 0, 400);
+    Mesure_3.addClef("treble")
       .addTimeSignature("4/4")
       .setContext(context5)
       .draw(); // Ajout d'une clé, chiffrage et dessin
 
     //Créations de notes
 
-    var notesMesure_1 = [
+    var notesMesure_3 = [
       new Vex.Flow.StaveNote({ keys: ["a/4"], duration: "4r" }),
       new Vex.Flow.StaveNote({ keys: ["a/4"], duration: "4r" }),
       new Vex.Flow.StaveNote({ keys: ["a/4"], duration: "4r" }),
       new Vex.Flow.StaveNote({ keys: ["a/4"], duration: "4r" }),
     ];
 
-    //Créations des batons
-    var text1 = new Vex.Flow.TextNote({
-      text: "1",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_1)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
-    var text2 = new Vex.Flow.TextNote({
-      text: "2",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_1)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
-    var text3 = new Vex.Flow.TextNote({
-      text: "3",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_1)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-    var text4 = new Vex.Flow.TextNote({
-      text: "4",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_1)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
     //Création de 2 voix de 4 temps
 
-    var maVoix1 = new Vex.Flow.Voice({
+    var maVoix4 = new Vex.Flow.Voice({
       num_beats: 4,
       beat_value: 4,
       resolution: Vex.Flow.RESOLUTION,
     });
-    var maVoix2 = new Vex.Flow.Voice({
+    var maVoix8 = new Vex.Flow.Voice({
       num_beats: 4,
       beat_value: 4,
       resolution: Vex.Flow.RESOLUTION,
@@ -570,20 +381,20 @@ export default {
 
     // On ajoute les notes et les nuances aux voix.
 
-    maVoix1.addTickables(notesMesure_1);
-    maVoix2.addTickables([text1]); //bien ajouter aux deux voix s'il n'y a pas de nuances "text"
-    maVoix2.addTickables([text2]);
-    maVoix2.addTickables([text3]);
-    maVoix2.addTickables([text4]);
+    maVoix4.addTickables(notesMesure_3);
+    maVoix8.addTickables([text1]); //bien ajouter aux deux voix s'il n'y a pas de nuances "text"
+    maVoix8.addTickables([text2]);
+    maVoix8.addTickables([text3]);
+    maVoix8.addTickables([text4]);
     //On formatte et on joint les deux voix
-
-    var monFormatter = new Vex.Flow.Formatter()
-      .joinVoices([maVoix1, maVoix2])
-      .format([maVoix1, maVoix2], 355);
+    // eslint-disable-next-line no-unused-vars
+    var monFormatter5 = new Vex.Flow.Formatter()
+      .joinVoices([maVoix4, maVoix8])
+      .format([maVoix4, maVoix8], 355);
 
     // on dessine la voix avec les notes sur la mesure 1
 
-    maVoix1.draw(context5, Mesure_1);
+    maVoix4.draw(context5, Mesure_3);
     text1.setContext(context5).draw();
     text2.setContext(context5).draw();
     text3.setContext(context5).draw();
@@ -609,96 +420,46 @@ export default {
     /////Mesure n°6////
     ///////////////////
 
-    var Mesure_2 = new Vex.Flow.Stave(10, 0, 400); //attention à bien modifier la première valeur
-    Mesure_2.addClef("treble")
+    var Mesure_30 = new Vex.Flow.Stave(10, 0, 400); //attention à bien modifier la première valeur
+    Mesure_30.addClef("treble")
       .addTimeSignature("4/4")
       .setContext(context6)
       .draw();
     //On l'ajoute au contexte et on la dessine
 
-    Mesure_2.setContext(context6).draw();
+    Mesure_30.setContext(context6).draw();
 
     //Création de notes
 
-    var notesMesure_2 = [
+    var notesMesure_30 = [
       new Vex.Flow.StaveNote({ keys: ["b/4"], duration: "2r" }),
       new Vex.Flow.StaveNote({ keys: ["b/4"], duration: "2r" }),
     ];
 
     //Création de 2 voix de 4 temps
-    var maVoix3 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
-    var maVoix4 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
+    var maVoix300 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
+    var maVoix40 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
 
-    var text21 = new Vex.Flow.TextNote({
-      text: "1",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_2)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
-    var text22 = new Vex.Flow.TextNote({
-      text: "2",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_2)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
-    var text23 = new Vex.Flow.TextNote({
-      text: "3",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_2)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-    var text24 = new Vex.Flow.TextNote({
-      text: "4",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_2)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
     // On ajoute les notes
-    maVoix4.addTickables([text21]);
-    maVoix4.addTickables([text22]);
-    maVoix4.addTickables([text23]);
-    maVoix4.addTickables([text24]);
-    maVoix3.addTickables(notesMesure_2);
+    maVoix40.addTickables([text1]);
+    maVoix40.addTickables([text2]);
+    maVoix40.addTickables([text3]);
+    maVoix40.addTickables([text4]);
+    maVoix300.addTickables(notesMesure_30);
 
     //On formatte et on joint les deux voix
-
-    var monFormatter2 = new Vex.Flow.Formatter()
-      .joinVoices([maVoix3, maVoix4])
-      .format([maVoix3, maVoix4], 310);
+    // eslint-disable-next-line no-unused-vars
+    var monFormatter6 = new Vex.Flow.Formatter()
+      .joinVoices([maVoix300, maVoix40])
+      .format([maVoix300, maVoix40], 310);
 
     // on dessine la voix avec les notes sur la mesure et on dessine le texte des nuances
 
-    maVoix3.draw(context6, Mesure_2);
-    text21.setContext(context6).draw();
-    text22.setContext(context6).draw();
-    text23.setContext(context6).draw();
-    text24.setContext(context6).draw();
+    maVoix300.draw(context6, Mesure_30);
+    text1.setContext(context6).draw();
+    text2.setContext(context6).draw();
+    text3.setContext(context6).draw();
+    text4.setContext(context6).draw();
 
     ///
     ///Demi pause pointée
@@ -720,96 +481,46 @@ export default {
     /////Mesure n°7////
     ///////////////////
 
-    var Mesure_2 = new Vex.Flow.Stave(10, 0, 400); //attention à bien modifier la première valeur
-    Mesure_2.addClef("treble")
+    var Mesure_4 = new Vex.Flow.Stave(10, 0, 400); //attention à bien modifier la première valeur
+    Mesure_4.addClef("treble")
       .addTimeSignature("4/4")
       .setContext(context7)
       .draw();
     //On l'ajoute au contexte et on la dessine
 
-    Mesure_2.setContext(context7).draw();
+    Mesure_4.setContext(context7).draw();
 
     //Création de notes
 
-    var notesMesure_2 = [
+    var notesMesure_4 = [
       new Vex.Flow.StaveNote({ keys: ["b/4"], duration: "2dr" }).addDotToAll(),
       new Vex.Flow.StaveNote({ keys: ["b/4"], duration: "4r" }),
     ];
 
     //Création de 2 voix de 4 temps
-    var maVoix3 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
-    var maVoix4 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
+    var maVoix310 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
+    var maVoix410 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
 
-    var text21 = new Vex.Flow.TextNote({
-      text: "1",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_2)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
-    var text22 = new Vex.Flow.TextNote({
-      text: "2",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_2)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
-    var text23 = new Vex.Flow.TextNote({
-      text: "3",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_2)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-    var text24 = new Vex.Flow.TextNote({
-      text: "4",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_2)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
     // On ajoute les notes
-    maVoix4.addTickables([text21]);
-    maVoix4.addTickables([text22]);
-    maVoix4.addTickables([text23]);
-    maVoix4.addTickables([text24]);
-    maVoix3.addTickables(notesMesure_2);
+    maVoix410.addTickables([text1]);
+    maVoix410.addTickables([text2]);
+    maVoix410.addTickables([text3]);
+    maVoix410.addTickables([text4]);
+    maVoix310.addTickables(notesMesure_4);
 
     //On formatte et on joint les deux voix
-
-    var monFormatter2 = new Vex.Flow.Formatter()
-      .joinVoices([maVoix3, maVoix4])
-      .format([maVoix3, maVoix4], 310);
+    // eslint-disable-next-line no-unused-vars
+    var monFormatter7 = new Vex.Flow.Formatter()
+      .joinVoices([maVoix310, maVoix410])
+      .format([maVoix310, maVoix410], 310);
 
     // on dessine la voix avec les notes sur la mesure et on dessine le texte des nuances
 
-    maVoix3.draw(context7, Mesure_2);
-    text21.setContext(context7).draw();
-    text22.setContext(context7).draw();
-    text23.setContext(context7).draw();
-    text24.setContext(context7).draw();
+    maVoix310.draw(context7, Mesure_4);
+    text1.setContext(context7).draw();
+    text2.setContext(context7).draw();
+    text3.setContext(context7).draw();
+    text4.setContext(context7).draw();
 
     ///
     ///Ronde
@@ -831,95 +542,45 @@ export default {
     /////Mesure n°8////
     ///////////////////
 
-    var Mesure_2 = new Vex.Flow.Stave(10, 0, 400); //attention à bien modifier la première valeur
-    Mesure_2.addClef("treble")
+    var Mesure_5 = new Vex.Flow.Stave(10, 0, 400); //attention à bien modifier la première valeur
+    Mesure_5.addClef("treble")
       .addTimeSignature("4/4")
       .setContext(context8)
       .draw();
     //On l'ajoute au contexte et on la dessine
 
-    Mesure_2.setContext(context8).draw();
+    Mesure_5.setContext(context8).draw();
 
     //Création de notes
 
-    var notesMesure_2 = [
+    var notesMesure_5 = [
       new Vex.Flow.StaveNote({ keys: ["d/5"], duration: "1r" }),
     ];
 
     //Création de 2 voix de 4 temps
-    var maVoix3 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
-    var maVoix4 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
+    var maVoix30 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
+    var maVoix455 = new Vex.Flow.Voice({ num_beats: 4, beat_value: 4 });
 
-    var text21 = new Vex.Flow.TextNote({
-      text: "1",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_2)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
-    var text22 = new Vex.Flow.TextNote({
-      text: "2",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_2)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-
-    var text23 = new Vex.Flow.TextNote({
-      text: "3",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_2)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
-    var text24 = new Vex.Flow.TextNote({
-      text: "4",
-      font: {
-        family: "Arial",
-        size: 14,
-        weight: "",
-      },
-      duration: "q",
-    })
-      .setLine(11)
-      .setStave(Mesure_2)
-      .setJustification(Vex.Flow.TextNote.Justification.CENTER);
     // On ajoute les notes
-    maVoix4.addTickables([text21]);
-    maVoix4.addTickables([text22]);
-    maVoix4.addTickables([text23]);
-    maVoix4.addTickables([text24]);
-    maVoix3.addTickables(notesMesure_2);
+    maVoix455.addTickables([text1]);
+    maVoix455.addTickables([text2]);
+    maVoix455.addTickables([text3]);
+    maVoix455.addTickables([text4]);
+    maVoix30.addTickables(notesMesure_5);
 
     //On formatte et on joint les deux voix
-
-    var monFormatter2 = new Vex.Flow.Formatter()
-      .joinVoices([maVoix3, maVoix4])
-      .format([maVoix3, maVoix4], 310);
+    // eslint-disable-next-line no-unused-vars
+    var monFormatter8 = new Vex.Flow.Formatter()
+      .joinVoices([maVoix30, maVoix455])
+      .format([maVoix30, maVoix455], 310);
 
     // on dessine la voix avec les notes sur la mesure et on dessine le texte des nuances
 
-    maVoix3.draw(context8, Mesure_2);
-    text21.setContext(context8).draw();
-    text22.setContext(context8).draw();
-    text23.setContext(context8).draw();
-    text24.setContext(context8).draw();
+    maVoix30.draw(context8, Mesure_5);
+    text1.setContext(context8).draw();
+    text2.setContext(context8).draw();
+    text3.setContext(context8).draw();
+    text4.setContext(context8).draw();
   },
 };
 </script>
