@@ -108,7 +108,6 @@ export default {
   },
   watch: {
     finish: function() {
-      console.log(`level : ${this.level.index}`);
       let score = this.score / 8; // score en pourcentage
       let level = this.level;
 
@@ -118,6 +117,7 @@ export default {
           this.$store.dispatch("QUIZ_VALIDE", {
             year: this.year,
             chapter: "note",
+            score: score,
             id: 7,
           });
         }
