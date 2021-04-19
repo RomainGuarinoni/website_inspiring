@@ -119,6 +119,22 @@ export default new Vuex.Store({
     },
     //payload : year,chapter
     ENTRAINEMENT_VALIDE_PARTITION(context, payload) {
+      var bodyFormData = new FormData();
+      bodyFormData.append("score", payload.score);
+      bodyFormData.append("evaluated", 0);
+      if (payload.chapter == "nuance") {
+        bodyFormData.append("mgq_id", 3);
+      } else {
+        bodyFormData.append("mgq_id", 1);
+      }
+      axios({
+        method: "post",
+        url: "http://api.engineeringhpb.fr/api/mgq",
+        headers: { Authorization: `Bearer ${context.state.token}` },
+        data: bodyFormData,
+      })
+        .catch((e) => console.log("error update entrainement: " + e))
+        .then((msg) => console.log("nice" + msg));
       context.commit("entrainementValidePartition", payload);
       let total = 5;
       let nbTrue = 0;
@@ -160,10 +176,34 @@ export default new Vuex.Store({
 
     //payload : quizFinal, year, chapter
     QUIZ_VALIDE_PARTITION(context, payload) {
+      var bodyFormData = new FormData();
       if (payload.quizFinal) {
         context.commit("modifyQuizFinalPartition", payload);
+
+        bodyFormData.append("mgq_id", 5);
+        bodyFormData.append("score", payload.score);
+        bodyFormData.append("evaluated", 1);
+        axios({
+          method: "post",
+          url: "http://api.engineeringhpb.fr/api/mgq",
+          headers: { Authorization: `Bearer ${context.state.token}` },
+          data: bodyFormData,
+        }).catch((e) => console.log("error update : " + e));
       } else {
+        bodyFormData.append("score", 1);
+        bodyFormData.append("evaluated", 1);
         context.commit("modifyQuizPartition", payload);
+        if (payload.chapter == "nuance") {
+          bodyFormData.append("mgq_id", 4);
+        } else {
+          bodyFormData.append("mgq_id", 2);
+        }
+        axios({
+          method: "post",
+          url: "http://api.engineeringhpb.fr/api/mgq",
+          headers: { Authorization: `Bearer ${context.state.token}` },
+          data: bodyFormData,
+        }).catch((e) => console.log("error update : " + e));
       }
       let total = 5;
       let nbTrue = 0;

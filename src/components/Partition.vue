@@ -34,8 +34,8 @@
           <div class="header">
             <p class="purple">Structure d'une portée</p>
           </div>
-          <div class="chapter " @click="cours('structure1')">
-            <div class="chapterItem">
+          <div class="chapter ">
+            <div class="chapterItem" @click="cours('structure1')">
               <p class="orange">Cours</p>
             </div>
             <div class="chapterItem" @click="play(1)">
@@ -143,6 +143,7 @@ export default {
       });
     },
     playQuiz(index) {
+      console.log("lets play quiz");
       this.$router.push({
         name: "partitionQuiz",
         params: {

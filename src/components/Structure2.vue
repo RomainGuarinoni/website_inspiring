@@ -27,32 +27,11 @@
 </template>
 
 <script>
-import Vex from "vexflow";
 export default {
   methods: {
     nav(node) {
       this.$router.push({ name: node });
     },
-  },
-  mounted: function() {
-    // on place la portée
-    const monDiv = document.getElementById("porteeVierge");
-    const monRenderer = new Vex.Flow.Renderer(
-      monDiv,
-      Vex.Flow.Renderer.Backends.SVG
-    );
-
-    // Modification de paramètres
-    monRenderer.resize(600, 120); //attention de ne pas mettre trop fin
-    const monContexte = monRenderer.getContext();
-    monContexte.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
-
-    ///////////////////
-    /////Mesure n°1////
-    //////////////////
-
-    var Mesure_1 = new Vex.Flow.Stave(10, 0, 310);
-    Mesure_1.setContext(monContexte).draw(); // dessin
   },
 };
 </script>

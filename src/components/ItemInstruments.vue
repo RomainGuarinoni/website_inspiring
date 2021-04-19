@@ -92,7 +92,9 @@ export default {
     this.$store.dispatch("ENTRAINEMENT_VALIDE", {
       level: this.index,
       year: this.year,
-      chapter: "instruments",
+      chapter: "instrument",
+      id: 10,
+      score: 1,
     });
   },
 };

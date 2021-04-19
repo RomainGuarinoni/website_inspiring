@@ -95,7 +95,7 @@ export default {
         this.chapterProgression[indexYear].note,
         this.chapterProgression[indexYear].rythme,
         this.chapterProgression[indexYear].partition,
-        this.chapterProgression[indexYear].instruments,
+        this.chapterProgression[indexYear].instrument,
       ];
       return result[index];
     },

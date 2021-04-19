@@ -126,15 +126,19 @@ export default {
         );
         //envoyer a la base de donnée les resultats
         if (this.quiz || this.quizFinal) {
+          console.log("quiz chapitre partition");
           this.$store.dispatch("QUIZ_VALIDE_PARTITION", {
             quizFinal: this.quizFinal,
             year: this.year,
             chapter: this.chapter,
+            score: this.score / this.length,
           });
         } else {
+          console.log("entraienement chapitre partition");
           this.$store.dispatch("ENTRAINEMENT_VALIDE_PARTITION", {
             year: this.year,
             chapter: this.chapter,
+            score: this.score / this.length,
           });
         }
       }
