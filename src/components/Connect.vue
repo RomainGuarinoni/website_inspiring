@@ -105,9 +105,7 @@
                 redBackground: mdpCreate != mdpVerify && mdpVerify != '',
               }"
             />
-            <label for="conservatoire" class="emailLab blue"
-              >Ton conservatoire</label
-            >
+            <label for="conservatoire" class="emailLab blue">Ton école</label>
             <select
               id="conservatoire"
               name="conservatoire"

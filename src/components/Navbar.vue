@@ -168,7 +168,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 250px;
+  width: 285px;
 }
 .annee .top {
   display: flex;
@@ -181,7 +181,7 @@ export default {
 .topBox {
   display: flex;
   font-weight: 500;
-  width: 55%;
+  width: 50%;
   align-items: center;
   justify-content: space-between;
 }
