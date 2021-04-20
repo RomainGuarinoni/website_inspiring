@@ -120,13 +120,8 @@ export default {
   watch: {
     indexEnCours: function() {
       if (this.indexEnCours == this.length && this.score >= this.length - 3) {
-        console.log(
-          `entrainement finis | score : ${this.score} | min : ${this.length -
-            3}`
-        );
         //envoyer a la base de donnée les resultats
         if (this.quiz || this.quizFinal) {
-          console.log("quiz chapitre partition");
           this.$store.dispatch("QUIZ_VALIDE_PARTITION", {
             quizFinal: this.quizFinal,
             year: this.year,
@@ -134,7 +129,6 @@ export default {
             score: this.score / this.length,
           });
         } else {
-          console.log("entraienement chapitre partition");
           this.$store.dispatch("ENTRAINEMENT_VALIDE_PARTITION", {
             year: this.year,
             chapter: this.chapter,
@@ -156,7 +150,6 @@ export default {
         question[random] = value;
         question[i] = temp;
       }
-      console.log(this.question);
     },
     checkAnswer(index) {
       if (this.question[this.indexEnCours].index == index) {
