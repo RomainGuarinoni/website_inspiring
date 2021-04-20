@@ -14,8 +14,10 @@
         <p v-if="question[indexEnCours].image_question != null">
           <img class="imageQuestion" :src="srcQuestion()" alt="" />
         </p>
-        <p v-if="question[indexEnCours].audio_question != null">
-          <audio :src="audioQuestion()"></audio>
+        <p v-if="question[indexEnCours].son_question != null">
+          <audio controls>
+            <source :src="audioQuestion()" type="audio/mp3" />
+          </audio>
         </p>
         <div class="reponses" v-if="question[indexEnCours].reponse != null">
           <div
@@ -184,6 +186,8 @@ export default {
       }.png`);
     },
     audioQuestion() {
+      console.log("création d'un audio");
+      console.log(this.question[this.indexEnCours].son_question);
       return require(`@/assets/quizPartition/${
         this.question[this.indexEnCours].son_question
       }.mp3`);
