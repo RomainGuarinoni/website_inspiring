@@ -128,17 +128,13 @@ export default {
           ] &&
           score >= 0.75
         ) {
-          this.$store
-            .dispatch("ENTRAINEMENT_VALIDE", {
-              level: level.index,
-              year: this.year,
-              chapter: "note",
-              id: 6,
-              score: score,
-            })
-            .then(() => {
-              console.log("ouii");
-            });
+          this.$store.dispatch("ENTRAINEMENT_VALIDE", {
+            level: level.index,
+            year: this.year,
+            chapter: "note",
+            id: 6,
+            score: score,
+          });
         }
       }
 

@@ -132,9 +132,7 @@ export default new Vuex.Store({
         url: "http://api.engineeringhpb.fr/api/mgq",
         headers: { Authorization: `Bearer ${context.state.token}` },
         data: bodyFormData,
-      })
-        .catch((e) => console.log("error update entrainement: " + e))
-        .then((msg) => console.log("nice" + msg));
+      }).catch((e) => console.log("error update entrainement: " + e));
       context.commit("entrainementValidePartition", payload);
       let total = 5;
       let nbTrue = 0;
@@ -251,9 +249,7 @@ export default new Vuex.Store({
         url: "http://api.engineeringhpb.fr/api/mgq",
         headers: { Authorization: `Bearer ${context.state.token}` },
         data: bodyFormData,
-      })
-        .then(() => console.log("quiz enregistré"))
-        .catch((e) => console.log("error update : " + e));
+      }).catch((e) => console.log("error update : " + e));
       context.commit("quizValide", payload);
       // envoyer a hugo les valeurs !!
       let total = 0;

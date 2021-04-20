@@ -170,7 +170,6 @@ export default {
       var bodyFormData = new FormData();
       bodyFormData.append("email", this.login);
       bodyFormData.append("password", this.mdp);
-      console.log(bodyFormData);
       axios({
         method: "post",
         url: "http://api.engineeringhpb.fr/api/login",
@@ -182,7 +181,6 @@ export default {
           if (this.stayconnect) {
             localStorage.setItem("login", this.login);
             localStorage.setItem("mdp", this.mdp);
-            console.log(localStorage.getItem("mdp"));
           } else {
             if (
               localStorage.getItem("login") != null &&
@@ -194,7 +192,6 @@ export default {
           }
           this.$store.state.connect = true;
           this.$store.dispatch("SET_TOKEN", data.data.token);
-          console.log("yes");
           return axios({
             method: "post",
             url: "http://api.engineeringhpb.fr/api/getFullUserProfile",
@@ -207,7 +204,6 @@ export default {
           this.loading = false;
         })
         .then((data) => {
-          console.log(data.data);
           this.$store.dispatch("CREATE_USER", data.data);
           let avancement = [];
           //calcul des progressions des chapitres par année
@@ -364,14 +360,13 @@ export default {
     },
   },
   mounted: function() {
-    console.log(localStorage.getItem("mdp"));
     if (
       localStorage.getItem("login") != null &&
       localStorage.getItem("mdp") != null
     ) {
-      console.log("yyeah");
       this.mdp = localStorage.getItem("mdp");
       this.login = localStorage.getItem("login");
+      this.stayconnect = true;
     }
   },
 };
