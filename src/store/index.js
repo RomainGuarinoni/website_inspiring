@@ -122,6 +122,7 @@ export default new Vuex.Store({
       var bodyFormData = new FormData();
       bodyFormData.append("score", payload.score);
       bodyFormData.append("evaluated", 0);
+      bodyFormData.append("level", 1);
       if (payload.chapter == "nuance") {
         bodyFormData.append("mgq_id", 3);
       } else {

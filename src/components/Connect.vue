@@ -123,7 +123,7 @@
               </option>
             </select>
             <p v-if="error" class="error">
-              Tous les champs ne sont pas valides
+              {{ createError }}
             </p>
             <div class="buttonsCreate">
               <button type="submit">
@@ -161,12 +161,12 @@ export default {
       school: ["ecole A", "ecole B", "ecole C"],
       createAccount: false,
       loading: false,
+      createError: "",
     };
   },
 
   methods: {
     onSubmit() {
-      console.log("pass here why ?");
       this.loading = true;
       var bodyFormData = new FormData();
       bodyFormData.append("email", this.login);
@@ -299,16 +299,92 @@ export default {
         axios({
           url: "http://api.engineeringhpb.fr/api/register",
           data: bodyFormData,
+          method: "post",
         })
           .then((data) => {
-            console.log(data.data);
+            this.$store.dispatch("SET_TOKEN", data.data.token);
+            console.log("on a le token");
+            console.log(data.data.token);
+            return axios({
+              method: "post",
+              url: "http://api.engineeringhpb.fr/api/getFullUserProfile",
+              headers: { Authorization: `Bearer ${this.$store.state.token}` },
+            });
           })
-          .catch((err) => console.log(err))
-          .finally(() => (this.loading = false));
+          .catch((err) => {
+            console.log("erreur pour récuprer le token");
+            console.log(err);
+            this.createError = "Cette adresse mail éxiste déjà";
+            this.error = true;
+            this.loading = false;
+          })
+          .then((data) => {
+            this.$store.dispatch("CREATE_USER", data.data);
+            let avancement = [];
+            //calcul des progressions des chapitres par année
+            let item = data.data.progression.chapter;
+            let avancementItem = {
+              note: this.calculProgressionChapter(
+                item.note.entrainement,
+                item.note.quiz
+              ),
+              rythme: this.calculProgressionChapter(
+                item.rythme.entrainement,
+                item.rythme.quiz
+              ),
+              partition: this.calculProgressionChapterPartition(item),
+              instrument: this.calculProgressionChapter(
+                item.instrument.entrainement,
+                false,
+                false
+              ),
+            };
+            avancement.push(avancementItem);
 
-        this.error = false;
+            //push rien pour les deux années suivantes
+            for (let i = 0; i < 2; i++) {
+              avancement.push({});
+            }
+
+            //calcul des progression des années
+
+            let yearProgression = [];
+            avancement.forEach((annee) => {
+              let total = 0;
+              let sum = 0;
+              if (Object.keys(annee).length > 0) {
+                for (const value in annee) {
+                  total++;
+                  sum += annee[value];
+                }
+                yearProgression.push(Math.round(sum / total));
+              } else {
+                yearProgression.push(0);
+              }
+            });
+            Promise.all([
+              this.$store.dispatch("CREATE_CHAPTER_PROGRESSION", avancement),
+              this.$store.dispatch("CREATE_YEAR_PROGRESSION", yearProgression),
+            ]).then(() => {
+              this.$store.state.connect = true;
+              this.$router.push({ name: "yearselect" });
+            });
+          })
+          .catch((e) => {
+            console.log(`error receinving progression ${e}`);
+            this.createError = "Cette adresse mail éxiste déjà";
+            this.error = true;
+            this.loading = false;
+          })
+          .finally(() => {
+            this.$store.dispatch("toString");
+            this.error = false;
+            this.loading = false;
+          });
       } else {
+        this.createError = "Tous les champs ne sont pas valide";
         this.error = true;
+        this.loading = false;
       }
     },
     calculProgressionChapter(entrainement, quiz, isQuiz = true) {
