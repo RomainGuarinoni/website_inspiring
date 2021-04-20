@@ -7,7 +7,7 @@
     <div class="left" :class="{ loading: loading }">
       <Navbar type="1" class="navbar" />
       <div class="formBox">
-        <form v-on:submit.prevent="onSubmit" v-if="!createAccount">
+        <form v-on:submit.prevent="" v-if="!createAccount">
           <div class="form">
             <p class="title">Se connecter</p>
             <div class="formEmail">
@@ -43,7 +43,7 @@
               >
             </div>
             <div class="buttons">
-              <button type="submit">Se connecter</button>
+              <button type="submit" @click="onSubmit">Se connecter</button>
               <div v-show="error" class="error">
                 <p>identifiant ou mdp erroné</p>
               </div>
@@ -166,6 +166,7 @@ export default {
 
   methods: {
     onSubmit() {
+      console.log("pass here why ?");
       this.loading = true;
       var bodyFormData = new FormData();
       bodyFormData.append("email", this.login);
