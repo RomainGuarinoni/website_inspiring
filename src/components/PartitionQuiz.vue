@@ -14,11 +14,12 @@
         <p v-if="question[indexEnCours].image_question != null">
           <img class="imageQuestion" :src="srcQuestion()" alt="" />
         </p>
-        <p v-if="question[indexEnCours].son_question != null">
-          <audio controls>
-            <source :src="audioQuestion()" type="audio/mp3" />
-          </audio>
-        </p>
+        <div v-if="question[indexEnCours].son_question != null">
+          <div class="bouton" @click="playAudio()">
+            <font-awesome-icon v-if="play" :icon="['fas', 'play']" />
+            <div v-else class="lds-dual-ring"></div>
+          </div>
+        </div>
         <div class="reponses" v-if="question[indexEnCours].reponse != null">
           <div
             class="main reponseItem"
@@ -117,6 +118,8 @@ export default {
       length: this.lengthQuiz, // le nombre de questions pour le quizz, peut être changer
       questionSorted: Array,
       reponse: true,
+      audio: Audio,
+      play: true,
     };
   },
   watch: {
@@ -138,9 +141,26 @@ export default {
           });
         }
       }
+      this.audio.pause();
+      this.play = true;
     },
   },
   methods: {
+    playAudio() {
+      if (this.play == true) {
+        this.play = false;
+        this.audio = new Audio(
+          require(`@/assets/quizPartition/${
+            this.question[this.indexEnCours].son_question
+          }.mp3`)
+        );
+        this.audio.play();
+        this.nbEcoute--;
+        this.audio.addEventListener("ended", () => {
+          this.play = true;
+        });
+      }
+    },
     retour() {
       this.$router.push({ name: "partition", params: { annee: this.year } });
     },
@@ -185,16 +205,12 @@ export default {
         this.question[this.indexEnCours].image_question
       }.png`);
     },
-    audioQuestion() {
-      console.log("création d'un audio");
-      console.log(this.question[this.indexEnCours].son_question);
-      return require(`@/assets/quizPartition/${
-        this.question[this.indexEnCours].son_question
-      }.mp3`);
-    },
   },
   created: function() {
     this.shuffleQuestion(this.question);
+  },
+  destroyed: function() {
+    this.audio.pause();
   },
 };
 </script>
@@ -384,5 +400,42 @@ h2 {
 }
 .imageQuestion {
   max-height: 200px;
+}
+.bouton {
+  border: 2px solid black;
+  width: 70px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.lds-dual-ring {
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 0px;
+  border-radius: 50%;
+  border: 6px solid black;
+  border-color: black transparent black transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
