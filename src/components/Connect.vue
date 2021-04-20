@@ -45,7 +45,7 @@
             <div class="buttons">
               <button type="submit" @click="onSubmit">Se connecter</button>
               <div v-show="error" class="error">
-                <p>identifiant ou mdp erroné</p>
+                <p>identifiant ou mot de passe erroné</p>
               </div>
               <p>
                 Tu n'as pas encore de compte ?
@@ -83,7 +83,9 @@
               placeholder="Ton adresse email"
               v-model="emailCreate"
             />
-            <label for="mdpCreate" class="emailLab purple">Mot de passe</label>
+            <label for="mdpCreate" class="emailLab purple"
+              >Mot de passe (au moins 6 caractères)
+            </label>
             <input
               type="password"
               id="mdpCreate"
@@ -92,7 +94,7 @@
               v-model="mdpCreate"
             />
             <label for="mdpVerify" class="emailLab red"
-              >Re écris ton mot de passe</label
+              >Confirme ton mot de passe</label
             >
             <input
               type="password"
