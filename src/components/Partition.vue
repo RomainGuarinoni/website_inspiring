@@ -146,7 +146,6 @@ export default {
       });
     },
     playQuiz(index) {
-      console.log("lets play quiz");
       this.$router.push({
         name: "partitionQuiz",
         params: {

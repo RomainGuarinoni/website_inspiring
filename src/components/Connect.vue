@@ -301,8 +301,6 @@ export default {
         })
           .then((data) => {
             this.$store.dispatch("SET_TOKEN", data.data.token);
-            console.log("on a le token");
-            console.log(data.data.token);
             return axios({
               method: "post",
               url: "http://api.engineeringhpb.fr/api/getFullUserProfile",
