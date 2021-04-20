@@ -95,7 +95,7 @@ export default {
       this.$router.push({ name: "Rythme1" });
     },
     fiche() {
-      this.$router.push({ name: "Partition-revision" });
+      //this.$router.push({ name: "Partition-revision" });
     },
     quizAvailable() {
       let res = false;

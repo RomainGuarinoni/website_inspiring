@@ -55,7 +55,7 @@
             </div>
           </div>
         </div>
-        <div class="item fourth">
+        <div class="item fourth" @click="fiche()">
           <p class="blue">Fiche de révision</p>
           <!--@click="ficheDeRevision()"-->
         </div>
@@ -99,6 +99,9 @@ export default {
     },
   },
   methods: {
+    fiche() {
+      this.$router.push({ name: "Partition-revision" });
+    },
     retour() {
       this.$router.push({ name: "year", params: { annee: this.year } });
     },

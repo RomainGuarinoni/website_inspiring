@@ -97,7 +97,7 @@ const routes = [
     props: true,
   },
   {
-    path: "/fiche-revision-rythme",
+    path: "/annee-:year/fiche-revision-rythme",
     component: PartitionRevision,
     name: "Partition-revision",
     props: true,
