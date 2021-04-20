@@ -49,20 +49,14 @@
               </div>
               <p>
                 Tu n'as pas encore de compte ?
-                <button
-                  @click="
-                    createAccount = true;
-                    error = false;
-                  "
-                  class="create"
-                >
+                <button @click="createAccountPage()" class="create">
                   Créer un compte
                 </button>
               </p>
             </div>
           </div>
         </form>
-        <form v-on:submit.prevent="test" v-else>
+        <form v-on:submit.prevent="createNewAccount()" v-else>
           <div class="create-account">
             <p class="title">Créer un compte</p>
             <label for="firstName" class="emailLab">Prénom</label>
@@ -120,18 +114,22 @@
               v-model="conservatoire"
             >
               <option value="" selected disabled>--Choisis une école--</option>
-              <option v-for="element in school" :key="element" :value="element">
-                {{ element }}
+              <option
+                v-for="element in school"
+                :key="element.id"
+                :value="element.id"
+              >
+                {{ element.name }}
               </option>
             </select>
             <p v-if="error" class="error">
               Tous les champs ne sont pas valides
             </p>
             <div class="buttonsCreate">
-              <button @click="retour()">Retour</button>
-              <button type="submit" @click="createNewAccount()">
+              <button type="submit">
                 Créer un compte
               </button>
+              <button @click="retour()">Retour</button>
             </div>
           </div>
         </form>
@@ -165,6 +163,7 @@ export default {
       loading: false,
     };
   },
+
   methods: {
     onSubmit() {
       this.loading = true;
@@ -268,6 +267,22 @@ export default {
           this.loading = false;
         });
     },
+    createAccountPage() {
+      this.loading = true;
+      this.error = false;
+      axios({
+        method: "get",
+        url: "http://api.engineeringhpb.fr/api/schools",
+      })
+        .then((res) => {
+          this.school = res.data;
+        })
+        .catch((e) => console.log(e))
+        .finally(() => {
+          this.loading = false;
+          this.createAccount = true;
+        });
+    },
     createNewAccount() {
       if (
         this.firstName != "" &&
@@ -277,10 +292,22 @@ export default {
         this.mdpVerify == this.mdpCreate &&
         this.conservatoire != ""
       ) {
-        console.log("good");
-        //envoyer à hugo les data
-        // récuprer des données vide de l'utilisateurs
-        // faire des choses
+        this.loading = true;
+        var bodyFormData = new FormData();
+        bodyFormData.append("name", this.firstName);
+        bodyFormData.append("lastname", this.lastName);
+        bodyFormData.append("email", this.emailCreate);
+        bodyFormData.append("password", this.mdpCreate);
+        bodyFormData.append("school_id", this.conservatoire);
+        axios({
+          url: "http://api.engineeringhpb.fr/api/register",
+          data: bodyFormData,
+        })
+          .then((data) => {
+            console.log(data.data);
+          })
+          .catch((err) => console.log(err))
+          .finally(() => (this.loading = false));
 
         this.error = false;
       } else {
