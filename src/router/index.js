@@ -65,6 +65,9 @@ import Structure18 from "../components/Structure18";
 import Structure19 from "../components/Structure19";
 import Structure6 from "../components/Structure6";
 import PartitionRevision from "../components/PartitionRevision";
+import Admin from "../components/Admin";
+import profil from "../components/Profil";
+import Credit from "../components/Credit";
 Vue.use(VueRouter);
 
 const routes = [
@@ -415,6 +418,21 @@ const routes = [
     component: coursInstrumentsPercussion,
     props: true,
   },
+  {
+    path: "/Admin",
+    component: Admin,
+    name: "admin",
+  },
+  {
+    path: "/profil",
+    component: profil,
+    name: "changeMDP",
+  },
+  {
+    path: "/credit",
+    name: "credit",
+    component: Credit,
+  },
 ];
 
 const router = new VueRouter({
@@ -423,7 +441,7 @@ const router = new VueRouter({
 
 //vérifier avant chaque rtouter si le user est connecté sinon on le redirect à la page connect
 router.beforeEach((to, from, next) => {
-  if (store.state.connect) {
+  if (store.state.connect || to.path == "/credit") {
     next();
   } else {
     if (to.path !== "/") {

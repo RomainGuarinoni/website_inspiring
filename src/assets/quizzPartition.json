@@ -183,7 +183,7 @@
                 "son_question":"audios/Q3",
                 "reponse":null,
                 "image_reponse":["decrescendo","forte","piano"],
-                "index":3
+                "index":2
             },
             {
                 "question":"Ecoute ce morceau : quelle est la nuance qu'il faut écrire  ?",
@@ -207,7 +207,7 @@
                 "son_question":"audios/Q6",
                 "reponse":null,
                 "image_reponse":["decrescendo","crescendo","piano"],
-                "index":3
+                "index":2
             },
             {
                 "question":"Ecoute ce morceau : quelle est la nuance qu'il faut écrire  ?",
@@ -231,7 +231,7 @@
                 "son_question":"audios/Q9",
                 "reponse":null,
                 "image_reponse":["decrescendo","piano","mf"],
-                "index":3
+                "index":2
             },
             {
                 "question":"Ecoute ce morceau : quelle est la nuance qu'il faut écrire  ?",

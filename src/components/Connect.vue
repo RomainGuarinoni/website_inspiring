@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <div class="credit" @click="goToCredit()">
+      Crédit
+    </div>
     <div class="loading-logo" v-if="loading">
       <img src="@/assets/Mascotte.svg" alt="mascotte" />
       <p>Chargement ...</p>
@@ -205,6 +208,7 @@ export default {
           this.loading = false;
         })
         .then((data) => {
+          console.log(data.data);
           this.$store.dispatch("CREATE_USER", data.data);
           let avancement = [];
           //calcul des progressions des chapitres par année
@@ -433,7 +437,11 @@ export default {
       this.createAccount = false;
       this.error = false;
     },
+    goToCredit() {
+      this.$router.push({ name: "credit" });
+    },
   },
+
   mounted: function() {
     if (
       localStorage.getItem("login") != null &&
@@ -699,5 +707,23 @@ button {
   100% {
     transform: translateY(-0px);
   }
+}
+.credit {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+
+  padding: 10px 20px;
+  background: var(--main);
+  color: white;
+  border: none;
+  transition: transform ease 200ms;
+  border-radius: 10px;
+  cursor: pointer;
+  position: absolute;
+  z-index: 9999;
+}
+.credit:hover {
+  transform: scale(1.1);
 }
 </style>

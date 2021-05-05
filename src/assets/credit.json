@@ -1,0 +1,24 @@
+{
+    "membre":[
+        {
+            "nom":"Mathilde Lefebvre",
+            "role":"Chef de projet",
+            "linkedin":"https://www.linkedin.com/in/mathilde-lefebvre-5b0b621ba/"
+        },
+        {
+            "nom":"Célia Maquet",
+            "role":"Secrétaire et Responsable pôle pédagogie",
+            "linkedin":"https://linkedin.com/in/célia-maquet-59a95820 "
+        },
+        {
+            "nom":"Marie Nothisen",
+            "role":"Responsable design",
+            "linkedin":"https://www.linkedin.com/in/marie-nothisen-a0b8b01bb"
+        },
+        {
+            "nom":"Romain Guarinoni",
+            "role":"pôle informatique et trésorier",
+            "linkedin":"https://www.linkedin.com/in/romain-guarinoni-535445189/"
+        }
+    ]
+}

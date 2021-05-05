@@ -11,6 +11,7 @@ export default new Vuex.Store({
     yearProgression: new Array(), // progression année en %
     connect: false, // état de la connection du user
     token: "", //token de l'utilsateur
+    userType: new Number(),
   },
   mutations: {
     entrainementValide(state, payload) {

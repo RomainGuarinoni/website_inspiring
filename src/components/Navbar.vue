@@ -11,7 +11,10 @@
         /></router-link>
         <h1 class="font gros">Inspiring Music Theory</h1>
         <div class="boutons">
-          <button @click="pushTo('travaux')">Mon profil</button>
+          <button v-if="user.type != 0" @click="pushTo('changeMDP')">
+            Mon profil
+          </button>
+          <button v-if="user.type == 0" @click="pushTo('admin')">Admin</button>
           <button class="disconnect" @click="disconnect()">
             Se déconnecter
           </button>
@@ -31,7 +34,10 @@
           <h1 class="font">Inspiring music Theory</h1>
         </div>
         <div class="boutons">
-          <button @click="pushTo('travaux')">Mon profil</button>
+          <button v-if="user.type == 0" @click="pushTo('changeMDP')">
+            Mon profil
+          </button>
+          <button v-if="user.type != 0" @click="pushTo('admin')">Admin</button>
           <button class="disconnect" @click="disconnect()">
             Se déconnecter
           </button>
@@ -69,7 +75,7 @@ import { mapState } from "vuex";
 export default {
   props: ["type", "year"],
   computed: {
-    ...mapState(["yearProgression"]),
+    ...mapState(["yearProgression", "user"]),
     progress() {
       let index = this.year - 1;
       let result = this.yearProgression[index];

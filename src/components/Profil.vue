@@ -1,0 +1,106 @@
+<template>
+  <div class="container">
+    <Navbar type="2" />
+    <h1>Modifie ton mot de passe</h1>
+    <form v-on:submit.prevent="changeMDP">
+      <div class="input">
+        <label for="firstMDP">Nouveau mot de passe</label>
+        <input
+          id="firstMDP"
+          type="text"
+          placeholder="nouveau mot de passe"
+          v-model="mdpCreate"
+        />
+      </div>
+      <div class="input">
+        <label for="secondMDP"> Confirme ton nouveau mot de passe</label>
+        <input
+          type="text"
+          id="secondMDP"
+          v-model="mdpVerify"
+          placeholder="confirme ton nouveau mot de passe"
+          :class="{
+            greenBackground: mdpCreate == mdpVerify && mdpVerify != '',
+            redBackground: mdpCreate != mdpVerify && mdpVerify != '',
+          }"
+        />
+      </div>
+      <p class="error" v-if="error">Les mots de passe ne sont pas les mêmes</p>
+      <p class="confirm" v-if="error">Les mot de passe à bien été modifié</p>
+      <button type="submit">Valider</button>
+    </form>
+  </div>
+</template>
+
+<script>
+import Navbar from "./Navbar";
+//import axios from "axios";
+export default {
+  components: {
+    Navbar,
+  },
+  data() {
+    return {
+      mdpCreate: "",
+      mdpVerify: "",
+      error: false,
+      confirm: false,
+    };
+  },
+  methods: {
+    changeMDP() {
+      if (this.mdpCreate == this.mdpVerify) {
+        //axciosx
+      } else {
+        this.error = true;
+      }
+    },
+  },
+};
+</script>
+
+<style scoped>
+.container,
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  font-size: 20px;
+  line-height: 50px;
+}
+input {
+  width: 400px;
+  height: 25px;
+  box-shadow: 0px 0px 10px rgba(126, 126, 126, 0.719);
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+}
+button {
+  padding: 10px 15px;
+  background: var(--main);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+.greenBackground {
+  border: 2px solid var(--green);
+}
+.redBackground {
+  border: 2px solid var(--red);
+}
+.error {
+  color: var(--red);
+}
+.confirm {
+  color: var(--green);
+}
+</style>

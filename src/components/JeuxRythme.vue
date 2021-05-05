@@ -202,32 +202,32 @@ export default {
           {
             mp3: require("@/assets/level1_1.mp3"),
             result: [2, 2],
-            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[9]],
           },
           {
             mp3: require("@/assets/level1_2.mp3"),
             result: [3, 3, 2],
-            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[9]],
           },
           {
             mp3: require("@/assets/level1_3.mp3"),
             result: [3, 3, 3, 3],
-            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[9]],
           },
           {
             mp3: require("@/assets/level1_4.mp3"),
             result: [2, 3, 3],
-            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[9]],
           },
           {
             mp3: require("@/assets/level1_5.mp3"),
             result: [3, 2, 3],
-            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[4]],
+            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[9]],
           },
           {
             mp3: require("@/assets/level1_6.mp3"),
             result: [3, 3, 2],
-            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[6]],
+            note: [noteGlobal[0], noteGlobal[1], noteGlobal[2], noteGlobal[9]],
           },
         ],
         [

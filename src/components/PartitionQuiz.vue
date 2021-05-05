@@ -189,6 +189,7 @@ export default {
     questionSuivante() {
       this.indexEnCours++;
       this.reponse = true;
+      console.log(this.question[this.indexEnCours]);
     },
     again() {
       this.shuffleQuestion;
@@ -201,9 +202,15 @@ export default {
       }.png`);
     },
     srcQuestion() {
-      return require(`@/assets/quizPartition/${
-        this.question[this.indexEnCours].image_question
-      }.png`);
+      console.log("newx image for question");
+      console.log(this.question[this.indexEnCours]);
+      try {
+        return require(`@/assets/quizPartition/${
+          this.question[this.indexEnCours].image_question
+        }.png`);
+      } catch (err) {
+        console.log("error : " + this.question[this.indexEnCours]);
+      }
     },
   },
   created: function() {
