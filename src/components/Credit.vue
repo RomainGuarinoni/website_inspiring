@@ -58,9 +58,11 @@
         <img :src="getImg(index)" alt="" />
         <div class="right">
           <h3>{{ item.nom }}</h3>
-          <button>
-            <a :href="item.linkedin" target="__blank">Linkedin</a>
-          </button>
+          <div class="button">
+            <button v-for="(linkItem, index) in item.link" :key="index">
+              <a :href="linkItem.url" target="__blank">{{ linkItem.label }}</a>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -171,5 +173,12 @@ button {
   border-radius: 10px;
   padding: 10px 20px;
   color: white;
+}
+.button button {
+  margin: 10px auto;
+}
+.button {
+  display: flex;
+  flex-direction: column;
 }
 </style>

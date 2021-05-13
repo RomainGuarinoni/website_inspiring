@@ -3,22 +3,53 @@
         {
             "nom":"Mathilde Lefebvre",
             "role":"Chef de projet",
-            "linkedin":"https://www.linkedin.com/in/mathilde-lefebvre-5b0b621ba/"
+            "link" : [
+                {
+                    "url":"https://www.linkedin.com/in/mathilde-lefebvre-5b0b621ba/",
+                    "label" : "linkedin"
+                }
+            ]
         },
         {
             "nom":"Célia Maquet",
             "role":"Secrétaire et Responsable pôle pédagogie",
-            "linkedin":"https://linkedin.com/in/célia-maquet-59a95820 "
+            "link" : [
+                {
+                    "url":"https://linkedin.com/in/célia-maquet-59a95820 ",
+                    "label" : "linkedin"
+                }
+            ]
+           
         },
         {
             "nom":"Marie Nothisen",
             "role":"Responsable design",
-            "linkedin":"https://www.linkedin.com/in/marie-nothisen-a0b8b01bb"
+            "link" : [
+                {
+                    "url":"https://www.linkedin.com/in/marie-nothisen-a0b8b01bb",
+                    "label" : "linkedin"
+                }
+            ]
+           
         },
         {
             "nom":"Romain Guarinoni",
             "role":"pôle informatique et trésorier",
-            "linkedin":"https://www.linkedin.com/in/romain-guarinoni-535445189/"
+            "link" : [
+                {
+                    "url": "https://www.linkedin.com/in/romain-guarinoni-535445189/",
+                    "label" : "linkedin"
+                }
+            ]
+           
+        },
+        {
+            "nom":"Hugo Pina Borges",
+            "role" : "Responsable pôle informatique ",
+            "link":[
+                {"url":"https://www.linkedin.com/in/hugo-pina-borges-a27145178/","label":"linkedin"},
+                {"url":"https://www.engineeringhpb.fr","label":"personnal website"}
+            ]
         }
     ]
 }

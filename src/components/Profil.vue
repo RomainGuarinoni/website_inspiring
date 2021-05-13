@@ -26,7 +26,10 @@
         />
       </div>
       <p class="error" v-if="error">Les mots de passe ne sont pas les mêmes</p>
-      <p class="confirm" v-if="error">Les mot de passe à bien été modifié</p>
+      <p class="confirm" v-if="confirm">Les mot de passe à bien été modifié</p>
+      <p class="error" v-if="errorOccured">
+        Une erreur est surnenue, veuillez recommencer ultérieurement
+      </p>
       <button type="submit">Valider</button>
     </form>
   </div>
@@ -34,6 +37,7 @@
 
 <script>
 import Navbar from "./Navbar";
+import axios from "axios";
 //import axios from "axios";
 export default {
   components: {
@@ -45,12 +49,26 @@ export default {
       mdpVerify: "",
       error: false,
       confirm: false,
+      errorOccured: false,
     };
   },
   methods: {
     changeMDP() {
       if (this.mdpCreate == this.mdpVerify) {
-        //axciosx
+        this.error = false;
+        axios({
+          method: "post",
+          url: "http://api.engineeringhpb.fr/api/changePassword",
+          data: {
+            new_password: this.mdpCreate,
+          },
+          headers: { Authorization: `Bearer ${this.$store.state.token}` },
+        })
+          .then(() => {
+            this.confirm = true;
+            this.errorOccured = false;
+          })
+          .catch(() => (this.errorOccured = true));
       } else {
         this.error = true;
       }
