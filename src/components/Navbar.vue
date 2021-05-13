@@ -11,10 +11,10 @@
         /></router-link>
         <h1 class="font gros">Inspiring Music Theory</h1>
         <div class="boutons">
-          <button v-if="user.type != 0" @click="pushTo('changeMDP')">
+          <button v-if="user.type == 0" @click="pushTo('changeMDP')">
             Mon profil
           </button>
-          <button v-if="user.type == 0" @click="pushTo('admin')">Admin</button>
+          <button v-if="user.type != 0" @click="pushTo('admin')">Admin</button>
           <button class="disconnect" @click="disconnect()">
             Se déconnecter
           </button>
@@ -95,6 +95,9 @@ export default {
         .dispatch("DISCONNECT")
         .then(this.$router.push({ name: "Connect" }));
     },
+  },
+  mounted: function() {
+    console.log(this.user.type);
   },
 };
 </script>

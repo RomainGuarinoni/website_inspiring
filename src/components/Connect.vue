@@ -10,7 +10,7 @@
     <div class="left" :class="{ loading: loading }">
       <Navbar type="1" class="navbar" />
       <div class="formBox">
-        <form v-on:submit.prevent="" v-if="!createAccount">
+        <form v-on:submit.prevent="" v-if="!createAccount && !forgetMDP">
           <div class="form">
             <p class="title">Se connecter</p>
             <div class="formEmail">
@@ -32,6 +32,9 @@
                 v-model="mdp"
                 placeholder="au moins 8 caractères"
               />
+              <p class="changeMDP" @click="forgetMDP = true">
+                Mot de passe oublié ?
+              </p>
             </div>
             <div class="formConnect">
               <input
@@ -59,7 +62,10 @@
             </div>
           </div>
         </form>
-        <form v-on:submit.prevent="createNewAccount()" v-else>
+        <form
+          v-on:submit.prevent="createNewAccount()"
+          v-else-if="createAccount && !forgetMDP"
+        >
           <div class="create-account">
             <p class="title">Créer un compte</p>
             <label for="firstName" class="emailLab">Prénom</label>
@@ -136,6 +142,26 @@
             </div>
           </div>
         </form>
+        <form v-else v-on:submit.prevent="createNewAccount()" class="forgetMdp">
+          <p class="forgetTitle">Réinitialiser son mot de passe</p>
+          <div class="emailResetBox">
+            <label for="emailReset">Email</label>
+            <input
+              type="text"
+              id="emailReset"
+              autocomplete="email"
+              v-model="emailPassword"
+            />
+          </div>
+          <p v-if="resetPasswordError" class="red">Une erreur est survenue</p>
+          <p v-if="resetPasswordState" class="green">
+            Un mail vous a été envoyé
+          </p>
+          <div class="buttonReset">
+            <button type="submit" @click="resetPassword">Réinitialiser</button>
+            <button type="submit" @click="forgetMDP = false">Retour</button>
+          </div>
+        </form>
       </div>
     </div>
     <div class="right" :class="{ loading: loading }"></div>
@@ -165,6 +191,10 @@ export default {
       createAccount: false,
       loading: false,
       createError: "",
+      forgetMDP: false,
+      emailPassword: "",
+      resetPasswordError: false,
+      resetPasswordState: false,
     };
   },
 
@@ -439,6 +469,17 @@ export default {
     },
     goToCredit() {
       this.$router.push({ name: "credit" });
+    },
+    resetPassword() {
+      axios({
+        method: "post",
+        url: "http://api.engineeringhpb.fr/api/resetPassword",
+        data: {
+          email: this.emailPassword,
+        },
+      })
+        .then(() => (this.resetPasswordState = true))
+        .catch(() => (this.resetPasswordError = true));
     },
   },
 
@@ -725,5 +766,43 @@ button {
 }
 .credit:hover {
   transform: scale(1.1);
+}
+.changeMDP {
+  margin: 10px 0 0 25px;
+  color: var(--blue);
+  cursor: pointer;
+}
+.forgetMdp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: space-around;
+  padding: 190px 0;
+}
+.forgetTitle {
+  color: var(--blue);
+  font-size: 40px;
+}
+.forgetMdp input {
+  display: block;
+  margin-left: 20px;
+  padding-left: 10px;
+  border-radius: 13px;
+  border: 1px solid var(--main);
+  height: 40px;
+  width: 500px;
+  font-size: 1.4em;
+  color: var(--main);
+  outline: none;
+}
+.buttonReset button {
+  width: auto !important;
+  min-width: 200px;
+  margin: 0 20px;
+}
+.emailResetBox label {
+  color: var(--orange);
+  font-size: 25px;
 }
 </style>
