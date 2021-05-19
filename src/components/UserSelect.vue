@@ -1,6 +1,6 @@
 <template>
-  <div class="containerUser" @click="select()">
-    <p>{{ name + lastname }}</p>
+  <div class="containerUser" @click="select">
+    <p>{{ name }} {{ lastname }}</p>
   </div>
 </template>
 
@@ -10,6 +10,11 @@ export default {
     userID: Number,
     name: String,
     lastname: String,
+  },
+  methods: {
+    select() {
+      this.$emit("userHasBeenSelected", { userID: this.userID });
+    },
   },
 };
 </script>
@@ -22,7 +27,7 @@ export default {
   margin: 10px 0;
   border: none;
   text-align: center;
-  box-shadow: 0px 0px 10px rgb(148, 148, 148);
+  box-shadow: 0px 0px 10px rgb(192, 192, 192);
   cursor: pointer;
   transition: all ease 400ms;
 }

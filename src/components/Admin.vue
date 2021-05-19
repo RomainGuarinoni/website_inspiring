@@ -4,15 +4,48 @@
     <div class="box">
       <div class="selectUser">
         <h2>Sélectionner un élève</h2>
-        <UserSelect
-          v-for="user in userArray"
-          :key="user.id"
-          :userID="user.id"
-          :name="user.name"
-          :lastname="user.lastname"
-        />
+        <div class="scrollUser" v-if="!loadingUser">
+          <UserSelect
+            v-for="user in userArray"
+            :key="user.id"
+            :userID="user.id"
+            :name="user.name"
+            :lastname="user.lastname"
+            @userHasBeenSelected="loadDataFunction"
+          />
+        </div>
+        <div class="loading-logo" v-if="loadingUser">
+          <img src="@/assets/Mascotte.svg" alt="mascotte" />
+          <p>Chargement . . .</p>
+        </div>
       </div>
-      <div class="graph"></div>
+      <div class="graph">
+        <div class="loading-logo" v-if="loadData">
+          <img src="@/assets/Mascotte.svg" alt="mascotte" />
+          <p>Chargement . . .</p>
+        </div>
+        <div class="graphs" v-if="displayData && !error">
+          <div class="boxGraphNote">
+            <h2>Progresion mini jeux lecture de notes</h2>
+            <div class="boxGraphNotesInside">
+              <div class="noteBoutonsBox">
+                <div
+                  class="noteBoutons"
+                  v-for="(level, index) in 6"
+                  :key="index"
+                >
+                  level {{ index + 1 }}
+                </div>
+              </div>
+              <div class="graphNoteContainer"></div>
+            </div>
+          </div>
+        </div>
+        <p v-if="error">
+          Une erreur est survenue, veuillez réessayerr plus tard
+        </p>
+        <p></p>
+      </div>
     </div>
   </div>
 </template>
@@ -21,6 +54,7 @@
 import UserSelect from "./UserSelect";
 import axios from "axios";
 import Navbar from "./Navbar";
+import { Line } from "vue-chartjs";
 export default {
   components: {
     Navbar,
@@ -29,7 +63,41 @@ export default {
   data() {
     return {
       userArray: new Array(),
+      loadingUser: true,
+      loadData: false,
+      displayData: false,
+      currentlevelNote: 1,
+      userObject: new Object(),
     };
+  },
+  methods: {
+    loadDataFunction(payload) {
+      //afficher le loader
+      this.displayData = false;
+      this.loadData = true;
+      this.error = false;
+      axios({
+        method: "post",
+        url: "http://api.engineeringhpb.fr/api/user/getMGQ",
+        data: {
+          user_id: payload.userID,
+        },
+        headers: { Authorization: `Bearer ${this.$store.state.token}` },
+      })
+        .then((res) => {
+          this.userObject = res.data;
+          console.log(res.data.length);
+          this.loadData = false;
+          this.displayData = true;
+          console.log(this.filterID(6));
+        })
+        .catch(() => {
+          this.error = true;
+        });
+    },
+    filterID(id) {
+      return this.userObject.filter((score) => score.MGQ_id == id);
+    },
   },
   mounted: function() {
     axios({
@@ -38,7 +106,7 @@ export default {
       headers: { Authorization: `Bearer ${this.$store.state.token}` },
     })
       .then((res) => {
-        console.log(res.data);
+        this.loadingUser = false;
         this.userArray = res.data;
       })
       .catch((err) => console.log(err));
@@ -74,18 +142,82 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+}
+.scrollUser {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   overflow-y: scroll;
 }
-.selectUser h2 {
-  position: sticky;
-  position: -webkit-sticky;
-  background: white;
-  width: 100%;
-  text-align: center;
-  top: 0;
-}
+
 .graph {
   flex: 1;
   height: 100%;
+  width: 100%;
+  padding: 0 30px;
+}
+
+.graphs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxGraphNote {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.boxGraphNotesInside {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.loading-logo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.loading-logo img {
+  width: 150px;
+  height: auto;
+  animation: jump ease-in-out 500ms infinite;
+}
+@keyframes jump {
+  0% {
+    transform: translateY(-0px);
+  }
+  50% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(-0px);
+  }
+}
+.noteBoutonsBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.noteBoutons {
+  padding: 20px;
+  border: none;
+  text-align: center;
+  box-shadow: 0 0 10px rgb(163, 163, 163);
+  margin: 5px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all ease 300ms;
+}
+.noteBoutons:hover {
+  transform: translateY(-5px);
 }
 </style>
