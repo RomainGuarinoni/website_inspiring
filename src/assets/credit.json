@@ -39,6 +39,10 @@
                 {
                     "url": "https://www.linkedin.com/in/romain-guarinoni-535445189/",
                     "label" : "linkedin"
+                },
+                {
+                    "url":"https://romainguarinoni.github.io/portfolio/#/",
+                    "label":"personnal website"
                 }
             ]
            

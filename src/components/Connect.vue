@@ -212,6 +212,7 @@ export default {
       })
         .then((data) => {
           this.error = false;
+          console.log(`return : ${data.data}`);
           if (this.stayconnect) {
             localStorage.setItem("login", this.login);
             localStorage.setItem("mdp", this.mdp);

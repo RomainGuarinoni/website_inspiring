@@ -72,11 +72,12 @@ export default new Vuex.Store({
     //payload : year , chapter, level
     ENTRAINEMENT_VALIDE(context, payload) {
       context.commit("entrainementValide", payload);
+      console.log(payload);
       let total = 0;
       let nbTrue = 0;
       var bodyFormData = new FormData();
       bodyFormData.append("mgq_id", payload.id);
-      bodyFormData.append("level", payload.level + 1);
+      bodyFormData.append("level", payload.level);
       bodyFormData.append("score", payload.score);
       bodyFormData.append("evaluated", 0);
       axios({
