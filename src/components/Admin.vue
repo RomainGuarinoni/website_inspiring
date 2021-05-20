@@ -33,12 +33,12 @@
                   class="noteBoutons"
                   v-for="(level, index) in 6"
                   :key="index"
-                  @click="currentlevelNote = index + 1"
+                  @click="changeNoteLevel(index + 1)"
                 >
                   level {{ index + 1 }}
                 </div>
               </div>
-              <Graph :data="data" :option="option" />
+              <Graph :dataNote="dataNote" :labelNote="labelNote" />
             </div>
           </div>
         </div>
@@ -68,12 +68,11 @@ export default {
       loadingUser: true,
       loadData: false,
       displayData: false,
-      currentlevelNote: 1,
       currentlevelRythme: 1,
       error: false,
       userObject: new Object(),
-      data: {},
-      option: {},
+      dataNote: {},
+      labelNote: {},
     };
   },
   methods: {
@@ -97,67 +96,17 @@ export default {
 
           this.loadData = false;
           this.displayData = true;
-          (this.data = {
-            labels: [
-              "Mercury",
-              "Venus",
-              "Earth",
-              "Mars",
-              "Jupiter",
-              "Saturn",
-              "Uranus",
-              "Neptune",
-            ],
-            datasets: [
-              {
-                label: "Number of Moons",
-                data: [0, 0, 1, 2, 79, 82, 27, 14],
-                backgroundColor: "rgba(54,73,93,.5)",
-                borderColor: "#36495d",
-                borderWidth: 3,
-              },
-            ],
-          }),
-            (this.option = {
-              responsive: true,
-              maintainAspectRatio: false,
-              scales: {
-                yAxis: {
-                  ticks: {
-                    backdropColor: "rgba(255, 255, 255, 1)",
-                    color: "rgba(255, 255, 255, 0.5)",
-                    padding: 0,
-                  },
-                  grid: {
-                    color: "rgba(255,255,255,0.2)",
-                    display: false,
-                  },
-                },
-                xAxis: {
-                  ticks: {
-                    backdropColor: "rgba(255, 255, 255, 1)",
-                    color: "rgba(255, 255, 255, 0.5)",
-                  },
-                  grid: {
-                    color: "rgba(255,255,255,0.2)",
-                    display: false,
-                  },
-                },
-              },
-              plugins: {
-                legend: {
-                  labels: {
-                    color: "white", //set your desired color
-                  },
-                },
-              },
-              interaction: {
-                mode: "index",
-                intersect: false,
-              },
-            }),
-            console.log(document.getElementById("test"));
-          console.log(this.filterID(6));
+          this.dataNote = this.filterID(6)
+            .filter((object) => object.level == 1)
+            .map(({ score }) => score);
+
+          this.labelNote = this.filterID(6)
+            .filter((object) => object.level == 1)
+            .map(({ created_at }) => created_at)
+            .map((created_at) => {
+              let date = new Date(created_at);
+              return `${date.getDay()}/${date.getMonth()} `;
+            });
         })
         .catch((err) => {
           console.log(`error : ${err}`);
@@ -166,6 +115,19 @@ export default {
     },
     filterID(id) {
       return this.userObject.filter((score) => score.MGQ_id == id);
+    },
+    changeNoteLevel(index) {
+      this.dataNote = this.filterID(6)
+        .filter((object) => object.level == index)
+        .map(({ score }) => score);
+
+      this.labelNote = this.filterID(6)
+        .filter((object) => object.level == index)
+        .map(({ created_at }) => created_at)
+        .map((created_at) => {
+          let date = new Date(created_at);
+          return `${date.getDay()}/${date.getMonth()} `;
+        });
     },
   },
   mounted: function() {
@@ -248,7 +210,6 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  border: 2px solid green;
 }
 .graphNoteContainer {
   width: 100%;
@@ -284,7 +245,7 @@ export default {
   align-items: center;
 }
 .noteBoutons {
-  padding: 20px;
+  padding: 20px 15px;
   border: none;
   text-align: center;
   box-shadow: 0 0 10px rgb(163, 163, 163);
