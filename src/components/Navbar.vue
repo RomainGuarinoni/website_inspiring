@@ -96,9 +96,6 @@ export default {
         .then(this.$router.push({ name: "Connect" }));
     },
   },
-  mounted: function() {
-    console.log(this.user.type);
-  },
 };
 </script>
 

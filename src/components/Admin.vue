@@ -2,7 +2,7 @@
   <div class="container">
     <Navbar type="2" class="navbar" />
     <div class="box">
-      <div class="selectUser">
+      <div class="selectUser" id="test">
         <h2>Sélectionner un élève</h2>
         <div class="scrollUser" v-if="!loadingUser">
           <UserSelect
@@ -33,11 +33,12 @@
                   class="noteBoutons"
                   v-for="(level, index) in 6"
                   :key="index"
+                  @click="currentlevelNote = index + 1"
                 >
                   level {{ index + 1 }}
                 </div>
               </div>
-              <div class="graphNoteContainer"></div>
+              <Graph :data="data" :option="option" />
             </div>
           </div>
         </div>
@@ -54,11 +55,12 @@
 import UserSelect from "./UserSelect";
 import axios from "axios";
 import Navbar from "./Navbar";
-import { Line } from "vue-chartjs";
+import Graph from "./Graph";
 export default {
   components: {
     Navbar,
     UserSelect,
+    Graph,
   },
   data() {
     return {
@@ -67,7 +69,11 @@ export default {
       loadData: false,
       displayData: false,
       currentlevelNote: 1,
+      currentlevelRythme: 1,
+      error: false,
       userObject: new Object(),
+      data: {},
+      option: {},
     };
   },
   methods: {
@@ -76,6 +82,7 @@ export default {
       this.displayData = false;
       this.loadData = true;
       this.error = false;
+      console.log(`load user ${payload.userID}`);
       axios({
         method: "post",
         url: "http://api.engineeringhpb.fr/api/user/getMGQ",
@@ -85,13 +92,75 @@ export default {
         headers: { Authorization: `Bearer ${this.$store.state.token}` },
       })
         .then((res) => {
+          console.log(`we got the Data`);
           this.userObject = res.data;
-          console.log(res.data.length);
+
           this.loadData = false;
           this.displayData = true;
+          (this.data = {
+            labels: [
+              "Mercury",
+              "Venus",
+              "Earth",
+              "Mars",
+              "Jupiter",
+              "Saturn",
+              "Uranus",
+              "Neptune",
+            ],
+            datasets: [
+              {
+                label: "Number of Moons",
+                data: [0, 0, 1, 2, 79, 82, 27, 14],
+                backgroundColor: "rgba(54,73,93,.5)",
+                borderColor: "#36495d",
+                borderWidth: 3,
+              },
+            ],
+          }),
+            (this.option = {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                yAxis: {
+                  ticks: {
+                    backdropColor: "rgba(255, 255, 255, 1)",
+                    color: "rgba(255, 255, 255, 0.5)",
+                    padding: 0,
+                  },
+                  grid: {
+                    color: "rgba(255,255,255,0.2)",
+                    display: false,
+                  },
+                },
+                xAxis: {
+                  ticks: {
+                    backdropColor: "rgba(255, 255, 255, 1)",
+                    color: "rgba(255, 255, 255, 0.5)",
+                  },
+                  grid: {
+                    color: "rgba(255,255,255,0.2)",
+                    display: false,
+                  },
+                },
+              },
+              plugins: {
+                legend: {
+                  labels: {
+                    color: "white", //set your desired color
+                  },
+                },
+              },
+              interaction: {
+                mode: "index",
+                intersect: false,
+              },
+            }),
+            console.log(document.getElementById("test"));
           console.log(this.filterID(6));
         })
-        .catch(() => {
+        .catch((err) => {
+          console.log(`error : ${err}`);
           this.error = true;
         });
     },
@@ -175,8 +244,15 @@ export default {
 }
 .boxGraphNotesInside {
   width: 100%;
+  height: 600px;
   display: flex;
+  flex-direction: row;
   align-items: center;
+  border: 2px solid green;
+}
+.graphNoteContainer {
+  width: 100%;
+  height: 100%;
 }
 .loading-logo {
   width: 100%;
