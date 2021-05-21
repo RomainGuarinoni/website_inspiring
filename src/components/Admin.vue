@@ -25,20 +25,39 @@
           <p>Chargement . . .</p>
         </div>
         <div class="graphs" v-if="displayData && !error">
-          <div class="boxGraphNote">
+          <div class="boxGraph">
             <h2>Progresion mini jeux lecture de notes</h2>
-            <div class="boxGraphNotesInside">
+            <div class="boxGraphInside">
               <div class="noteBoutonsBox">
                 <div
                   class="noteBoutons"
                   v-for="(level, index) in 6"
                   :key="index"
-                  @click="changeNoteLevel(index + 1)"
+                  @click="changeNoteLevel(index + 1, 6)"
                 >
                   level {{ index + 1 }}
                 </div>
               </div>
               <Graph :dataNote="dataNote" :labelNote="labelNote" />
+            </div>
+          </div>
+          <div class="boxGraph">
+            <h2>Ratio réussite / échec jeux de rythme</h2>
+            <div class="boxGraphInside">
+              <div class="noteBoutonsBox">
+                <div
+                  class="noteBoutons"
+                  v-for="(level, index) in 3"
+                  :key="index"
+                  @click="changeRythmeLevel(index + 1, 8)"
+                >
+                  level {{ index + 1 }}
+                </div>
+              </div>
+              <Doughnut
+                :dataRythme="dataRythme"
+                :labelRythme="['réussite', 'échec']"
+              />
             </div>
           </div>
         </div>
@@ -56,11 +75,13 @@ import UserSelect from "./UserSelect";
 import axios from "axios";
 import Navbar from "./Navbar";
 import Graph from "./Graph";
+import Doughnut from "./Doughnut";
 export default {
   components: {
     Navbar,
     UserSelect,
     Graph,
+    Doughnut,
   },
   data() {
     return {
@@ -73,6 +94,7 @@ export default {
       userObject: new Object(),
       dataNote: {},
       labelNote: {},
+      dataRythme: {},
     };
   },
   methods: {
@@ -81,7 +103,6 @@ export default {
       this.displayData = false;
       this.loadData = true;
       this.error = false;
-      console.log(`load user ${payload.userID}`);
       axios({
         method: "post",
         url: "http://api.engineeringhpb.fr/api/user/getMGQ",
@@ -91,14 +112,13 @@ export default {
         headers: { Authorization: `Bearer ${this.$store.state.token}` },
       })
         .then((res) => {
-          console.log(`we got the Data`);
           this.userObject = res.data;
 
           this.loadData = false;
           this.displayData = true;
           this.dataNote = this.filterID(6)
             .filter((object) => object.level == 1)
-            .map(({ score }) => score);
+            .map(({ score }) => score * 100);
 
           this.labelNote = this.filterID(6)
             .filter((object) => object.level == 1)
@@ -107,6 +127,14 @@ export default {
               let date = new Date(created_at);
               return `${date.getDay()}/${date.getMonth()} `;
             });
+          this.dataRythme[0] = this.filterID(8)
+            .filter((object) => object.level == 1)
+            .map(({ score }) => score)
+            .filter((score) => score == 1).length;
+          this.dataRythme[1] = this.filterID(8)
+            .filter((object) => object.level == 1)
+            .map(({ score }) => score)
+            .filter((score) => score == 0).length;
         })
         .catch((err) => {
           console.log(`error : ${err}`);
@@ -116,18 +144,29 @@ export default {
     filterID(id) {
       return this.userObject.filter((score) => score.MGQ_id == id);
     },
-    changeNoteLevel(index) {
-      this.dataNote = this.filterID(6)
+    changeNoteLevel(index, id) {
+      this.dataNote = this.filterID(id)
         .filter((object) => object.level == index)
-        .map(({ score }) => score);
+        .map(({ score }) => score * 100);
 
-      this.labelNote = this.filterID(6)
+      this.labelNote = this.filterID(id)
         .filter((object) => object.level == index)
         .map(({ created_at }) => created_at)
         .map((created_at) => {
           let date = new Date(created_at);
           return `${date.getDay()}/${date.getMonth()} `;
         });
+    },
+    changeRythmeLevel(index, id) {
+      this.dataRythme[0] = this.filterID(id)
+        .filter((object) => object.level == index)
+        .map(({ score }) => score)
+        .filter((score) => score == 1).length;
+      this.dataRythme[1] = this.filterID(id)
+        .filter((object) => object.level == index)
+        .map(({ score }) => score)
+        .filter((score) => score == 0).length;
+      console.log(this.dataRythme);
     },
   },
   mounted: function() {
@@ -165,6 +204,11 @@ export default {
   align-items: center;
   justify-content: flex-start;
 }
+.graph {
+  flex: 1;
+  height: 100%;
+  overflow-y: scroll;
+}
 .selectUser {
   width: 20%;
   min-width: 200px;
@@ -197,14 +241,14 @@ export default {
   align-items: center;
 }
 
-.boxGraphNote {
+.boxGraph {
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.boxGraphNotesInside {
+.boxGraphInside {
   width: 100%;
   height: 600px;
   display: flex;

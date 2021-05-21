@@ -80,11 +80,13 @@ export default new Vuex.Store({
       bodyFormData.append("level", payload.level);
       bodyFormData.append("score", payload.score);
       bodyFormData.append("evaluated", 0);
+      console.log(payload);
+      console.log(bodyFormData);
       axios({
         method: "post",
         url: "http://api.engineeringhpb.fr/api/mgq",
-        headers: { Authorization: `Bearer ${context.state.token}` },
         data: bodyFormData,
+        headers: { Authorization: `Bearer ${context.state.token}` },
       }).catch((e) => console.log("error update : " + e));
 
       //recompte le nombre d'entraienement et de quizz validé sur le nombre de total en tout

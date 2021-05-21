@@ -110,7 +110,7 @@ export default {
     finish: function() {
       let score = this.score / 8; // score en pourcentage
       let level = this.level;
-
+      console.log(`quiz ? ${this.quiz}`);
       //j'upgrade en local la progression du joueur
       if (this.quiz) {
         if (score == 1 && !this.progression[this.year - 1].chapter.note.quiz) {
@@ -122,12 +122,7 @@ export default {
           });
         }
       } else {
-        if (
-          !this.progression[this.year - 1].chapter.note.entrainement[
-            level.index
-          ] &&
-          score >= 0.75
-        ) {
+        if (score >= 0.75) {
           this.$store.dispatch("ENTRAINEMENT_VALIDE", {
             level: level.index,
             year: this.year,

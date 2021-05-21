@@ -18,7 +18,6 @@ export default {
     dataNote: function(val) {
       this.graph.data.datasets[0].data = [];
       this.graph.data.datasets[0].data = val;
-      console.log(this.graph.data.datasets[0]);
       this.graph.update();
     },
     /* eslint-disable */
@@ -29,6 +28,7 @@ export default {
     },
   },
   mounted: function() {
+    console.log("graph monté");
     let ctx = document.getElementById("canvas");
     this.graph = new Chart(ctx, {
       type: "line",
@@ -36,7 +36,7 @@ export default {
         labels: this.labelNote,
         datasets: [
           {
-            label: "Difficulty",
+            label: "Note en %",
             fill: false,
             lineTension: 0.1,
             backgroundColor: "#ff6384",
@@ -73,7 +73,7 @@ export default {
               color: "rgba(255,255,255,0.2)",
               display: false,
             },
-            min: 0,
+            max: 100,
           },
           xAxis: {
             ticks: {
@@ -99,7 +99,6 @@ export default {
         },
       },
     });
-    console.log(this.graph.data.datasets[0]);
   },
 };
 </script>
