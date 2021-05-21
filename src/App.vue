@@ -46,9 +46,21 @@ export default {};
   margin: 0;
   padding: 0;
 }
+/* width */
 ::-webkit-scrollbar {
-  width: 1px;
+  width: 5px;
 }
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--main);
+}
+
 #app {
   margin: 0;
   padding: 0;

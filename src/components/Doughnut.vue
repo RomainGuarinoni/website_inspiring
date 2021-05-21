@@ -16,14 +16,15 @@ export default {
   watch: {
     /* eslint-disable */
     dataRythme: function(val) {
-      console.log("value changed", val);
       this.graph.data.datasets[0].data = [];
       this.graph.data.datasets[0].data = val;
       this.graph.update();
     },
+    /* eslint-disable */
   },
   mounted: function() {
     console.log(this.labelRythme);
+    console.log(typeof this.dataRythme);
     let ctx = document.getElementById("canvasRythme");
     this.graph = new Chart(ctx, {
       type: "pie",

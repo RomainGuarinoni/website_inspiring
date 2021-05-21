@@ -1,38 +1,26 @@
 <template>
   <div class="containerGraph">
-    <canvas id="canvas" ref="ref"></canvas>
+    <canvas id="canvasNuance"></canvas>
   </div>
 </template>
 
 <script>
 import Chart from "chart.js";
 export default {
-  props: ["dataNote", "labelNote"],
+  props: ["dataNuance", "labelNuance"],
   data() {
     return {
       graph: undefined,
     };
   },
-  watch: {
-    /* eslint-disable */
-    dataNote: function(val) {
-      this.graph.data.datasets[0].data = [];
-      this.graph.data.datasets[0].data = val;
-      this.graph.update();
-    },
-    /* eslint-disable */
-    labelNote: function(val) {
-      this.graph.data.labels = [];
-      this.graph.data.labels = val;
-      this.graph.update();
-    },
-  },
   mounted: function() {
-    let ctx = document.getElementById("canvas");
-    this.graph = new Chart(this.$refs.ref, {
+    console.log("graph monté");
+    console.log(this.dataNuance, this.labelNuance);
+    let ctx = document.getElementById("canvasNuance");
+    this.graph = new Chart(ctx, {
       type: "line",
       data: {
-        labels: this.labelNote,
+        labels: this.labelNuance,
         datasets: [
           {
             label: "Note en %",
@@ -53,7 +41,7 @@ export default {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: this.dataNote,
+            data: this.noteNuance,
           },
         ],
       },

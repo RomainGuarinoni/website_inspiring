@@ -59,6 +59,15 @@
                 :labelRythme="['réussite', 'échec']"
               />
             </div>
+            <div class="boxGraph">
+              <h2>Progression Quizz Nuance</h2>
+              <div class="boxGraphInside">
+                <GraphNuance
+                  :dataNuance="dataNuance"
+                  :labelNuance="labelNuance"
+                />
+              </div>
+            </div>
           </div>
         </div>
         <p v-if="error">
@@ -76,12 +85,14 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import Graph from "./Graph";
 import Doughnut from "./Doughnut";
+import GraphNuance from "./GraphNuance";
 export default {
   components: {
     Navbar,
     UserSelect,
     Graph,
     Doughnut,
+    GraphNuance,
   },
   data() {
     return {
@@ -92,9 +103,11 @@ export default {
       currentlevelRythme: 1,
       error: false,
       userObject: new Object(),
-      dataNote: {},
-      labelNote: {},
-      dataRythme: {},
+      dataNote: [],
+      labelNote: [],
+      dataRythme: [],
+      dataNuance: [],
+      labelNuance: [],
     };
   },
   methods: {
@@ -135,6 +148,13 @@ export default {
             .filter((object) => object.level == 1)
             .map(({ score }) => score)
             .filter((score) => score == 0).length;
+          this.dataNuance = this.filterID(3).map(({ score }) => score * 100);
+          this.labelNuance = this.filterID(3)
+            .map(({ created_at }) => created_at)
+            .map((created_at) => {
+              let date = new Date(created_at);
+              return `${date.getDay()}/${date.getMonth()} `;
+            });
         })
         .catch((err) => {
           console.log(`error : ${err}`);
