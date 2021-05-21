@@ -41,7 +41,7 @@ export default {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: this.noteNuance,
+            data: this.dataNuance,
           },
         ],
       },
