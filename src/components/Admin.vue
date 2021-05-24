@@ -80,246 +80,247 @@
 </template>
 
 <script>
-import UserSelect from "./UserSelect";
-import axios from "axios";
-import Navbar from "./Navbar";
-import Graph from "./Graph";
-import Doughnut from "./Doughnut";
-import GraphNuance from "./GraphNuance";
-export default {
-  components: {
-    Navbar,
-    UserSelect,
-    Graph,
-    Doughnut,
-    GraphNuance,
-  },
-  data() {
-    return {
-      userArray: new Array(),
-      loadingUser: true,
-      loadData: false,
-      displayData: false,
-      currentlevelRythme: 1,
-      error: false,
-      userObject: new Object(),
-      dataNote: [],
-      labelNote: [],
-      dataRythme: [],
-      dataNuance: [],
-      labelNuance: [],
-    };
-  },
-  methods: {
-    loadDataFunction(payload) {
-      //afficher le loader
-      this.displayData = false;
-      this.loadData = true;
-      this.error = false;
+  import UserSelect from "./UserSelect";
+  import axios from "axios";
+  import Navbar from "./Navbar";
+  import Graph from "./Graph";
+  import Doughnut from "./Doughnut";
+  import GraphNuance from "./GraphNuance";
+  export default {
+    components: {
+      Navbar,
+      UserSelect,
+      Graph,
+      Doughnut,
+      GraphNuance,
+    },
+    data() {
+      return {
+        userArray: new Array(),
+        loadingUser: true,
+        loadData: false,
+        displayData: false,
+        currentlevelRythme: 1,
+        error: false,
+        userObject: new Object(),
+        dataNote: [],
+        labelNote: [],
+        dataRythme: [],
+        dataNuance: [],
+        labelNuance: [],
+      };
+    },
+    methods: {
+      loadDataFunction(payload) {
+        //afficher le loader
+        this.displayData = false;
+        this.loadData = true;
+        this.error = false;
+        axios({
+          method: "post",
+          url: "http://api.engineeringhpb.fr/api/user/getMGQ",
+          data: {
+            user_id: payload.userID,
+          },
+          headers: { Authorization: `Bearer ${this.$store.state.token}` },
+        })
+          .then((res) => {
+            this.userObject = res.data;
+
+            this.loadData = false;
+            this.displayData = true;
+            this.dataNote = this.filterID(6)
+              .filter((object) => object.level == 1)
+              .map(({ score }) => score * 100);
+
+            this.labelNote = this.filterID(6)
+              .filter((object) => object.level == 1)
+              .map(({ created_at }) => created_at)
+              .map((created_at) => {
+                let date = new Date(created_at);
+                return `${date.getDay()}/${date.getMonth()} `;
+              });
+            this.dataRythme[0] = this.filterID(8)
+              .filter((object) => object.level == 1)
+              .map(({ score }) => score)
+              .filter((score) => score == 1).length;
+            this.dataRythme[1] = this.filterID(8)
+              .filter((object) => object.level == 1)
+              .map(({ score }) => score)
+              .filter((score) => score == 0).length;
+            this.dataNuance = this.filterID(3).map(({ score }) => score * 100);
+            this.labelNuance = this.filterID(3)
+              .map(({ created_at }) => created_at)
+              .map((created_at) => {
+                let date = new Date(created_at);
+                return `${date.getDay()}/${date.getMonth()} `;
+              });
+          })
+          .catch((err) => {
+            console.log(`error : ${err}`);
+            this.error = true;
+          });
+      },
+      filterID(id) {
+        return this.userObject.filter((score) => score.MGQ_id == id);
+      },
+      changeNoteLevel(index, id) {
+        this.dataNote = this.filterID(id)
+          .filter((object) => object.level == index)
+          .map(({ score }) => score * 100);
+
+        this.labelNote = this.filterID(id)
+          .filter((object) => object.level == index)
+          .map(({ created_at }) => created_at)
+          .map((created_at) => {
+            let date = new Date(created_at);
+            return `${date.getDay()}/${date.getMonth()} `;
+          });
+      },
+      changeRythmeLevel(index, id) {
+        this.dataRythme[0] = this.filterID(id)
+          .filter((object) => object.level == index)
+          .map(({ score }) => score)
+          .filter((score) => score == 1).length;
+        this.dataRythme[1] = this.filterID(id)
+          .filter((object) => object.level == index)
+          .map(({ score }) => score)
+          .filter((score) => score == 0).length;
+        console.log("datarythme has changed");
+        console.log(this.dataRythme);
+      },
+    },
+    mounted: function() {
       axios({
-        method: "post",
-        url: "http://api.engineeringhpb.fr/api/user/getMGQ",
-        data: {
-          user_id: payload.userID,
-        },
+        method: "get",
+        url: "http://api.engineeringhpb.fr/api/users",
         headers: { Authorization: `Bearer ${this.$store.state.token}` },
       })
         .then((res) => {
-          this.userObject = res.data;
-
-          this.loadData = false;
-          this.displayData = true;
-          this.dataNote = this.filterID(6)
-            .filter((object) => object.level == 1)
-            .map(({ score }) => score * 100);
-
-          this.labelNote = this.filterID(6)
-            .filter((object) => object.level == 1)
-            .map(({ created_at }) => created_at)
-            .map((created_at) => {
-              let date = new Date(created_at);
-              return `${date.getDay()}/${date.getMonth()} `;
-            });
-          this.dataRythme[0] = this.filterID(8)
-            .filter((object) => object.level == 1)
-            .map(({ score }) => score)
-            .filter((score) => score == 1).length;
-          this.dataRythme[1] = this.filterID(8)
-            .filter((object) => object.level == 1)
-            .map(({ score }) => score)
-            .filter((score) => score == 0).length;
-          this.dataNuance = this.filterID(3).map(({ score }) => score * 100);
-          this.labelNuance = this.filterID(3)
-            .map(({ created_at }) => created_at)
-            .map((created_at) => {
-              let date = new Date(created_at);
-              return `${date.getDay()}/${date.getMonth()} `;
-            });
+          this.loadingUser = false;
+          this.userArray = res.data;
         })
-        .catch((err) => {
-          console.log(`error : ${err}`);
-          this.error = true;
-        });
+        .catch((err) => console.log(err));
     },
-    filterID(id) {
-      return this.userObject.filter((score) => score.MGQ_id == id);
-    },
-    changeNoteLevel(index, id) {
-      this.dataNote = this.filterID(id)
-        .filter((object) => object.level == index)
-        .map(({ score }) => score * 100);
-
-      this.labelNote = this.filterID(id)
-        .filter((object) => object.level == index)
-        .map(({ created_at }) => created_at)
-        .map((created_at) => {
-          let date = new Date(created_at);
-          return `${date.getDay()}/${date.getMonth()} `;
-        });
-    },
-    changeRythmeLevel(index, id) {
-      this.dataRythme[0] = this.filterID(id)
-        .filter((object) => object.level == index)
-        .map(({ score }) => score)
-        .filter((score) => score == 1).length;
-      this.dataRythme[1] = this.filterID(id)
-        .filter((object) => object.level == index)
-        .map(({ score }) => score)
-        .filter((score) => score == 0).length;
-      console.log(this.dataRythme);
-    },
-  },
-  mounted: function() {
-    axios({
-      method: "get",
-      url: "http://api.engineeringhpb.fr/api/users",
-      headers: { Authorization: `Bearer ${this.$store.state.token}` },
-    })
-      .then((res) => {
-        this.loadingUser = false;
-        this.userArray = res.data;
-      })
-      .catch((err) => console.log(err));
-  },
-};
+  };
 </script>
 
 <style scoped>
-.container {
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-}
-.box {
-  flex: 1;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-}
-.graph {
-  flex: 1;
-  height: 100%;
-  overflow-y: scroll;
-}
-.selectUser {
-  width: 20%;
-  min-width: 200px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-.scrollUser {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  overflow-y: scroll;
-}
-
-.graph {
-  flex: 1;
-  height: 100%;
-  width: 100%;
-  padding: 0 30px;
-}
-
-.graphs {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.boxGraph {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 30px 0;
-}
-.boxGraphInside {
-  width: 100%;
-  height: 600px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.graphNoteContainer {
-  width: 100%;
-  height: 100%;
-}
-.loading-logo {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.loading-logo img {
-  width: 150px;
-  height: auto;
-  animation: jump ease-in-out 500ms infinite;
-}
-@keyframes jump {
-  0% {
-    transform: translateY(-0px);
+  .container {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
   }
-  50% {
-    transform: translateY(-50px);
+  .box {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
   }
-  100% {
-    transform: translateY(-0px);
+  .graph {
+    flex: 1;
+    height: 100%;
+    overflow-y: scroll;
   }
-}
-.noteBoutonsBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.noteBoutons {
-  padding: 20px 15px;
-  border: none;
-  text-align: center;
-  box-shadow: 0 0 10px rgb(163, 163, 163);
-  margin: 5px 0;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all ease 300ms;
-}
-.noteBoutons:hover {
-  transform: translateY(-5px);
-}
+  .selectUser {
+    width: 20%;
+    min-width: 200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .scrollUser {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: scroll;
+  }
+
+  .graph {
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    padding: 0 30px;
+  }
+
+  .graphs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .boxGraph {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0;
+  }
+  .boxGraphInside {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .graphNoteContainer {
+    width: 100%;
+    height: 100%;
+  }
+  .loading-logo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .loading-logo img {
+    width: 150px;
+    height: auto;
+    animation: jump ease-in-out 500ms infinite;
+  }
+  @keyframes jump {
+    0% {
+      transform: translateY(-0px);
+    }
+    50% {
+      transform: translateY(-50px);
+    }
+    100% {
+      transform: translateY(-0px);
+    }
+  }
+  .noteBoutonsBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .noteBoutons {
+    padding: 20px 15px;
+    border: none;
+    text-align: center;
+    box-shadow: 0 0 10px rgb(163, 163, 163);
+    margin: 5px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all ease 300ms;
+  }
+  .noteBoutons:hover {
+    transform: translateY(-5px);
+  }
 </style>

@@ -71,23 +71,31 @@ export default new Vuex.Store({
     },
     //payload : year , chapter, level
     ENTRAINEMENT_VALIDE(context, payload) {
-      context.commit("entrainementValide", payload);
       console.log(payload);
+      if (payload.score > 0.75) {
+        context.commit("entrainementValide", payload);
+      }
+
       let total = 0;
       let nbTrue = 0;
       var bodyFormData = new FormData();
       bodyFormData.append("mgq_id", payload.id);
-      bodyFormData.append("level", payload.level);
+      bodyFormData.append("level", payload.level + 1);
       bodyFormData.append("score", payload.score);
-      bodyFormData.append("evaluated", 0);
-      console.log(payload);
-      console.log(bodyFormData);
+      if (payload.score > 0.75) {
+        bodyFormData.append("evaluated", 1);
+      } else {
+        bodyFormData.append("evaluated", 0);
+        console.log(`entrainement ${payload.id} : pas réussi`);
+      }
       axios({
         method: "post",
         url: "http://api.engineeringhpb.fr/api/mgq",
         data: bodyFormData,
         headers: { Authorization: `Bearer ${context.state.token}` },
-      }).catch((e) => console.log("error update : " + e));
+      })
+        .then((res) => console.log(res.data))
+        .catch((e) => console.log("error update : " + e));
 
       //recompte le nombre d'entraienement et de quizz validé sur le nombre de total en tout
       context.state.progression[payload.year - 1].chapter[
@@ -125,12 +133,17 @@ export default new Vuex.Store({
     ENTRAINEMENT_VALIDE_PARTITION(context, payload) {
       var bodyFormData = new FormData();
       bodyFormData.append("score", payload.score);
-      bodyFormData.append("evaluated", 0);
+
       bodyFormData.append("level", 1);
       if (payload.chapter == "nuance") {
         bodyFormData.append("mgq_id", 3);
       } else {
         bodyFormData.append("mgq_id", 1);
+      }
+      if (payload.validate) {
+        bodyFormData.append("evaluated", 1);
+      } else {
+        bodyFormData.append("evaluated", 0);
       }
       axios({
         method: "post",
