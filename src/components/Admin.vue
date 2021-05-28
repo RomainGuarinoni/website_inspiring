@@ -33,7 +33,7 @@
                   class="noteBoutons"
                   v-for="(level, index) in 6"
                   :key="index"
-                  @click="changeNoteLevel(index + 1, 6)"
+                  @click="changeNoteLevel(index, 6)"
                 >
                   level {{ index + 1 }}
                 </div>
@@ -49,7 +49,7 @@
                   class="noteBoutons"
                   v-for="(level, index) in 3"
                   :key="index"
-                  @click="changeRythmeLevel(index + 1, 8)"
+                  @click="changeRythmeLevel(index, 8)"
                 >
                   level {{ index + 1 }}
                 </div>
@@ -106,12 +106,8 @@
         userObject: new Object(),
         dataNote: [],
         labelNote: [],
-<<<<<<< HEAD
         reussite: Number,
         echec: Number,
-=======
-        dataRythme: [],
->>>>>>> cd329cee26587b58dba31b2b388960b9d1f550d3
         dataNuance: [],
         labelNuance: [],
       };
@@ -146,19 +142,11 @@
                 let date = new Date(created_at);
                 return `${date.getDay()}/${date.getMonth()} `;
               });
-<<<<<<< HEAD
             this.reussite = this.filterID(8)
               .filter((object) => object.level == 1)
               .map(({ score }) => score)
               .filter((score) => score == 1).length;
             this.echec = this.filterID(8)
-=======
-            this.dataRythme[0] = this.filterID(8)
-              .filter((object) => object.level == 1)
-              .map(({ score }) => score)
-              .filter((score) => score == 1).length;
-            this.dataRythme[1] = this.filterID(8)
->>>>>>> cd329cee26587b58dba31b2b388960b9d1f550d3
               .filter((object) => object.level == 1)
               .map(({ score }) => score)
               .filter((score) => score == 0).length;
@@ -192,7 +180,6 @@
           });
       },
       changeRythmeLevel(index, id) {
-<<<<<<< HEAD
         console.log(index);
         this.reussite = this.filterID(id)
           .filter((object) => object.level == index)
@@ -203,18 +190,6 @@
           .map(({ score }) => score)
           .filter((score) => score == 0).length;
         console.log(this.reussite, this.echec);
-=======
-        this.dataRythme[0] = this.filterID(id)
-          .filter((object) => object.level == index)
-          .map(({ score }) => score)
-          .filter((score) => score == 1).length;
-        this.dataRythme[1] = this.filterID(id)
-          .filter((object) => object.level == index)
-          .map(({ score }) => score)
-          .filter((score) => score == 0).length;
-        console.log("datarythme has changed");
-        console.log(this.dataRythme);
->>>>>>> cd329cee26587b58dba31b2b388960b9d1f550d3
       },
     },
     mounted: function() {
