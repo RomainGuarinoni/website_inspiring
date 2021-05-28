@@ -6,8 +6,9 @@
       <div class="input">
         <label for="firstMDP">Nouveau mot de passe</label>
         <input
+        class="inputMDP"
           id="firstMDP"
-          type="text"
+          :type="type"
           placeholder="nouveau mot de passe"
           v-model="mdpCreate"
         />
@@ -15,7 +16,8 @@
       <div class="input">
         <label for="secondMDP"> Confirme ton nouveau mot de passe</label>
         <input
-          type="text"
+        class="inputMDP"
+          :type="type"
           id="secondMDP"
           v-model="mdpVerify"
           placeholder="confirme ton nouveau mot de passe"
@@ -30,6 +32,11 @@
       <p class="error" v-if="errorOccured">
         Une erreur est surnenue, veuillez recommencer ultérieurement
       </p>
+      <div class="chack">
+<input type="checkbox" id="checkbox" @change="showMdp=!showMdp">
+      <label for="checkbox">Afficher les mots de passes  </label>
+      </div>
+      
       <button type="submit">Valider</button>
     </form>
   </div>
@@ -50,7 +57,18 @@ export default {
       error: false,
       confirm: false,
       errorOccured: false,
+      showMdp: false,
     };
+  },
+  computed:{
+    type(){
+      if(this.showMdp){
+        return "txt"
+      }else{
+        return "password"
+      }
+    
+    }
   },
   methods: {
     changeMDP() {
@@ -91,7 +109,7 @@ form {
   font-size: 20px;
   line-height: 50px;
 }
-input {
+.inputMDP {
   width: 400px;
   height: 25px;
   box-shadow: 0px 0px 10px rgba(126, 126, 126, 0.719);
@@ -120,5 +138,12 @@ button {
 }
 .confirm {
   color: var(--green);
+}
+.chack{
+  display: flex;
+  align-items: center;
+}
+#checkbox{
+  margin: 0 10px;
 }
 </style>
