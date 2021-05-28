@@ -3,10 +3,12 @@
     <Navbar type="2" class="navbar" />
     <div class="box">
       <div class="selectUser" id="test">
+      
         <h2>Sélectionner un élève</h2>
+        <input class="queryInput" type="text" placeholder="rechercher un élève" v-model="studentQuery">
         <div class="scrollUser" v-if="!loadingUser">
           <UserSelect
-            v-for="user in userArray"
+            v-for="user in studentQueryArray"
             :key="user.id"
             :userID="user.id"
             :name="user.name"
@@ -168,9 +170,30 @@
         quizStructure : false,
         quizNuance : false, 
         quizFinalPartition : false,
+        studentQuery : "",
+        studentQueryArray:Array
       };
     },
+    watch:{
+      studentQuery:function(){
+        this.queryStudent();
+      }
+    },
     methods: {
+      queryStudent(){
+        this.studentQueryArray=[];
+        if(this.queryStudent==""){
+          this.studentQueryArray=this.userArray;
+        }else{
+          this.userArray.forEach((user)=>{
+          let name = user.name +user.lastname;
+          if(name.toUpperCase().includes(this.studentQuery.toUpperCase())){
+            this.studentQueryArray.push(user)
+          }
+        })
+        }
+        
+      },
       loadDataFunction(payload) {
         //afficher le loader
         this.displayData = false;
@@ -271,6 +294,7 @@
         .then((res) => {
           this.loadingUser = false;
           this.userArray = res.data;
+          this.queryStudent();
         })
         .catch((err) => console.log(err));
     },
@@ -420,5 +444,14 @@
   }
   h2{
     margin: 20px 0;
+  }
+  .queryInput{
+    padding : 10px;
+    border: 2px solid var(--main);
+    border-radius: 12px;
+    width:90%;
+    outline: none;
+
+
   }
 </style>
