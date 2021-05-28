@@ -69,6 +69,15 @@
                 />
               </div>
             </div>
+            <div class="boxGraph">
+              <h2>Progression Quizz structure d'une portée</h2>
+              <div class="boxGraphInside">
+                <GraphStructure
+                  :dataNuance="dataStructure"
+                  :labelNuance="labelStructure"
+                />
+              </div>
+            </div>
           </div>
         </div>
         <p v-if="error">
@@ -87,12 +96,14 @@
   import Graph from "./Graph";
   import Doughnut from "./Doughnut";
   import GraphNuance from "./GraphNuance";
+  import GraphStructure from "./GraphStructure";
   export default {
     components: {
       Navbar,
       UserSelect,
       Graph,
       Doughnut,
+      GraphStructure,
       GraphNuance,
     },
     data() {
@@ -110,6 +121,8 @@
         echec: Number,
         dataNuance: [],
         labelNuance: [],
+        dataStructure: [],
+        labelStructure: [],
       };
     },
     methods: {
@@ -132,26 +145,35 @@
             this.loadData = false;
             this.displayData = true;
             this.dataNote = this.filterID(6)
-              .filter((object) => object.level == 1)
+              .filter((object) => object.level == 0)
               .map(({ score }) => score * 100);
 
             this.labelNote = this.filterID(6)
-              .filter((object) => object.level == 1)
+              .filter((object) => object.level == 0)
               .map(({ created_at }) => created_at)
               .map((created_at) => {
                 let date = new Date(created_at);
                 return `${date.getDay()}/${date.getMonth()} `;
               });
             this.reussite = this.filterID(8)
-              .filter((object) => object.level == 1)
+              .filter((object) => object.level == 0)
               .map(({ score }) => score)
               .filter((score) => score == 1).length;
             this.echec = this.filterID(8)
-              .filter((object) => object.level == 1)
+              .filter((object) => object.level == 0)
               .map(({ score }) => score)
               .filter((score) => score == 0).length;
             this.dataNuance = this.filterID(3).map(({ score }) => score * 100);
             this.labelNuance = this.filterID(3)
+              .map(({ created_at }) => created_at)
+              .map((created_at) => {
+                let date = new Date(created_at);
+                return `${date.getDay()}/${date.getMonth()} `;
+              });
+            this.dataStructure = this.filterID(1).map(
+              ({ score }) => score * 100
+            );
+            this.labelStructure = this.filterID(1)
               .map(({ created_at }) => created_at)
               .map((created_at) => {
                 let date = new Date(created_at);

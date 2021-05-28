@@ -80,7 +80,7 @@ export default new Vuex.Store({
       let nbTrue = 0;
       var bodyFormData = new FormData();
       bodyFormData.append("mgq_id", payload.id);
-      bodyFormData.append("level", payload.level + 1);
+      bodyFormData.append("level", payload.level);
       bodyFormData.append("score", payload.score);
       if (payload.score > 0.75) {
         bodyFormData.append("evaluated", 1);

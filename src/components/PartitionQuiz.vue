@@ -141,7 +141,7 @@
               validate: true,
             });
           }
-        } else {
+        } else if (this.indexEnCours == this.length) {
           this.$store.dispatch("ENTRAINEMENT_VALIDE_PARTITION", {
             year: this.year,
             chapter: this.chapter,
