@@ -96,7 +96,7 @@
                 " Le musicien émet un filet d'air qu'il dirige sur le biseau du trou de l'embouchure. ",
                 "Cela provoque une vibration de la colonne d'air contenue dans le tuyau de la flûte et permet de produire le son"
             ],
-            "gamme":""
+            "gamme":"GammesFlute"
         },
         {
             "thumb":"euphonium_thumbnail.png",
@@ -124,7 +124,7 @@
                 " Les lèvres mettent en vibration l’air dans la trompette. En changeant la position des lèvres, cela va produire un son différent. ",
                 "En actionnant les pistons et la coulisse, cela change la longueur de la trompette et donc le son."
             ],
-            "gamme":""
+            "gamme":"GammesTrombone"
         },
         {
             "thumb":"guitar_thumbnail.png",
@@ -152,7 +152,7 @@
                 " Le son part d’une vibration des lèvres du musicien, pour l’obtenir il faut souffler tout en “pinçant” les lèvres.",
                 "Le cor transforme ensuite cette vibration en un son. Il est possible de changer de note en appuyant sur les palettes ( qui sont l’équivalent des pistons pour une trompette )."
             ],
-            "gamme":""
+            "gamme":"GammesCor"
         },
         {
             "thumb":"batterie_thumbnail.png",
@@ -166,7 +166,7 @@
                 "Le son est généralement produit en tapant, avec des diverses baguettes selon le résultat voulu",
                 "La composition d’une batterie peut beaucoup varier selon les musiciens et les styles de musique."
             ],
-            "gamme":""
+            "gamme":"Batterie"
         },
         {
             "thumb":"carillon_thumbnail.png",
@@ -180,7 +180,7 @@
                 "Le son résulte du tintement des cloches/tubes. Il dépend du matériau utilisé pour leur fabrication. ",
                 "On trouve plus couramment des carillons constitués d’un ensemble de tubes "
             ],
-            "gamme":""
+            "gamme":"Carillon"
         },
         {
             "thumb":"timbale_thumbnail.png",
@@ -194,7 +194,7 @@
                 "Le son s’obtient en tapant sur l’instrument à l’aide d’une mailloche.",
                 "Il dépend notamment de la tension de la membrane, laquelle est ajustable grâce à la pédales."
             ],
-            "gamme":""
+            "gamme":"Timbales"
         },
         {
             "thumb":"contrebasse_thumbnail.png",
@@ -208,7 +208,7 @@
                 "Le son de la contrebasse provient d’une vibration causée par le frottement entre l’archet et les cordes de la contrebasse. On peut aussi en joué en pincant les cordes avec ses doigts, surtout en Jazz",
                 "Mais en plus du frottement, il faut que l’archet soit enduit d’une résine végétale appelée colophane. Cela le rend rugueux et permet de frotter les cordes et de produire le son."
             ],
-            "gamme":""
+            "gamme":"GammesContrebasse"
         }
     ]
 }
