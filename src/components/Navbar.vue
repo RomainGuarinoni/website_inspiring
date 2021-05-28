@@ -11,7 +11,7 @@
         /></router-link>
         <h1 class="font gros">Inspiring Music Theory</h1>
         <div class="boutons">
-          <button v-if="user.type == 0" @click="pushTo('changeMDP')">
+          <button  @click="pushTo('changeMDP')">
             Mon profil
           </button>
           <button v-if="user.type != 0" @click="pushTo('admin')">Admin</button>
@@ -34,7 +34,7 @@
           <h1 class="font">Inspiring music Theory</h1>
         </div>
         <div class="boutons">
-          <button v-if="user.type == 0" @click="pushTo('changeMDP')">
+          <button  @click="pushTo('changeMDP')">
             Mon profil
           </button>
           <button v-if="user.type != 0" @click="pushTo('admin')">Admin</button>
