@@ -314,7 +314,7 @@ h1 {
 }
 .boutons {
   display: flex;
-  width: 25%;
+  width: 30%;
 }
 .disconnect {
   border-color: var(--red);
