@@ -78,6 +78,45 @@
                 />
               </div>
             </div>
+            <div class="boxGraph">
+              <h2>Progression fiche instruments</h2>
+              <h3> {{nbreInstruments}} / 15 </h3>
+            </div>
+            <div class="boxGraph">
+              <h2>Avancement Quiz finaux</h2>
+              <div class="quizBoxFinal">
+                <div class="quizItem">
+                  <h3>Quiz lecture de note</h3>
+                  <img src="@/assets/sol.png" alt="">
+                  <p style="color:var(--green)" v-if="quizNote"> Réussi</p>
+                  <p style="color : var(--red)" v-else> En Attente</p>
+                </div>
+                <div class="quizItem">
+                  <h3>Quiz dictée rythmique</h3>
+                  <img src="@/assets/croche.png" alt="">
+                  <p style="color:var(--green)" v-if="quizRythme"> Réussi</p>
+                  <p style="color : var(--red)" v-else> En Attente</p>
+                </div>
+                <div class="quizItem">
+                  <h3>Quiz structure d'une portée</h3>
+                  <img src="@/assets/partition.png" alt="">
+                  <p style="color:var(--green)" v-if="quizStructure"> Réussi</p>
+                  <p style="color : var(--red)" v-else> En Attente</p>
+                </div>
+                <div class="quizItem">
+                  <h3>Quiz nuances</h3>
+                  <img src="@/assets/crescendo.png" alt="">
+                  <p style="color:var(--green)" v-if="quizNuance"> Réussi</p>
+                  <p style="color : var(--red)" v-else> En Attente</p>
+                </div>
+                <div class="quizItem">
+                  <h3>Quiz final lis une partition</h3>
+                  <img src="@/assets/barre_mesure.png" alt="">
+                  <p style="color:var(--green)" v-if="quizFinalPartition"> Réussi</p>
+                  <p style="color : var(--red)" v-else> En Attente</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <p v-if="error">
@@ -123,6 +162,12 @@
         labelNuance: [],
         dataStructure: [],
         labelStructure: [],
+        nbreInstruments: Number,
+        quizNote:false,
+        quizRythme:false,
+        quizStructure : false,
+        quizNuance : false, 
+        quizFinalPartition : false,
       };
     },
     methods: {
@@ -144,6 +189,11 @@
 
             this.loadData = false;
             this.displayData = true;
+            this.filterID(2).length>0?this.quizStructure=true:null;
+            this.filterID(4).length>0?this.quizNuance=true:null;
+            this.filterID(5).length>0?this.quizFinalPartition=true:null;
+            this.filterID(7).length>0?this.quizNote=true:null;
+            this.filterID(9).length>0?this.quizRythme=true:null;
             this.dataNote = this.filterID(6)
               .filter((object) => object.level == 0)
               .map(({ score }) => score * 100);
@@ -152,8 +202,7 @@
               .filter((object) => object.level == 0)
               .map(({ created_at }) => created_at)
               .map((created_at) => {
-                let date = new Date(created_at);
-                return `${date.getDay()}/${date.getMonth()} `;
+                return created_at.split("T")[0]
               });
             this.reussite = this.filterID(8)
               .filter((object) => object.level == 0)
@@ -167,8 +216,8 @@
             this.labelNuance = this.filterID(3)
               .map(({ created_at }) => created_at)
               .map((created_at) => {
-                let date = new Date(created_at);
-                return `${date.getDay()}/${date.getMonth()} `;
+
+                return created_at.split("T")[0]
               });
             this.dataStructure = this.filterID(1).map(
               ({ score }) => score * 100
@@ -176,9 +225,9 @@
             this.labelStructure = this.filterID(1)
               .map(({ created_at }) => created_at)
               .map((created_at) => {
-                let date = new Date(created_at);
-                return `${date.getDay()}/${date.getMonth()} `;
+                return created_at.split("T")[0]
               });
+            this.nbreInstruments = this.filterID(10).length;
           })
           .catch((err) => {
             console.log(`error : ${err}`);
@@ -197,8 +246,7 @@
           .filter((object) => object.level == index)
           .map(({ created_at }) => created_at)
           .map((created_at) => {
-            let date = new Date(created_at);
-            return `${date.getDay()}/${date.getMonth()} `;
+           return created_at.split("T")[0]
           });
       },
       changeRythmeLevel(index, id) {
@@ -346,5 +394,31 @@
   }
   .noteBoutons:hover {
     transform: translateY(-5px);
+  }
+  .quizBoxFinal{
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .quizItem{
+    min-width:270px;
+    min-height:400px;
+    border:none;
+    box-shadow: 0 0 10px rgb(167, 167, 167);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  .quizItem img{
+    width : 100px;
+    height: auto;
+  }
+  h2{
+    margin: 20px 0;
   }
 </style>

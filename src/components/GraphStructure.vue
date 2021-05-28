@@ -14,8 +14,6 @@
       };
     },
     mounted: function() {
-      console.log("graph monté");
-      console.log(this.dataNuance, this.labelNuance);
       let ctx = document.getElementById("canvasStructure");
       this.graph = new Chart(ctx, {
         type: "line",
