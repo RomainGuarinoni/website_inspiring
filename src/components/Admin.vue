@@ -232,7 +232,7 @@
           url: "http://api.engineeringhpb.fr/api/schools",
           data: {
             name: this.schoolNameValue,
-            adress: this.schoolAdressValue,
+            address: this.schoolAdressValue,
           },
           headers: { Authorization: `Bearer ${this.$store.state.token}` },
         })
@@ -241,7 +241,7 @@
             setInterval(() => {
               this.addSchool = false;
               this.schoolAdded = false;
-            }, 500);
+            }, 1000);
           })
           .catch((e) => console.log(e));
       },
