@@ -9,8 +9,32 @@
         <div class="buttonDelete" @click="isPopuphidden = true">Annuler</div>
       </div>
     </div>
+    <div class="addSchoolBox" v-show="addSchool">
+      <h2>Ajouter une école</h2>
+      <div class="boxForm">
+        <label for="schoolNameInput">Nom de l'école</label>
+        <input type="text" id="schoolNameInput" v-model="schoolNameValue" />
+      </div>
+      <div class="boxForm">
+        <label for="schoolAdressInput">Adresse de l'école</label>
+        <input type="text" id="schoolAdressInput" v-model="schoolAdressValue" />
+      </div>
+
+      <font-awesome-icon
+        :icon="['fas', 'check']"
+        style="color:var(--green)"
+        v-if="schoolAdded"
+      />
+      <div class="buttonDeleteBox">
+        <div class="buttonDelete" @click="addSchoolFunction">Confirmer</div>
+        <div class="buttonDelete" @click="addSchool = false">Annuler</div>
+      </div>
+    </div>
     <div class="box">
       <div class="selectUser" id="test">
+        <div class="addSchoolButton" @click="addSchool = true">
+          <p>Ajouter une école</p>
+        </div>
         <h2>Sélectionner un élève</h2>
         <input
           class="queryInput"
@@ -190,7 +214,10 @@
         isPopuphidden: true,
         userIDDelete: Number,
         userDeleteName: String,
-        arrayTest: [1, 2, 3, 4],
+        addSchool: false,
+        schoolNameValue: "",
+        schoolAdressValue: "",
+        schoolAdded: false,
       };
     },
     watch: {
@@ -199,6 +226,25 @@
       },
     },
     methods: {
+      addSchoolFunction() {
+        axios({
+          method: "post",
+          url: "http://api.engineeringhpb.fr/api/schools",
+          data: {
+            name: this.schoolNameValue,
+            adress: this.schoolAdressValue,
+          },
+          headers: { Authorization: `Bearer ${this.$store.state.token}` },
+        })
+          .then(() => {
+            this.schoolAdded = true;
+            setInterval(() => {
+              this.addSchool = false;
+              this.schoolAdded = false;
+            }, 500);
+          })
+          .catch((e) => console.log(e));
+      },
       deleteUserFunction() {
         try {
           this.studentQueryArray.splice(
@@ -324,7 +370,6 @@
           });
       },
       changeRythmeLevel(index, id) {
-        console.log(index);
         this.reussite = this.filterID(id)
           .filter((object) => object.level == index)
           .map(({ score }) => score)
@@ -333,7 +378,6 @@
           .filter((object) => object.level == index)
           .map(({ score }) => score)
           .filter((score) => score == 0).length;
-        console.log(this.reussite, this.echec);
       },
     },
     mounted: function() {
@@ -353,9 +397,38 @@
 </script>
 
 <style scoped>
-  .popup {
+  .boxForm {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .boxForm label {
+    margin: 0 20px;
+  }
+  .boxForm input {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(161, 161, 161, 0.61);
+    padding: 20px;
+    outline: none;
+    min-width: 300px;
+  }
+  .boxForm input:focus {
+    border: 2px solid var(--main);
+  }
+  .addSchoolButton {
+    padding: 10px 20px;
+    border: none;
+    background: var(--main);
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+  }
+  .popup,
+  .addSchoolBox {
     width: 800px;
-    height: 350px;
+    min-height: 350px;
     border: none;
     box-shadow: 0 0 10px rgba(161, 161, 161, 0.61);
     border-radius: 15px;
