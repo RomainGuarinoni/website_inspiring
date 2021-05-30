@@ -1,11 +1,23 @@
 <template>
   <div class="container">
     <Navbar type="2" class="navbar" />
+    <div class="popup" v-show="!isPopuphidden" ref="test">
+      <h1>Voulez-vous vraiment supprimer cet utilisateur</h1>
+      <p>{{ userDeleteName }}</p>
+      <div class="buttonDeleteBox">
+        <div class="buttonDelete" @click="deleteUserFunction">Confirmer</div>
+        <div class="buttonDelete" @click="isPopuphidden = true">Annuler</div>
+      </div>
+    </div>
     <div class="box">
       <div class="selectUser" id="test">
-      
         <h2>Sélectionner un élève</h2>
-        <input class="queryInput" type="text" placeholder="rechercher un élève" v-model="studentQuery">
+        <input
+          class="queryInput"
+          type="text"
+          placeholder="rechercher un élève"
+          v-model="studentQuery"
+        />
         <div class="scrollUser" v-if="!loadingUser">
           <UserSelect
             v-for="user in studentQueryArray"
@@ -14,6 +26,7 @@
             :name="user.name"
             :lastname="user.lastname"
             @userHasBeenSelected="loadDataFunction"
+            @deleteUser="makeDeletePop"
           />
         </div>
         <div class="loading-logo" v-if="loadingUser">
@@ -82,40 +95,42 @@
             </div>
             <div class="boxGraph">
               <h2>Progression fiche instruments</h2>
-              <h3> {{nbreInstruments}} / 15 </h3>
+              <h3>{{ nbreInstruments }} / 15</h3>
             </div>
             <div class="boxGraph">
               <h2>Avancement Quiz finaux</h2>
               <div class="quizBoxFinal">
                 <div class="quizItem">
                   <h3>Quiz lecture de note</h3>
-                  <img src="@/assets/sol.png" alt="">
-                  <p style="color:var(--green)" v-if="quizNote"> Réussi</p>
-                  <p style="color : var(--red)" v-else> En Attente</p>
+                  <img src="@/assets/sol.png" alt="" />
+                  <p style="color:var(--green)" v-if="quizNote">Réussi</p>
+                  <p style="color : var(--red)" v-else>En Attente</p>
                 </div>
                 <div class="quizItem">
                   <h3>Quiz dictée rythmique</h3>
-                  <img src="@/assets/croche.png" alt="">
-                  <p style="color:var(--green)" v-if="quizRythme"> Réussi</p>
-                  <p style="color : var(--red)" v-else> En Attente</p>
+                  <img src="@/assets/croche.png" alt="" />
+                  <p style="color:var(--green)" v-if="quizRythme">Réussi</p>
+                  <p style="color : var(--red)" v-else>En Attente</p>
                 </div>
                 <div class="quizItem">
                   <h3>Quiz structure d'une portée</h3>
-                  <img src="@/assets/partition.png" alt="">
-                  <p style="color:var(--green)" v-if="quizStructure"> Réussi</p>
-                  <p style="color : var(--red)" v-else> En Attente</p>
+                  <img src="@/assets/partition.png" alt="" />
+                  <p style="color:var(--green)" v-if="quizStructure">Réussi</p>
+                  <p style="color : var(--red)" v-else>En Attente</p>
                 </div>
                 <div class="quizItem">
                   <h3>Quiz nuances</h3>
-                  <img src="@/assets/crescendo.png" alt="">
-                  <p style="color:var(--green)" v-if="quizNuance"> Réussi</p>
-                  <p style="color : var(--red)" v-else> En Attente</p>
+                  <img src="@/assets/crescendo.png" alt="" />
+                  <p style="color:var(--green)" v-if="quizNuance">Réussi</p>
+                  <p style="color : var(--red)" v-else>En Attente</p>
                 </div>
                 <div class="quizItem">
                   <h3>Quiz final lis une partition</h3>
-                  <img src="@/assets/barre_mesure.png" alt="">
-                  <p style="color:var(--green)" v-if="quizFinalPartition"> Réussi</p>
-                  <p style="color : var(--red)" v-else> En Attente</p>
+                  <img src="@/assets/barre_mesure.png" alt="" />
+                  <p style="color:var(--green)" v-if="quizFinalPartition">
+                    Réussi
+                  </p>
+                  <p style="color : var(--red)" v-else>En Attente</p>
                 </div>
               </div>
             </div>
@@ -165,34 +180,69 @@
         dataStructure: [],
         labelStructure: [],
         nbreInstruments: Number,
-        quizNote:false,
-        quizRythme:false,
-        quizStructure : false,
-        quizNuance : false, 
-        quizFinalPartition : false,
-        studentQuery : "",
-        studentQueryArray:Array
+        quizNote: false,
+        quizRythme: false,
+        quizStructure: false,
+        quizNuance: false,
+        quizFinalPartition: false,
+        studentQuery: "",
+        studentQueryArray: Array,
+        isPopuphidden: true,
+        userIDDelete: Number,
+        userDeleteName: String,
+        arrayTest: [1, 2, 3, 4],
       };
     },
-    watch:{
-      studentQuery:function(){
+    watch: {
+      studentQuery: function() {
         this.queryStudent();
-      }
+      },
     },
     methods: {
-      queryStudent(){
-        this.studentQueryArray=[];
-        if(this.queryStudent==""){
-          this.studentQueryArray=this.userArray;
-        }else{
-          this.userArray.forEach((user)=>{
-          let name = user.name +user.lastname;
-          if(name.toUpperCase().includes(this.studentQuery.toUpperCase())){
-            this.studentQueryArray.push(user)
-          }
-        })
+      deleteUserFunction() {
+        try {
+          this.studentQueryArray.splice(
+            this.studentQueryArray.findIndex(
+              (user) => user.id == this.userIDDelete
+            ),
+            1
+          );
+        } catch (err) {
+          console.log(err);
         }
-        
+
+        this.userArray.splice(
+          this.userArray.findIndex((user) => user.id == this.userIDDelete),
+          1
+        );
+
+        this.isPopuphidden = true;
+        axios({
+          method: "post",
+          url: "http://api.engineeringhpb.fr/api/deleteUser",
+          data: {
+            user_id: this.userIDDelete,
+          },
+          headers: { Authorization: `Bearer ${this.$store.state.token}` },
+        });
+      },
+      queryStudent() {
+        this.studentQueryArray = [];
+        if (this.queryStudent == "") {
+          this.studentQueryArray = this.userArray;
+        } else {
+          this.userArray.forEach((user) => {
+            let name = user.name + user.lastname;
+            if (name.toUpperCase().includes(this.studentQuery.toUpperCase())) {
+              this.studentQueryArray.push(user);
+            }
+          });
+        }
+      },
+      makeDeletePop(payload) {
+        this.isPopuphidden = false;
+        this.userIDDelete = payload.userID;
+        this.userDeleteName = payload.name;
       },
       loadDataFunction(payload) {
         //afficher le loader
@@ -212,11 +262,13 @@
 
             this.loadData = false;
             this.displayData = true;
-            this.filterID(2).length>0?this.quizStructure=true:null;
-            this.filterID(4).length>0?this.quizNuance=true:null;
-            this.filterID(5).length>0?this.quizFinalPartition=true:null;
-            this.filterID(7).length>0?this.quizNote=true:null;
-            this.filterID(9).length>0?this.quizRythme=true:null;
+            this.filterID(2).length > 0 ? (this.quizStructure = true) : null;
+            this.filterID(4).length > 0 ? (this.quizNuance = true) : null;
+            this.filterID(5).length > 0
+              ? (this.quizFinalPartition = true)
+              : null;
+            this.filterID(7).length > 0 ? (this.quizNote = true) : null;
+            this.filterID(9).length > 0 ? (this.quizRythme = true) : null;
             this.dataNote = this.filterID(6)
               .filter((object) => object.level == 0)
               .map(({ score }) => score * 100);
@@ -225,7 +277,7 @@
               .filter((object) => object.level == 0)
               .map(({ created_at }) => created_at)
               .map((created_at) => {
-                return created_at.split("T")[0]
+                return created_at.split("T")[0];
               });
             this.reussite = this.filterID(8)
               .filter((object) => object.level == 0)
@@ -239,8 +291,7 @@
             this.labelNuance = this.filterID(3)
               .map(({ created_at }) => created_at)
               .map((created_at) => {
-
-                return created_at.split("T")[0]
+                return created_at.split("T")[0];
               });
             this.dataStructure = this.filterID(1).map(
               ({ score }) => score * 100
@@ -248,7 +299,7 @@
             this.labelStructure = this.filterID(1)
               .map(({ created_at }) => created_at)
               .map((created_at) => {
-                return created_at.split("T")[0]
+                return created_at.split("T")[0];
               });
             this.nbreInstruments = this.filterID(10).length;
           })
@@ -269,7 +320,7 @@
           .filter((object) => object.level == index)
           .map(({ created_at }) => created_at)
           .map((created_at) => {
-           return created_at.split("T")[0]
+            return created_at.split("T")[0];
           });
       },
       changeRythmeLevel(index, id) {
@@ -302,6 +353,43 @@
 </script>
 
 <style scoped>
+  .popup {
+    width: 800px;
+    height: 350px;
+    border: none;
+    box-shadow: 0 0 10px rgba(161, 161, 161, 0.61);
+    border-radius: 15px;
+    position: absolute;
+    top: 40%;
+    left: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background: white;
+    text-align: center;
+    z-index: 100000;
+  }
+  .buttonDeleteBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    justify-content: space-around;
+  }
+  .buttonDelete {
+    padding: 15px 25px;
+    font-size: 20px;
+    text-align: center;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 20px;
+    background: var(--red);
+  }
+  .buttonDelete:first-of-type {
+    background: var(--green);
+  }
   .container {
     margin: 0;
     padding: 0;
@@ -419,17 +507,17 @@
   .noteBoutons:hover {
     transform: translateY(-5px);
   }
-  .quizBoxFinal{
-    width:100%;
+  .quizBoxFinal {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
   }
-  .quizItem{
-    min-width:270px;
-    min-height:400px;
-    border:none;
+  .quizItem {
+    min-width: 270px;
+    min-height: 400px;
+    border: none;
     box-shadow: 0 0 10px rgb(167, 167, 167);
     border-radius: 20px;
     display: flex;
@@ -438,20 +526,18 @@
     justify-content: space-around;
     margin: 20px;
   }
-  .quizItem img{
-    width : 100px;
+  .quizItem img {
+    width: 100px;
     height: auto;
   }
-  h2{
+  h2 {
     margin: 20px 0;
   }
-  .queryInput{
-    padding : 10px;
+  .queryInput {
+    padding: 10px;
     border: 2px solid var(--main);
     border-radius: 12px;
-    width:90%;
+    width: 90%;
     outline: none;
-
-
   }
 </style>

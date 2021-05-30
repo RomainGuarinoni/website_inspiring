@@ -16,7 +16,6 @@
     watch: {
       /* eslint-disable */
       echecProps: function(val) {
-        console.log("hello");
         this.graph.data.datasets[0].data = [];
         this.graph.data.datasets[0].data = [this.reussiteProps, val];
         this.graph.update();
@@ -29,8 +28,6 @@
       /* eslint-disable */
     },
     mounted: function() {
-      console.log(this.reussiteProps);
-      console.log(this.echecProps);
       let ctx = document.getElementById("canvasRythme");
       this.graph = new Chart(ctx, {
         type: "pie",
