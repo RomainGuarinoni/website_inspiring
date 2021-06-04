@@ -90,7 +90,7 @@ export default new Vuex.Store({
       }
       axios({
         method: "post",
-        url: "http://api.engineeringhpb.fr/api/mgq",
+        url: "http://api.diesy.fr/api/mgq",
         data: bodyFormData,
         headers: { Authorization: `Bearer ${context.state.token}` },
       })
@@ -147,7 +147,7 @@ export default new Vuex.Store({
       }
       axios({
         method: "post",
-        url: "http://api.engineeringhpb.fr/api/mgq",
+        url: "http://api.diesy.fr/api/mgq",
         headers: { Authorization: `Bearer ${context.state.token}` },
         data: bodyFormData,
       }).catch((e) => console.log("error update entrainement: " + e));
@@ -201,7 +201,7 @@ export default new Vuex.Store({
         bodyFormData.append("evaluated", 1);
         axios({
           method: "post",
-          url: "http://api.engineeringhpb.fr/api/mgq",
+          url: "http://api.diesy.fr/api/mgq",
           headers: { Authorization: `Bearer ${context.state.token}` },
           data: bodyFormData,
         }).catch((e) => console.log("error update : " + e));
@@ -216,7 +216,7 @@ export default new Vuex.Store({
         }
         axios({
           method: "post",
-          url: "http://api.engineeringhpb.fr/api/mgq",
+          url: "http://api.diesy.fr/api/mgq",
           headers: { Authorization: `Bearer ${context.state.token}` },
           data: bodyFormData,
         }).catch((e) => console.log("error update : " + e));
@@ -264,7 +264,7 @@ export default new Vuex.Store({
       bodyFormData.append("evaluated", 1);
       axios({
         method: "post",
-        url: "http://api.engineeringhpb.fr/api/mgq",
+        url: "http://api.diesy.fr/api/mgq",
         headers: { Authorization: `Bearer ${context.state.token}` },
         data: bodyFormData,
       }).catch((e) => console.log("error update : " + e));
@@ -326,7 +326,7 @@ export default new Vuex.Store({
     DISCONNECT(context) {
       axios({
         method: "post",
-        url: "http://api.engineeringhpb.fr/api/logout",
+        url: "http://api.diesy.fr/api/logout",
         headers: { Authorization: `Bearer ${context.state.token}` },
       })
         .then(() => console.log("disconnect"))

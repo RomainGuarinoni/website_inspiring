@@ -229,7 +229,7 @@
       addSchoolFunction() {
         axios({
           method: "post",
-          url: "http://api.engineeringhpb.fr/api/schools",
+          url: "http://api.diesy.fr/api/schools",
           data: {
             name: this.schoolNameValue,
             address: this.schoolAdressValue,
@@ -265,7 +265,7 @@
         this.isPopuphidden = true;
         axios({
           method: "post",
-          url: "http://api.engineeringhpb.fr/api/deleteUser",
+          url: "http://api.diesy.fr/api/deleteUser",
           data: {
             user_id: this.userIDDelete,
           },
@@ -297,7 +297,7 @@
         this.error = false;
         axios({
           method: "post",
-          url: "http://api.engineeringhpb.fr/api/user/getMGQ",
+          url: "http://api.diesy.fr/api/user/getMGQ",
           data: {
             user_id: payload.userID,
           },
@@ -383,7 +383,7 @@
     mounted: function() {
       axios({
         method: "get",
-        url: "http://api.engineeringhpb.fr/api/users",
+        url: "http://api.diesy.fr/api/users",
         headers: { Authorization: `Bearer ${this.$store.state.token}` },
       })
         .then((res) => {
